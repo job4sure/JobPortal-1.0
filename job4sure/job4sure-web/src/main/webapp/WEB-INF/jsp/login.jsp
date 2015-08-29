@@ -66,7 +66,7 @@ function clearAllErrors() {
             <input type="submit" value="OK" class="input-submit-02" />
             <br />
             <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
-          <!-- Advanced search -->
+          Advanced search
           <div id="search-options" style="display:none;">
             <p>
               <label>
@@ -82,31 +82,12 @@ function clearAllErrors() {
               Option III.</label>
             </p>
           </div>
-          <!-- /search-options -->
+          /search-options
           </fieldset>
         </form>
       <ul class="box">
-        <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
-		&nbsp
-        &nbsp
-		&nbsp
-		&nbsp
-        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
-		&nbsp
-		&nbsp
-		&nbsp
-		&nbsp
-		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
-		 &nbsp
-		&nbsp
-		&nbsp
-		&nbsp
-		 
-		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
-		&nbsp
-		&nbsp
-		&nbsp
-		&nbsp
+      
+		</ul>
       </div>
       <!-- /padding -->
 
@@ -116,14 +97,7 @@ function clearAllErrors() {
     <!-- Content (Right Column) -->
     <div id="content" class="box">
     <fieldset>
-   
-	<%-- <c:if test="${not empty error}">
-			<div class="error">${error}</div>
-		</c:if>
-		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
-		</c:if> --%>
-		 <h3 style="color: red;">${message}</h3>
+  		 <h3 style="color: red;">${message}</h3>
 		<form name='loginForm' id="formID" action="<c:url value='/login' />" onsubmit="return jQuery(this).validationEngine('validate');" method='POST'>
       <table class="nostyle" style="border-collapse: separate; border-spacing: 10px;">
        <tr>

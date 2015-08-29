@@ -5,27 +5,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Job Description</title>
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
-<link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<link rel="stylesheet" href="resources/css/dropdown.css" type="text/css" /> 
-
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-
-<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-
-<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-	
-   
-   
-  <!--  <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
-  <!--  <script type="text/javascript">
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script type="text/javascript">
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
 	});
-	</script> -->
-  <!--  <script type="text/javascript">
+	</script>
+	 -->
+	<script type="text/javascript">
 jQuery(document).ready(function(){
 			// binds form submission and fields to the validation engine
 			jQuery("#formID").validationEngine({
@@ -39,7 +29,8 @@ function clearAllErrors() {
 	$('#formID').validationEngine('hideAll');
 }
 
-</script> -->
+
+		</script>
 
 	
 <style type="text/css">
@@ -138,27 +129,7 @@ function clearAllErrors() {
       </div>
       <!-- /padding -->
       <ul class="box">
-        <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
-		&nbsp
-        &nbsp
-		&nbsp
-		&nbsp
-        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
-		&nbsp
-		&nbsp
-		&nbsp
-		&nbsp
-		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
-		 &nbsp
-		&nbsp
-		&nbsp
-		&nbsp
-		 
-		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
-		&nbsp
-		&nbsp
-		&nbsp
-		&nbsp
+        </ul>
 		
 	
           <!-- Active -->
