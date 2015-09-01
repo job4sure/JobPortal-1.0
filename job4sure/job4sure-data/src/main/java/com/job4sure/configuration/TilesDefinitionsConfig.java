@@ -48,5 +48,7 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 		addDefaultLayoutDef("successpage", "success", "/WEB-INF/jsp/success.jsp");
 		addDefaultLayoutDef("userPage", "UserPage", "/WEB-INF/jsp/user.jsp");
 		addDefaultLayoutDef("compPage", "CompanyPage", "/WEB-INF/jsp/comp.jsp");
+		addDefaultLayoutDef("compPage", "CompanyPage", "/WEB-INF/jsp/comp.jsp");
+		addDefaultLayoutDef("userProfilePage", "userProfile", "/WEB-INF/jsp/userProfile.jsp");
 	}
 }

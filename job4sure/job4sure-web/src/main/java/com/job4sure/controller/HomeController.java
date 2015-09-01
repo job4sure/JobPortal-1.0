@@ -44,8 +44,10 @@ public class HomeController {
 			Principal principal) {
 		boolean isUser = request.isUserInRole("USER");
 		boolean isComp = request.isUserInRole("COMP");
+		String ss=principal.getName();
+		
 		if (isUser) {
-			return "redirect:/user";
+			return "redirect:/userProfile";
 		} else if (isComp) {
 			return "redirect:/comp";
 		} else {
