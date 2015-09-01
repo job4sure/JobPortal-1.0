@@ -27,6 +27,17 @@ public class Login {
 	@Column(name = "encripted")
 	private String password;
 	
+	@Column(name = "validUpTo")
+	private String validUpTo;
+	
+	public String getValidUpTo() {
+		return validUpTo;
+	}
+
+	public void setValidUpTo(String validUpTo) {
+		this.validUpTo = validUpTo;
+	}
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "rollType")
 	private UserRole userRole;
@@ -35,26 +46,21 @@ public class Login {
 		return registration_Id;
 	}
 
-
 	public void setRegistration_Id(int registration_Id) {
 		this.registration_Id = registration_Id;
 	}
-
 
 	public String getFullName() {
 		return fullName;
 	}
 
-
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
@@ -65,11 +71,9 @@ public class Login {
 		return password;
 	}
 
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	public boolean isEnabled() {
 		return enabled;
