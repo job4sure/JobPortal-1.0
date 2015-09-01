@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,9 +26,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 	
 	@Transactional
 	public boolean saveUserInformation(Registration registration) throws Exception {
-		
-		  Date date = new Date();
-		  SimpleDateFormat date1 = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+			Calendar c = new GregorianCalendar();
+		c.add(Calendar.DATE, 30);
+		Date date = c.getTime();
+		  SimpleDateFormat date1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		  String strDate = date1.format(date);
 		 registration.setValidUpTo(strDate);
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

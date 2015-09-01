@@ -14,11 +14,11 @@ public class AutoGenratedPassword {
 'S', 'e', 'c', 'r','e', 't', 'K', 'e', 'y' };
 	
 	
-	public static String encrypt(String Data) throws Exception {
+	public static String encrypt(String registrationId) throws Exception {
         Key key = generateKey();
         Cipher c = Cipher.getInstance(ALGO);
         c.init(Cipher.ENCRYPT_MODE, key);
-        byte[] encVal = c.doFinal(Data.getBytes());
+        byte[] encVal = c.doFinal(registrationId.getBytes());
         String encryptedValue = new BASE64Encoder().encode(encVal);
         return encryptedValue;
     }
