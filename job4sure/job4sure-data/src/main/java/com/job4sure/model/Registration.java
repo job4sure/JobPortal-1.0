@@ -1,5 +1,7 @@
 package com.job4sure.model;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,6 +38,17 @@ public class Registration {
 	@Column(name = "encripted")
 	private String encripted;
 	
+	@Column(name = "validUpTo")
+	 private String validUpTo;
+	
+	public String getValidUpTo() {
+		return validUpTo;
+	}
+
+	public void setValidUpTo(String validUpTo) {
+		this.validUpTo = validUpTo;
+	}
+
 	@Transient
 	private String conformPassword;
 
