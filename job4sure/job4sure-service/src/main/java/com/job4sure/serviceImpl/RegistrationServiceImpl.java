@@ -1,5 +1,7 @@
 package com.job4sure.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,4 +38,15 @@ public class RegistrationServiceImpl implements RegistrationService {
 		Registration registration = registrationRepository.verifyUser(registrationId);
 		return registration;
 	}
+
+	public Registration getLoggedInUserInfo(String userName) {
+		Registration registration =	registrationRepository.getLoggedInUserInfo(userName);
+		return registration;
+	}
+
+	/*public List getLoggedInUserInfo(String userName) {
+		List userInfoList=null;
+	//	userInfoList=registrationRepository.getLoggedInUserInfo(userName);
+		return userInfoList;
+	}*/
 }
