@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>View All Job Desc</title>
 </head>
 <body>
-company page
-<br>
-<a href="createJobDescription">Create Job Description</a>
+
 </body>
 </html>
