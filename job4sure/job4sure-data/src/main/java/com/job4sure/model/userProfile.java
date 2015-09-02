@@ -4,113 +4,98 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "userprofile")
 public class userProfile {
- @Id
- @GeneratedValue
- @Column(name = "userId")
- private Integer userId;
- 
-  @Column(name="registrationId")
- private Integer registrationId;
- 
- 
- @ManyToOne( optional=false)
- @JoinColumn(name="registrationId",referencedColumnName="registration_Id",insertable=false, updatable=false)
- private Registration registration;
- 
- public Integer getUserId() {
-  return userId;
- }
+	@Id
+	@GeneratedValue
+	@Column(name = "userId")
+	private Integer userId;
+	
+	@Column(name = "registrationId")
+	private Integer registrationId;
+	
+	public Integer getUserId() {
+		return userId;
+	}
 
- public void setUserId(Integer userId) {
-  this.userId = userId;
- }
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
- public Registration getRegistration() {
-  return registration;
- }
+	public Integer getRegistrationId() {
+		return registrationId;
+	}
 
- public void setRegistration(Registration registration) {
-  this.registration = registration;
- }
+	public void setRegistrationId(Integer registrationId) {
+		this.registrationId = registrationId;
+	}
 
- public Integer getRegistrationId() {
-  return registrationId;
- }
+	public String getFirstName() {
+		return firstName;
+	}
 
- public void setRegistrationId(Integer registrationId) {
-  this.registrationId = registrationId;
- }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
- public String getFirstName() {
-  return firstName;
- }
+	public String getLastName() {
+		return lastName;
+	}
 
- public void setFirstName(String firstName) {
-  this.firstName = firstName;
- }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
- public String getLastName() {
-  return lastName;
- }
+	public String getAddress() {
+		return address;
+	}
 
- public void setLastName(String lastName) {
-  this.lastName = lastName;
- }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
- public String getAddress() {
-  return address;
- }
+	public String getCity() {
+		return city;
+	}
 
- public void setAddress(String address) {
-  this.address = address;
- }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
- public String getCity() {
-  return city;
- }
+	public String getState() {
+		return State;
+	}
 
- public void setCity(String city) {
-  this.city = city;
- }
+	public void setState(String state) {
+		State = state;
+	}
 
- public String getState() {
-  return State;
- }
+	public String getZip() {
+		return zip;
+	}
 
- public void setState(String state) {
-  State = state;
- }
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
 
- public String getZip() {
-  return zip;
- }
-
- public void setZip(String zip) {
-  this.zip = zip;
- }
-
- @Column(name = "firstName")
- private String firstName;
- 
- @Column(name = "lastName")
- private String lastName;
- 
- @Column(name = "address")
- private String address;
- 
- @Column(name = "city")
- private String city;
- 
- @Column(name = "State")
- private String State;
- 
- @Column(name = "zip")
- private String zip;
+	@Column(name = "firstName")
+	private String firstName;
+	
+	@Column(name = "lastName")
+	private String lastName;
+	
+	@Column(name = "address")
+	private String address;
+	
+	@Column(name = "city")
+	private String city;
+	
+	@Column(name = "State")
+	private String State;
+	
+	@Column(name = "zip")
+	private String zip;
 }

@@ -34,7 +34,7 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.4</version>
                     <configuration>
-                        <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                       <!--  <warSourceDirectory>src/main/webapp</warSourceDirectory> -->
                         <warName>job4sure-web</warName>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
