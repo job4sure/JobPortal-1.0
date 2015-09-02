@@ -49,7 +49,7 @@
     </ul>
   </div>
  </div>
- 
+    <h3 style="color: red;">${message}</h3>
  <c:set var="count" value="0" scope="page" />
       <display:table name="jobList" pagesize="8"  class="basic-table" uid="job">
         <c:set var="count" value="${count+1}" scope="page" />
@@ -77,8 +77,7 @@
          <%--  <a href="saveBatch.do?batchId=${cat.batchId}">Edit</a> --%>
         </display:column>
         <display:column title="Delete">
-         <%--  <a href="deleteBatch.do?batchId=${cat.batchId}"
-            onclick="return confirm('Please confirm if you want to delete this batch!');">Delete</a> --%>
+          <a href="deleteJob.do?jobDescriptionId=${job.jobDescriptionId}">Delete</a>
         </display:column>
       </display:table>
       

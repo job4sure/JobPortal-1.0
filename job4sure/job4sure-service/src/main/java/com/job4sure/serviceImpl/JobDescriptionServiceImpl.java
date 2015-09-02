@@ -32,4 +32,9 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 				.findAll();
 		return jobDescriptionsList;
 	}
+
+	public void deleteJob(Integer jobDescriptionId) {
+		jobDescriptionRepository.delete(jobDescriptionId);
+		
+	}
 }
