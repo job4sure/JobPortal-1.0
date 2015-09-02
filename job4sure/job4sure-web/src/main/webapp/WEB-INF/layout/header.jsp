@@ -33,7 +33,27 @@
     <p class="f-left box">
       
       <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="resources/design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="resources/design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>JOB4SURE</strong> </p>
+   
+   
+   <c:if test="${pageContext.request.userPrincipal.name == null}">
     <p class="f-right"> <strong><a href="OpenloginPage" id="login">Login</a></strong> &nbsp;&nbsp;&nbsp;<strong><a href="registration">SignUp</a></strong></p>
+  </c:if>
+  
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+    <p class="f-right"> <strong> <a href="javascript:formSubmit()">Logout</a></strong></p>
+  </c:if>
+  
+  		<c:url value="/logout" var="logoutUrl" />
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</form>
+		<script>
+					function formSubmit() {
+						document.getElementById("logoutForm").submit();
+					}
+				</script>
+  
+  
   </div>
   <!--  /tray -->
   </div>
