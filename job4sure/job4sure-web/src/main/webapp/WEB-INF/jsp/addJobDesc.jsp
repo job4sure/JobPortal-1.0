@@ -14,10 +14,8 @@
 </style>
 </head>
 <body>
-	<c:if test="${status not null}">
 		<font color="red"> <c:out value="${status}" />
 		</font>
-	</c:if>
 	<form:form action="createJobDescription" method="POST"
 		modelAttribute="jobDescription">
 		<table height="500px" align="center">
