@@ -83,3 +83,34 @@ MESSAGES
 .msg.info {border:2px solid #B8E2FB; background-color:#E8F6FF;}
 .msg.done {border:2px solid #BBDF8D; background-color:#EAF7D9;}
 .msg.error {border:2px solid #FFAEAE; background-color:#FEEBEB;}
+
+/* =============================================================================
+DISPLAY TAG
+============================================================================= */
+.basic-table{
+	width:90%;
+	font:inherit;
+	margin-bottom:30px;
+}
+.basic-table table{
+	width:100%;	
+	margin-bottom:0;
+}
+.basic-table table tr td{
+	padding:0;
+	border:none;
+}
+.basic-table tr td{
+	padding:8px;
+	border-collapse:collapse;
+	border:1px solid #BCC6D2;
+}
+.basic-table th{text-align:left;padding:8px; background:#465568; color:#fff; font-weight:normal;border:1px solid #465568;}
+/* .basic-table tr td:first-child{font-family: 'Lato-Bold'; width:20%;} */
+.basic-table p{
+	margin:0;
+}
+/* =============================================================================
+DISPLAY TAG END HERE
+============================================================================= */
+

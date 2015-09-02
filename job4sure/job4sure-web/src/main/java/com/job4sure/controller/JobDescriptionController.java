@@ -1,5 +1,7 @@
 package com.job4sure.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -59,7 +61,9 @@ public class JobDescriptionController {
 
 	@RequestMapping(value = "viewAllJobDescription", method = RequestMethod.GET)
 	public String viewAllJobDescription(Model model) {
-		
+		List<JobDescription> jobList=jobDescriptionService.getAllJobDescription();
+		System.out.println("hii");
+		model.addAttribute("jobList", jobList);
 		return "viewAllJobDesc";
 	}
 }

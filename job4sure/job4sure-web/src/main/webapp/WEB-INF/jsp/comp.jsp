@@ -9,6 +9,8 @@
 <body>
 company page
 <br>
-<a href="createJobDescription">Create Job Description</a>
+<a href="createJobDescription">Create Job Description</a> 
+<br><br>
+<a href="viewAllJobDescription">View Job Description List</a> 
 </body>
 </html>
