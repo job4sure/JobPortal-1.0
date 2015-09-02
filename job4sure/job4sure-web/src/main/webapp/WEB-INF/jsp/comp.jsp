@@ -5,12 +5,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/main.css" />
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/2col.css" title="2col" />
+<link rel="alternate stylesheet" media="screen,projection" type="text/css" href="css/1col.css" title="1col" />
+<!--[if lte IE 6]><link rel="stylesheet" media="screen,projection" type="text/css" href="css/main-ie6.css" /><![endif]-->
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/style.css" />
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/mystyle.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/switcher.js"></script>
+<script type="text/javascript" src="js/toggle.js"></script>
+<script type="text/javascript" src="js/ui.core.js"></script>
+<script type="text/javascript" src="js/ui.tabs.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".tabs > ul").tabs();
+	});
+	</script>
+	
 </head>
 <body>
-company page
+
+<div id="main">
+  
+  
+  <hr class="noscreen" />
+ 
+  <div id="menu" class="box">
+  
+	
+	
+    <ul class="box">
+     
+      <li id="menu-active"><a href="createJobDescription"><span>Create Job Description</span></a></li>
+	  <li id="menu-active"><a href="viewAllJobDescription"><span>View Job Description List</span></a></li>
+	
+    </ul>
+  </div>
+ </div>
+ 
+ 
+
 <br>
-<a href="createJobDescription">Create Job Description</a> 
-<br><br>
-<a href="viewAllJobDescription">View Job Description List</a> 
+
 </body>
 </html>
