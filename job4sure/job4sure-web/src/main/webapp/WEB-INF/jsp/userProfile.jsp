@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a href="Complete_Profile">UserProfile</a>
   <center>
    <table border="1">
     <tr>
