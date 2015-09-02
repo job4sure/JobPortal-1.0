@@ -1,10 +1,6 @@
 package com.job4sure.serviceImpl;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,22 +39,7 @@ public class LoginServiceImpl implements UserDetailsService{
 
 	
 	private User buildUserForAuthentication(Login login, List<GrantedAuthority> authorities) {
-		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date now = new Date();
-		boolean isValid=false;
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		try {
-			Date ValidityDate = (Date)formatter.parse(login.getValidUpTo());
-			if(ValidityDate.compareTo(now)>0){
-        		isValid=true;
-        	}
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		return new User(login.getEmail(), login.getPassword(), login.isEnabled(), isValid, true, true, authorities);
+		return new User(login.getEmail(), login.getPassword(), login.isEnabled(), true, true, true, authorities);
 	}
 
 	private List<GrantedAuthority> buildUserAuthority(UserRole userRole) {
@@ -67,8 +48,6 @@ public class LoginServiceImpl implements UserDetailsService{
 	List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
 	return Result;
 	}
-	
-	
 	
 	
 	

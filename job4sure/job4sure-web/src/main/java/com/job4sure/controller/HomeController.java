@@ -1,11 +1,6 @@
 package com.job4sure.controller;
 
 import java.security.Principal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -60,23 +55,7 @@ public class HomeController {
 		boolean isComp = request.isUserInRole("COMP");
 		String userName=principal.getName();
 		Registration registration=	registrationService.getLoggedInUserInfo(userName);
-		Date now = new Date();
-		int numberOfDaysRemaining=0;
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		try {
-			Date ValidityDate = (Date)formatter.parse(registration.getValidUpTo());
-			if(ValidityDate.compareTo(now)>0){
-				  Calendar day1 = Calendar.getInstance();
-				    Calendar day2 = Calendar.getInstance(); 
-				    day1.setTime(ValidityDate);
-				    day2.setTime(now);
-				    numberOfDaysRemaining = day1.get(Calendar.DAY_OF_YEAR) - day2.get(Calendar.DAY_OF_YEAR); 
-        	}
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 		session.setAttribute("registration", registration);
-		session.setAttribute("daysLeft", numberOfDaysRemaining);
 		System.out.println(""+registration.getRegistrationId());
 		if (isUser) {
 			return "redirect:/userProfile";

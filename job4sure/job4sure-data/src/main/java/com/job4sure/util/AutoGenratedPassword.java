@@ -1,40 +1,19 @@
 package com.job4sure.util;
-import java.security.Key;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
+import java.security.SecureRandom;
+import java.util.Random;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-@SuppressWarnings("restriction")
 public class AutoGenratedPassword {
-	private static final String ALGO = "AES";
-    private static final byte[] keyValue = 
-        new byte[] { 'T', 'h', 'e', 'B', 'e', 's', 't',
-'S', 'e', 'c', 'r','e', 't', 'K', 'e', 'y' };
-	
-	
-	public static String encrypt(String registrationId) throws Exception {
-        Key key = generateKey();
-        Cipher c = Cipher.getInstance(ALGO);
-        c.init(Cipher.ENCRYPT_MODE, key);
-        byte[] encVal = c.doFinal(registrationId.getBytes());
-        String encryptedValue = new BASE64Encoder().encode(encVal);
-        return encryptedValue;
-    }
+  private static final Random RANDOM = new SecureRandom();
+  public static final int PASSWORD_LENGTH = 8;
 
-	public static String decrypt(String encryptedData) throws Exception {
-        Key key = generateKey();
-        Cipher c = Cipher.getInstance(ALGO);
-        c.init(Cipher.DECRYPT_MODE, key);
-        byte[] decordedValue = new BASE64Decoder().decodeBuffer(encryptedData);
-        byte[] decValue = c.doFinal(decordedValue);
-        String decryptedValue = new String(decValue);
-        return decryptedValue;
+  public static String generateRandomPassword() {
+    String letters = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789!@#$%^&*_=+-/";
+    String pw = "";
+    for (int i = 0; i < PASSWORD_LENGTH; i++) {
+      int index = (int) (RANDOM.nextDouble() * letters.length());
+      pw += letters.substring(index, index + 1);
     }
-	
-    private static Key generateKey() throws Exception {
-        Key key = new SecretKeySpec(keyValue, ALGO);
-        return key;
-}
+    return pw;
+  }
 }
