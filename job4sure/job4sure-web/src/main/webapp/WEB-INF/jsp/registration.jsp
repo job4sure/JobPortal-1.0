@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){	
 	$('input[name=rollType]').click(function() {
@@ -26,8 +27,28 @@ $(document).ready(function(){
 			$('#urllabel').show();
 		
 		}
+		document.getElementById("cpassword").value="";
+		document.getElementById("password").value="";
+		document.getElementById("fullName").value="";
+		document.getElementById("email").value="";
+		document.getElementById("mobileNo").value="";
 	});
 });
+</script>
+<script type="text/javascript">
+function myFunction() {
+    var password = document.getElementById("password").value;
+    var cpassword = document.getElementById("cpassword").value;
+    var ok = true;
+    if (password != cpassword) {
+        document.getElementById('error').innerHTML = "wrong confirm password";
+        ok = false;
+    }
+    else {
+        alert("Passwords Match!!!");
+    }
+    return ok;
+}
 </script>
 </head>
 <body>
@@ -44,8 +65,7 @@ $(document).ready(function(){
   
     </ul>
   </div>
-	
-	<form:form method="POST" action="saveRegistration" modelAttribute="Registration">
+	<form:form method="POST" action="saveRegistration" modelAttribute="Registration" onsubmit="return myFunction()">
 	<p>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	
@@ -59,7 +79,7 @@ $(document).ready(function(){
 					<tr>
 						<td style="width: 150px;"><label id="username">Full Name*:</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
 						<td><form:input type="text" size="30" path="fullName"
-								class="input-text" required="autofocus" maxlength="80"/></td>
+								class="input-text" required="autofocus" maxlength="80" id="fullName"/></td>
 					</tr>
 
 					<tr>
@@ -70,11 +90,10 @@ $(document).ready(function(){
 						<td></td>
 						<td></td>
 					</tr>
-					<form:errors path="email"></form:errors>
 					<tr>
 						<td><label id="useremail">User Email*:</label><label id="companyemail" style="display: none;">Company Email*:</label></td>
-						<td><form:input type="text" size="40" path="email"
-								class="input-text" required="autofocus" maxlength="80"/></td>
+						<td><form:input type="text" size="40" path="email" id="email"
+								class="input-text" required="autofocus" maxlength="80" onblur="emailVarification(this);"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="email"></form:errors></span></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -84,10 +103,11 @@ $(document).ready(function(){
 						<td></td>
 						<td></td>
 					</tr>
+					
 					<tr>
 						<td>Password*:</td>
-						<td><form:input type="text" size="40" path="password"
-								class="input-text" required="autofocus" maxlength="12"/></td>
+						<td><form:input type="password" size="40" path="password"
+								class="input-text" required="autofocus" maxlength="12" id="password"/></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -99,22 +119,24 @@ $(document).ready(function(){
 					</tr>
 					<tr>
 						<td>Conform Password*:</td>
-						<td><form:input type="text" size="40" path="conformPassword"
-								class="input-text" id="conformPassword" required="autofocus" maxlength="12"/></td>
+						<td><form:input type="password" size="40" path="conformPassword" 
+								class="input-text" id="cpassword" required="autofocus" maxlength="12"/>&nbsp&nbsp&nbsp&nbsp<span id="error" style="color:#F00;"/></td>
 					</tr>
+					
 					<tr>
 						<td></td>
 						<td></td>
 					</tr>
+					
 					<tr>
 						<td></td>
 						<td></td>
 					</tr>
-					<form:errors path="mobileNo"></form:errors>
+					
 					<tr>
 						<td>Mobile No.*:</td>
 						<td><form:input type="text" size="40" path="mobileNo"
-								class="input-text" required="autofocus" maxlength="10"/><br></td>
+								class="input-text" required="autofocus" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 					</tr>
 					<tr>
 						<td></td>

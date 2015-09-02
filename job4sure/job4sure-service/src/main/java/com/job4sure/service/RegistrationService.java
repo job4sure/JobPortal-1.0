@@ -1,7 +1,5 @@
 package com.job4sure.service;
 
-import java.util.List;
-
 import com.job4sure.model.Registration;
 
 public interface RegistrationService {
@@ -11,6 +9,8 @@ public interface RegistrationService {
 	public Registration verifyUser(Integer registrationId);
 
 	public Registration getLoggedInUserInfo(String userName);
+
+	public boolean verifyUserEmailId(String emailId);
 
 	/*public List getLoggedInUserInfo(String userName);*/
 

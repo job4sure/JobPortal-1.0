@@ -82,6 +82,7 @@
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
 		</c:if>
+		 <h3 style="color: red;">${message}</h3>
 		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
       <table class="nostyle">
        <tr>
