@@ -30,11 +30,11 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 	 *            <code>Adds default layout definitions</code>
 	 */
 	private static void addDefaultLayoutDef(String name, String title,
-			String body) {
+			String body,String header) {
 		Map<String, Attribute> attributes = new HashMap<String, Attribute>();
 
 		attributes.put("title", new Attribute(title));
-		attributes.put("header", new Attribute("/WEB-INF/layout/header.jsp"));
+		attributes.put("header", new Attribute(header));
 		attributes.put("body", new Attribute(body));
 		attributes.put("footer", new Attribute("/WEB-INF/layout/footer.jsp"));
 		tilesDefinitions.put(name, new Definition(name, BASE_TEMPLATE,
@@ -42,22 +42,21 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 	}
 
 	public static void addDefinitions() {
-		addDefaultLayoutDef("welcome", "welcme", "/WEB-INF/jsp/welcome.jsp");
-		addDefaultLayoutDef("registration", "register", "/WEB-INF/jsp/registration.jsp");
-		addDefaultLayoutDef("loginPage", "login", "/WEB-INF/jsp/login.jsp");
-		addDefaultLayoutDef("successpage", "success", "/WEB-INF/jsp/success.jsp");
-		addDefaultLayoutDef("userPage", "UserPage", "/WEB-INF/jsp/user.jsp");
-		addDefaultLayoutDef("compPage", "CompanyPage", "/WEB-INF/jsp/comp.jsp");
-		addDefaultLayoutDef("compPage", "CompanyPage", "/WEB-INF/jsp/comp.jsp");
-		addDefaultLayoutDef("userProfilePage", "userProfile", "/WEB-INF/jsp/userProfile.jsp");
-		addDefaultLayoutDef("addJobDesc", "Add Job Description", "/WEB-INF/jsp/addJobDesc.jsp");
-		addDefaultLayoutDef("viewAllJobDesc", "View All Job", "/WEB-INF/jsp/viewAllJobDesc.jsp");
-		addDefaultLayoutDef("complteprofile", "cmpltprofile", "/WEB-INF/jsp/complteprofile.jsp");
-		addDefaultLayoutDef("companyProfilePage", "companyProfile", "/WEB-INF/jsp/companyProfile.jsp");
-		addDefaultLayoutDef("companyviewProfile12", "companyviewProfile", "/WEB-INF/jsp/companyviewProfile.jsp");
-		addDefaultLayoutDef("forgotPassPage", "Forgot Password", "/WEB-INF/jsp/forgotPass.jsp");
-		addDefaultLayoutDef("newPassword", "New Password", "/WEB-INF/jsp/createNewPassword.jsp");
-		addDefaultLayoutDef("userBasicInfoPage", "userBasicInfo", "/WEB-INF/jsp/userBasicInfo.jsp");
-		addDefaultLayoutDef("CompanyDetailsViewPage", "CompanyDetailsView", "/WEB-INF/jsp/CompanyDetailsView.jsp");
+		addDefaultLayoutDef("welcome", "welcme", "/WEB-INF/jsp/welcome.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("registration", "register", "/WEB-INF/jsp/registration.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("loginPage", "login", "/WEB-INF/jsp/login.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("successpage", "success", "/WEB-INF/jsp/success.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("userPage", "UserPage", "/WEB-INF/jsp/user.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("compPage", "CompanyPage", "/WEB-INF/jsp/comp.jsp","/WEB-INF/layout/companyHeader.jsp");
+		addDefaultLayoutDef("userProfilePage", "userProfile", "/WEB-INF/jsp/userProfile.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("addJobDesc", "Add Job Description", "/WEB-INF/jsp/addJobDesc.jsp","/WEB-INF/layout/companyHeader.jsp");
+		addDefaultLayoutDef("viewAllJobDesc", "View All Job", "/WEB-INF/jsp/viewAllJobDesc.jsp","/WEB-INF/layout/companyHeader.jsp");
+		addDefaultLayoutDef("complteprofile", "cmpltprofile", "/WEB-INF/jsp/complteprofile.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("companyProfilePage", "companyProfile", "/WEB-INF/jsp/companyProfile.jsp","/WEB-INF/layout/companyHeader.jsp");
+		addDefaultLayoutDef("companyviewProfile12", "companyviewProfile", "/WEB-INF/jsp/companyviewProfile.jsp","/WEB-INF/layout/companyHeader.jsp");
+		addDefaultLayoutDef("forgotPassPage", "Forgot Password", "/WEB-INF/jsp/forgotPass.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("newPassword", "New Password", "/WEB-INF/jsp/createNewPassword.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("userBasicInfoPage", "userBasicInfo", "/WEB-INF/jsp/userBasicInfo.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("CompanyDetailsViewPage", "CompanyDetailsView", "/WEB-INF/jsp/CompanyDetailsView.jsp","/WEB-INF/layout/companyHeader.jsp");
 	}
 }

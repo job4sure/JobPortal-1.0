@@ -41,7 +41,7 @@ th, td {
  
   <hr class="noscreen" />
  
-  <div id="menu" class="box">
+  <!-- <div id="menu" class="box">
  
 	<div id="menu" class="box">
   
@@ -54,7 +54,7 @@ th, td {
     </ul>
   </div>
 		  
-  </div>
+  </div> -->
   
      <hr class="noscreen" />
   <!-- Columns -->
