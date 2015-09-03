@@ -38,7 +38,7 @@ public class userProfileController {
 		 registration = (Registration) session.getAttribute("registration");
 		 map.put("Registration", registration);
 		 model.addAttribute("registration", registration);
-		 return "registration";
+		 return "userBasicInfoPage";
 	}
 	@RequestMapping(value = "/Complete_Profile", method = RequestMethod.GET)
 	public String Complete_profile(Map<String,Object>map) 

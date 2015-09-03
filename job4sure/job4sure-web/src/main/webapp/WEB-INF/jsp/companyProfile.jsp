@@ -7,7 +7,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Company Profile</title>
+<title> Profile</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="css/reset.css" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="css/main.css" />
@@ -67,10 +67,110 @@
 </script>
 </head>
 <body>
-<form:form method="POST" action="savecompanyProfile" modelAttribute="companyprofile">
+<form:form method="POST" action="savecompanyProfile" modelAttribute="companyProfile">
 <div id="main">
- 
-  <h2>company Profile</h2>
+  <hr class="noscreen" />
+ <form:hidden path="compId"/>
+  <div id="menu" class="box">
+  <div class="tabs box">
+        <ul>
+          <!-- <li><a href="accountsettings.html"><span>Account Settings</span></a></li>
+          <li><a href="compny_profile.html"><span>Profile Setting</span></a></li>
+          <li><a href="#tab03"><span>View or Edit Jd's</span></a></li>
+		  <li><a href="#tab03"><span>Send Current Openings</span></a></li> -->
+		  <li class="t-center"><h1>Company Profile</h1></li>
+        </ul>
+      </div>
+  </div>
+  <div id="aside" class="box">
+      <div class="padding box">
+        <!-- Logo (Max. width = 200px) -->
+        <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/design/logo.gif" alt="" /></a></p>
+        <!-- Search -->
+        <form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
+          <fieldset>
+          <legend>Search</legend>
+          <p>
+            <input type="text" size="17" name="" class="input-text" />
+            &nbsp;
+            <input type="submit" value="OK" class="input-submit-02" />
+            <br />
+            <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
+        
+          <div id="search-options" style="display:none;">
+            <p>
+              <label>
+              <input type="checkbox" name="" checked="checked" />
+             By location</label>
+              <br />
+              <label>
+              <input type="checkbox" name="" />
+              by keywords</label>
+              <br />
+              <label>
+              <input type="checkbox" name="" />
+              By name</label>
+            </p>
+          </div>
+          
+          </fieldset>
+        </form>
+       
+       
+      </div>
+      
+      <ul class="box">
+       <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+		&nbsp
+        &nbsp
+		&nbsp
+		&nbsp
+        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
+		 &nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 
+		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		
+		<li><a href="http://all-free-download.com/free-website-templates/"></a></li>
+		
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		
+	    <li><a href="http://all-free-download.com/free-website-templates/"></a></li>
+		
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		
+		<li><a href="http://all-free-download.com/free-website-templates/"></a></li>
+		
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		
+	    <li><a href="http://all-free-download.com/free-website-templates/"></a></li>
+		
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+    </div>
+    <center>
   <table>
   <tr>
 	<td>Company name*:</td>
@@ -148,8 +248,8 @@
 	<tr><td><input type="submit" value="submit"/></td></tr>
 	
   </table>
-  
+    </center>
   </div>
   </form:form>
 </body>
-</html>
+</html> 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.job4sure.model.CompanyProfileModel;
+import com.job4sure.model.userProfile;
 import com.job4sure.repository.companyProfileRepository;
 import com.job4sure.service.companyProfile;
 @Service
@@ -26,5 +27,11 @@ public class CompanyProfileServiceImp implements companyProfile {
 	    
 		List<CompanyProfileModel> list = companyRepository.findByRegistrationId(companyProfile.getRegistrationId());
 		return list;
+	}
+
+	public CompanyProfileModel getLoggedInCompanyCompleteInfo(Integer registrationId) {
+		CompanyProfileModel companyProfile=companyRepository.getLoggedInCompanyCompleteInfo(registrationId);
+		return companyProfile;
+
 	}
 }

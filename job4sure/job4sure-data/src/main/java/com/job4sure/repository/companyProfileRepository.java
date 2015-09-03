@@ -12,4 +12,7 @@ public interface companyProfileRepository extends JpaRepository<CompanyProfileMo
 {
 	 @Query("select c  from CompanyProfileModel c where c.registrationId =:registrationId")
 	 public List<CompanyProfileModel> findByRegistrationId(@Param("registrationId") Integer registrationId);
+
+	 @Query("select userProfile  from CompanyProfileModel userProfile where userProfile.registrationId =:registrationId")
+	public CompanyProfileModel getLoggedInCompanyCompleteInfo(@Param("registrationId") Integer registrationId);
 }

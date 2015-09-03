@@ -25,10 +25,6 @@
 	
 </head>
 <body>
-<a href="CompanyProfile">Create Company Profile</a>
-
-
-<a href="viewCompanyProfile">View Company Profile</a>
 <div id="main">
   
   
@@ -42,7 +38,8 @@
      
       <li id="menu-active"><a href="createJobDescription"><span>Create Job Description</span></a></li>
 	  <li id="menu-active"><a href="viewAllJobDescription"><span>View Job Description List</span></a></li>
-	
+	 <li id="menu-active"><a href="CompanyProfile"><span>Create Company Profile</span></a></li>
+	  <li id="menu-active"><a href="CompanyProfileView"><span>View Company Profile</span></a></li>
     </ul>
   </div>
  </div>

@@ -57,5 +57,7 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 		addDefaultLayoutDef("companyviewProfile12", "companyviewProfile", "/WEB-INF/jsp/companyviewProfile.jsp");
 		addDefaultLayoutDef("forgotPassPage", "Forgot Password", "/WEB-INF/jsp/forgotPass.jsp");
 		addDefaultLayoutDef("newPassword", "New Password", "/WEB-INF/jsp/createNewPassword.jsp");
+		addDefaultLayoutDef("userBasicInfoPage", "userBasicInfo", "/WEB-INF/jsp/userBasicInfo.jsp");
+		addDefaultLayoutDef("CompanyDetailsViewPage", "CompanyDetailsView", "/WEB-INF/jsp/CompanyDetailsView.jsp");
 	}
 }

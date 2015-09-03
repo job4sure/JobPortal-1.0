@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.Registration;
+import com.job4sure.model.userProfile;
 import com.job4sure.service.companyProfile;
 
 @Controller
@@ -27,13 +28,23 @@ public class CompanyProfile
 	private companyProfile companyprofile;
 	
 	@RequestMapping(value = "/CompanyProfile", method = RequestMethod.GET)
-	public String Complete_profile(Map<String,Object>map) 
+	public String Complete_profile(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,Map<String,Object>map,HttpServletRequest request) 
 	{
-		map.put("companyprofile", new CompanyProfileModel());
-		
-		
+		/*HttpSession session=request.getSession();
+		companyProfile =  (CompanyProfileModel) session.getAttribute("companyProfile");
+		map.put("companyprofile", new CompanyProfileModel());*/
 		return "companyProfilePage";
 }
+	@RequestMapping(value = "/updateCompProfile", method = RequestMethod.GET)
+	public String updateCompProfile(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,Map<String,Object>map,ModelMap model,HttpServletRequest request) 
+	{
+		HttpSession session=request.getSession();
+		companyProfile =  (CompanyProfileModel) session.getAttribute("companyProfile");
+		map.put("companyprofile", new CompanyProfileModel());
+		model.addAttribute("companyProfile", companyProfile);
+		return "companyProfilePage";
+}
+	
 	@RequestMapping(value = "/savecompanyProfile", method = RequestMethod.POST)
 	public String savecomplete_profile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,HttpServletRequest request ) 
 	{
@@ -44,7 +55,7 @@ public class CompanyProfile
 		System.out.println(companyProfile.getCompanyName());
 		companyprofile.savecompany_profile(companyProfile);
 		   
-		return "companyProfilePage";
+		return "compPage";
 }
 	@RequestMapping(value = "/viewCompanyProfile", method=RequestMethod.GET)
 	public String view_profile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,Map<String, Object> map,ModelMap model,HttpServletRequest request ) 
@@ -62,7 +73,16 @@ public class CompanyProfile
 	   //   	map.put("CompanyProfileModel", new CompanyProfileModel());
 			model.addAttribute("companylist", list);
 		return "companyviewProfile12";	
-
-
 	}
+	@RequestMapping(value = "/CompanyProfileView", method = RequestMethod.GET)
+	public String CompanyProfileView(Map<String, Object> map,ModelMap model,HttpServletRequest request) 
+	{
+		HttpSession session=request.getSession();
+		Registration registration = (Registration) session.getAttribute("registration");
+		CompanyProfileModel  companyProfile = companyprofile.getLoggedInCompanyCompleteInfo(registration.getRegistrationId());
+		session.setAttribute("companyProfile", companyProfile);
+		map.put("companyprofile", new CompanyProfileModel());
+		model.addAttribute("companyProfile", companyProfile);
+		return "CompanyDetailsViewPage";
+}
 }

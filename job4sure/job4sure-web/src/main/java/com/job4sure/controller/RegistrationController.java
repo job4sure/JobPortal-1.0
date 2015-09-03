@@ -52,6 +52,29 @@ public class RegistrationController {
 		}
 		return "redirect:/OpenloginPage";
 	}
+	
+	@RequestMapping(value = "/updateUserInformation",method = { RequestMethod.GET,RequestMethod.POST })
+	private String updateUserInformation(
+			@ModelAttribute("Registration") Registration registration,
+			ModelMap model, BindingResult result) throws Exception {
+		boolean status = false;
+		registrationValidator.validate(registration, result);
+		if (result.hasErrors()) {
+			return "registration";
+		}
+		status = registrationService.updateUserInformation(registration);
+		if (status) {
+			model.addAttribute("message",
+					IConstant.REGISTRATION_SUCCESS_MESSAGE);
+		} else {
+			model.addAttribute("message",
+					IConstant.REGISTRATION_FAILURE_MESSAGE);
+		}
+		return "redirect:/OpenloginPage";
+	}
+
+	
+	
 
 	@RequestMapping(value = "/verify", method = { RequestMethod.GET,
 			RequestMethod.POST })
