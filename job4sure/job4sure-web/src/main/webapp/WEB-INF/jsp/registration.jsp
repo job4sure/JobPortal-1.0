@@ -71,6 +71,7 @@ function myFunction() {
 	
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</p>
+	<form:hidden path="registrationId"/>
 		<input type="radio" name="rollType" value="1" checked />Jobseeker 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="radio" name="rollType" value="2" />Employer

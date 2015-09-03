@@ -4,4 +4,7 @@ import com.job4sure.model.userProfile;
 
 public interface ProfileCompleteService {
 	public boolean savecomplete_profile(userProfile userProfile) ;
+
+	public userProfile getLoggedInUserCompleteInfo(
+			Integer registrationId);
 }

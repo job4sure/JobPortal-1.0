@@ -12,11 +12,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form:form method="POST" action="savecomplete_profile" modelAttribute="userfrofile">
+<form:form method="POST" action="savecomplete_profile" modelAttribute="userProfile">
 
 
 <table>
-			 
+			 <form:hidden path="userId"/>
 					<tr>
 						<td>firstName*:</td>
 						<td><form:input type="text" size="40" path="firstName"

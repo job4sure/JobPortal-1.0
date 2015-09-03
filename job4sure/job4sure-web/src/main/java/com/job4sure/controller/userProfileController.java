@@ -26,37 +26,47 @@ public class userProfileController {
 	public String showuserProfile(Map<String, Object> map,ModelMap model, HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
+		userProfile userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
 		map.put("Registration", new Registration());
 		model.addAttribute("registration", registration);
+		model.addAttribute("userProfile", userProfile);
 		return "userProfilePage";
 	}
 	@RequestMapping(value = "/updateBasicProfile", method = RequestMethod.GET)
-	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,ModelMap model,HttpServletRequest request) {
+	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,Map<String, Object> map,ModelMap model,HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		 registration = (Registration) session.getAttribute("registration");
-		// map.put("Registration", registration);
+		 map.put("Registration", registration);
 		 model.addAttribute("registration", registration);
 		 return "registration";
 	}
 	@RequestMapping(value = "/Complete_Profile", method = RequestMethod.GET)
 	public String Complete_profile(Map<String,Object>map) 
 	{
-		map.put("userfrofile", new userProfile());
+		map.put("userProfile", new userProfile());
 		
 		
 		return "complteprofile";
-	
-
 }
-	
+	@RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
+	public String updateCompleteProfile(@ModelAttribute("userProfile") userProfile userProfile,Map<String, Object> map,ModelMap model,HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		Registration registration = (Registration) session.getAttribute("registration");
+		userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+		 map.put("userProfile", userProfile);
+	//	 model.addAttribute("userProfile", userProfile);
+		 return "complteprofile";
+	}
 	
 	@RequestMapping(value = "/savecomplete_profile", method = RequestMethod.POST)
-	public String savecomplete_profile(@ModelAttribute("userfrofile") userProfile userProfile,HttpServletRequest request ) 
+	public String savecomplete_profile(@ModelAttribute("userProfile") userProfile userProfile,HttpServletRequest request ) 
 	{
 		// savecomplete_profile(userProfile);
 	
 		
-		     userProfile.setUserId(1); userProfile.setRegistrationId(8);
+		 HttpSession session=request.getSession();
+		 Registration  registration = (Registration) session.getAttribute("registration");
+		      userProfile.setRegistrationId(registration.getRegistrationId());
 		     profileCompleteService.savecomplete_profile(userProfile);
 		return "complteprofile";
 	

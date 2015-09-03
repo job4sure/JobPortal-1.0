@@ -18,4 +18,9 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 		return false;
 	}
 
+	public userProfile getLoggedInUserCompleteInfo(Integer registrationId) {
+		userProfile userProfile=profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
+		return userProfile;
+	}
+
 }

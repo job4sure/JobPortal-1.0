@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -98,7 +99,11 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/comp", method = RequestMethod.GET)
-	public String showCompPage() {
+	public String showCompPage(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		Registration registration = (Registration) session.getAttribute("registration");
+		map.put("Registration", new Registration());
+		model.addAttribute("registration", registration);
 		return "compPage";
 	}
 
