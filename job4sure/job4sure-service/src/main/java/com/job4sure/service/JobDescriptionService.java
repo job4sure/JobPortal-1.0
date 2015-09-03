@@ -7,7 +7,7 @@ import com.job4sure.model.JobDescription;
 public interface JobDescriptionService {
 	public boolean saveJobDescription(JobDescription jobDescription);
 
-	public List<JobDescription> getAllJobDescription();
+	public List<JobDescription> getAllJobDescription(int companyId);
 	
 	public void deleteJob(Integer jobDescriptionId);
 	

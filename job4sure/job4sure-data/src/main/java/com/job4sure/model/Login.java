@@ -13,94 +13,83 @@ import javax.persistence.Table;
 @Table(name = "login")
 public class Login {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "registration_Id")
-	private int registration_Id;
-	
-	@Column(name = "fullname")
-	private String fullName;
+    @Id
+    @GeneratedValue
+    @Column(name = "registration_Id")
+    private Integer registration_Id;
 
-	@Column(name = "email")
-	private String email;
+    @Column(name = "fullname")
+    private String fullName;
 
-	@Column(name = "encripted")
-	private String password;
-	
-	@Column(name = "validUpTo")
-	private String validUpTo;
-	
-	public String getValidUpTo() {
-		return validUpTo;
-	}
+    @Column(name = "email")
+    private String email;
 
-	public void setValidUpTo(String validUpTo) {
-		this.validUpTo = validUpTo;
-	}
+    @Column(name = "encripted")
+    private String password;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "rollType")
-	private UserRole userRole;
+    @Column(name = "validUpTo")
+    private String validUpTo;
 
-	public int getRegistration_Id() {
-		return registration_Id;
-	}
+    @Column(name = "enabled")
+    private boolean enabled;
 
-	public void setRegistration_Id(int registration_Id) {
-		this.registration_Id = registration_Id;
-	}
+    public String getValidUpTo() {
+	return validUpTo;
+    }
 
-	public String getFullName() {
-		return fullName;
-	}
+    public void setValidUpTo(String validUpTo) {
+	this.validUpTo = validUpTo;
+    }
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rollType")
+    private UserRole userRole;
 
-	public String getEmail() {
-		return email;
-	}
+    public String getFullName() {
+	return fullName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setFullName(String fullName) {
+	this.fullName = fullName;
+    }
 
+    public String getEmail() {
+	return email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setEmail(String email) {
+	this.email = email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+	return password;
+    }
 
-	public boolean isEnabled() {
-		return enabled;
-	}
+    public void setPassword(String password) {
+	this.password = password;
+    }
 
+    public boolean isEnabled() {
+	return enabled;
+    }
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+    public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
+    }
 
+    public UserRole getUserRole() {
+	return userRole;
+    }
 
-	public UserRole getUserRole() {
-		return userRole;
-	}
+    public void setUserRole(UserRole userRole) {
+	this.userRole = userRole;
+    }
 
+    public Integer getRegistration_Id() {
+	return registration_Id;
+    }
 
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
-	}
-
-
-	@Column(name = "enabled")
-	private boolean enabled;
-
-
-
-
-
-
+    public void setRegistration_Id(Integer registration_Id) {
+	this.registration_Id = registration_Id;
+    }
 }

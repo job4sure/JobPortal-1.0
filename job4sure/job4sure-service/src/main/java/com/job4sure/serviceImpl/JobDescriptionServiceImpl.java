@@ -14,33 +14,32 @@ import com.job4sure.util.DateFormatUtil;
 @Service
 public class JobDescriptionServiceImpl implements JobDescriptionService {
 
-	@Autowired
-	private JobDescriptionRepository jobDescriptionRepository;
+    @Autowired
+    private JobDescriptionRepository jobDescriptionRepository;
 
-	public boolean saveJobDescription(JobDescription jobDescription) {
-		jobDescription.setPostedDate(DateFormatUtil.getformattedDate(new Date()));
-		jobDescription = jobDescriptionRepository.save(jobDescription);
-				
-		if (jobDescription != null) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    public boolean saveJobDescription(JobDescription jobDescription) {
+	jobDescription.setPostedDate(DateFormatUtil.getformattedDate(new Date()));
+	jobDescription = jobDescriptionRepository.save(jobDescription);
 
-	public List<JobDescription> getAllJobDescription() {
-		List<JobDescription> jobDescriptionsList = jobDescriptionRepository
-				.findAll();
-		return jobDescriptionsList;
+	if (jobDescription != null) {
+	    return true;
+	} else {
+	    return false;
 	}
+    }
 
-	public void deleteJob(Integer jobDescriptionId) {
-		jobDescriptionRepository.delete(jobDescriptionId);
-		
-	}
+    public List<JobDescription> getAllJobDescription(int companyId) {
+	List<JobDescription> jobDescriptionsList = jobDescriptionRepository.findByCompanyId(companyId);
+	return jobDescriptionsList;
+    }
 
-	public JobDescription editJob(Integer jobId) {
-		JobDescription jobDescription=jobDescriptionRepository.findOne(jobId);
-		return jobDescription;
-	}
+    public void deleteJob(Integer jobDescriptionId) {
+	jobDescriptionRepository.delete(jobDescriptionId);
+
+    }
+
+    public JobDescription editJob(Integer jobId) {
+	JobDescription jobDescription = jobDescriptionRepository.findOne(jobId);
+	return jobDescription;
+    }
 }
