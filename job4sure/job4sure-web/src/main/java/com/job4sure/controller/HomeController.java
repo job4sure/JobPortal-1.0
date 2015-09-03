@@ -15,12 +15,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.job4sure.model.Login;
 import com.job4sure.model.Registration;
 import com.job4sure.service.RegistrationService;
+import com.job4sure.util.AutoGenratedPassword;
+import com.job4sure.util.IConstant;
 
 @Controller
 public class HomeController {
@@ -38,6 +43,15 @@ public class HomeController {
 		model.addAttribute("message", message);
 		return "loginPage";
 	}
+	
+	
+/*	@RequestMapping(value = "/OpenloginPage", method = RequestMethod.GET)
+public String showloginPage(@RequestParam(value = "message", required = false) String message, Model model) {
+	if (message != null) {
+		model.addAttribute("msg", message);
+	}
+	return "loginPage";
+}*/
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(
@@ -106,5 +120,60 @@ public class HomeController {
 		model.addAttribute("registration", registration);
 		return "compPage";
 	}
+	
+	
+	@RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
+public String ShowforgotPassPage(Map<String, Object> map,@RequestParam(required = false) String message,ModelMap model) {
+	map.put("login", new Login());
+	model.addAttribute("message", message);
+	return "forgotPassPage";
+}
+
+@RequestMapping(value = "/sendMailToResetPass", method =  RequestMethod.POST)
+private String sendMailToResetPass(@ModelAttribute("login") Login login,ModelMap model)  {
+	
+	
+	Registration registration=	registrationService.getLoggedInUserInfo(login.getEmail());
+	boolean status=false;
+	try {
+	login.setRegistration_Id(registration.getRegistrationId());
+		status = registrationService.sendMailToResetPass(login);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	if (status) {
+		model.addAttribute("message", IConstant.MAIL_SUCCESS_MESSAGE);
+	} else {
+		model.addAttribute("message", IConstant.MAIL_FAILURE_MESSAGE);
+	}
+	return "redirect:/forgotPassword";
+}
+
+
+@RequestMapping(value = "/reCreatePass", method = {RequestMethod.GET,RequestMethod.POST})
+public String reCreatePass(@RequestParam(required = false) String registrationId,String message,Map<String, Object> map,ModelMap model) throws Exception {
+	 registrationId = AutoGenratedPassword.decrypt(registrationId);
+	Integer regId = Integer.parseInt(registrationId);
+	Registration registration=new Registration();
+	registration.setRegistrationId(regId);
+	map.put("registration",registration);
+	model.addAttribute("message", message);
+	return "newPassword";
+}
+
+
+
+ @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
+ public String UpdatePassword(@ModelAttribute("registration") Registration registration,
+   BindingResult result, Model model, Map<String, Object> map) {
+
+
+	 registrationService.updatePassword(registration.getRegistrationId(),registration.getPassword());
+	 model.addAttribute("message", "Your password successfully updated" );
+  //System.out.print("into forget pass");
+  return "redirect:/OpenloginPage";
+ }
+	
 
 }

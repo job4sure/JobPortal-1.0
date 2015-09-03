@@ -12,12 +12,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.job4sure.model.Login;
 import com.job4sure.model.Registration;
 import com.job4sure.repository.RegistrationRepository;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.util.AutoGenratedPassword;
 import com.job4sure.util.SendMail;
 
+@Transactional
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
 
@@ -75,7 +77,29 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 	}
 	
+	public boolean sendMailToResetPass(Login login) throws Exception{
+		boolean status=false;
 		
+		if(login!=null){
+			String id = Integer.toString(login.getRegistration_Id());
+			String registrationId = AutoGenratedPassword.encrypt(id);
+			status=SendMail.mailSend(login.getEmail(),registrationId);
+		}
+		
+		return status;
+	}
+	
+	
+	public void updatePassword(Integer registrationId, String password){
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		 
+		String  encriptedPassword = passwordEncoder.encode(password);
+		int status=registrationRepository.updatePassword(registrationId,password,encriptedPassword);
+		
+		System.out.println(status);
+	}	
+	
+	
 	}
 
 	/*public List getLoggedInUserInfo(String userName) {

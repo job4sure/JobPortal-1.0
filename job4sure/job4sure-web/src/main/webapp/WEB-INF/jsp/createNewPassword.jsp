@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
@@ -10,6 +12,23 @@
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
 	});
+	</script>
+	
+	<script type="text/javascript">
+	function checkPass(){
+		
+		var password=document.getElementById('password').value;
+		var re_password=document.getElementById('re_password').value;
+		if(password==re_password){
+			document.getElementById('passMissMatch').innerHTML=" ";
+			return true;
+		}
+
+		document.getElementById('passMissMatch').innerHTML="Password miss match!!";
+		return false;
+	}
+	
+	
 	</script>
 </head>
 <body onload='document.loginForm.username.focus();'>
@@ -82,46 +101,31 @@
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
 		</c:if>
-		 <h3 style="color: red;">${message}</h3>
-		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
+
+      <div class="msg">${message}</div>
+      <div class="msg"><label id="passMissMatch"></label></div>
+      <form:form method="POST" action="updatePassword" modelAttribute="registration">
+      <form:hidden path="registrationId"/>
       <table class="nostyle">
        <tr>
-         <td style="width:70px;" >Email Id:</td>
-          <td><input type="text" size="40" name='userName' class="input-text" /></td>
+          <td style="width:70px;" >New Password:</td>
+          <td><form:password size="40" path="password" id="password" class="input-text" required="autofocus" maxlength="80"/></td>
         </tr>
-        <tr>
-          <td>Password:</td>
-          <td><input type="password" size="40" name='password' class="input-text" /></td>
-        </tr>
-       
-        <tr>
-          <td>User role:</td>
-          <td  class="t-center"><label>
-            <input type="radio" />
-           Company</label>
-            &nbsp;
-            <label>
-            <input type="radio" />
-            Consultant</label>
-            &nbsp;
-            <label>
-            <input type="radio" />
-            Individual User</label>
-          </td>
+         <tr>
+          <td style="width:70px;" >confirm Password:</td>
+          <td><input type="password" size="40" id="re_password" class="input-text" /></td>
         </tr>
         <tr><td>
-	        <input type="submit" class="input-submit" value="Login" /></td>
+	        <input type="submit" class="input-submit" value="submit" onclick="return checkPass()" /></td>
 		</tr>
-       <tr><td><a href="forgotPassword">Forgot Password?</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="registration">SignUp</a></td>	
+        <tr><td><a href="OpenloginPage">Login</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="registration">SignUp</a></td>
        </tr>
-		
-		
-		
-		
       </table>
-      	<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-      </form>
+	</form:form>
+      
+      
+      
+      
 		 </fieldset>
      
     </div>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
@@ -82,11 +84,10 @@
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
 		</c:if>
-		 <h3 style="color: red;">${message}</h3>
-		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
+<%-- 		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
       <table class="nostyle">
        <tr>
-         <td style="width:70px;" >Email Id:</td>
+          <td style="width:70px;" >Email Id:</td>
           <td><input type="text" size="40" name='userName' class="input-text" /></td>
         </tr>
         <tr>
@@ -94,34 +95,38 @@
           <td><input type="password" size="40" name='password' class="input-text" /></td>
         </tr>
        
-        <tr>
-          <td>User role:</td>
-          <td  class="t-center"><label>
-            <input type="radio" />
-           Company</label>
-            &nbsp;
-            <label>
-            <input type="radio" />
-            Consultant</label>
-            &nbsp;
-            <label>
-            <input type="radio" />
-            Individual User</label>
-          </td>
-        </tr>
+    
         <tr><td>
 	        <input type="submit" class="input-submit" value="Login" /></td>
 		</tr>
-       <tr><td><a href="forgotPassword">Forgot Password?</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="registration">SignUp</a></td>	
+        <tr><td><a href="OpenloginPage">Login</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="registration">SignUp</a></td>
        </tr>
 		
 		
 		
 		
       </table>
-      	<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-      </form>
+
+      </form> --%>
+      <div class="msg">${message}</div>
+      
+      <form:form method="POST" action="sendMailToResetPass" modelAttribute="login">
+      <table class="nostyle">
+       <tr>
+          <td style="width:70px;" >Email Id:</td>
+          <td><form:input size="40" path="email" class="input-text" required="autofocus" maxlength="80"/></td>
+        </tr>
+        <tr><td>
+	        <input type="submit" class="input-submit" value="submit" /></td>
+		</tr>
+        <tr><td><a href="OpenloginPage">Login</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="registration">SignUp</a></td>
+       </tr>
+      </table>
+	</form:form>
+      
+      
+      
+      
 		 </fieldset>
      
     </div>
