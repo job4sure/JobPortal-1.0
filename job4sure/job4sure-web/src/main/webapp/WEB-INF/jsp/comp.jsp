@@ -25,7 +25,10 @@
 	
 </head>
 <body>
+<a href="CompanyProfile">Create Company Profile</a>
 
+
+<a href="viewCompanyProfile">View Company Profile</a>
 <div id="main">
   
   

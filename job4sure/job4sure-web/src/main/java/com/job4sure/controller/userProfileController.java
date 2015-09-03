@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,10 +51,11 @@ public class userProfileController {
 	
 	
 	@RequestMapping(value = "/savecomplete_profile", method = RequestMethod.POST)
-	public String savecomplete_profile(@ModelAttribute("userfrofile") userProfile userProfile ) 
+	public String savecomplete_profile(@ModelAttribute("userfrofile") userProfile userProfile,HttpServletRequest request ) 
 	{
 		// savecomplete_profile(userProfile);
 	
+		
 		     userProfile.setUserId(1); userProfile.setRegistrationId(8);
 		     profileCompleteService.savecomplete_profile(userProfile);
 		return "complteprofile";
