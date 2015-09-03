@@ -20,6 +20,7 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 	public boolean saveJobDescription(JobDescription jobDescription) {
 		jobDescription.setPostedDate(DateFormatUtil.getformattedDate(new Date()));
 		jobDescription = jobDescriptionRepository.save(jobDescription);
+				
 		if (jobDescription != null) {
 			return true;
 		} else {
@@ -36,5 +37,10 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 	public void deleteJob(Integer jobDescriptionId) {
 		jobDescriptionRepository.delete(jobDescriptionId);
 		
+	}
+
+	public JobDescription editJob(Integer jobId) {
+		JobDescription jobDescription=jobDescriptionRepository.findOne(jobId);
+		return jobDescription;
 	}
 }
