@@ -24,6 +24,7 @@ public class AutoGenratedPassword {
     }
 
 	public static String decrypt(String encryptedData) throws Exception {
+		encryptedData = encryptedData.replaceAll(" ", "+");
         Key key = generateKey();
         Cipher c = Cipher.getInstance(ALGO);
         c.init(Cipher.DECRYPT_MODE, key);
