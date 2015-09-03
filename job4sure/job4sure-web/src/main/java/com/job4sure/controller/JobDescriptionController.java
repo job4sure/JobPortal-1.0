@@ -80,4 +80,13 @@ public class JobDescriptionController {
 		model.addAttribute("message", IConstant.JOB_DELETE_MESSAGE);
 		return "redirect:/viewAllJobDescription.do";
 	}
+	
+	@RequestMapping(value = "/editJob", method = { RequestMethod.GET, RequestMethod.POST })
+	public String editJob(ModelMap model,@RequestParam Integer jobId) {
+		JobDescription jobDescription=jobDescriptionService.editJob(jobId);
+		model.addAttribute("jobDescription", jobDescription);
+		return "addJobDesc";
+	}
+	
+	
 }

@@ -74,7 +74,7 @@
         
         
         <display:column title="Edit">
-         <%--  <a href="saveBatch.do?batchId=${cat.batchId}">Edit</a> --%>
+          <a href="editJob.do?jobId=${job.jobDescriptionId}">Edit</a>
         </display:column>
         <display:column title="Delete">
           <a href="deleteJob.do?jobDescriptionId=${job.jobDescriptionId}">Delete</a>

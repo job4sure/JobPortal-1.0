@@ -10,4 +10,6 @@ public interface JobDescriptionService {
 	public List<JobDescription> getAllJobDescription();
 	
 	public void deleteJob(Integer jobDescriptionId);
+	
+	public JobDescription editJob(Integer jobId);
 }

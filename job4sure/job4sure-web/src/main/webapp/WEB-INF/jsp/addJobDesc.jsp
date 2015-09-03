@@ -52,6 +52,7 @@
 		</font>
 	<form:form action="createJobDescription" method="POST"
 		modelAttribute="jobDescription">
+		 <form:hidden path="jobDescriptionId" />
 		<table height="500px" align="center">
 			<tr>
 				<td colspan="2" align="center">Job Description</td>
@@ -65,9 +66,9 @@
 			</tr>
 			<tr>
 				<td>Job Description</td>
-				<td><form:textarea path="JobDesc" cols="50" rows="5" />
+				<td><form:textarea path="jobDesc" cols="50" rows="5" />
 					<div id="error">
-						<form:errors path="JobDesc" />
+						<form:errors path="jobDesc" />
 					</div></td>
 			</tr>
 			<tr>
