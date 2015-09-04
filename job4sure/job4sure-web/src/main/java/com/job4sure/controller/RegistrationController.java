@@ -89,7 +89,7 @@ public class RegistrationController {
 	@ResponseBody
 	public String verifyUserEmailId(@RequestParam(required = false) String emailId) {
 		boolean status = false;
-		//status = registrationService.verifyUserEmailId(emailId);
+		status = registrationService.verifyUserEmailId(emailId);
 		if(status)
 		return "true";
 		else

@@ -1,5 +1,4 @@
 function emailVarification(verify) {
-	 alert("hello");
 	    var emailId =verify.value;
 	     $.ajax({
 	  		url : "verifyUserEmailId.do?emailId=" + emailId,

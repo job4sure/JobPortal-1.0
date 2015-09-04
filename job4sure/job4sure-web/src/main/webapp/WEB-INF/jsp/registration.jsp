@@ -44,9 +44,6 @@ function myFunction() {
         document.getElementById('error').innerHTML = "wrong confirm password";
         ok = false;
     }
-    else {
-        alert("Passwords Match!!!");
-    }
     return ok;
 }
 </script>

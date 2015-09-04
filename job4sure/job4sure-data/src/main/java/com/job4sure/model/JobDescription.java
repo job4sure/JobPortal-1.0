@@ -28,6 +28,8 @@ public class JobDescription implements Serializable {
     private String skills;
     private String role;
     private Registration registration;
+  
+    private String checkbox;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,6 +38,13 @@ public class JobDescription implements Serializable {
 	return jobDescriptionId;
     }
 
+   	public String getCheckbox() {
+   		return checkbox;
+   	}
+
+   	public void setCheckbox(String checkbox) {
+   		this.checkbox = checkbox;
+   	}
     public void setJobDescriptionId(Integer jobDescriptionId) {
 	this.jobDescriptionId = jobDescriptionId;
     }

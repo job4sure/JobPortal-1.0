@@ -7,13 +7,56 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Job Description</title>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".tabs > ul").tabs();
+	});
+	</script>
 	
 <style type="text/css">
 #error {
 	color: red;
 }
 </style>
+ <style>
+    .multiselect {
+        width: 200px;
+    }
+    .selectBox {
+        position: relative;
+    }
+    .selectBox select {
+        width: 100%;
+        font-weight: bold;
+    }
+    .overSelect {
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+    }
+    #checkboxes {
+        display: none;
+        border: 1px #dadada solid;
+    }
+    #checkboxes label {
+        display: block;
+    }
+    #checkboxes label:hover {
+        background-color: #1e90ff;
+    }
+</style>
+<script>
+    var expanded = false;
+    function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+    }
+</script> 
 </head>
 <body>
   <div id="cols" class="box">
@@ -135,8 +178,23 @@
 			</tr>
 			<tr>
 				<td>skills</td>
-				<td><form:input path="skills" size="50" /></td>
-			</tr>
+				<td><div class="multiselect">
+         <div class="selectBox" onclick="showCheckboxes()">
+            <select>
+                <option>Select an option</option>
+            </select>
+            <div class="overSelect"></div>
+        </div>
+        <div id="checkboxes">
+            <label for="Java"><input type="checkbox" name="checkbox" value="1"/>Java</label>
+            <label for="Php"><input type="checkbox" name="checkbox" value="2"/>Php</label>
+            <label for="C"><input type="checkbox" name="checkbox" value="3"/>C</label>
+			<label for="C++"><input type="checkbox" name="checkbox" value="4"/>C++</label>
+        </div>
+        <form:hidden path="checkbox"/> 
+        </td>
+    </div> 
+		</tr> 
 			<tr>
 				<td>Job Role</td>
 				<td><form:input path="role" size="20" />
