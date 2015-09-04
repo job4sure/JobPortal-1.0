@@ -125,13 +125,15 @@ function myFunction() {
   <hr class="noscreen" />
  
   
-	<form:form method="POST" action="updateUserInformation" modelAttribute="Registration" onsubmit="return myFunction()">
+	<form:form method="POST" action="updateCompanyInformation" modelAttribute="Registration" onsubmit="return myFunction()">
 	
-	<form:hidden path="registrationId"/>
+	
+   
+   <form:hidden path="registrationId"/>
 	<form:hidden path="password"/>
 	<form:hidden path="email"/>
-		
- 		<!-- <input type="radio" name="rollType" value="2" />Employer -->
+	<h3 style="color: red;">${message}</h3>
+   <input hidden ="radio" name="rollType" value="2" checked /> 
 			<div id="DivFree">
 			<table>
 					<tr>
@@ -174,24 +176,33 @@ function myFunction() {
 								class="input-text" id="cpassword" required="autofocus" maxlength="12"/>&nbsp&nbsp&nbsp&nbsp<span id="error" style="color:#F00;"/></td>
 					</tr> --%>
 					
-					
+				<%-- 	<tr>
+						<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
+						<td><div id="Companyurl" style="display: none;"><form:input type="text" size="40" path="Companyurl"
+						class="input-text" maxlength="80"/></div></td>
+					</tr> --%>
 					
 					<tr>
 						<td>Mobile No.*:</td>
 						<td><form:input type="text" size="40" path="mobileNo"
 								class="input-text" required="autofocus" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 				</tr>
+					
+				<%-- 	<tr>
+						<td>Company Url*:</td>
+						<td><form:input type="text" size="10" path="Companyurl"
+								class="input-text" required="autofocus" maxlength="10" id="Companyurl"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="Companyurl"></form:errors></span><br></td>
+				</tr> --%>
 										
 					<tr>
-						<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
-					
-						<td><div id="Companyurl" style="display: none;"><form:input type="text" size="40" path="Companyurl"
-								class="input-text" maxlength="80"/></div></td>
-							
+						<td>Company Url*:</td>
+						<td><form:input type="text" size="40" path="Companyurl"
+						class="input-text" maxlength="80"/></td>
 					</tr>
 							
 					<tr>
-						<td><input type="submit" value="submit"
+						<td></td>
+							<td><input type="submit" value="submit"
 							class="input-submit-02"/></td>
 					</tr>
 

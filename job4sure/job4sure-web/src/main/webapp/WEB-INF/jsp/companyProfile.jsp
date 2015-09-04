@@ -160,6 +160,7 @@
 		&nbsp
 		&nbsp
     </div><center><h2>Company Profile</h2></center>
+    <h3 style="color: red;">${message}</h3>
     <div id="content" class="box">
   <table>
   <form:hidden path="registrationId"/>

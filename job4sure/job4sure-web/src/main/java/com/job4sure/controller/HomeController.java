@@ -39,7 +39,9 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/OpenloginPage", method = RequestMethod.GET)
-	public String showloginPage(@RequestParam(required = false) String message, ModelMap model) {
+	public String showloginPage(@RequestParam(required = false) String message, ModelMap model,HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		session.invalidate();
 		model.addAttribute("message", message);
 		return "loginPage";
 	}
@@ -58,6 +60,8 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout,
 			HttpServletRequest request, Model model) {
+		HttpSession session=request.getSession();
+		session.invalidate();
 
 		if (error != null) {
 			model.addAttribute("error", "SPRING_SECURITY_LAST_EXCEPTION");
