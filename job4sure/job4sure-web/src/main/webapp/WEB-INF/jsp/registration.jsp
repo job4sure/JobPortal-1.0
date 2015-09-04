@@ -64,18 +64,89 @@ jQuery(document).ready(function(){
 </head>
 <body>
 <div id="main">
-  <div id="tray" class="box">
-     <h1 align="center">Registration Form</h1>
-  </div>
- 
+  <div id="menu" class="box">
+
+			<ul class="box">
+				<li id="menu-active"><a href="https://www.google.co.in/"><span>search</span></a></li>
+				<li id="menu-active"><a href="https://www.google.co.in/"><span>top
+							recruiters</span></a></li>
+			</ul>
+		</div>
+   <div id="cols" class="box">
+      <div id="aside" class="box">
+      <div class="padding box">
+        <!-- Logo (Max. width = 200px) -->
+        <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/tmp/logo.gif" alt="" /></a></p>
+        <!-- Search -->
+        <form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
+          <fieldset>
+          <legend>Search</legend>
+          <p>
+            <input type="text" size="17" name="" class="input-text" />
+            &nbsp;
+            <input type="submit" value="OK" class="input-submit-02" />
+            <br />
+            <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
+          <!-- Advanced search -->
+          <div id="search-options" style="display:none;">
+            <p>
+              <label>
+              <input type="checkbox" name="" checked="checked" />
+              By Location</label>
+              <br />
+              <label>
+              <input type="checkbox" name="" />
+              By keywords</label>
+              <br />
+              <label>
+              <input type="checkbox" name="" />
+              By name</label>
+            </p>
+          </div>
+          <!-- /search-options -->
+          </fieldset>
+        </form>
+        <!-- Create a new project -->
+      
+      </div>
+      <!-- /padding -->
+      <ul class="box">
+        <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+		&nbsp
+        &nbsp
+		&nbsp
+		&nbsp
+        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
+		 &nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 
+		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		
+	
+       
+          <!-- Active -->
+         
+    
+    </div>
+    
+    <div id="content" class="box">
+  <h2>WELCOME IN REGISTRATION PAGE</h2>
+    </div>
+  
   <hr class="noscreen" />
  
-  <div id="menu" class="box">
- 
-    <ul class="box">
   
-    </ul>
-  </div>
 	<form:form method="POST" action="saveRegistration" modelAttribute="Registration" id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
 	<p>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -177,15 +248,15 @@ jQuery(document).ready(function(){
 						<td></td>
 						<td></td>
 					</tr>
-					<tr>
+					<tr><td></td>
 						<td><input type="submit" value="submit"
 							class="input-submit-02" onclick="jQuery('#formID').submit();" /></td>
 					</tr>
 
 				</table>
-			</div>
-		</p>
-	</form:form>
+			</div></form:form></div>
+	
+	
  </div>
 </body>
 </html>
