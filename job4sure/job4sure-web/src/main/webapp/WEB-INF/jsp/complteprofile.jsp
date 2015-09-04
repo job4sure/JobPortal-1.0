@@ -13,28 +13,10 @@
 </head>
 <div id="main">
   
-  <div id="tray" class="box">
-  
-     <h1 class="t-center"> User Details</h1>
-     
-  </div>
+ 
  
   <hr class="noscreen" />
  
-  <div id="menu" class="box">
- 
-	<!-- <div id="menu" class="box">
-  
-	
-	
-    <ul class="box">
-     
-	 <li id="menu-active"><a href="CompanyProfile"><span>Create Company Profile</span></a></li>
-	  <li id="menu-active"><a href="updateCompProfile"><span>Update Company Profile</span></a></li>
-    </ul>
-  </div> -->
-		  
-  </div>
   
      <hr class="noscreen" />
   <!-- Columns -->
