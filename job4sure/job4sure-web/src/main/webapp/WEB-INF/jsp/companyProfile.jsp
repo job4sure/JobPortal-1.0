@@ -229,6 +229,7 @@
                 <tr>
 	<td>Company URL*:</td>
 	<td><form:input path="companyUrl"/></td>
+	<td><form:hidden path="registrationId"/></td>
 	</tr>
 	<tr><td>Address1*:</td>
 	<td><form:input path="address1"/></td>

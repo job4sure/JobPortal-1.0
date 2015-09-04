@@ -8,14 +8,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.Registration;
 import com.job4sure.model.userProfile;
 import com.job4sure.service.ProfileCompleteService;
+import com.job4sure.util.AutoGenratedPassword;
 @Controller
 public class userProfileController {
 
@@ -30,7 +31,8 @@ public class userProfileController {
 		map.put("Registration", new Registration());
 		model.addAttribute("registration", registration);
 		model.addAttribute("userProfile", userProfile);
-		return "userProfilePage";
+		//return "userProfilePage";
+		return "userHomePage";
 	}
 	@RequestMapping(value = "/updateBasicProfile", method = RequestMethod.GET)
 	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,Map<String, Object> map,ModelMap model,HttpServletRequest request) {
@@ -68,10 +70,20 @@ public class userProfileController {
 		 Registration  registration = (Registration) session.getAttribute("registration");
 		      userProfile.setRegistrationId(registration.getRegistrationId());
 		     profileCompleteService.savecomplete_profile(userProfile);
-		return "complteprofile";
+		return "userHomePage";
 	
 
 }
+	
+	@RequestMapping(value = "/setNewPassword", method = {RequestMethod.GET,RequestMethod.POST})
+	public String reCreatePass(Map<String, Object> map,ModelMap model,HttpServletRequest request) throws Exception {
+		 HttpSession session=request.getSession();
+		 Registration  registration = (Registration) session.getAttribute("registration");
+		registration.setRegistrationId(registration.getRegistrationId());
+		map.put("registration",registration);
+	//	model.addAttribute("message", "Password is reset Successfully Please login Again!!");
+		return "newPassword";
+	}
 	//savecomplete_profile
 
 }

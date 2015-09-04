@@ -65,10 +65,10 @@ public class RegistrationController {
 		status = registrationService.updateUserInformation(registration);
 		if (status) {
 			model.addAttribute("message",
-					IConstant.REGISTRATION_SUCCESS_MESSAGE);
+					"Basic Info Successfully Updated !!");
 		} else {
 			model.addAttribute("message",
-					IConstant.REGISTRATION_FAILURE_MESSAGE);
+					"Your Basic Info not successfully Updated, Please try again!");
 		}
 		return "redirect:/OpenloginPage";
 	}

@@ -28,11 +28,12 @@ public class CompanyProfile
 	private companyProfile companyprofile;
 	
 	@RequestMapping(value = "/CompanyProfile", method = RequestMethod.GET)
-	public String Complete_profile(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,Map<String,Object>map,HttpServletRequest request) 
+	public String Complete_profile(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,Map<String,Object>map,ModelMap model,HttpServletRequest request) 
 	{
-		/*HttpSession session=request.getSession();
+		HttpSession session=request.getSession();
 		companyProfile =  (CompanyProfileModel) session.getAttribute("companyProfile");
-		map.put("companyprofile", new CompanyProfileModel());*/
+		map.put("companyprofile", new CompanyProfileModel());
+	//	model.addAttribute("companyProfile", companyProfile.getRegistrationId());
 		return "companyProfilePage";
 }
 	@RequestMapping(value = "/updateCompProfile", method = RequestMethod.GET)
@@ -46,7 +47,7 @@ public class CompanyProfile
 }
 	
 	@RequestMapping(value = "/savecompanyProfile", method = RequestMethod.POST)
-	public String savecomplete_profile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,HttpServletRequest request ) 
+	public String savecomplete_profile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,ModelMap model,HttpServletRequest request ) 
 	{
 		
 		  HttpSession session=request.getSession();
@@ -54,8 +55,10 @@ public class CompanyProfile
 		   companyProfile.setRegistrationId(registration.getRegistrationId());
 		System.out.println(companyProfile.getCompanyName());
 		companyprofile.savecompany_profile(companyProfile);
-		   
-		return "compPage";
+		
+		model.addAttribute("message", "Done!! "); 
+		
+		return "redirect:/OpenloginPage";
 }
 	@RequestMapping(value = "/viewCompanyProfile", method=RequestMethod.GET)
 	public String view_profile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,Map<String, Object> map,ModelMap model,HttpServletRequest request ) 
@@ -85,4 +88,12 @@ public class CompanyProfile
 		model.addAttribute("companyProfile", companyProfile);
 		return "CompanyDetailsViewPage";
 }
+	@RequestMapping(value = "/updateCompanyBasicProfile", method = RequestMethod.GET)
+	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,Map<String, Object> map,ModelMap model,HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		 registration = (Registration) session.getAttribute("registration");
+		 map.put("Registration", registration);
+		 model.addAttribute("registration", registration);
+		 return "updateCompanyBasicProfilePage";
+	}
 }

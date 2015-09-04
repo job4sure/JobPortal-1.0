@@ -54,7 +54,7 @@ function myFunction() {
 <body>
 <div id="main">
   <div id="tray" class="box">
-     <h1 align="center">User Basic Info</h1>
+     <h1 align="center">Company Basic Info</h1>
   </div>
  
   <hr class="noscreen" />
@@ -74,7 +74,7 @@ function myFunction() {
 	<form:hidden path="registrationId"/>
 	<form:hidden path="password"/>
 	<form:hidden path="email"/>
-		<input type="radio" name="rollType" value="1" checked />Jobseeker 
+		<input type="radio" name="rollType" value="2" checked />Company 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<!-- <input type="radio" name="rollType" value="2" />Employer -->
 			<div id="DivFree">
