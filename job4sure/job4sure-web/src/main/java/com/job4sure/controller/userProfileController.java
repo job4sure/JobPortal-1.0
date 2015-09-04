@@ -17,6 +17,7 @@ import com.job4sure.model.Registration;
 import com.job4sure.model.userProfile;
 import com.job4sure.service.ProfileCompleteService;
 import com.job4sure.util.AutoGenratedPassword;
+import com.job4sure.util.IConstant;
 @Controller
 public class userProfileController {
 
@@ -24,29 +25,33 @@ public class userProfileController {
 	private ProfileCompleteService profileCompleteService;
 	
 	@RequestMapping(value = "/userProfile", method = RequestMethod.GET)
-	public String showuserProfile(Map<String, Object> map,ModelMap model, HttpServletRequest request) {
+	public String showuserProfile(Map<String, Object> map,String message,ModelMap model, HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		userProfile userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
 		map.put("Registration", new Registration());
 		model.addAttribute("registration", registration);
 		model.addAttribute("userProfile", userProfile);
+		model.addAttribute("message", message);
 		//return "userProfilePage";
 		return "userHomePage";
 	}
 	@RequestMapping(value = "/updateBasicProfile", method = RequestMethod.GET)
-	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,Map<String, Object> map,ModelMap model,HttpServletRequest request) {
+	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,Map<String, Object> map,String message,ModelMap model,HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		 registration = (Registration) session.getAttribute("registration");
 		 map.put("Registration", registration);
 		 model.addAttribute("registration", registration);
+		 model.addAttribute("message", message);
 		 return "userBasicInfoPage";
 	}
+	
+	
 	@RequestMapping(value = "/Complete_Profile", method = RequestMethod.GET)
-	public String Complete_profile(Map<String,Object>map) 
+	public String Complete_profile(Map<String,Object>map,String message,ModelMap model) 
 	{
 		map.put("userProfile", new userProfile());
-		
+		model.addAttribute("message", message);
 		
 		return "complteprofile";
 }
@@ -55,13 +60,18 @@ public class userProfileController {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+		if(userProfile!=null){
 		 map.put("userProfile", userProfile);
 	//	 model.addAttribute("userProfile", userProfile);
 		 return "complteprofile";
+		}else{
+		 model.addAttribute("message", "First Complete your info!!");	
+		  return "redirect:/Complete_Profile";
+		}
 	}
 	
 	@RequestMapping(value = "/savecomplete_profile", method = RequestMethod.POST)
-	public String savecomplete_profile(@ModelAttribute("userProfile") userProfile userProfile,HttpServletRequest request ) 
+	public String savecomplete_profile(@ModelAttribute("userProfile") userProfile userProfile,ModelMap model,HttpServletRequest request ) 
 	{
 		// savecomplete_profile(userProfile);
 	
@@ -70,7 +80,8 @@ public class userProfileController {
 		 Registration  registration = (Registration) session.getAttribute("registration");
 		      userProfile.setRegistrationId(registration.getRegistrationId());
 		     profileCompleteService.savecomplete_profile(userProfile);
-		return "userHomePage";
+		     model.addAttribute("message", "SuccessFully complete your profile !!");
+		     return "redirect:/Complete_Profile";
 	
 
 }

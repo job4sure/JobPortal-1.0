@@ -1,3 +1,5 @@
+companyDetails.jsp
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -30,9 +32,31 @@ th, td {
 }
 </style>
 </head>
-<body>
+
+<div id="main">
+  
+  <div id="tray" class="box">
+  
+     <h1 class="t-center"> Company Details</h1>
+     
+  </div>
  
   <hr class="noscreen" />
+ 
+  <!-- <div id="menu" class="box">
+ 
+	<div id="menu" class="box">
+  
+	
+	
+    <ul class="box">
+     
+	 <li id="menu-active"><a href="CompanyProfile"><span>Create Company Profile</span></a></li>
+	  <li id="menu-active"><a href="updateCompProfile"><span>Update Company Profile</span></a></li>
+    </ul>
+  </div>
+		  
+  </div> -->
   
      <hr class="noscreen" />
   <!-- Columns -->
@@ -131,35 +155,46 @@ th, td {
         
    
     </div>
-    <center><h2>Company Profile</h2></center>
-    <div id="content" class="box">
-   
+     <body>
     <%--  ${companyProfile.companyName} --%>
      <table style="width:80%">
-  <tr>
+     
+    <tr>
     <td>CompanyName</td>
-    <td>Address</td>		
-    <td>City</td>
-     <td>State</td>
-    <td>About Us</td>
-     <td>No of Emp</td>		
-    <td>Company URL</td>
-  </tr>
-  <tr>
     <td>${companyProfile.companyName}</td>
-    <td>${companyProfile.address1}</td>		
+    </tr>
+    
+    <tr>
+   <td>Address</td>
+    <td>${companyProfile.address1}</td>	
+    </tr>
+   
+    <tr>
+   <td>City</td>
     <td>${companyProfile.city}</td>
-    <td>${companyProfile.state}</td>		
-    <td>${companyProfile.aboutUs}</td>
-   <td>${companyProfile.companySize}</td>		
+    </tr>
+   
+    <tr>
+   <td>State</td>
+    <td>${companyProfile.state}</td>
+    </tr>
+    
+     <tr>
+   <td>About Us</td>
+   <td>${companyProfile.aboutUs}</td>
+    </tr>
+    
+     <tr>
+    <td>No of Emp</td>
+    <td>${companyProfile.companySize}</td>
+    </tr>
+    
+     <tr>
+    <td>Company URL</td>
     <td>${companyProfile.companyUrl}</td>
-  </tr>
-  
-</table>
-</div>
-</div>
+    </tr>
+    
+    </table>
      </body>
-	
-
-</html>
- 
+	</div>
+	</div>

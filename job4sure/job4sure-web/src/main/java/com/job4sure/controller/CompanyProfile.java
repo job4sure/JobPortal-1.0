@@ -55,10 +55,13 @@ public class CompanyProfile
 		   companyProfile.setRegistrationId(registration.getRegistrationId());
 		System.out.println(companyProfile.getCompanyName());
 		companyprofile.savecompany_profile(companyProfile);
-		
-		model.addAttribute("message", "Done!! "); 
-		
-		return "redirect:/OpenloginPage";
+		if(companyProfile.getRegistrationId()==null){
+		model.addAttribute("message", "Company profile created successfully!! "); 
+		return "redirect:/CompanyProfile";
+		}else{
+			model.addAttribute("message", "Company profile updated successfully!! "); 
+			return "redirect:/CompanyProfile";
+		}
 }
 	@RequestMapping(value = "/viewCompanyProfile", method=RequestMethod.GET)
 	public String view_profile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,Map<String, Object> map,ModelMap model,HttpServletRequest request ) 

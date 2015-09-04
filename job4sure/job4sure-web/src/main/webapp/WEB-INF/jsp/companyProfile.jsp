@@ -161,10 +161,8 @@
 		&nbsp
     </div><center><h2>Company Profile</h2></center>
     <div id="content" class="box">
-    
-    
-    <center>
   <table>
+  <form:hidden path="registrationId"/>
   <tr>
 	<td>Company name*:</td>
 	<td><form:input type="text" size="40" path="companyName"/>
@@ -181,7 +179,7 @@
   <option value="50-100">50-100</option>
   <option value="100 & above">100 & above</option>
 </select>
-	
+	 
 	<tr><td>About Us:</td>
 	<td>
 	<form:textarea path="aboutUs"/>
@@ -198,7 +196,6 @@
                 <tr>
 	<td>Company URL*:</td>
 	<td><form:input path="companyUrl"/></td>
-	<td><form:hidden path="registrationId"/></td>
 	</tr>
 	<tr><td>Address1*:</td>
 	<td><form:input path="address1"/></td>
@@ -218,7 +215,6 @@
 	<tr><td><input type="submit" value="submit"/></td></tr>
 	
   </table>
-    </center>
     </div>
     </div>
     

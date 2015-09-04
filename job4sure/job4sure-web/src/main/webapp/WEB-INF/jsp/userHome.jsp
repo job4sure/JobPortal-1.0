@@ -24,6 +24,7 @@
 	</script>
 	
 </head>
+<h3 style="color: red;">${message}</h3>
 <body>
 <div id="main">
   

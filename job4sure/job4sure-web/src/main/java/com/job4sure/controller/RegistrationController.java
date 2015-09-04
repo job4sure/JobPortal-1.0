@@ -2,6 +2,9 @@ package com.job4sure.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -56,7 +59,8 @@ public class RegistrationController {
 	@RequestMapping(value = "/updateUserInformation",method = { RequestMethod.GET,RequestMethod.POST })
 	private String updateUserInformation(
 			@ModelAttribute("Registration") Registration registration,
-			ModelMap model, BindingResult result) throws Exception {
+			ModelMap model, BindingResult result,HttpServletRequest request) throws Exception {
+		HttpSession session=request.getSession();
 		boolean status = false;
 		registrationValidator.validate(registration, result);
 		if (result.hasErrors()) {
@@ -64,13 +68,16 @@ public class RegistrationController {
 		}
 		status = registrationService.updateUserInformation(registration);
 		if (status) {
+			session.setAttribute("registration", registration);
 			model.addAttribute("message",
 					"Basic Info Successfully Updated !!");
 		} else {
+			
+			
 			model.addAttribute("message",
-					"Your Basic Info not successfully Updated, Please try again!");
+					"Profile Updation failed, Please try again!");
 		}
-		return "redirect:/OpenloginPage";
+		return "redirect:/userProfile";
 	}
 
 	

@@ -135,6 +135,7 @@
     </div>
 <body align="center">
 
+ <h3 style="color: red;">${message}</h3>
  
 <form:form method="POST" action="savecomplete_profile" modelAttribute="userProfile">
 

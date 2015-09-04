@@ -74,7 +74,8 @@ function myFunction() {
 	<form:hidden path="registrationId"/>
 	<form:hidden path="password"/>
 	<form:hidden path="email"/>
-		<input type="radio" name="rollType" value="1" checked />Jobseeker 
+	<h3 style="color: red;">${message}</h3>
+		<input hidden ="radio" name="rollType" value="1" checked /> 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<!-- <input type="radio" name="rollType" value="2" />Employer -->
 			<div id="DivFree">
