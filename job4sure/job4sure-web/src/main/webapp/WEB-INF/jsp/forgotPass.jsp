@@ -7,12 +7,28 @@
 <%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
+	type="text/css" />
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery.validationEngine-en.js"
+	type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="resources/css/template.css" type="text/css" />
+<script src="resources/js/jquery.validationEngine.js"
+	type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
 	});
 	</script>
+	<script type="text/javascript">
+jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine({
+				onFormSuccess:formSuccess,
+				onFormFailure:formFailure
+			});
+		});
+</script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
@@ -110,14 +126,14 @@
       </form> --%>
       <div class="msg">${message}</div>
       
-      <form:form method="POST" action="sendMailToResetPass" modelAttribute="login">
+      <form:form method="POST" action="sendMailToResetPass" modelAttribute="login" id="formID" onsubmit="return jQuery(this).validationEngine('validate');">
       <table class="nostyle">
        <tr>
           <td style="width:70px;" >Email Id:</td>
-          <td><form:input size="40" path="email" class="input-text" required="autofocus" maxlength="80"/></td>
+          <td><form:input size="40" path="email" class="validate[required,custom[email],maxSize[50]] input-text" maxlength="80"/></td>
         </tr>
         <tr><td>
-	        <input type="submit" class="input-submit" value="submit" /></td>
+	        <input type="submit" class="input-submit" value="submit" onclick="jQuery('#formID').submit();"/></td>
 		</tr>
         <tr><td><a href="OpenloginPage">Login</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="registration">SignUp</a></td>
        </tr>

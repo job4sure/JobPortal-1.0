@@ -119,7 +119,7 @@ jQuery(document).ready(function(){
 					<tr>
 						<td>Password*:</td>
 						<td><form:input type="password" size="40" path="password"
-								class="validate[required] input-text" maxlength="12" id="password"/></td>
+								class="validate[required,minSize[5],maxSize[12]] input-text" maxlength="12" id="password"/></td>
 					</tr>
 					<tr>
 						<td></td>
