@@ -69,7 +69,7 @@ public class CompanyProfile
 		  HttpSession session=request.getSession();
 		   Registration  registration = (Registration) session.getAttribute("registration");
 		   companyProfile.setRegistrationId(registration.getRegistrationId());
-		System.out.println(companyProfile.getCompanyName());
+		//System.out.println(companyProfile.getCompanyName());
 		companyprofile.savecompany_profile(companyProfile);
 		if(companyProfile.getRegistrationId()==null){
 		model.addAttribute("message", "Company profile created successfully!! "); 
@@ -86,7 +86,7 @@ public class CompanyProfile
 		  HttpSession session=request.getSession();
 		   Registration  registration = (Registration) session.getAttribute("registration");
 		   companyProfile.setRegistrationId(registration.getRegistrationId());
-		System.out.println(companyProfile.getCompanyName());
+	//	System.out.println(companyProfile.getCompanyName());
 		List<CompanyProfileModel> list = companyprofile.view_profile(companyProfile);
               System.out.println("size of list is--------------"+list.size());
               

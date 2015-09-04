@@ -14,8 +14,8 @@ public class CompanyProfileModel {
 	 @GeneratedValue
 	 @Column(name = "companyId")
 	private Integer compId;
-	 @Column(name = "companyName")
-	private String companyName;
+	/* @Column(name = "companyName")
+	private String companyName;*/
 	 @Column(name = "companySize")
 	private String companySize;
 	 @Column(name = "aboutUs")
@@ -53,14 +53,14 @@ public class CompanyProfileModel {
 	}
 
 
-	public String getCompanyName() {
+	/*public String getCompanyName() {
 		return companyName;
 	}
 
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
-	}
+	}*/
 
 
 	public String getCompanySize() {

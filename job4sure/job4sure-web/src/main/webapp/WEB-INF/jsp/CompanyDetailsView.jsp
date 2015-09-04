@@ -1,5 +1,3 @@
-companyDetails.jsp
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -159,10 +157,10 @@ th, td {
     <%--  ${companyProfile.companyName} --%>
      <table style="width:80%">
      
-    <tr>
+   <%--  <tr>
     <td>CompanyName</td>
     <td>${companyProfile.companyName}</td>
-    </tr>
+    </tr> --%>
     
     <tr>
    <td>Address</td>
@@ -192,6 +190,16 @@ th, td {
      <tr>
     <td>Company URL</td>
     <td>${companyProfile.companyUrl}</td>
+    </tr>
+    
+      <tr>
+    <td>Zip</td>
+    <td>${companyProfile.zipcode}</td>
+    </tr>
+    
+     <tr>
+    <td>Domain</td>
+    <td>${companyProfile.domain}</td>
     </tr>
     
     </table>

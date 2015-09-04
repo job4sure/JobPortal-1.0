@@ -251,7 +251,7 @@ jQuery(document).ready(function(){
 					</tr>
 					<tr>
 						<td><input type="submit" value="submit"
-							class="input-submit-02" onclick="jQuery('#formID').submit();" /></td>
+							class="input-submit-02" onclick="return confirm('Are you sure you want to update this item?'); jQuery('#formID').submit();" /></td>
 					</tr>
 
 				</table>

@@ -165,9 +165,9 @@
   <table>
   <form:hidden path="registrationId"/>
   <tr>
-	<td>Company name*:</td>
+	<%-- <td>Company name*:</td>
 	<td><form:input type="text" size="40" path="companyName"/>
-	</td>
+	</td> --%>
 	<%-- <tr>
 	<td>Company Logo:</td>
 	<td><form:input type="text" size="40" path="companylogo"/></td>
