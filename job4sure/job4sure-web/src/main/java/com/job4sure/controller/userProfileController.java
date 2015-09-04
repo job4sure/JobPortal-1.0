@@ -93,7 +93,7 @@ public class userProfileController {
 		registration.setRegistrationId(registration.getRegistrationId());
 		map.put("registration",registration);
 	//	model.addAttribute("message", "Password is reset Successfully Please login Again!!");
-		return "newPassword";
+		return "newUserPassword";
 	}
 	//savecomplete_profile
 

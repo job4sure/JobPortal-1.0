@@ -110,7 +110,7 @@
     <!-- /aside -->
     <hr class="noscreen" />
     <!-- Content (Right Column) -->
-    <center><h2>Company Profile</h2></center>
+    <center><h2>Profile</h2></center>
     <div id="content" class="box">
     <fieldset>
    
