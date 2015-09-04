@@ -5,11 +5,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+	<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
+   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+   <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine({
+				onFormSuccess:formSuccess,
+				onFormFailure:formFailure
+			});
+		});
+</script>
 </head>
 <div id="main">
   
@@ -119,7 +133,7 @@
 
  <h3 style="color: red;">${message}</h3>
  
-<form:form method="POST" action="savecomplete_profile" modelAttribute="userProfile">
+<form:form method="POST" action="savecomplete_profile" modelAttribute="userProfile"  id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
 
 
 <table>
@@ -127,7 +141,7 @@
 					<tr>
 						<td>firstName*:</td>
 						<td><form:input type="text" size="40" path="firstName"
-								class="input-text" required="autofocus" maxlength="12"/></td>
+								class="validate[required] input-text" maxlength="12"/></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -140,7 +154,7 @@
 					<tr>
 						<td>lastName*:</td>
 						<td><form:input type="text" size="40" path="lastName"
-								class="input-text" id="lastName" required="autofocus" maxlength="12"/></td>
+								class="validate[required] input-text" id="lastName" maxlength="12"/></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -154,7 +168,7 @@
 					<tr>
 						<td>address.*:</td>
 						<td><form:input type="text" size="40" path="address"
-								class="input-text" required="autofocus" maxlength="10"/><br></td>
+								class="validate[required] input-text" maxlength="10"/><br></td>
 					</tr>
 					
 					
@@ -162,27 +176,27 @@
 					<tr>
 						<td>city.*:</td>
 						<td><form:input type="text" size="40" path="city"
-								class="input-text" required="autofocus" maxlength="10"/><br></td>
+								class="validate[required] input-text" maxlength="10"/><br></td>
 					</tr>
 					
 					
 					<tr>
 						<td>State.*:</td>
 						<td><form:input type="text" size="40" path="State"
-								class="input-text" required="autofocus" maxlength="10"/><br></td>
+								class="validate[required] input-text"  maxlength="10"/><br></td>
 					</tr>
 					
 					<tr>
 						<td>zip.*:</td>
 						<td><form:input type="text" size="40" path="zip"
-								class="input-text" required="autofocus" maxlength="10"/><br></td>
+								class="validate[required] input-text" maxlength="10"/><br></td>
 					</tr>
 					
 					
 				 
 					<tr>
 						<td><input type="submit" value="submit"
-							class="input-submit-02"/></td>
+							class="input-submit-02" onclick="jQuery('#formID').submit();" /></td>
 					</tr>
 
 				</table>

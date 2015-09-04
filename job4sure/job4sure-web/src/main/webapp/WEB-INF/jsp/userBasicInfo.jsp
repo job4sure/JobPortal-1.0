@@ -7,6 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+	<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
+   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){	
@@ -49,6 +54,15 @@ function myFunction() {
     }
     return ok;
 }
+</script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine({
+				onFormSuccess:formSuccess,
+				onFormFailure:formFailure
+			});
+		});
 </script>
 </head>
 <body>
@@ -130,7 +144,7 @@ function myFunction() {
   <hr class="noscreen" />
  
   
-	<form:form method="POST" action="updateUserInformation" modelAttribute="Registration" onsubmit="return myFunction()">
+	<form:form method="POST" action="updateUserInformation" modelAttribute="Registration" id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
 	<p>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	
@@ -148,7 +162,7 @@ function myFunction() {
 					<tr>
 						<td style="width: 150px;"><label id="username">Full Name*:</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
 						<td><form:input type="text" size="30" path="fullName"
-								class="input-text" required="autofocus" maxlength="80" id="fullName"/></td>
+								class="validate[required] input-text"  maxlength="80" id="fullName"/></td>
 					</tr>
 
 					<tr>
@@ -205,7 +219,7 @@ function myFunction() {
 					<tr>
 						<td>Mobile No.*:</td>
 						<td><form:input type="text" size="40" path="mobileNo"
-								class="input-text" required="autofocus" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
+								class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 					</tr>
 					
 					<tr>
@@ -223,7 +237,7 @@ function myFunction() {
 						<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
 					
 						<td><div id="Companyurl" style="display: none;"><form:input type="text" size="40" path="Companyurl"
-								class="input-text" maxlength="80"/></div></td>
+								class="validate[required] input-text" maxlength="80"/></div></td>
 							
 					</tr>
 		
@@ -237,7 +251,7 @@ function myFunction() {
 					</tr>
 					<tr>
 						<td><input type="submit" value="submit"
-							class="input-submit-02"/></td>
+							class="input-submit-02" onclick="jQuery('#formID').submit();" /></td>
 					</tr>
 
 				</table>
