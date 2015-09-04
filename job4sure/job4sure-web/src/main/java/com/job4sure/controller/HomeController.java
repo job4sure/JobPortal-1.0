@@ -64,10 +64,12 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 		session.invalidate();
 
 		if (error != null) {
-			model.addAttribute("error", "SPRING_SECURITY_LAST_EXCEPTION");
+			model.addAttribute("error",
+					"<h3 class='msg error'>Incorrect Username or Password</h3>");
 		}
 		if (logout != null) {
-			model.addAttribute("msg", "You've been logged out successfully.");
+			model.addAttribute("msg",
+					"<p class='msg done'>You've been logged out successfully.</p>");
 		}
 
 		return "loginPage";

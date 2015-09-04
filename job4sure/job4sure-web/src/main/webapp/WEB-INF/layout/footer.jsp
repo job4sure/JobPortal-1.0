@@ -4,13 +4,9 @@
 <body>
 <hr class="noscreen" />
   
-  <div id="footer" class="box">
-    <p class="f-left">&copy; 2009 <a href="http://all-free-download.com/free-website-templates/">Your Company</a>, All Rights Reserved &reg;</p>
-    <p class="f-right">Templates by <a href="http://www.adminizio.com/">Adminizio</a></p>
+  <div id="footer" class="box" align="center">
+    <p  align="center">&copy; 2015 <a href="http://all-free-download.com/free-website-templates/">Aartek software solutions pvt Ltd.</a>, All Rights Reserved &reg;</p>
+    <p align="center">Project by <a href="http://www.adminizio.com/">Aartek software solutions pvt Ltd.</a></p>
   </div>
-  
-
-
-<div align=center>This template  downloaded form <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div>
 </body>
 </html>
