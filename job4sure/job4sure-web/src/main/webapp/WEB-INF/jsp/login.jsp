@@ -94,7 +94,7 @@
           <td><input type="password" size="40" name='password' class="input-text" /></td>
         </tr>
        
-        <tr>
+       <!--  <tr>
           <td>User role:</td>
           <td  class="t-center"><label>
             <input type="radio" />
@@ -108,17 +108,23 @@
             <input type="radio" />
             Individual User</label>
           </td>
-        </tr>
-        <tr><td>
+        </tr> -->
+        <tr>
+        <td></td>
+        <td>
 	        <input type="submit" class="input-submit" value="Login" /></td>
 		</tr>
-       <tr><td><a href="forgotPassword">Forgot Password?</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="registration">SignUp</a></td>	
-       </tr>
+       <!-- <tr><td><a href="forgotPassword">Forgot Password?</a></td>
+       <td><a href="registration">SignUp</a></td>	
+       </tr> -->
 		
 		
 		
 		
       </table>
+       <h5><a href="forgotPassword">Forgot Password?</a> &nbsp; &nbsp;&nbsp;<a href="registration">SignUp</a></h5>
+       
+      
       	<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
       </form>
