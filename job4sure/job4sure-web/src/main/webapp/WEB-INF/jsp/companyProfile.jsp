@@ -71,17 +71,7 @@
 <div id="main">
   <hr class="noscreen" />
  <form:hidden path="compId"/>
-  <div id="menu" class="box">
-  <div class="tabs box">
-        <ul>
-          <!-- <li><a href="accountsettings.html"><span>Account Settings</span></a></li>
-          <li><a href="compny_profile.html"><span>Profile Setting</span></a></li>
-          <li><a href="#tab03"><span>View or Edit Jd's</span></a></li>
-		  <li><a href="#tab03"><span>Send Current Openings</span></a></li> -->
-		  <li class="t-center"><h1>Company Profile</h1></li>
-        </ul>
-      </div>
-  </div>
+  <div id="cols" class="box">
   <div id="aside" class="box">
       <div class="padding box">
         <!-- Logo (Max. width = 200px) -->
@@ -169,7 +159,10 @@
 		&nbsp
 		&nbsp
 		&nbsp
-    </div>
+    </div><center><h2>Company Profile</h2></center>
+    <div id="content" class="box">
+    
+    
     <center>
   <table>
   <tr>
@@ -194,31 +187,7 @@
 	<form:textarea path="aboutUs"/>
 	</td>
 	</tr>
-	<!-- <tr><td>Domain*:</td>
-	<td> <div class="multiselect">
-        <div class="selectBox" onclick="showCheckboxes()">
-            <select name="Domain">
-                <option>Select an option</option>
-            </select>
-            <div class="overSelect"></div>
-        </div>
-        <div id="checkboxes">
-            <label for="one"><input type="checkbox" value="IT"/>IT</label>
-            <label for="two"><input type="checkbox" value="Finance"/>Finance </label>
-            <label for="three"><input type="checkbox" value="Management"/>Management</label>
-			<label for="one"><input type="checkbox" value="CA"/>CA</label>
-            <label for="two"><input type="checkbox" value="Medical"/>Medical </label>
-            <label for="three"><input type="checkbox"value="Agriculture"/>Agriculture</label>
-			<label for="one"><input type="checkbox" value="Interior Designer"/>Interior Designer</label>
-            <label for="two"><input type="checkbox" value="Architecture"/>Architecture</label>
-            <label for="three"><input type="checkbox" value="Engineering"/>Engineering</label>
-        </div>
-        
-    </div>
-    
-	</td>
-	</tr>
-	<tr> -->
+	
 	<tr>
 	<td>Domain</td>
 	<td><form:select path="Domain">
@@ -250,6 +219,9 @@
 	
   </table>
     </center>
+    </div>
+    </div>
+    
   </div>
   </form:form>
 </body>

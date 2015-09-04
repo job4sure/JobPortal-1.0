@@ -30,31 +30,9 @@ th, td {
 }
 </style>
 </head>
-
-<div id="main">
-  
-  <div id="tray" class="box">
-  
-     <h1 class="t-center"> Company Details</h1>
-     
-  </div>
+<body>
  
   <hr class="noscreen" />
- 
-  <!-- <div id="menu" class="box">
- 
-	<div id="menu" class="box">
-  
-	
-	
-    <ul class="box">
-     
-	 <li id="menu-active"><a href="CompanyProfile"><span>Create Company Profile</span></a></li>
-	  <li id="menu-active"><a href="updateCompProfile"><span>Update Company Profile</span></a></li>
-    </ul>
-  </div>
-		  
-  </div> -->
   
      <hr class="noscreen" />
   <!-- Columns -->
@@ -153,7 +131,9 @@ th, td {
         
    
     </div>
-     <body>
+    <center><h2>Company Profile</h2></center>
+    <div id="content" class="box">
+   
     <%--  ${companyProfile.companyName} --%>
      <table style="width:80%">
   <tr>
@@ -176,10 +156,10 @@ th, td {
   </tr>
   
 </table>
+</div>
+</div>
      </body>
-	</div>
 	
-	</div>
 
 </html>
  

@@ -33,25 +33,11 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-<div id="main">
-  <!-- Tray -->
+
+<div id="cols" class="box">
+
+ <div id="aside" class="box">
  
-  <!--  /tray -->
-  <hr class="noscreen" />
-  <!-- Menu -->
-  <div id="menu" class="box">
- 	
-    <ul class="box">
-      <li id="menu-active"><a href="https://www.google.co.in/"><span>search</span></a></li>
-	  <li id="menu-active"><a href="https://www.google.co.in/"><span>top recruiters</span></a></li> 
-    </ul>
-  </div>
-  <!-- /header -->
-  <hr class="noscreen" />
-  <!-- Columns -->
-  <div id="cols" class="box">
-    <!-- Aside (Left Column) -->
-    <div id="aside" class="box">
       <div class="padding box">
         <!-- Logo (Max. width = 200px) -->
         <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/tmp/logo.gif" alt="" /></a></p>
@@ -70,28 +56,61 @@
             <p>
               <label>
               <input type="checkbox" name="" checked="checked" />
-              Option I.</label>
+              By Location</label>
               <br />
               <label>
               <input type="checkbox" name="" />
-              Option II.</label>
+              By keywords</label>
               <br />
               <label>
               <input type="checkbox" name="" />
-              Option III.</label>
+              By name</label>
             </p>
           </div>
           <!-- /search-options -->
           </fieldset>
         </form>
+        <!-- Create a new project -->
       
       </div>
       <!-- /padding -->
-
+      <ul class="box">
+        <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+		&nbsp
+        &nbsp
+		&nbsp
+		&nbsp
+        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
+		 &nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 
+		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		</ul>
+	
+          <!-- Active -->
+         
+    
     </div>
+
+  <!-- Columns -->
+ 
+    <!-- Aside (Left Column) -->
+      
     <!-- /aside -->
     <hr class="noscreen" />
     <!-- Content (Right Column) -->
+    <center><h2>Company Profile</h2></center>
     <div id="content" class="box">
     <fieldset>
    
@@ -122,10 +141,7 @@
        </tr>
       </table>
 	</form:form>
-      
-      
-      
-      
+     
 		 </fieldset>
      
     </div>
@@ -135,8 +151,6 @@
   <!-- /cols -->
   <hr class="noscreen" />
 
-  
-</div>
-
+</body>
  
 </html>

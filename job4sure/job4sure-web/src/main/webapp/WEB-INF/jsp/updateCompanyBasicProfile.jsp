@@ -52,31 +52,86 @@ function myFunction() {
 </script>
 </head>
 <body>
-<div id="main">
-  <div id="tray" class="box">
-     <h1 align="center">Company Basic Info</h1>
-  </div>
- 
+
+<!-- <div id="main"> -->
+  <div id="cols" class="box">
+   <div id="aside" class="box">
+      <div class="padding box">
+        <!-- Logo (Max. width = 200px) -->
+        <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/tmp/logo.gif" alt="" /></a></p>
+        <!-- Search -->
+        <form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
+          <fieldset>
+          <legend>Search</legend>
+          <p>
+            <input type="text" size="17" name="" class="input-text" />
+            &nbsp;
+            <input type="submit" value="OK" class="input-submit-02" />
+            <br />
+            <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
+          <!-- Advanced search -->
+          <div id="search-options" style="display:none;">
+            <p>
+              <label>
+              <input type="checkbox" name="" checked="checked" />
+              By Location</label>
+              <br />
+              <label>
+              <input type="checkbox" name="" />
+              By keywords</label>
+              <br />
+              <label>
+              <input type="checkbox" name="" />
+              By name</label>
+            </p>
+          </div>
+          <!-- /search-options -->
+          </fieldset>
+        </form>
+        <!-- Create a new project -->
+      
+      </div>
+      <!-- /padding -->
+      <ul class="box">
+        <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+		&nbsp
+        &nbsp
+		&nbsp
+		&nbsp
+        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
+		 &nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 
+		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		
+	
+          <!-- Active -->
+         
+    
+    </div>
+    <center><h2>Company Profile</h2></center>
+    <div id="content" class="box">
   <hr class="noscreen" />
  
-  <div id="menu" class="box">
- 
-    <ul class="box">
   
-    </ul>
-  </div>
 	<form:form method="POST" action="updateUserInformation" modelAttribute="Registration" onsubmit="return myFunction()">
-	<p>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	</p>
 	<form:hidden path="registrationId"/>
 	<form:hidden path="password"/>
 	<form:hidden path="email"/>
-		<input type="radio" name="rollType" value="2" checked />Company 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<!-- <input type="radio" name="rollType" value="2" />Employer -->
+		
+ 		<!-- <input type="radio" name="rollType" value="2" />Employer -->
 			<div id="DivFree">
 			<table>
 					<tr>
@@ -85,14 +140,7 @@ function myFunction() {
 								class="input-text" required="autofocus" maxlength="80" id="fullName"/></td>
 					</tr>
 
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
+					
 					<%-- <tr>
 						<td><label id="useremail">User Email*:</label><label id="companyemail" style="display: none;">Company Email*:</label></td>
 						<td><form:input type="text" size="40" path="email" id="email"
@@ -126,49 +174,22 @@ function myFunction() {
 								class="input-text" id="cpassword" required="autofocus" maxlength="12"/>&nbsp&nbsp&nbsp&nbsp<span id="error" style="color:#F00;"/></td>
 					</tr> --%>
 					
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
 					
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
 					
 					<tr>
 						<td>Mobile No.*:</td>
 						<td><form:input type="text" size="40" path="mobileNo"
 								class="input-text" required="autofocus" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
-					</tr>
-					
+				</tr>
+										
 					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					
-			
-					<tr>
-					
 						<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
 					
 						<td><div id="Companyurl" style="display: none;"><form:input type="text" size="40" path="Companyurl"
 								class="input-text" maxlength="80"/></div></td>
 							
 					</tr>
-		
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
+							
 					<tr>
 						<td><input type="submit" value="submit"
 							class="input-submit-02"/></td>
@@ -178,6 +199,8 @@ function myFunction() {
 			</div>
 		</p>
 	</form:form>
+	</div>
+	
  </div>
 </body>
 </html>
