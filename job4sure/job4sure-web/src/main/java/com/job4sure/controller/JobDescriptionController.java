@@ -34,8 +34,9 @@ public class JobDescriptionController {
 
     @RequestMapping(value = "/createJobDescription", method = { RequestMethod.GET, RequestMethod.POST })
     public String createJobDescription(@ModelAttribute JobDescription jobDescription, HttpServletRequest request,
-		    BindingResult bindingResult, Model model) {
+		    BindingResult bindingResult, Model model,@RequestParam(required = false)String status) {
 	String methodType = request.getMethod();
+	model.addAttribute("status", status);
 	if (methodType.equals("POST")) {
 	    validator.validate(jobDescription, bindingResult);
 	    if (bindingResult.hasErrors()) {

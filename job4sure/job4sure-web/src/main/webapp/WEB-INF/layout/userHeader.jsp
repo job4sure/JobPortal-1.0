@@ -49,7 +49,7 @@
 	
     <ul class="box">
      
-      <li id="menu-active"><a href="Complete_Profile"><span>Complete Your Profile</span></a></li>
+     
 	 <li id="menu-active"><a href='updateBasicProfile?registrationId=${registration.registrationId}'
        onclick="return confirm('Are you sure you want to update this item?');"><span>update your basic Profile</span></a></li>
        <li id="menu-active"><a href='updateCompleteInfo?userId=${userProfile.userId}'

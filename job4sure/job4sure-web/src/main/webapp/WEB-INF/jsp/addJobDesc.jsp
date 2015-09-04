@@ -7,11 +7,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Job Description</title>
-<script type="text/javascript">
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
+   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+  <!--  <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
+  <!--  <script type="text/javascript">
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
 	});
-	</script>
+	</script> -->
+   <script type="text/javascript">
+jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine({
+				onFormSuccess:formSuccess,
+				onFormFailure:formFailure
+			});
+		});
+</script>
+
 	
 <style type="text/css">
 #error {
@@ -130,10 +146,10 @@
     <!-- Content (Right Column) -->
     <div id="content" class="box">
    
-  
-		<font color="red"> <c:out value="${status}" />
-		</font>
-	<form:form action="createJobDescription" method="POST"
+  <h5 style="color: red;">${status}</h5>
+		
+		
+	<form:form action="createJobDescription" method="POST" id="formID" onsubmit="return jQuery(this).validationEngine('validate');"
 		modelAttribute="jobDescription">
 		 <form:hidden path="jobDescriptionId" />
 		<table width="100%" >
@@ -143,39 +159,39 @@
 			</tr>
 			<tr>
 				<td>Job Title</td>
-				<td><form:input path="jobTitle" size="30" />
+				<td><form:input path="jobTitle" class="validate[required] input-text" size="30" />
 					<div id="error">
 						<form:errors path="jobTitle" />
 					</div></td>
 			</tr>
 			<tr>
 				<td>Job Description</td>
-				<td><form:textarea path="jobDesc" cols="50" rows="5" />
+				<td><form:textarea path="jobDesc" class="validate[required] input-text" cols="50" rows="5" />
 					<div id="error">
 						<form:errors path="jobDesc" />
 					</div></td>
 			</tr>
 			<tr>
 				<td>Job Location</td>
-				<td><form:input path="jobLocation" size="30" />
+				<td><form:input path="jobLocation" class="validate[required] input-text" size="30" />
 					<div id="error">
 						<form:errors path="jobLocation" />
 					</div></td>
 			</tr>
 			<tr>
 				<td>Salary</td>
-				<td><form:input path="salary" size="10" /></td>
+				<td><form:input path="salary" size="10" class="validate[required] input-text" /></td>
 			</tr>
 			<tr>
 				<td>Experience</td>
-				<td><form:input path="experience" size="30" />
+				<td><form:input path="experience" size="30" class="validate[required] input-text"  />
 					<div id="error">
 						<form:errors path="experience" />
 					</div></td>
 			</tr>
 			<tr>
 				<td>Education</td>
-				<td><form:input path="education" size="50" /></td>
+				<td><form:input path="education" size="50" class="validate[required] input-text"  /></td>
 			</tr>
 			<tr>
 				<td>skills</td>
@@ -198,28 +214,28 @@
 		</tr> 
 			<tr>
 				<td>Job Role</td>
-				<td><form:input path="role" size="20" />
+				<td><form:input path="role" size="20" class="validate[required] input-text"  />
 					<div id="error">
 						<form:errors path="role" />
 					</div></td>
 			</tr>
 			<tr>
 				<td>No Of Candidates</td>
-				<td><form:input path="noOfCandidates" size="5" />
+				<td><form:input path="noOfCandidates" size="5" class="validate[required] input-text" />
 					<div id="error">
 						<form:errors path="noOfCandidates" />
 					</div></td>
 			</tr>
 			<tr>
 				<td>Job Valid Date</td>
-				<td><form:input path="jobValidDate" />
+				<td><form:input path="jobValidDate" class="validate[required] input-text" />
 					<div id="error">
 						<form:errors path="jobValidDate" />
 					</div></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
-					value="Submit" /></td>
+					value="Submit"  onclick="jQuery('#formID').submit();" /></td>
 			</tr>
 		</table>
 	</form:form>

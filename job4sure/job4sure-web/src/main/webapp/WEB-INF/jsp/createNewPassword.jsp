@@ -127,18 +127,18 @@
       <form:hidden path="registrationId"/>
       <table class="nostyle">
        <tr>
-          <td style="width:70px;" >New Password:</td>
+          <td>New Password:</td>
           <td><form:password size="40" path="password" id="password" class="input-text" required="autofocus" maxlength="80"/></td>
         </tr>
          <tr>
-          <td style="width:70px;" >confirm Password:</td>
+          <td>confirm Password:</td>
           <td><input type="password" size="40" id="re_password" class="input-text" /></td>
         </tr>
-        <tr><td>
+        <tr><td><td>
 	        <input type="submit" class="input-submit" value="submit" onclick="return checkPass()" /></td>
 		</tr>
-        <tr><td><a href="OpenloginPage">Login</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="registration">SignUp</a></td>
-       </tr>
+        
+     
       </table>
 	</form:form>
      
