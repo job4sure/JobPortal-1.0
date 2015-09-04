@@ -7,7 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+	<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
+   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+   <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){	
 	$('input[name=rollType]').click(function() {
@@ -35,7 +40,7 @@ $(document).ready(function(){
 	});
 });
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function myFunction() {
     var password = document.getElementById("password").value;
     var cpassword = document.getElementById("cpassword").value;
@@ -46,12 +51,21 @@ function myFunction() {
     }
     return ok;
 }
+</script> -->
+<script type="text/javascript">
+jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine({
+				onFormSuccess:formSuccess,
+				onFormFailure:formFailure
+			});
+		});
 </script>
 </head>
 <body>
 <div id="main">
   <div id="tray" class="box">
-     <h1 align="center">Regisration Form</h1>
+     <h1 align="center">Registration Form</h1>
   </div>
  
   <hr class="noscreen" />
@@ -62,7 +76,7 @@ function myFunction() {
   
     </ul>
   </div>
-	<form:form method="POST" action="saveRegistration" modelAttribute="Registration" onsubmit="return myFunction()">
+	<form:form method="POST" action="saveRegistration" modelAttribute="Registration" id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
 	<p>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	
@@ -75,9 +89,9 @@ function myFunction() {
 			<div id="DivFree">
 			<table>
 					<tr>
-						<td style="width: 150px;"><label id="username">Full Name*:</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
+						<td style="width: 150px;"><label id="username">Full Name*:</label><label id="companyname" style="display: none;">Employee Name*:</label></td>
 						<td><form:input type="text" size="30" path="fullName"
-								class="input-text" required="autofocus" maxlength="80" id="fullName"/></td>
+								class="validate[required] input-text" maxlength="80" id="fullName"/></td>
 					</tr>
 
 					<tr>
@@ -89,9 +103,9 @@ function myFunction() {
 						<td></td>
 					</tr>
 					<tr>
-						<td><label id="useremail">User Email*:</label><label id="companyemail" style="display: none;">Company Email*:</label></td>
+						<td><label id="useremail">User Email*:</label><label id="companyemail" style="display: none;">Employee Email*:</label></td>
 						<td><form:input type="text" size="40" path="email" id="email"
-								class="input-text" required="autofocus" maxlength="80" onblur="emailVarification(this);"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="email"></form:errors></span></td>
+								class="validate[required,custom[email],maxSize[50]] input-text" maxlength="80" onblur="emailVarification(this);"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="email"></form:errors></span></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -105,7 +119,7 @@ function myFunction() {
 					<tr>
 						<td>Password*:</td>
 						<td><form:input type="password" size="40" path="password"
-								class="input-text" required="autofocus" maxlength="12" id="password"/></td>
+								class="validate[required] input-text" maxlength="12" id="password"/></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -116,9 +130,9 @@ function myFunction() {
 						<td></td>
 					</tr>
 					<tr>
-						<td>Conform Password*:</td>
+						<td>Confirm Password*:</td>
 						<td><form:input type="password" size="40" path="conformPassword" 
-								class="input-text" id="cpassword" required="autofocus" maxlength="12"/>&nbsp&nbsp&nbsp&nbsp<span id="error" style="color:#F00;"/></td>
+								class="validate[required,equals[password]] input-text" id="cpassword" maxlength="12"/>&nbsp&nbsp&nbsp&nbsp<span id="error" style="color:#F00;"/></td>
 					</tr>
 					
 					<tr>
@@ -134,7 +148,7 @@ function myFunction() {
 					<tr>
 						<td>Mobile No.*:</td>
 						<td><form:input type="text" size="40" path="mobileNo"
-								class="input-text" required="autofocus" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
+								class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 					</tr>
 					<tr>
 						<td></td>
@@ -151,7 +165,7 @@ function myFunction() {
 						<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
 					
 						<td><div id="Companyurl" style="display: none;"><form:input type="text" size="40" path="Companyurl"
-								class="input-text" maxlength="80"/></div></td>
+								class="validate[required,minSize[8],maxSize[50]] input-text" maxlength="80" onclick="jQuery('#formID').submit();"/></div></td>
 							
 					</tr>
 		
@@ -165,7 +179,7 @@ function myFunction() {
 					</tr>
 					<tr>
 						<td><input type="submit" value="submit"
-							class="input-submit-02"/></td>
+							class="input-submit-02" onclick="jQuery('#formID').submit();" /></td>
 					</tr>
 
 				</table>
