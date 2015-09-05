@@ -9,6 +9,13 @@
 <head>
 <title> Profile</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+	<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
+   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+ 
 <link rel="stylesheet" media="screen,projection" type="text/css" href="css/reset.css" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="css/main.css" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="css/2col.css" title="2col" />
@@ -65,9 +72,18 @@
         }
     }
 </script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine({
+				onFormSuccess:formSuccess,
+				onFormFailure:formFailure
+			});
+		});
+</script>
 </head>
 <body>
-<form:form method="POST" action="savecompanyProfile" modelAttribute="companyProfile">
+<form:form method="POST" action="savecompanyProfile" modelAttribute="companyProfile" id="formID" onsubmit="return jQuery(this).validationEngine('validate');">
 <div id="main">
   <hr class="noscreen" />
  <form:hidden path="compId"/>
@@ -174,7 +190,7 @@
 	</tr> --%>
 	<tr>
 	<td>Company size*:</td>
-	<td><select name="companySize">
+	<td><select name="companySize"  class="validate[required]">
   <option value="5-10">5-10</option>
   <option value="10-50">10-50</option>
   <option value="50-100">50-100</option>
@@ -183,37 +199,37 @@
 	 
 	<tr><td>About Us:</td>
 	<td>
-	<form:textarea path="aboutUs"/>
+	<form:textarea path="aboutUs"  class="validate[required]"/>
 	</td>
 	</tr>
 	
 	<tr>
 	<td>Domain</td>
-	<td><form:select path="Domain">
+	<td><form:select path="Domain"  class="validate[required]">
                   <form:option value="Select" label="Select" />
                   <form:option value="IT" label="IT" />
                   <form:option value="MANAGER" label="MANAGER" />
                 </form:select></td></tr>
                 <tr>
 	<td>Company URL*:</td>
-	<td><form:input path="companyUrl"/></td>
+	<td><form:input path="companyUrl" class="validate[required] text-input"/></td>
 	</tr>
 	<tr><td>Address1*:</td>
-	<td><form:input path="address1"/></td>
+	<td><form:input path="address1" class="validate[required,minSize[5],maxSize[300]] input-text"/></td>
 	</tr>
 	<tr><td>Address2*:</td>
-	<td><form:input path="address2"/></td>
+	<td><form:input path="address2" class="validate[required,minSize[5],maxSize[300]] input-text"/></td>
 	</tr>
 	<tr><td>City*:</td>
-	<td><form:input path="city"/></td>
+	<td><form:input path="city" class="validate[required] input-text"/></td>
 	</tr>
 	<tr><td>State*:</td>
-	<td><form:input path="state"/></td>
+	<td><form:input path="state" class="validate[required] input-text"/></td>
 	</tr>
 	<tr><td>ZipCode*:</td>
-	<td><form:input path="zipcode"/></td>
+	<td><form:input path="zipcode" class="validate[required] input-text"/></td>
 	</tr>
-	<tr><td><input type="submit" value="submit"/></td></tr>
+	<tr><td><input type="submit" value="submit" onclick="jQuery('#formID').submit();"/></td></tr>
 	
   </table>
     </div>
