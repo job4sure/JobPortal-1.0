@@ -81,7 +81,7 @@ public class userProfileController {
 		      userProfile.setRegistrationId(registration.getRegistrationId());
 		     profileCompleteService.savecomplete_profile(userProfile);
 		     model.addAttribute("message", "SuccessFully complete your profile !!");
-		     return "redirect:/Complete_Profile";
+		     return "redirect:/updateCompleteInfo";
 	
 
 }
