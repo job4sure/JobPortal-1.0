@@ -78,7 +78,7 @@ jQuery(document).ready(function(){
   <!-- Columns -->
   <div id="cols" class="box">
     <!-- Aside (Left Column) -->
-    <div id="aside" class="box">
+      <div id="aside" class="box">
       <div class="padding box">
         <!-- Logo (Max. width = 200px) -->
         <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/tmp/logo.gif" alt="" /></a></p>
@@ -97,26 +97,58 @@ jQuery(document).ready(function(){
             <p>
               <label>
               <input type="checkbox" name="" checked="checked" />
-              Option I.</label>
+              By Location</label>
               <br />
               <label>
               <input type="checkbox" name="" />
-              Option II.</label>
+              By keywords</label>
               <br />
               <label>
               <input type="checkbox" name="" />
-              Option III.</label>
+              By name</label>
             </p>
           </div>
           <!-- /search-options -->
           </fieldset>
         </form>
+        <!-- Create a new project -->
       
       </div>
       <!-- /padding -->
-
+      <ul class="box">
+        <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+		&nbsp
+        &nbsp
+		&nbsp
+		&nbsp
+        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
+		 &nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 
+		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		
+	
+       
+          <!-- Active -->
+         
+    
     </div>
     <!-- /aside -->
+    
+     <div id="content" class="box">
+  <h2>WELCOME IN REGISTRATION PAGE</h2>
+    </div>
     <hr class="noscreen" />
   <div id="content" class="box">
  
@@ -127,47 +159,59 @@ jQuery(document).ready(function(){
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</p>
 	<form:hidden path="registrationId"/>
+	<p>
 		<input type="radio" name="rollType" value="1" checked />Jobseeker 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="radio" name="rollType" value="2" />Employer
+		</p>          
 			<div id="DivFree">
-			<table width="100%;">
-					<tr>
+			<table class="nostyle">
+				 	<tr>
 						<td style="width: 150px;"><label id="username">Full Name*:</label><label id="companyname" style="display: none;">Employee Name*:</label></td>
-						<td><form:input type="text" size="30" path="fullName"
+						<td><form:input type="text" size="40" path="fullName"
 								class="validate[required] input-text" maxlength="80" id="fullName"/></td>
+					</tr> <tr>
+			 			<td></td>
+						<td></td>
 					</tr>
-
-			
 					<tr>
 						<td><label id="useremail">User Email*:</label><label id="companyemail" style="display: none;">Employee Email*:</label></td>
 						<td><form:input type="text" size="40" path="email" id="email"
 								class="validate[required,custom[email],maxSize[50]] input-text" maxlength="80" onblur="emailVarification(this);"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="email"></form:errors></span></td>
 					</tr>
-			
+			        <tr>
+			 			<td></td>
+						<td></td>
+					</tr>
 					
 					<tr>
 						<td>Password*:</td>
 						<td><form:input type="password" size="40" path="password"
 								class="validate[required,minSize[5],maxSize[12]] input-text" maxlength="12" id="password"/></td>
 					</tr>
-			
+			        <tr>
+			 			<td></td>
+						<td></td>
+					</tr>
 					<tr>
 						<td>Confirm Password*:</td>
 						<td><form:input type="password" size="40" path="conformPassword" 
 								class="validate[required,equals[password]] input-text" id="cpassword" maxlength="12"/>&nbsp&nbsp&nbsp&nbsp<span id="error" style="color:#F00;"/></td>
 					</tr>
-					
-				
-					
+					<tr>
+			 			<td></td>
+						<td></td>
+					</tr>
 					<tr>
 						<td>Mobile No.*:</td>
 						<td><form:input type="text" size="40" path="mobileNo"
 								class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 					</tr>
-			
+			         <tr>
+			 			<td></td>
+						<td></td>
+					</tr>
 					
-			
 					<tr>
 					
 						<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
@@ -176,10 +220,13 @@ jQuery(document).ready(function(){
 								class="validate[required,minSize[8],maxSize[50]] input-text" maxlength="80" onclick="jQuery('#formID').submit();"/></div></td>
 							
 					</tr>
-		
+		            <tr>
+			 			<td></td>
+						<td></td>
+					</tr>
 				
 					<tr>
-						<td><input type="submit" value="submit"
+						<td align="left"><input type="submit" value="submit"
 							class="input-submit-02" onclick="jQuery('#formID').submit();" /></td>
 					</tr>
 
