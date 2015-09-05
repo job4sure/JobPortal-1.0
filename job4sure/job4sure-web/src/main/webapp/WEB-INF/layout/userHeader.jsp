@@ -50,11 +50,11 @@
     <ul class="box">
      
      
-	 <li id="menu-active"><a href='updateBasicProfile?registrationId=${registration.registrationId}'
-       ><span>update your basic Profile</span></a></li>
-       <li id="menu-active"><a href='updateCompleteInfo?userId=${userProfile.userId}'
-       ><span>update Your Complete Info</span></a></li>
-	  <li id="menu-active"><a href="setNewPassword"><span>Reset password</span></a></li>
+	 <li id="menu-active"><a href="updateBasicProfile"
+       ><span>Update Your Basic Profile</span></a></li>
+       <li id="menu-active"><a href="updateCompleteInfo"
+       ><span>Update Your Complete Info</span></a></li>
+	  <li id="menu-active"><a href="setNewPassword"><span>Reset Password</span></a></li>
     </ul>
   </div>
       	  
