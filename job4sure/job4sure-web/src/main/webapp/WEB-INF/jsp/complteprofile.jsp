@@ -138,11 +138,11 @@ jQuery(document).ready(function(){
 
 <table>
 			 <form:hidden path="userId"/>
-					<tr>
+				<%-- 	<tr>
 						<td>firstName*:</td>
 						<td><form:input type="text" size="40" path="firstName"
 								class="validate[required] input-text" maxlength="12"/></td>
-					</tr>
+					</tr> --%>
 					<tr>
 						<td></td>
 						<td></td>
@@ -151,11 +151,11 @@ jQuery(document).ready(function(){
 						<td></td>
 						<td></td>
 					</tr>
-					<tr>
+					<%-- <tr>
 						<td>lastName*:</td>
 						<td><form:input type="text" size="40" path="lastName"
 								class="validate[required] input-text" id="lastName" maxlength="12"/></td>
-					</tr>
+					</tr> --%>
 					<tr>
 						<td></td>
 						<td></td>
