@@ -77,7 +77,7 @@ public class RegistrationController {
 			model.addAttribute("message",
 					"Profile Updation failed, Please try again!");
 		}
-		return "redirect:/userProfile";
+		return "redirect:/updateBasicProfile";
 	}
 
 	

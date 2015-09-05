@@ -51,9 +51,9 @@
      
      
 	 <li id="menu-active"><a href='updateBasicProfile?registrationId=${registration.registrationId}'
-       onclick="return confirm('Are you sure you want to update this item?');"><span>update your basic Profile</span></a></li>
+       ><span>update your basic Profile</span></a></li>
        <li id="menu-active"><a href='updateCompleteInfo?userId=${userProfile.userId}'
-       onclick="return confirm('Are you sure you want to update this item?');"><span>update Your Complete Info</span></a></li>
+       ><span>update Your Complete Info</span></a></li>
 	  <li id="menu-active"><a href="setNewPassword"><span>Reset password</span></a></li>
     </ul>
   </div>
