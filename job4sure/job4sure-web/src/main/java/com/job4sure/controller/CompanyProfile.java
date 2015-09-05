@@ -140,4 +140,14 @@ public class CompanyProfile
 		}
 		return "redirect:/updateCompanyBasicProfile";
 	}
+	
+	@RequestMapping(value = "/setNewPasswordForComp", method = {RequestMethod.GET,RequestMethod.POST})
+	public String reCreatePass(Map<String, Object> map,ModelMap model,HttpServletRequest request) throws Exception {
+		 HttpSession session=request.getSession();
+		 Registration  registration = (Registration) session.getAttribute("registration");
+		registration.setRegistrationId(registration.getRegistrationId());
+		map.put("registration",registration);
+	//	model.addAttribute("message", "Password is reset Successfully Please login Again!!");
+		return "newUserPasswordForComp";
+	}
 }

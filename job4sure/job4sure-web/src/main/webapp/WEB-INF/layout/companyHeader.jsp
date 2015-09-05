@@ -55,7 +55,7 @@
 	  <li id="menu-active"><a href="CompanyProfileView"><span>View Company Profile</span></a></li>
 	<!--   <li id="menu-active"><a href="updateCompProfile"><span>Update Company Profile</span></a></li> -->
 	   <li id="menu-active"><a href="updateCompanyBasicProfile"><span>Update Basic Company Profile</span></a></li>
-	  <li id="menu-active"><a href="setNewPassword"><span>Reset Password</span></a></li>
+	  <li id="menu-active"><a href="setNewPasswordForComp"><span>Reset Password</span></a></li>
     </ul>
   </div>
       	  
