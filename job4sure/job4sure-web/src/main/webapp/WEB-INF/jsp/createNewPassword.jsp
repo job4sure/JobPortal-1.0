@@ -7,7 +7,11 @@
 <%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+	<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
+   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
@@ -30,6 +34,15 @@
 	
 	
 	</script>
+	<script type="text/javascript">
+jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine({
+				onFormSuccess:formSuccess,
+				onFormFailure:formFailure
+			});
+		});
+</script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
@@ -123,19 +136,19 @@
 
       <div class="msg">${message}</div>
       <div class="msg"><label id="passMissMatch"></label></div>
-      <form:form method="POST" action="updatePassword" modelAttribute="registration">
+      <form:form method="POST" action="updatePassword" modelAttribute="registration" id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
       <form:hidden path="registrationId"/>
       <table class="nostyle">
        <tr>
           <td>New Password:</td>
-          <td><form:password size="40" path="password" id="password" class="input-text" required="autofocus" maxlength="80"/></td>
+          <td><form:password size="40" path="password" id="password" class="validate[required,minSize[5],maxSize[12]] input-text" maxlength="80"/></td>
         </tr>
          <tr>
           <td>confirm Password:</td>
-          <td><input type="password" size="40" id="re_password" class="input-text" /></td>
+          <td><input type="password" size="40" id="re_password" class="validate[required,equals[password]] input-text" /></td>
         </tr>
         <tr><td><td>
-	        <input type="submit" class="input-submit" value="submit" onclick="return checkPass()" /></td>
+	        <input type="submit" class="input-submit" value="submit"  onclick="jQuery('#formID').submit();" /></td>
 		</tr>
         
      
