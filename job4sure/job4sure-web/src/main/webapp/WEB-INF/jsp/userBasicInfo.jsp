@@ -106,23 +106,23 @@ jQuery(document).ready(function(){
       </div>
       <!-- /padding -->
       <ul class="box">
-        <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+        <li><a href="#">Privacy</a></li>
 		&nbsp
         &nbsp
 		&nbsp
 		&nbsp
-        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
+        <li><a href="#">Terms And Conditions</a></li>
 		&nbsp
 		&nbsp
 		&nbsp
 		&nbsp
-		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
+		 <li><a href="#">Contact Us</a></li>
 		 &nbsp
 		&nbsp
 		&nbsp
 		&nbsp
 		 
-		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
+		  <li><a href="#">Leave Us Feedback</a></li> 
 		&nbsp
 		&nbsp
 		&nbsp
