@@ -28,67 +28,68 @@
 <body >
 
 <div id="main">
-
-
- <%--  <div id="tray" class="box">
-  <p class="f-left box">
-    <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="resources/design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="resources/design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>Job4Sure</strong> </p>
-<p class="f-right">User: <strong><a href="#">${registration.fullName}</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><a href="OpenloginPage" id="logout">Log out</a></strong></p>    
-	
-	<h1 class="center"> User Home</h1>
-  
-   <!--  <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>Job4Sure</strong> </p> -->
-     <!-- <h1 class="t-center"> Company Home</h1> -->
-     
-  </div> --%>
- 
-  <hr class="noscreen" />
- 
-  <%-- <div id="menu" class="box">
- 
-	
-    <ul class="box">
-     
-     
-	 <li id="menu-active"><a href='updateBasicProfile?registrationId=${registration.registrationId}'
-       ><span>update your basic Profile</span></a></li>
-       <li id="menu-active"><a href='updateCompleteInfo?userId=${userProfile.userId}'
-       ><span>update Your Complete Info</span></a></li>
-	  <li id="menu-active"><a href="setNewPassword"><span>Reset password</span></a></li>
-    </ul>
-  </div> --%>
-      	  
-  </div>
-  
-     <hr class="noscreen" />
-
-
-
-
-
-
-
-
-<%--   <!-- Tray -->
-  <div id="tray" class="box">
-    <p class="f-left box">
+  <div id="cols" class="box">
+ <div id="aside" class="box">
+      <div class="padding box">
+        <!-- Logo (Max. width = 200px) -->
+        <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/design/logo.gif" alt="" /></a></p>
+        <!-- Search -->
+        <form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
+          <fieldset>
+          <legend>Search</legend>
+          <p>
+            <input type="text" size="17" name="" class="input-text" />
+            &nbsp;
+            <input type="submit" value="OK" class="input-submit-02" />
+            <br />
+            <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
+        
+          <div id="search-options" style="display:none;">
+            <p>
+              <label>
+              <input type="checkbox" name="" checked="checked" />
+             By location</label>
+              <br />
+              <label>
+              <input type="checkbox" name="" />
+              by keywords</label>
+              <br />
+              <label>
+              <input type="checkbox" name="" />
+              By name</label>
+            </p>
+          </div>
+          
+          </fieldset>
+        </form>
+       
+       
+      </div>
       
-      <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="resources/design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="resources/design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>JOB4SURE</strong> </p>
-   
-   
-   <c:if test="${pageContext.request.userPrincipal.name == null}">
-    <p class="f-right"> <strong><a href="OpenloginPage" id="login">Login</a></strong> &nbsp;&nbsp;&nbsp;<strong><a href="registration">SignUp</a></strong></p>
-  </c:if>
-  
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-    <p class="f-right"> <strong> <a href="javascript:formSubmit()">Logout</a></strong></p>
-  </c:if>
-  
- 
-  
-  
+      <ul class="box">
+       <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+		&nbsp
+        &nbsp
+		&nbsp
+		&nbsp
+        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
+		 &nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+		 
+		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
+		&nbsp
+		&nbsp
+		&nbsp
+		&nbsp
+    </div>
   </div>
-  <!--  /tray --> --%>
   </div>
     		<c:url value="/logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
