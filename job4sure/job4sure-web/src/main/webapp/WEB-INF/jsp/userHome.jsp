@@ -99,6 +99,6 @@
 						document.getElementById("logoutForm").submit();
 					}
 				</script>
-				
+			<marquee><h2>Your account will be expired in ${daysLeft} days. </h2></marquee>	
   </body>
 </html>
