@@ -53,7 +53,7 @@ public class userProfileController {
 		map.put("userProfile", new userProfile());
 		model.addAttribute("message", message);
 		
-		return "complteprofile";
+		return "userCompleteInfo";
 }
 	@RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
 	public String updateCompleteProfile(@ModelAttribute("userProfile") userProfile userProfile,Map<String, Object> map,ModelMap model,HttpServletRequest request) {
@@ -63,7 +63,7 @@ public class userProfileController {
 		if(userProfile!=null){
 		 map.put("userProfile", userProfile);
 	//	 model.addAttribute("userProfile", userProfile);
-		 return "complteprofile";
+		 return "userCompleteInfo";
 		}else{
 		 model.addAttribute("message", "First Complete your info!!");	
 		  return "redirect:/Complete_Profile";

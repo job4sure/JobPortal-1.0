@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>Job4Sure</title>
@@ -148,20 +150,10 @@ th, td {
 		&nbsp
 		&nbsp
 		&nbsp
-       
-          <!-- Active -->
-        
-   
     </div>
      <body>
-    <%--  ${companyProfile.companyName} --%>
+     <c:if test= "${companyProfile.registrationId !=null}">
      <table style="width:80%">
-     
-   <%--  <tr>
-    <td>CompanyName</td>
-    <td>${companyProfile.companyName}</td>
-    </tr> --%>
-    
     <tr>
    <td>Address</td>
     <td>${companyProfile.address1}</td>	
@@ -201,8 +193,11 @@ th, td {
     <td>Domain</td>
     <td>${companyProfile.domain}</td>
     </tr>
-    
     </table>
+    </c:if>
+      <c:if test= "${companyProfile.registrationId ==null}">
+      <h3 style="color: red;">Sorry Nothing to display complete your details !!</h3>
+      </c:if>
      </body>
 	</div>
 	</div>
