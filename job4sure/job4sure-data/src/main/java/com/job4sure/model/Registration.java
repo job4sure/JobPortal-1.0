@@ -85,12 +85,21 @@ public class Registration {
 		this.registrationId = registrationId;
 	}
 
-	public Integer getRollType() {
+
+	public Integer getRoleType() {
 		return roleType;
 	}
 
-	public void setRollType(Integer rollType) {
-		this.roleType = rollType;
+	public void setRoleType(Integer roleType) {
+		this.roleType = roleType;
+	}
+
+	public String getEncrypted() {
+		return encrypted;
+	}
+
+	public void setEncrypted(String encrypted) {
+		this.encrypted = encrypted;
 	}
 
 	public String getFullName() {

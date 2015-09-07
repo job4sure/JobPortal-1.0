@@ -83,7 +83,7 @@ jQuery(document).ready(function(){
 </script>
 </head>
 <body>
-<form:form method="POST" action="savecompanyProfile" modelAttribute="companyProfile" id="formID" onsubmit="return jQuery(this).validationEngine('validate');">
+<form:form method="POST" action="saveCompanyCompleteProfile" modelAttribute="companyProfile" id="formID" onsubmit="return jQuery(this).validationEngine('validate');">
 <div id="main">
   <hr class="noscreen" />
  <form:hidden path="compId"/>

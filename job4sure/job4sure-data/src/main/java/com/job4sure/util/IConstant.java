@@ -11,4 +11,8 @@ public class IConstant {
 	public static final String PASSWORD_RECOVERY_URL="http://localhost:8081/job4sure-web/reCreatePass";
 	public static final String REGISTRATION_URL="http://localhost:5050/job4sure-web/verify";
 	public static final String VALID_UP_TO="yyyy-MM-dd hh:mm:ss";
+	public static final String COMPANY_COMPLETE_INFO_MESSAGE="Company profile created successfully!!";
+	public static final String COMPANY_INFO_UPDATE_MESSAGE="Company profile updated successfully!!";
+	public static final String COMPANY_BASIC_INFO_UPDATE_MESSAGE="Basic Info Successfully Updated !!";
+	public static final String COMPANY_BASIC_INFO_UPDATE_FAILURE_MESSAGE="Basic Info Successfully Updated !!";
 }

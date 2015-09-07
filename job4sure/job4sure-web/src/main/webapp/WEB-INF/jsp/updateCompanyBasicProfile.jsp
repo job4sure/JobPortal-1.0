@@ -142,7 +142,7 @@ jQuery(document).ready(function(){
   <hr class="noscreen" />
  
   
-	<form:form method="POST" action="updateCompanyInformation" modelAttribute="Registration"  id="formID" onsubmit="return jQuery(this).validationEngine('validate');">
+	<form:form method="POST" action="saveUpdatedCompanyBasicInformation" modelAttribute="Registration"  id="formID" onsubmit="return jQuery(this).validationEngine('validate');">
 	
 	
    
