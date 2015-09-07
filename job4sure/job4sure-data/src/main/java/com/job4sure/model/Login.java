@@ -15,22 +15,22 @@ public class Login {
 
     @Id
     @GeneratedValue
-    @Column(name = "registration_Id")
+    @Column(name = "REGISTRATION_ID")
     private Integer registration_Id;
 
-    @Column(name = "fullname")
+    @Column(name = "FULL_NAME")
     private String fullName;
 
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     private String email;
 
-    @Column(name = "encripted")
+    @Column(name = "ENCRYPTED")
     private String password;
 
-    @Column(name = "validUpTo")
+    @Column(name = "VALID_UP_TO")
     private String validUpTo;
 
-    @Column(name = "enabled")
+    @Column(name = "ENABLED")
     private boolean enabled;
 
     public String getValidUpTo() {
@@ -42,7 +42,7 @@ public class Login {
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rollType")
+    @JoinColumn(name = "ROLE_TYPE")
     private UserRole userRole;
 
     public String getFullName() {

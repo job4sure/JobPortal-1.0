@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.job4sure.model.Login;
 import com.job4sure.model.Registration;
 import com.job4sure.service.RegistrationService;
-import com.job4sure.util.AutoGenratedPassword;
+import com.job4sure.util.EncryptDecrypt;
 import com.job4sure.util.IConstant;
 
 @Controller
@@ -159,7 +159,7 @@ private String sendMailToResetPass(@ModelAttribute("login") Login login,ModelMap
 
 @RequestMapping(value = "/reCreatePass", method = {RequestMethod.GET,RequestMethod.POST})
 public String reCreatePass(@RequestParam(required = false) String registrationId,String message,Map<String, Object> map,ModelMap model) throws Exception {
-	 registrationId = AutoGenratedPassword.decrypt(registrationId);
+	 registrationId = EncryptDecrypt.decrypt(registrationId);
 	Integer regId = Integer.parseInt(registrationId);
 	Registration registration=new Registration();
 	registration.setRegistrationId(regId);

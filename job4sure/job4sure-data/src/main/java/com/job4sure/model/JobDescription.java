@@ -2,6 +2,7 @@ package com.job4sure.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "job_description", catalog = "jobportal")
@@ -28,17 +30,28 @@ public class JobDescription implements Serializable {
     private String skills;
     private String role;
     private Registration registration;
-  
     private String checkbox;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "JOB_ID", unique = true, nullable = false)
     public Integer getJobDescriptionId() {
 	return jobDescriptionId;
     }
+    
+    @Transient
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "SKILLS_ID")
+	private Skills skill;
 
-   	public String getCheckbox() {
+   	public Skills getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Skills skill) {
+		this.skill = skill;
+	}
+
+	public String getCheckbox() {
    		return checkbox;
    	}
 

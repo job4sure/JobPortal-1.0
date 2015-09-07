@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.job4sure.model.Registration;
 import com.job4sure.model.userProfile;
 import com.job4sure.service.ProfileCompleteService;
-import com.job4sure.util.AutoGenratedPassword;
 import com.job4sure.util.IConstant;
 @Controller
 public class userProfileController {

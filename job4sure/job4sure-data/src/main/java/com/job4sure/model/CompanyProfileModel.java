@@ -34,12 +34,12 @@ public class CompanyProfileModel {
 	private String state;
 	 @Column(name = "Zipcode")
 	private String zipcode;
-	 @Column(name="registrationId")
+	 @Column(name="REGISTRATION_ID")
 	 private Integer registrationId;
 	 
 	 
 	 @ManyToOne( optional=false)
-	 @JoinColumn(name="registrationId",referencedColumnName="registration_Id",insertable=false, updatable=false)
+	 @JoinColumn(name="REGISTRATION_ID",referencedColumnName="REGISTRATION_ID",insertable=false, updatable=false)
 	 private Registration registration;
 
 

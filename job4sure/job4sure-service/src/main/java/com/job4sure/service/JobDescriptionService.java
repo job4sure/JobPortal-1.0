@@ -12,4 +12,6 @@ public interface JobDescriptionService {
 	public void deleteJob(Integer jobDescriptionId);
 	
 	public JobDescription editJob(Integer jobId);
+
+	/*public List<Skills> getAllSkills();*/
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
+import com.job4sure.model.Skills;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.IConstant;
 
@@ -37,6 +38,8 @@ public class JobDescriptionController {
 		    BindingResult bindingResult, Model model,@RequestParam(required = false)String status) {
 	String methodType = request.getMethod();
 	model.addAttribute("status", status);
+	/*List<Skills> skillsList = jobDescriptionService.getAllSkills();
+	model.addAttribute("skillsList", skillsList);*/
 	if (methodType.equals("POST")) {
 	    validator.validate(jobDescription, bindingResult);
 	    if (bindingResult.hasErrors()) {
@@ -66,7 +69,6 @@ public class JobDescriptionController {
 	Registration registration = (Registration) session.getAttribute("registration");
 
 	List<JobDescription> jobList = jobDescriptionService.getAllJobDescription(registration.getRegistrationId());
-
 	model.addAttribute("jobList", jobList);
 	model.addAttribute("message", message);
 	return "viewAllJobDesc";

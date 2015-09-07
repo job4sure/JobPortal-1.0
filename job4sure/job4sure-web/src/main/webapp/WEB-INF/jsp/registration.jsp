@@ -23,6 +23,8 @@ $(document).ready(function(){
 			$('#useremail').show();
 			$('#Companyurl').hide();
 			$('#urllabel').hide();
+			$('#contactNo').hide();
+			$('#mobileNo').show();
 		} else {
 			$('#username').hide();
 			$('#companyname').show();
@@ -30,7 +32,8 @@ $(document).ready(function(){
 			$('#companyemail').show();
 			$('#Companyurl').show();
 			$('#urllabel').show();
-		
+			$('#mobileNo').hide();
+			$('#contactNo').show();
 		}
 		document.getElementById("cpassword").value="";
 		document.getElementById("password").value="";
@@ -160,9 +163,9 @@ jQuery(document).ready(function(){
 	</p>
 	<form:hidden path="registrationId"/>
 	<p>
-		<input type="radio" name="rollType" value="1" checked />Jobseeker 
+		<input type="radio" name="roleType" value="1" checked />Jobseeker 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="radio" name="rollType" value="2" />Employer
+		<input type="radio" name="roleType" value="2" />Employer
 		</p>          
 			<div id="DivFree">
 			<table class="nostyle">
@@ -203,7 +206,7 @@ jQuery(document).ready(function(){
 						<td></td>
 					</tr>
 					<tr>
-						<td>Mobile No.*:</td>
+					<td><label id="mobileNo">Mobile Number.*:</label><label id="contactNo" style="display: none;">Contact Number.*:</label></td>
 						<td><form:input type="text" size="40" path="mobileNo"
 								class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 					</tr>

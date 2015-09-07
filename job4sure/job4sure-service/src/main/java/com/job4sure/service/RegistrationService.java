@@ -13,8 +13,8 @@ public interface RegistrationService {
 
 	public boolean verifyUserEmailId(String emailId);
 
-	/*public List getLoggedInUserInfo(String userName);*/
-	public boolean updateUserInformation(Registration registration)  throws Exception;	
+	public boolean updateUserInformation(Registration registration) throws Exception;
+
 	public boolean sendMailToResetPass(Login login) throws Exception;
 
 	public void updatePassword(Integer registrationId, String password);

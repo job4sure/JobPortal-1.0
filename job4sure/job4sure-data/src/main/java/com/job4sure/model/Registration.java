@@ -12,31 +12,31 @@ import javax.persistence.Transient;
 public class Registration {
 	@Id
 	@GeneratedValue
-	@Column(name = "registration_Id")
+	@Column(name = "REGISTRATION_ID")
 	private Integer registrationId;
 
-	@Column(name = "rollType")
-	private Integer rollType;
+	@Column(name = "ROLE_TYPE")
+	private Integer roleType;
 
-	@Column(name = "fullname")
+	@Column(name = "FULL_NAME")
 	private String fullName;
 
-	@Column(name = "email")
+	@Column(name = "EMAIL")
 	private String email;
 	
-	@Column(name = "password")
+	@Column(name = "PASSWORD")
 	private String password;
 	
-	@Column(name = "mobile_no")
+	@Column(name = "MOBILE_NO")
 	private String mobileNo;
 	
-	@Column(name = "enabled")
+	@Column(name = "ENABLED")
 	private Integer enabled;
 	
-	@Column(name = "encripted")
-	private String encripted;
+	@Column(name = "ENCRYPTED")
+	private String encrypted;
 	
-	@Column(name = "validUpTo")
+	@Column(name = "VALID_UP_TO")
 	 private String validUpTo;
 	
 	public String getValidUpTo() {
@@ -58,7 +58,7 @@ public class Registration {
 		Companyurl = companyurl;
 	}
 
-	@Column(name = "Companyurl")
+	@Column(name = "COMPANY_URL")
 	private String Companyurl;
 	
 	public Integer getEnabled() {
@@ -70,11 +70,11 @@ public class Registration {
 	}
 
 	public String getEncripted() {
-		return encripted;
+		return encrypted;
 	}
 
 	public void setEncripted(String encripted) {
-		this.encripted = encripted;
+		this.encrypted = encripted;
 	}
 	
 	public Integer getRegistrationId() {
@@ -86,11 +86,11 @@ public class Registration {
 	}
 
 	public Integer getRollType() {
-		return rollType;
+		return roleType;
 	}
 
 	public void setRollType(Integer rollType) {
-		this.rollType = rollType;
+		this.roleType = rollType;
 	}
 
 	public String getFullName() {
