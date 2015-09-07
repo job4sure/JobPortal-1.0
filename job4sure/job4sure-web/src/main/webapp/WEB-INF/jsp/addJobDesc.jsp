@@ -193,7 +193,7 @@ jQuery(document).ready(function(){
 				<td>Education</td>
 				<td><form:input path="education" size="50" class="validate[required] input-text"  /></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<td>skills</td>
 				<td><div class="multiselect">
          <div class="selectBox" onclick="showCheckboxes()">
@@ -211,7 +211,7 @@ jQuery(document).ready(function(){
         <form:hidden path="checkbox"/> 
         </td>
     </div> 
-		</tr> 
+		</tr>  --%>
 			<tr>
 				<td>Job Role</td>
 				<td><form:input path="role" size="20" class="validate[required] input-text"  />

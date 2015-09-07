@@ -85,6 +85,7 @@ public class Registration {
 		this.registrationId = registrationId;
 	}
 
+	
 
 	public Integer getRoleType() {
 		return roleType;

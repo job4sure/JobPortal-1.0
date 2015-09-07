@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
-import com.job4sure.model.Skills;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.IConstant;
 
@@ -47,7 +46,6 @@ public class JobDescriptionController {
 	    }
 	    HttpSession session = request.getSession(false);
 	    Registration registration = (Registration) session.getAttribute("registration");
-
 	    jobDescription.setRegistration(registration);
 	    boolean state = jobDescriptionService.saveJobDescription(jobDescription);
 	    if (state) {

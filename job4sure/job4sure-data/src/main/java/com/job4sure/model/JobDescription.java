@@ -2,7 +2,6 @@ package com.job4sure.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,164 +10,146 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "job_description", catalog = "jobportal")
 public class JobDescription implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private Integer jobDescriptionId;
-    private String jobTitle;
-    private String jobDesc;
-    private String jobLocation;
-    private String salary;
-    private Integer noOfCandidates;
-    private String postedDate;
-    private String jobValidDate;
-    private String experience;
-    private String education;
-    private String skills;
-    private String role;
-    private Registration registration;
-    private String checkbox;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "JOB_ID", unique = true, nullable = false)
-    public Integer getJobDescriptionId() {
-	return jobDescriptionId;
-    }
-    
-    @Transient
+	private static final long serialVersionUID = 1L;
+	private Integer jobDescriptionId;
+	private String jobTitle;
+	private String jobDesc;
+	private String jobLocation;
+	private String salary;
+	private Integer noOfCandidates;
+	private String postedDate;
+	private String jobValidDate;
+	private String experience;
+	private String education;
+	private String role;
+	private Registration registration;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "JOB_ID", unique = true, nullable = false)
+	public Integer getJobDescriptionId() {
+		return jobDescriptionId;
+	}
+
+	/*@Transient
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "SKILLS_ID")
 	private Skills skill;
 
-   	public Skills getSkill() {
+	public Skills getSkill() {
 		return skill;
 	}
 
 	public void setSkill(Skills skill) {
 		this.skill = skill;
+	}*/
+
+	public void setJobDescriptionId(Integer jobDescriptionId) {
+		this.jobDescriptionId = jobDescriptionId;
 	}
 
-	public String getCheckbox() {
-   		return checkbox;
-   	}
+	@Column(name = "JOB_TITLE", length = 25)
+	public String getJobTitle() {
+		return jobTitle;
+	}
 
-   	public void setCheckbox(String checkbox) {
-   		this.checkbox = checkbox;
-   	}
-    public void setJobDescriptionId(Integer jobDescriptionId) {
-	this.jobDescriptionId = jobDescriptionId;
-    }
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
 
-    @Column(name = "JOB_TITLE", length = 25)
-    public String getJobTitle() {
-	return jobTitle;
-    }
+	@Column(name = "JOB_DESC", length = 200)
+	public String getJobDesc() {
+		return jobDesc;
+	}
 
-    public void setJobTitle(String jobTitle) {
-	this.jobTitle = jobTitle;
-    }
+	public void setJobDesc(String jobDesc) {
+		this.jobDesc = jobDesc;
+	}
 
-    @Column(name = "JOB_DESC", length = 200)
-    public String getJobDesc() {
-	return jobDesc;
-    }
+	@Column(name = "JOB_LOCATION", length = 30)
+	public String getJobLocation() {
+		return jobLocation;
+	}
 
-    public void setJobDesc(String jobDesc) {
-	this.jobDesc = jobDesc;
-    }
+	public void setJobLocation(String jobLocation) {
+		this.jobLocation = jobLocation;
+	}
 
-    @Column(name = "JOB_LOCATION", length = 30)
-    public String getJobLocation() {
-	return jobLocation;
-    }
+	@Column(name = "SALARY", length = 10)
+	public String getSalary() {
+		return salary;
+	}
 
-    public void setJobLocation(String jobLocation) {
-	this.jobLocation = jobLocation;
-    }
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
 
-    @Column(name = "SALARY", length = 10)
-    public String getSalary() {
-	return salary;
-    }
+	@Column(name = "NO_OF_CANDIDATES")
+	public Integer getNoOfCandidates() {
+		return noOfCandidates;
+	}
 
-    public void setSalary(String salary) {
-	this.salary = salary;
-    }
+	public void setNoOfCandidates(Integer noOfCandidates) {
+		this.noOfCandidates = noOfCandidates;
+	}
 
-    @Column(name = "NO_OF_CANDIDATES")
-    public Integer getNoOfCandidates() {
-	return noOfCandidates;
-    }
+	@Column(name = "POSTED_DATE", length = 10)
+	public String getPostedDate() {
+		return postedDate;
+	}
 
-    public void setNoOfCandidates(Integer noOfCandidates) {
-	this.noOfCandidates = noOfCandidates;
-    }
+	public void setPostedDate(String postedDate) {
+		this.postedDate = postedDate;
+	}
 
-    @Column(name = "POSTED_DATE", length = 10)
-    public String getPostedDate() {
-	return postedDate;
-    }
+	@Column(name = "JOB_VALID_DATE", length = 10)
+	public String getJobValidDate() {
+		return jobValidDate;
+	}
 
-    public void setPostedDate(String postedDate) {
-	this.postedDate = postedDate;
-    }
+	public void setJobValidDate(String jobValidDate) {
+		this.jobValidDate = jobValidDate;
+	}
 
-    @Column(name = "JOB_VALID_DATE", length = 10)
-    public String getJobValidDate() {
-	return jobValidDate;
-    }
+	@Column(name = "EXPERIENCE", length = 30)
+	public String getExperience() {
+		return experience;
+	}
 
-    public void setJobValidDate(String jobValidDate) {
-	this.jobValidDate = jobValidDate;
-    }
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
 
-    @Column(name = "EXPERIENCE", length = 30)
-    public String getExperience() {
-	return experience;
-    }
+	@Column(name = "EDUCATION", length = 50)
+	public String getEducation() {
+		return education;
+	}
 
-    public void setExperience(String experience) {
-	this.experience = experience;
-    }
+	public void setEducation(String education) {
+		this.education = education;
+	}
 
-    @Column(name = "EDUCATION", length = 50)
-    public String getEducation() {
-	return education;
-    }
+	@Column(name = "ROLE", length = 30)
+	public String getRole() {
+		return role;
+	}
 
-    public void setEducation(String education) {
-	this.education = education;
-    }
+	public void setRole(String role) {
+		this.role = role;
+	}
 
-    @Column(name = "SKILLS", length = 100)
-    public String getSkills() {
-	return skills;
-    }
+	@ManyToOne(targetEntity = Registration.class)
+	@JoinColumn(name = "COMPANY_ID", referencedColumnName = "registration_Id")
+	public Registration getRegistration() {
+		return registration;
+	}
 
-    public void setSkills(String skills) {
-	this.skills = skills;
-    }
-
-    @Column(name = "ROLE", length = 30)
-    public String getRole() {
-	return role;
-    }
-
-    public void setRole(String role) {
-	this.role = role;
-    }
-
-    @ManyToOne(targetEntity = Registration.class)
-    @JoinColumn(name = "COMPANY_ID", referencedColumnName = "registration_Id")
-    public Registration getRegistration() {
-	return registration;
-    }
-
-    public void setRegistration(Registration registration) {
-	this.registration = registration;
-    }
+	public void setRegistration(Registration registration) {
+		this.registration = registration;
+	}
 
 }

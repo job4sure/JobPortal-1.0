@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Skills;
 import com.job4sure.repository.JobDescriptionRepository;
-import com.job4sure.repository.JobskillsRepository;
 import com.job4sure.repository.SkillsRepository;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.DateFormatUtil;
@@ -20,9 +19,6 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 
     @Autowired
     private JobDescriptionRepository jobDescriptionRepository;
-    
-    @Autowired
-	private JobskillsRepository jobskillsRepository;
 	
 	@Autowired
 	private SkillsRepository skillsRepository;
