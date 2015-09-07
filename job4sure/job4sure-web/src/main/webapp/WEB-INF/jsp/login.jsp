@@ -5,12 +5,32 @@
 <%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-
-<script type="text/javascript">
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script type="text/javascript">
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
 	});
 	</script>
+	 -->
+	<script type="text/javascript">
+jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine({
+				onFormSuccess:formSuccess,
+				onFormFailure:formFailure
+			});
+		});
+		
+		
+function clearAllErrors() {
+	$('#formID').validationEngine('hideAll');
+}
+
+
+		</script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
@@ -97,27 +117,28 @@
     <div id="content" class="box">
     <fieldset>
    
-	<c:if test="${not empty error}">
+	<%-- <c:if test="${not empty error}">
 			<div class="error">${error}</div>
 		</c:if>
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
-		</c:if>
+		</c:if> --%>
 		 <h3 style="color: red;">${message}</h3>
-		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
+		<form name='loginForm' id="formID" action="<c:url value='/login' />" onsubmit="return jQuery(this).validationEngine('validate');" method='POST'>
       <table class="nostyle" style="border-collapse: separate; border-spacing: 10px;">
        <tr>
          <td style="width:70px;" >Email Id:</td>
-          <td><input type="text" size="40" name='userName' class="input-text" /></td>
+          <td><input type="text" size="40" name='userName' class="validate[required,custom[email]] input-text"  /></td>
         </tr>
         <tr>
           <td>Password:</td>
-          <td><input type="password" size="40" name='password' class="input-text" /></td>
+          <td><input type="password" size="40" name='password' class="validate[required] input-text" /></td>
         </tr>
         <tr><td>
-	        <input type="submit" class="input-submit" value="Login" /></td>
+	        <input type="submit" class="input-submit" value="Login"  /></td>
+	        <td> <input type="button" class="input-submit" value="Cancel" onclick="clearAllErrors();"/></td>
 		</tr>
-       <tr><td><a href="registration">SignUp</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="forgotPassword">Forgot Password?</a></td>	
+       <tr><td></td><td><a href="registration">SignUp</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="forgotPassword">Forgot Password?</a></td>	
        </tr>
 		 </table>
       	<input type="hidden" name="${_csrf.parameterName}"
