@@ -36,60 +36,27 @@
 <p class="f-right">User: <strong><a href="#">${registration.fullName}</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><a href="OpenloginPage" id="logout">Log out</a></strong></p>    
 	
 	<h1 class="center"> Company Home</h1>
-  
-   <!--  <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>Job4Sure</strong> </p> -->
-     <!-- <h1 class="t-center"> Company Home</h1> -->
-     
   </div>
- 
   <hr class="noscreen" />
- 
   <div id="menu" class="box">
- 
-	
     <ul class="box">
      
       <li id="menu-active"><a href="createJobDescription"><span>Create Job Description</span></a></li>
 	  <li id="menu-active"><a href="viewAllJobDescription"><span>View Job Description List</span></a></li>
-	 <li id="menu-active"><a href="showCompleteCompanyProfilePage"><span>Company Profile</span></a></li>
-	  <li id="menu-active"><a href="CompanyProfileView"><span>View Company Profile</span></a></li>
-	<!--   <li id="menu-active"><a href="updateCompProfile"><span>Update Company Profile</span></a></li> -->
-	   <li id="menu-active"><a href="updateCompanyBasicProfile"><span>Update Basic Company Profile</span></a></li>
-	  <li id="menu-active"><a href="setNewPasswordForComp"><span>Reset Password</span></a></li>
+	    <li id="menu-active"><a href="#"><span>Company Profile</span></a>
+		   <ul class="sub-menu">
+		    <li id="menu-active"><a href="CompanyProfileView">View Company Profile</a></li>
+		     <li id="menu-active"><a href="showCompleteCompanyProfilePage">Update Company Profile</a></li>
+			    <li id="menu-active"><a href="updateCompanyBasicProfile">Update Basic Company Profile</a></li>
+			   <li id="menu-active"><a href="setNewPasswordForComp">Reset Password</a></li>
+		   </ul>
+	   </li>
+	   
     </ul>
   </div>
       	  
   </div>
-  
      <hr class="noscreen" />
-
-
-
-
-
-
-
-
-<%--   <!-- Tray -->
-  <div id="tray" class="box">
-    <p class="f-left box">
-      
-      <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="resources/design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="resources/design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>JOB4SURE</strong> </p>
-   
-   
-   <c:if test="${pageContext.request.userPrincipal.name == null}">
-    <p class="f-right"> <strong><a href="OpenloginPage" id="login">Login</a></strong> &nbsp;&nbsp;&nbsp;<strong><a href="registration">SignUp</a></strong></p>
-  </c:if>
-  
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-    <p class="f-right"> <strong> <a href="javascript:formSubmit()">Logout</a></strong></p>
-  </c:if>
-  
- 
-  
-  
-  </div>
-  <!--  /tray --> --%>
   </div>
     		<c:url value="/logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
@@ -100,6 +67,5 @@
 						document.getElementById("logoutForm").submit();
 					}
 				</script>
-				
   </body>
 </html>

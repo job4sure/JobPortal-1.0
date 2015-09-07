@@ -133,9 +133,11 @@ jQuery(document).ready(function(){
 
  <h3 style="color: red;">${message}</h3>
  
-<form:form method="POST" action="savecomplete_profile" modelAttribute="userProfile"  id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
+<form:form method="POST" action="saveCompleteUserProfile" modelAttribute="userProfile"  id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
 
-
+<div id="content" class="box">
+  <h2>User Complete Information</h2>
+    </div>
 <table>
 			 <form:hidden path="userId"/>
 				<%-- 	<tr>

@@ -102,9 +102,9 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 		session.setAttribute("daysLeft", numberOfDaysRemaining);
 		System.out.println(""+registration.getRegistrationId());
 		if (isUser) {
-			return "redirect:/userProfile";
+			return "redirect:/userProfileHomePage";
 		} else if (isComp) {
-			return "redirect:/comp";
+			return "redirect:/companyHome";
 		} else {
 			return "loginPage";
 		}
@@ -113,18 +113,16 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public String showUserPage() {
-		System.out
-				.println("+++++++++++++++++++++++++++=================************");
 		return "userPage";
 	}
 
-	@RequestMapping(value = "/comp", method = RequestMethod.GET)
+	@RequestMapping(value = "/companyHome", method = RequestMethod.GET)
 	public String showCompPage(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		map.put("Registration", new Registration());
 		model.addAttribute("registration", registration);
-		return "compPage";
+		return "companyHomePage";
 	}
 	
 	

@@ -13,7 +13,7 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 	@Autowired
 	private  ProfileCompleteRepository  profileCompleteRepository;
 	
-	public boolean savecomplete_profile(userProfile userProfile) {
+	public boolean saveCompleteUserProfile(userProfile userProfile) {
 		 profileCompleteRepository.save(userProfile);
 		return false;
 	}

@@ -113,4 +113,22 @@ DISPLAY TAG
 /* =============================================================================
 DISPLAY TAG END HERE
 ============================================================================= */
-
+#menu li { position: relative; }
+#menu li > ul {
+	display: none;
+}
+#menu li:hover > ul {
+	display: block;
+	position: absolute;
+	z-index: 9999;
+	top: 35px;
+	right: -130px;
+	/* border: 1px solid #0085cc;
+	border-radius: 5px; */
+}
+#menu li:hover > ul li a {
+	display: block;
+	width: 250px;
+	padding: 5px;
+	background: #FFF !important;
+}

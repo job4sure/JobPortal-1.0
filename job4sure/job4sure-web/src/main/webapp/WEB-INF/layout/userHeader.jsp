@@ -13,7 +13,6 @@
 <link rel="alternate stylesheet" media="screen,projection" type="text/css" href="resources/css/1col.css" title="1col" />
 <!--[if lte IE 6]><link rel="stylesheet" media="screen,projection" type="text/css" href="css/main-ie6.css" /><![endif]-->
 <link rel="stylesheet" media="screen,projection" type="text/css" href="resources/css/style.css" />
-<link rel="stylesheet" media="screen,projection" type="text/css" href="resources/css/mystyle.css" />
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/switcher.js"></script>
 <script type="text/javascript" src="resources/js/toggle.js"></script>
@@ -52,9 +51,15 @@
      
 	 <li id="menu-active"><a href="updateBasicProfile"
        ><span>Update Your Basic Profile</span></a></li>
-       <li id="menu-active"><a href="updateCompleteInfo"
+      <!--  <li id="menu-active"><a href="updateCompleteInfo"
        ><span>Update Your Complete Info</span></a></li>
-	  <li id="menu-active"><a href="setNewPassword"><span>Reset Password</span></a></li>
+	  <li id="menu-active"><a href="setNewPassword"><span>Reset Password</span></a></li> -->
+	   <li id="menu-active"><a href="#"><span>User Profile</span></a>
+		   <ul class="sub-menu">
+			   <li><a href="updateCompleteInfo">Update Your Complete Info</li>
+			   <li><a href="setNewPassword">Reset Password</li>
+		   </ul>
+	   </li>
     </ul>
   </div>
       	  

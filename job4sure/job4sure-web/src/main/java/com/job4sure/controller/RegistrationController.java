@@ -53,25 +53,6 @@ public class RegistrationController {
 		return "redirect:/OpenloginPage";
 	}
 
-	@RequestMapping(value = "/updateUserInformation", method = { RequestMethod.GET, RequestMethod.POST })
-	private String updateUserInformation(@ModelAttribute("Registration") Registration registration, ModelMap model,
-			BindingResult result, HttpServletRequest request) throws Exception {
-		HttpSession session = request.getSession();
-		boolean status = false;
-		registrationValidator.validate(registration, result);
-		if (result.hasErrors()) {
-			return "registration";
-		}
-		status = registrationService.updateUserInformation(registration);
-		if (status) {
-			session.setAttribute("registration", registration);
-			model.addAttribute("message", "Basic Info Successfully Updated !!");
-		} else {
-			model.addAttribute("message", "Profile Updation failed, Please try again!");
-		}
-		return "redirect:/updateBasicProfile";
-	}
-
 	@RequestMapping(value = "/verify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String verifyUser(@RequestParam(required = false) String registrationId) throws Exception {
 		String decryptedId = EncryptDecrypt.decrypt(registrationId);

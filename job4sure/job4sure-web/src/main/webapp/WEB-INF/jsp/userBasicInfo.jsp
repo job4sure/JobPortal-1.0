@@ -173,39 +173,8 @@ jQuery(document).ready(function(){
 						<td></td>
 						<td></td>
 					</tr>
-					<%-- <tr>
-						<td><label id="useremail">User Email*:</label><label id="companyemail" style="display: none;">Company Email*:</label></td>
-						<td><form:input type="text" size="40" path="email" id="email"
-								class="input-text" required="autofocus" maxlength="80" onblur="emailVarification(this);"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="email"></form:errors></span></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<tr>
-						<td>Password*:</td>
-						<td><form:input type="password" size="40" path="password"
-								class="input-text" required="autofocus" maxlength="12" id="password"/></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Conform Password*:</td>
-						<td><form:input type="password" size="40" path="conformPassword" 
-								class="input-text" id="cpassword" required="autofocus" maxlength="12"/>&nbsp&nbsp&nbsp&nbsp<span id="error" style="color:#F00;"/></td>
-					</tr> --%>
-					
+
+
 					<tr>
 						<td></td>
 						<td></td>
@@ -218,7 +187,7 @@ jQuery(document).ready(function(){
 					
 					<tr>
 						<td>Mobile No.*:</td>
-						<td><form:input type="text" size="40" path="mobileNo"
+						<td><form:input type="text" size="10" path="mobileNo"
 								class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 					</tr>
 					
