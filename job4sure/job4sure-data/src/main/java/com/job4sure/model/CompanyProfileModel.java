@@ -12,27 +12,27 @@ import javax.persistence.Table;
 public class CompanyProfileModel {
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "companyId")
+	 @Column(name = "COMPANYID")
 	private Integer compId;
 	/* @Column(name = "companyName")
 	private String companyName;*/
-	 @Column(name = "companySize")
+	 @Column(name = "COMPANYSIZE")
 	private String companySize;
-	 @Column(name = "aboutUs")
+	 @Column(name = "ABOUTUS")
 	private String aboutUs;
-	 @Column(name = "Domain")
+	 @Column(name = "DOMAIN")
 	private String Domain;
-	 @Column(name = "companyUrl")
+	 @Column(name = "COMPANYURL")
 	private String companyUrl;
-	 @Column(name = "companyAddress")
+	 @Column(name = "COMPANYADDRESS")
 	private String address1;
-	 @Column(name = "companyaddress2")
+	 @Column(name = "COMPANYADDRESS2")
 	private String address2;
-	 @Column(name = "city")
+	 @Column(name = "CITY")
 	private String city;
-	 @Column(name = "State")
+	 @Column(name = "STATE")
 	private String state;
-	 @Column(name = "Zipcode")
+	 @Column(name = "ZIPCODE")
 	private String zipcode;
 	 @Column(name="REGISTRATION_ID")
 	 private Integer registrationId;

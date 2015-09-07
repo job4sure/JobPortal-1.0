@@ -10,7 +10,7 @@ public class IConstant {
 	public static final String MAIL_FAILURE_MESSAGE = "<h4 class = 'msg error'>Your request for re-create password is failed , Please try again with registered Email ID!</h4>";
 	public static final String PASSWORD_RECOVERY_URL="http://localhost:8081/job4sure-web/reCreatePass";
 	//public static final String PASSWORD_RECOVERY_URL="http://job4sure-fasttofind.rhcloud.com/reCreatePass";
-	public static final String REGISTRATION_URL="http://localhost:5050/job4sure-web/verify";
+	public static final String REGISTRATION_URL="http://localhost:8080/job4sure-web/verify";
 	//public static final String REGISTRATION_URL="http://job4sure-fasttofind.rhcloud.com/verify";
 	public static final String VALID_UP_TO="yyyy-MM-dd hh:mm:ss";
 	public static final String COMPANY_COMPLETE_INFO_MESSAGE="Company profile created successfully!!";

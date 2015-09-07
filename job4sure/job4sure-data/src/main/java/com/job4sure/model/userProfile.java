@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class userProfile {
  @Id
  @GeneratedValue
- @Column(name = "userId")
+ @Column(name = "USERID")
  private Integer userId;
  
   @Column(name="REGISTRATION_ID")
@@ -96,21 +96,21 @@ public class userProfile {
   this.zip = zip;
  }
 
- @Column(name = "firstName")
+ @Column(name = "FIRSTNAME")
  private String firstName;
  
- @Column(name = "lastName")
+ @Column(name = "LASTNAME")
  private String lastName;
  
- @Column(name = "address")
+ @Column(name = "ADDRESS")
  private String address;
  
- @Column(name = "city")
+ @Column(name = "CITY")
  private String city;
  
- @Column(name = "State")
+ @Column(name = "STATE")
  private String State;
  
- @Column(name = "zip")
+ @Column(name = "ZIP")
  private String zip;
 }

@@ -34,13 +34,6 @@ th, td {
 </head>
 
 <div id="main">
-  
-  <div id="tray" class="box">
-  
-     <h1 class="t-center"> Company Details</h1>
-     
-  </div>
- 
   <hr class="noscreen" />
  
   <!-- <div id="menu" class="box">
