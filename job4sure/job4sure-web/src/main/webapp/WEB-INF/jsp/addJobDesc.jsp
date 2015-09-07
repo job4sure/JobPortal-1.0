@@ -8,10 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Job Description</title>
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
-<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
+
+    <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
-   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	
+   
+   
   <!--  <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
   <!--  <script type="text/javascript">
 	$(document).ready(function(){
@@ -26,6 +30,12 @@ jQuery(document).ready(function(){
 				onFormFailure:formFailure
 			});
 		});
+		
+		
+function clearAllErrors() {
+	$('#formID').validationEngine('hideAll');
+}
+
 </script>
 
 	
@@ -173,7 +183,7 @@ jQuery(document).ready(function(){
 			</tr>
 			<tr>
 				<td>Job Location</td>
-				<td><form:input path="jobLocation" class="validate[required] input-text" size="30" />
+				<td><form:input path="jobLocation" class="validate[required,custom[onlyLetterSp]] input-text allmydiv" size="30" />
 					<div id="error">
 						<form:errors path="jobLocation" />
 					</div></td>
@@ -236,6 +246,11 @@ jQuery(document).ready(function(){
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
 					value="Submit"  onclick="jQuery('#formID').submit();" /></td>
+					
+					<td colspan="2" align="center"><input type="button"
+					value="Clear"  onclick="clearAllErrors();" /></td>
+					
+					
 			</tr>
 		</table>
 	</form:form>
