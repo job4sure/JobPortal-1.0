@@ -19,6 +19,48 @@
 <script type="text/javascript" src="resources/js/toggle.js"></script>
 <script type="text/javascript" src="resources/js/ui.core.js"></script>
 <script type="text/javascript" src="resources/js/ui.tabs.js"></script>
+     <style>
+            body {
+                /* Demo only */
+                font-family: Arial, sans-serif;
+                padding: 0 10%;
+                background-color: #eaeaea;
+            }
+            .graph {
+                width: 20%; /* width and height are arbitrary, just make sure the #bar styles are changed accordingly */
+                height: 19px;
+                border: 1px solid #888; 
+                background: rgb(168,168,168);
+                background: -moz-linear-gradient(top, rgba(168,168,168,1) 0%, rgba(204,204,204,1) 23%);
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(168,168,168,1)), color-stop(23%,rgba(204,204,204,1)));
+                background: -webkit-linear-gradient(top, rgba(168,168,168,1) 0%,rgba(204,204,204,1) 23%);
+                background: -o-linear-gradient(top, rgba(168,168,168,1) 0%,rgba(204,204,204,1) 23%);
+                background: -ms-linear-gradient(top, rgba(168,168,168,1) 0%,rgba(204,204,204,1) 23%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a8a8a8', endColorstr='#cccccc',GradientType=0 );
+                background: linear-gradient(top, rgba(168,168,168,1) 0%,rgba(204,204,204,1) 23%);
+                position: relative;
+            }
+            #bar {
+                height: 18px; /* Not 30px because the 1px top-border brings it up to 30px to match #graph */
+                background: rgb(255,197,120); 
+                background: -moz-linear-gradient(top, rgba(255,197,120,1) 0%, rgba(244,128,38,1) 100%); 
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,197,120,1)), color-stop(100%,rgba(244,128,38,1))); 
+                background: -webkit-linear-gradient(top, rgba(255,197,120,1) 0%,rgba(244,128,38,1) 100%); 
+                background: -o-linear-gradient(top, rgba(255,197,120,1) 0%,rgba(244,128,38,1) 100%); 
+                background: -ms-linear-gradient(top, rgba(255,197,120,1) 0%,rgba(244,128,38,1) 100%); 
+                background: linear-gradient(top, rgba(255,197,120,1) 0%,rgba(244,128,38,1) 100%); 
+                border-top: 1px solid #fceabb;
+            }
+            #bar p { position: absolute; text-align: center; width: 100%; margin: 0; line-height: 18px; }
+            .error {
+                /* These styles are arbitrary */
+                background-color: #fceabb;
+                padding: 1em;
+                font-weight: bold;
+                color: red;
+                border: 1px solid red;
+            }
+        </style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
@@ -88,6 +130,10 @@
 		&nbsp
 		&nbsp
 		&nbsp
+    </div>
+     <div id="content" class="box">
+     Profile Complete
+    	 <div id="progress" class="graph"><div id="bar" style="width:${profilecompleted}%"><p>${profilecompleted}% complete</p></div></div>
     </div>
   </div>
   </div>

@@ -37,6 +37,8 @@ public class userProfileController {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		userProfile userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+		int profilecompleted=profileCompleteService.getprofileCompletedInPercent(registration.getRegistrationId());
+		model.addAttribute("profilecompleted", profilecompleted);
 		map.put("Registration", new Registration());
 		model.addAttribute("registration", registration);
 		model.addAttribute("userProfile", userProfile);

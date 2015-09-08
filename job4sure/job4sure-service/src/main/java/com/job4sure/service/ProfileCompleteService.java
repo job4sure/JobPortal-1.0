@@ -10,4 +10,6 @@ public interface ProfileCompleteService {
 
 	public userProfile getLoggedInUserCompleteInfo(
 			Integer registrationId);
+
+	public int getprofileCompletedInPercent(Integer registrationId);
 }

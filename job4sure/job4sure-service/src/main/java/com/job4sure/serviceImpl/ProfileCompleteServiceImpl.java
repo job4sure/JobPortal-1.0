@@ -72,5 +72,20 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 		return userProfile;
 	}
 
+	
+	public int getprofileCompletedInPercent(Integer registrationId){
+		int noOfTables=2;
+		int noOfTablesField=1;
+		
+		userProfile userProfile=profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
+		
+		if(userProfile!=null){
+			noOfTablesField++;
+		}
+		
+		float per=(noOfTablesField*100/noOfTables);
+		int profileCompleted=(int) per;
+		return profileCompleted;
+	}
 
 }
