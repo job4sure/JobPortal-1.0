@@ -70,9 +70,8 @@ function clearAllErrors() {
             $('.mutliSelect input[type="checkbox"]').on('click', function () {
                 var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
                 title = $(this).val() + ",";
-
                 if ($(this).is(':checked')) {
-                    var html = '<span title="' + title + '">' + title + '</span>';
+              /*       var html = '<span title="' + title + '">' + title + '</span>'; */
                     $('.multiSel').append(html);
                     $(".hida").hide();
                 } 
@@ -230,10 +229,9 @@ function clearAllErrors() {
 							<div class="mutliSelect">
 								<ul>
 									<c:forEach items="${skillsList}" var="refskills">
-										<li><form:checkbox path="skill" name="skills"
-												value="${refskills.skillsId}" label="${refskills.skillsName}"  />
+										<li><form:checkbox path="skill"
+												value="${refskills.skillsId}" label="${refskills.skillsName}"  id="${refskills.skillsName}"/>
 										</li>
-										<form:hidden path="${skills.skillsId}" />
 									</c:forEach>
 								</ul> 
 							</div>

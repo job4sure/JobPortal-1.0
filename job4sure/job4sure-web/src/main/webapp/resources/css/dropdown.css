@@ -22,7 +22,7 @@ a {
 }
 .dropdown1 a, 
 .dropdown1 a:visited {
-    color:#fff;
+    color:#000;
     text-decoration:none;
     outline:none;
     font-size: 12px;
@@ -45,7 +45,6 @@ a {
 .dropdown1 dd ul {
     background-color: #4F6877;
     border:0;
-    color:#fff;
     display:none;
     left:0px;
     padding: 2px 15px 2px 5px;
