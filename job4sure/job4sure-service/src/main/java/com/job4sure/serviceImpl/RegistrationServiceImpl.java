@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.job4sure.model.Login;
 import com.job4sure.model.Registration;
+import com.job4sure.repository.AdminRegistrationRepository;
 import com.job4sure.repository.RegistrationRepository;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.util.EncryptDecrypt;
@@ -27,6 +28,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
 	@Autowired
 	private RegistrationRepository registrationRepository;
+	
+	@Autowired
+	private AdminRegistrationRepository adminRegistrationRepository;
 
 	@Transactional
 	public boolean saveUserInformation(Registration registration) throws Exception {
@@ -117,4 +121,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 		return true;
 	}
 
+	public boolean saveadmininformation(Registration registration) {
+		registration.setRoleType(3);
+		 registrationRepository.save(registration);
+		return true;
+}
 }

@@ -19,4 +19,6 @@ public interface RegistrationService {
 
 	public void updatePassword(Integer registrationId, String password);
 
+	public boolean saveadmininformation(Registration registration);
+
 }
