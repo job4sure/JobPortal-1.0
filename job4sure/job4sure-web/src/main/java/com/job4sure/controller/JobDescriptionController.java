@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
+import com.job4sure.model.Skills;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.IConstant;
 
@@ -34,11 +35,11 @@ public class JobDescriptionController {
 
     @RequestMapping(value = "/createJobDescription", method = { RequestMethod.GET, RequestMethod.POST })
     public String createJobDescription(@ModelAttribute JobDescription jobDescription, HttpServletRequest request,
-		    BindingResult bindingResult, Model model,@RequestParam(required = false)String status) {
+		    BindingResult bindingResult, Model model,@RequestParam(required = false)String status,String skill) {
 	String methodType = request.getMethod();
 	model.addAttribute("status", status);
-	/*List<Skills> skillsList = jobDescriptionService.getAllSkills();
-	model.addAttribute("skillsList", skillsList);*/
+	List<Skills> skillsList = jobDescriptionService.getAllSkills();
+	model.addAttribute("skillsList", skillsList);
 	if (methodType.equals("POST")) {
 	    validator.validate(jobDescription, bindingResult);
 	    if (bindingResult.hasErrors()) {
@@ -47,7 +48,7 @@ public class JobDescriptionController {
 	    HttpSession session = request.getSession(false);
 	    Registration registration = (Registration) session.getAttribute("registration");
 	    jobDescription.setRegistration(registration);
-	    boolean state = jobDescriptionService.saveJobDescription(jobDescription);
+	    boolean state = jobDescriptionService.saveJobDescription(jobDescription,skill);
 	    if (state) {
 		model.addAttribute("status", "Successfully save job description...");
 	    } else {

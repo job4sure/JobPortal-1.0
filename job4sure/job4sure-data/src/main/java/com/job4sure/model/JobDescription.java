@@ -1,15 +1,21 @@
 package com.job4sure.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "job_description", catalog = "jobportal")
@@ -27,6 +33,17 @@ public class JobDescription implements Serializable {
 	private String education;
 	private String role;
 	private Registration registration;
+	private Set<Skills> skillsSet = new HashSet<Skills>();
+	private String skill;
+	@Transient
+	public String getSkill() {
+		return skill;
+	}
+	@Transient
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,19 +51,6 @@ public class JobDescription implements Serializable {
 	public Integer getJobDescriptionId() {
 		return jobDescriptionId;
 	}
-
-	/*@Transient
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "SKILLS_ID")
-	private Skills skill;
-
-	public Skills getSkill() {
-		return skill;
-	}
-
-	public void setSkill(Skills skill) {
-		this.skill = skill;
-	}*/
 
 	public void setJobDescriptionId(Integer jobDescriptionId) {
 		this.jobDescriptionId = jobDescriptionId;
@@ -150,6 +154,16 @@ public class JobDescription implements Serializable {
 
 	public void setRegistration(Registration registration) {
 		this.registration = registration;
+	}
+
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(name="DESCRIPTION_SKILLS", joinColumns={@JoinColumn(name="JOB_ID")}, inverseJoinColumns={@JoinColumn(name="SKILLS_ID")})
+	public Set<Skills> getSkillsSet() {
+		return skillsSet;
+	}
+
+	public void setSkillsSet(Set<Skills> skillsSet) {
+		this.skillsSet = skillsSet;
 	}
 
 }

@@ -17,49 +17,47 @@ import com.job4sure.util.DateFormatUtil;
 @Service
 public class JobDescriptionServiceImpl implements JobDescriptionService {
 
-    @Autowired
-    private JobDescriptionRepository jobDescriptionRepository;
-	
+	@Autowired
+	private JobDescriptionRepository jobDescriptionRepository;
+
 	@Autowired
 	private SkillsRepository skillsRepository;
 
+	@SuppressWarnings("unused")
 	@Transactional
-	public boolean saveJobDescription(JobDescription jobDescription) {
+	public boolean saveJobDescription(JobDescription jobDescription, String skill) {
 		jobDescription.setPostedDate(DateFormatUtil.getformattedDate(new Date()));
-		jobDescription = jobDescriptionRepository.save(jobDescription);
+		String mulSkill[] = skill.split(",");
 		if (jobDescription != null) {
-			/*String checkId = jobDescription.getCheckbox();
-			String check[] = checkId.split(",");*/
-			/*for (String id : check) {
-			JobSkills jobskills = new JobSkills();
-			Skills skills=skillsRepository.findOne(Integer.parseInt(id));
-			jobskills.setSkills(skills);
-			jobskills.setJobDescription(jobDescription);
-			jobskillsRepository.save(jobskills);
-		} */
+			for (String id : mulSkill) {
+				Skills skills = new Skills();
+				Skills oneSkills =skillsRepository.findOne(Integer.parseInt(id));
+				jobDescription.getSkillsSet().add(oneSkills);
+			}
+			jobDescription = jobDescriptionRepository.save(jobDescription);
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-    public List<JobDescription> getAllJobDescription(int companyId) {
-	List<JobDescription> jobDescriptionsList = jobDescriptionRepository.findByCompanyId(companyId);
-	return jobDescriptionsList;
-    }
+	public List<JobDescription> getAllJobDescription(int companyId) {
+		List<JobDescription> jobDescriptionsList = jobDescriptionRepository.findByCompanyId(companyId);
+		return jobDescriptionsList;
+	}
 
-    public void deleteJob(Integer jobDescriptionId) {
-	jobDescriptionRepository.delete(jobDescriptionId);
+	public void deleteJob(Integer jobDescriptionId) {
+		jobDescriptionRepository.delete(jobDescriptionId);
 
-    }
+	}
 
-    public JobDescription editJob(Integer jobId) {
-	JobDescription jobDescription = jobDescriptionRepository.findOne(jobId);
-	return jobDescription;
-    }
+	public JobDescription editJob(Integer jobId) {
+		JobDescription jobDescription = jobDescriptionRepository.findOne(jobId);
+		return jobDescription;
+	}
 
-	/*public List<Skills> getAllSkills() {
+	public List<Skills> getAllSkills() {
 		List<Skills> skillsList = skillsRepository.findAll();
 		return skillsList;
-	}*/
+	}
 }

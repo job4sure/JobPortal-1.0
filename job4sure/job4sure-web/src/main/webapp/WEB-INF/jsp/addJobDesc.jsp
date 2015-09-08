@@ -7,12 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Job Description</title>
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
-<link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
+<link rel="stylesheet" href="resources/css/template.css" type="text/css" />
+<link rel="stylesheet" href="resources/css/dropdown.css" type="text/css" /> 
 
-    <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-	<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 	
    
    
@@ -22,7 +25,7 @@
 		$(".tabs > ul").tabs();
 	});
 	</script> -->
-   <script type="text/javascript">
+  <!--  <script type="text/javascript">
 jQuery(document).ready(function(){
 			// binds form submission and fields to the validation engine
 			jQuery("#formID").validationEngine({
@@ -36,7 +39,7 @@ function clearAllErrors() {
 	$('#formID').validationEngine('hideAll');
 }
 
-</script>
+</script> -->
 
 	
 <style type="text/css">
@@ -44,32 +47,43 @@ function clearAllErrors() {
 	color: red;
 }
 </style>
- <style>
-    .multiselect {
-        width: 200px;
-    }
-    .selectBox {
-        position: relative;
-    }
-    .selectBox select {
-        width: 100%;
-        font-weight: bold;
-    }
-    .overSelect {
-        position: absolute;
-        left: 0; right: 0; top: 0; bottom: 0;
-    }
-    #checkboxes {
-        display: none;
-        border: 1px #dadada solid;
-    }
-    #checkboxes label {
-        display: block;
-    }
-    #checkboxes label:hover {
-        background-color: #1e90ff;
-    }
-</style>
+ <script type="text/javascript">
+        $(function () {
+            $(".dropdown1 dt a").on('click', function () {
+                $(".dropdown1 dd ul").slideToggle('fast');
+            });
+
+            $(".dropdown1 dd ul a").on('click', function () {
+                $(".dropdown1 dd ul").hide();
+            });
+
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdown1")) $(".dropdown1 dd ul").hide();
+            });
+
+
+            $('.mutliSelect input[type="checkbox"]').on('click', function () {
+                var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+                title = $(this).val() + ",";
+
+                if ($(this).is(':checked')) {
+                    var html = '<span title="' + title + '">' + title + '</span>';
+                    $('.multiSel').append(html);
+                    $(".hida").hide();
+                } 
+                else {
+                    $('span[title="' + title + '"]').remove();
+                    var ret = $(".hida");
+                    $('.dropdown1 dt a').append(ret);
+                }
+            });
+        });
+    </script>
 <script>
     var expanded = false;
     function showCheckboxes() {
@@ -203,25 +217,30 @@ function clearAllErrors() {
 				<td>Education</td>
 				<td><form:input path="education" size="50" class="validate[required] input-text"  /></td>
 			</tr>
-			<%-- <tr>
-				<td>skills</td>
-				<td><div class="multiselect">
-         <div class="selectBox" onclick="showCheckboxes()">
-            <select>
-                <option>Select an option</option>
-            </select>
-            <div class="overSelect"></div>
-        </div>
-        <div id="checkboxes">
-            <label for="Java"><input type="checkbox" name="checkbox" value="1"/>Java</label>
-            <label for="Php"><input type="checkbox" name="checkbox" value="2"/>Php</label>
-            <label for="C"><input type="checkbox" name="checkbox" value="3"/>C</label>
-			<label for="C++"><input type="checkbox" name="checkbox" value="4"/>C++</label>
-        </div>
-        <form:hidden path="checkbox"/> 
-        </td>
-    </div> 
-		</tr>  --%>
+			<tr>
+			<td>Skills</td>
+				<td>	
+				<dl class="dropdown1">
+						<dt>
+							<a href="javascript:void(0);"> <span class="hida">Select</span>
+								<p class="multiSel"></p>
+							</a>
+						</dt>
+						<dd>
+							<div class="mutliSelect">
+								<ul>
+									<c:forEach items="${skillsList}" var="refskills">
+										<li><form:checkbox path="skill" name="skills"
+												value="${refskills.skillsId}" label="${refskills.skillsName}"  />
+										</li>
+										<form:hidden path="${skills.skillsId}" />
+									</c:forEach>
+								</ul> 
+							</div>
+						</dd>
+					</dl>
+				</td>
+				</tr>
 			<tr>
 				<td>Job Role</td>
 				<td><form:input path="role" size="20" class="validate[required] input-text"  />
