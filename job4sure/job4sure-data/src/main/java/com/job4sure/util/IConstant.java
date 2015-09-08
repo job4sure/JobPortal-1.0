@@ -22,5 +22,6 @@ public class IConstant {
 	public static final String USER_BASIC_INFO_FAILURE_MESSAGE="Profile Updation failed, Please try again!";
 	public static final String COMPLETE_USER_INFO_SUCCESS_MESSAGE="SuccessFully complete your profile !!";
 	public static final String FIRST_COMPLETE_INFO_MESSAGE="First Complete your info!!";
+	 public static final String FILE_PATH = "D:/jobPortal-1.0-2/localImages/";
 }
 

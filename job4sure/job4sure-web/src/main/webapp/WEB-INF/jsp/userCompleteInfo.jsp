@@ -24,14 +24,23 @@ jQuery(document).ready(function(){
 			});
 		});
 </script>
+<script type="text/javascript">
+function previewImage(input) {
+    var preview = document.getElementById('preview');
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        preview.setAttribute('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      preview.setAttribute('src');
+    }
+  }
+</script>
 </head>
 <div id="main">
-  
- 
- 
   <hr class="noscreen" />
- 
-  
      <hr class="noscreen" />
   <!-- Columns -->
   <div id="cols" class="box">
@@ -133,7 +142,7 @@ jQuery(document).ready(function(){
 
  <h3 style="color: red;">${message}</h3>
  
-<form:form method="POST" action="saveCompleteUserProfile" modelAttribute="userProfile"  id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
+<form:form method="POST" action="saveCompleteUserProfile" modelAttribute="userProfile"  id="formID"  enctype="multipart/form-data"  onsubmit="return jQuery(this).validationEngine('validate');">
 
 <div id="content" class="box">
   <h2>User Complete Information</h2>
@@ -166,7 +175,12 @@ jQuery(document).ready(function(){
 						<td></td>
 						<td></td>
 					</tr>
+					<tr>
+					<td><input type="file"  name="upload" path="uploadImagesName"
+						onchange="previewImage(this)" accept="image/*" required="required" />
+					</td>
 					
+				</tr>
 					<tr>
 						<td>address.*:</td>
 						<td><form:input type="text" size="40" path="address"
@@ -200,7 +214,11 @@ jQuery(document).ready(function(){
 						<td><input type="submit" value="submit"
 							class="input-submit-02" onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
 					</tr>
-
+					  <tr>
+                      <td width="41%" align="right" valign="middle"><img
+						id="preview" height="100px" width="100px" />
+						</td>
+					</tr>
 				</table>
 
 

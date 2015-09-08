@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Registration;
 import com.job4sure.model.userProfile;
@@ -76,13 +78,18 @@ public class userProfileController {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompleteUserProfile", method = RequestMethod.POST)
-	public String saveCompleteUserProfile(@ModelAttribute("userProfile") userProfile userProfile,ModelMap model,HttpServletRequest request ) 
+	public String saveCompleteUserProfile(@ModelAttribute("userProfile") userProfile userProfile,
+			@RequestParam CommonsMultipartFile[] upload,@RequestParam("upload") MultipartFile file,String uploadImagesName,ModelMap model,HttpServletRequest request ) 
 	{
+		final MultipartFile filePart = file;
+		boolean status = false;
+		file.getOriginalFilename();
 		 HttpSession session=request.getSession();
 		 Registration  registration = (Registration) session.getAttribute("registration");
 		      userProfile.setRegistrationId(registration.getRegistrationId());
-		     profileCompleteService.saveCompleteUserProfile(userProfile);
+		     profileCompleteService.saveCompleteUserProfile(userProfile,filePart,upload,uploadImagesName);
 		     model.addAttribute("message", IConstant.USER_COMPLETE_INFO_SUCCESS_MESSAGE);
 		     return "redirect:/updateCompleteInfo";
 }
