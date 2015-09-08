@@ -51,10 +51,12 @@
      
 	 <li id="menu-active"><a href="updateBasicProfile"
        ><span>Update Your Basic Profile</span></a></li>
-      <!--  <li id="menu-active"><a href="updateCompleteInfo"
+       <li id="menu-active"><a href="educationupdate"><span>User education</span></a>
+      <!--  <li id="menu-active"><a href="#"
        ><span>Update Your Complete Info</span></a></li>
-	  <li id="menu-active"><a href="setNewPassword"><span>Reset Password</span></a></li> -->
+	  <li id="menu-active"><a href="#"><span>Reset Password</span></a></li> -->
 	   <li id="menu-active"><a href="#"><span>User Profile</span></a>
+	   
 		   <ul class="sub-menu">
 			   <li><a href="updateCompleteInfo">Update Your Complete Info</li>
 			   <li><a href="setNewPassword">Reset Password</li>
