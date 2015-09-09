@@ -1,3 +1,3 @@
  <%
- response.sendRedirect("adminregistration");
+ response.sendRedirect("OpenloginPage");
 %> 

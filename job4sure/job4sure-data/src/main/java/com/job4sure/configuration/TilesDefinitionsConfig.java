@@ -62,8 +62,12 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 		addDefaultLayoutDef("CompanyDetailsViewPage", "CompanyDetailsView", "/WEB-INF/jsp/CompanyDetailsView.jsp","/WEB-INF/layout/companyHeader.jsp");
 		addDefaultLayoutDef("updateCompanyBasicProfilePage", "updateCompanyBasicProfile", "/WEB-INF/jsp/updateCompanyBasicProfile.jsp","/WEB-INF/layout/companyHeader.jsp");
 		addDefaultLayoutDef("userHomePage", "userHome", "/WEB-INF/jsp/userHome.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("adminregistration", "adminregister", "/WEB-INF/jsp/adminregistration.jsp","/WEB-INF/layout/header.jsp");
+		addDefaultLayoutDef("adminRegistration", "Admin Registration", "/WEB-INF/jsp/adminRegistration.jsp","/WEB-INF/layout/header.jsp");
 		addDefaultLayoutDef("educationupdate", "education", "/WEB-INF/jsp/education.jsp","/WEB-INF/layout/userHeader.jsp");
 		addDefaultLayoutDef("viewedudetails", "education", "/WEB-INF/jsp/viewedudetails.jsp","/WEB-INF/layout/userHeader.jsp");
+		addDefaultLayoutDef("adminHomePage", "adminHome", "/WEB-INF/jsp/adminHome.jsp","/WEB-INF/layout/adminHeader.jsp");
+		addDefaultLayoutDef("showJobDescriptionPage", "showJobDescription", "/WEB-INF/jsp/showJobDescription.jsp","/WEB-INF/layout/adminHeader.jsp");
+		addDefaultLayoutDef("adminViewJobDescriptionPage", "show Job Description", "/WEB-INF/jsp/adminViewJobDescription.jsp","/WEB-INF/layout/adminHeader.jsp");
 	}
+	
 }

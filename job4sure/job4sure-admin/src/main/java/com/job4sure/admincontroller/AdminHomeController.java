@@ -1,4 +1,4 @@
-package com.job4sure.controller;
+package com.job4sure.admincontroller;
 
 import java.security.Principal;
 import java.text.DateFormat;
@@ -28,7 +28,7 @@ import com.job4sure.util.EncryptDecrypt;
 import com.job4sure.util.IConstant;
 
 @Controller
-public class HomeController {
+public class AdminHomeController {
 
 	@Autowired
 	private RegistrationService registrationService;
@@ -79,8 +79,8 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 	public String showsuccesspage(HttpServletRequest request,
 			Principal principal) {
 		HttpSession session=request.getSession();
-		boolean isUser = request.isUserInRole("USER");
-		boolean isComp = request.isUserInRole("COMP");
+		/*boolean isUser = request.isUserInRole("USER");
+		boolean isComp = request.isUserInRole("COMP");*/
 		boolean isAdmin = request.isUserInRole("ADMIN");
 		String userName=principal.getName();
 		Registration registration=	registrationService.getLoggedInUserInfo(userName);
@@ -102,10 +102,8 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 		session.setAttribute("registration", registration);
 		session.setAttribute("daysLeft", numberOfDaysRemaining);
 		System.out.println(""+registration.getRegistrationId());
-		if (isUser) {
-			return "redirect:/userProfileHomePage";
-		} else if (isComp) {
-			return "redirect:/companyHome";
+		 if (isAdmin) {
+			return "redirect:/showAdminHomePage";
 		} else {
 			return "loginPage";
 		}
@@ -128,10 +126,6 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 	
 	@RequestMapping(value = "/showAdminHomePage", method = RequestMethod.GET)
 	public String showAdminHomePage(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
-		/*HttpSession session=request.getSession();
-		Registration registration = (Registration) session.getAttribute("registration");
-		map.put("Registration", new Registration());
-		model.addAttribute("registration", registration);*/
 		return "adminHomePage";
 	}
 	

@@ -32,6 +32,7 @@ public class JobDescription implements Serializable {
 	private String experience;
 	private String education;
 	private String role;
+	private Integer jdApprovalStatus;
 	private Registration registration;
 	private Set<Skills> skillsSet = new HashSet<Skills>();
 	private String skill;
@@ -100,7 +101,15 @@ public class JobDescription implements Serializable {
 	public void setNoOfCandidates(Integer noOfCandidates) {
 		this.noOfCandidates = noOfCandidates;
 	}
-
+	//===sandeep
+	@Column(name = "JD_APPROVAL_STATUS")
+	public Integer getJdApprovalStatus() {
+		return jdApprovalStatus;
+	}
+	public void setJdApprovalStatus(Integer jdApprovalStatus) {
+		this.jdApprovalStatus = jdApprovalStatus;
+	}
+	//end sandeep
 	@Column(name = "POSTED_DATE", length = 10)
 	public String getPostedDate() {
 		return postedDate;

@@ -149,11 +149,6 @@ function previewImage(input) {
     </div>
 <table>
 			 <form:hidden path="userId"/>
-				<%-- 	<tr>
-						<td>firstName*:</td>
-						<td><form:input type="text" size="40" path="firstName"
-								class="validate[required] input-text" maxlength="12"/></td>
-					</tr> --%>
 					<tr>
 						<td></td>
 						<td></td>
