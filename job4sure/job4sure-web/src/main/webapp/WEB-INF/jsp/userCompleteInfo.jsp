@@ -119,11 +119,15 @@ function previewImage(input) {
 						<td></td>
 					</tr>
 					<tr>
-					<td><input type="file"  name="upload" path="uploadImagesName"
-						onchange="previewImage(this)" accept="image/*" required="required" />
-					</td>
-					
-				</tr>
+						<td> <label>Select Profile: </label><input type="file" name="upload" path="uploadImagesName"
+							onchange="previewImage(this)" accept="image/*"
+							multiple="multiple"/></td>
+
+					</tr>
+					<tr>
+						<td> <label>Select Resume: </label><input type="file" name="upload" path="uploadImagesName" multiple="multiple"/></td>
+
+					</tr>
 					<tr>
 						<td>address.*:</td>
 						<td><form:input type="text" size="40" path="address"

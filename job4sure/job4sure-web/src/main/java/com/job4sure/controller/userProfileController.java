@@ -83,7 +83,7 @@ public class userProfileController {
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompleteUserProfile", method = RequestMethod.POST)
 	public String saveCompleteUserProfile(@ModelAttribute("userProfile") userProfile userProfile,
-			@RequestParam CommonsMultipartFile[] upload,@RequestParam("upload") MultipartFile file,String uploadImagesName,ModelMap model,HttpServletRequest request ) 
+			@RequestParam CommonsMultipartFile[] upload,@RequestParam("upload") MultipartFile file,String attchmentName,ModelMap model,HttpServletRequest request ) 
 	{
 		final MultipartFile filePart = file;
 		boolean status = false;
@@ -91,7 +91,7 @@ public class userProfileController {
 		 HttpSession session=request.getSession();
 		 Registration  registration = (Registration) session.getAttribute("registration");
 		      userProfile.setRegistrationId(registration.getRegistrationId());
-		     profileCompleteService.saveCompleteUserProfile(userProfile,filePart,upload,uploadImagesName);
+		     profileCompleteService.saveCompleteUserProfile(userProfile,filePart,upload,attchmentName);
 		     model.addAttribute("message", IConstant.USER_COMPLETE_INFO_SUCCESS_MESSAGE);
 		     return "redirect:/updateCompleteInfo";
 }
