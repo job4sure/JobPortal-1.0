@@ -40,6 +40,7 @@ public class JobDescriptionController {
 		    BindingResult bindingResult, Model model,@RequestParam(required = false)String status,String skill) {
 	String methodType = request.getMethod();
 	model.addAttribute("status", status);
+	
 	List<Skills> skillsList = jobDescriptionService.getAllSkills();
 	
 	 List<Salary> salaryList=jobDescriptionService.getAllSalary();
@@ -92,6 +93,8 @@ public class JobDescriptionController {
     @RequestMapping(value = "/editJob", method = { RequestMethod.GET, RequestMethod.POST })
     public String editJob(ModelMap model, @RequestParam Integer jobId) {
 	JobDescription jobDescription = jobDescriptionService.editJob(jobId);
+	List<Salary> salaryList=jobDescriptionService.getAllSalary();
+	model.addAttribute("salaryList", salaryList);
 	model.addAttribute("jobDescription", jobDescription);
 	return "addJobDesc";
     }
