@@ -159,7 +159,7 @@
 						<td colspan="2" align="center"><h5>Job Description</h5></td>
 					</tr>
 					<tr>
-						<td>Job Title</td>
+						<td><font color="red">*</font>Job Title</td>
 						<td><form:input path="jobTitle"
 								class="validate[required] input-text" size="30" />
 							<div id="error">
@@ -175,7 +175,7 @@
 							</div></td>
 					</tr>
 					<tr>
-						<td>Job Location</td>
+						<td><font color="red">*</font>Job Location</td>
 						<td><form:input path="jobLocation"
 								class="validate[required,custom[onlyLetterSp]] input-text allmydiv"
 								size="30" />
@@ -200,7 +200,7 @@
 							</form:select></td>
 					</tr>
 					<tr>
-						<td>Experience</td>
+						<td><font color="red">*</font>Experience</td>
 						<td><form:input path="experience" size="10"
 								class="validate[required] input-text" />
 							<div id="error">
@@ -238,7 +238,7 @@
 					</tr>
 
 					<tr>
-						<td>Job Role</td>
+						<td><font color="red">*</font>Job Role</td>
 						<td><form:input path="role" size="20"
 								class="validate[required] input-text" />
 							<div id="error">
@@ -246,7 +246,7 @@
 							</div></td>
 					</tr>
 					<tr>
-						<td>No Of Candidates</td>
+						<td>Number Of Candidates</td>
 						<td><form:input path="noOfCandidates" size="3"
 								class="validate[required] input-text" />
 							<div id="error">
@@ -254,7 +254,7 @@
 							</div></td>
 					</tr>
 					<tr>
-						<td>Job Valid Date</td>
+						<td><font color="red">*</font>Job Valid Date</td>
 						<td><form:input path="jobValidDate" size="10"
 								class="validate[required] input-text" />
 							<div id="error">
