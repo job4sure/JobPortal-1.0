@@ -58,6 +58,14 @@ public class Registration {
 		Companyurl = companyurl;
 	}
 
+	public String getEncrypted() {
+		return encrypted;
+	}
+
+	public void setEncrypted(String encrypted) {
+		this.encrypted = encrypted;
+	}
+
 	@Column(name = "COMPANY_URL")
 	private String Companyurl;
 	
@@ -69,13 +77,6 @@ public class Registration {
 		this.enabled = enabled;
 	}
 
-	public String getEncripted() {
-		return encrypted;
-	}
-
-	public void setEncripted(String encripted) {
-		this.encrypted = encripted;
-	}
 	
 	public Integer getRegistrationId() {
 		return registrationId;
@@ -93,14 +94,6 @@ public class Registration {
 
 	public void setRoleType(Integer roleType) {
 		this.roleType = roleType;
-	}
-
-	public String getEncrypted() {
-		return encrypted;
-	}
-
-	public void setEncrypted(String encrypted) {
-		this.encrypted = encrypted;
 	}
 
 	public String getFullName() {

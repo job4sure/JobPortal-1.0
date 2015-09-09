@@ -45,7 +45,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			String password = registration.getPassword();
 			password = passwordEncoder.encode(password);
 			registration.setEnabled(0);
-			registration.setEncripted(password);
+			registration.setEncrypted(password);
 			Registration userregistration = registrationRepository.save(registration);
 			Integer registrationId = userregistration.getRegistrationId();
 			String id = Integer.toString(registrationId);
@@ -75,7 +75,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 	public boolean verifyUserEmailId(String emailId) {
 		List<Registration> emailList = null;
 		emailList = registrationRepository.verifyUserEmailId(emailId);
-		if (!emailList.isEmpty()) {
+		if (!emailList.isEmpty()) {  
 			return true;
 		} else {
 			return false;
@@ -113,7 +113,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			String password = registration.getPassword();
 			password = passwordEncoder.encode(password);
 			registration.setEnabled(1);
-			registration.setEncripted(password);
+			registration.setEncrypted(password);
 			Registration userregistration = registrationRepository.save(registration);
 			Integer registrationId = userregistration.getRegistrationId();
 			String id = Integer.toString(registrationId);
@@ -122,7 +122,18 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	public boolean saveadmininformation(Registration registration) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String password = registration.getPassword();
+		password = passwordEncoder.encode(password);
 		registration.setRoleType(3);
+		registration.setEncrypted(password);
+		registration.setEnabled(1);
+		Calendar c = new GregorianCalendar();
+		c.add(Calendar.DATE, 30);
+		Date date = c.getTime();
+		SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO);
+		String strDate = date1.format(date);
+		registration.setValidUpTo(strDate);
 		 registrationRepository.save(registration);
 		return true;
 }
