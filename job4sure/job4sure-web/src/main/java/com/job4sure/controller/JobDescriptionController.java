@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
+import com.job4sure.model.Salary;
 import com.job4sure.model.Skills;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.IConstant;
@@ -33,13 +34,21 @@ public class JobDescriptionController {
     @Qualifier("jobDescriptionValidator")
     private Validator validator;
 
+    
     @RequestMapping(value = "/createJobDescription", method = { RequestMethod.GET, RequestMethod.POST })
     public String createJobDescription(@ModelAttribute JobDescription jobDescription, HttpServletRequest request,
 		    BindingResult bindingResult, Model model,@RequestParam(required = false)String status,String skill) {
 	String methodType = request.getMethod();
 	model.addAttribute("status", status);
 	List<Skills> skillsList = jobDescriptionService.getAllSkills();
-	model.addAttribute("skillsList", skillsList);
+	
+	 List<Salary> salaryList=jobDescriptionService.getAllSalary();
+	
+	 
+	 
+	 model.addAttribute("salaryList", salaryList);
+	 
+	 model.addAttribute("skillsList", skillsList);
 	if (methodType.equals("POST")) {
 	    validator.validate(jobDescription, bindingResult);
 	    if (bindingResult.hasErrors()) {

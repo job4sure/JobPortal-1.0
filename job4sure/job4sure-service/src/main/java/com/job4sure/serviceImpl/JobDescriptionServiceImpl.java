@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.job4sure.model.JobDescription;
+import com.job4sure.model.Salary;
 import com.job4sure.model.Skills;
 import com.job4sure.repository.JobDescriptionRepository;
+import com.job4sure.repository.SalaryRepository;
 import com.job4sure.repository.SkillsRepository;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.DateFormatUtil;
@@ -23,6 +25,11 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 	@Autowired
 	private SkillsRepository skillsRepository;
 
+	@Autowired
+	private SalaryRepository salaryRepository;
+	
+	
+	
 	@SuppressWarnings("unused")
 	@Transactional
 	public boolean saveJobDescription(JobDescription jobDescription, String skill) {
@@ -60,4 +67,12 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 		List<Skills> skillsList = skillsRepository.findAll();
 		return skillsList;
 	}
+
+	public List<Salary> getAllSalary() {
+	   List<Salary> minSalaryList=salaryRepository.findAll();
+	    return minSalaryList;
+	}
+	
+	
+	
 }

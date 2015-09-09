@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,7 +26,7 @@ public class JobDescription implements Serializable {
 	private String jobTitle;
 	private String jobDesc;
 	private String jobLocation;
-	private String salary;
+	//private String salary;
 	private Integer noOfCandidates;
 	private String postedDate;
 	private String jobValidDate;
@@ -36,6 +37,35 @@ public class JobDescription implements Serializable {
 	private Registration registration;
 	private Set<Skills> skillsSet = new HashSet<Skills>();
 	private String skill;
+	private Salary minSalary;
+	private Salary maxSalary;
+	
+	
+	
+	@OneToOne(targetEntity = Salary.class)
+	@JoinColumn(name = "MIN_SALARY_ID" ,referencedColumnName="SALARY_ID")
+	
+	
+	public Salary getMinSalary() {
+	    return minSalary;
+	}
+
+	public void setMinSalary(Salary minSalary) {
+	    this.minSalary = minSalary;
+	}
+	
+	@OneToOne(targetEntity = Salary.class)
+	@JoinColumn(name = "MAX_SALARY_ID",referencedColumnName="SALARY_ID")
+	
+	public Salary getMaxSalary() {
+	    return maxSalary;
+	}
+
+	public void setMaxSalary(Salary maxSalary) {
+	    this.maxSalary = maxSalary;
+	}
+
+	
 	@Transient
 	public String getSkill() {
 		return skill;
@@ -84,14 +114,14 @@ public class JobDescription implements Serializable {
 		this.jobLocation = jobLocation;
 	}
 
-	@Column(name = "SALARY", length = 10)
+	/*@Column(name = "SALARY", length = 10)
 	public String getSalary() {
 		return salary;
 	}
 
 	public void setSalary(String salary) {
 		this.salary = salary;
-	}
+	}*/
 
 	@Column(name = "NO_OF_CANDIDATES")
 	public Integer getNoOfCandidates() {

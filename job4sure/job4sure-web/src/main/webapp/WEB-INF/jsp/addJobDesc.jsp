@@ -5,7 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Add Job Description</title>
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
+<link rel="stylesheet" href="resources/css/template.css" type="text/css" />
+<link rel="stylesheet" href="resources/css/dropdown.css" type="text/css" /> 
+
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
@@ -174,7 +179,20 @@ function clearAllErrors() {
 			</tr>
 			<tr>
 				<td>Salary</td>
-				<td><form:input path="salary" size="10" class="validate[required] input-text" /></td>
+				<td> <form:select path="minSalary.salaryId">
+										<%-- <form:option value="0" label="Min Annual Salary" /> --%>
+										<c:forEach items="${salaryList}" var="salary">
+											<form:option value="${salary.salaryId}"
+												label="${salary.salary}" />
+										</c:forEach>
+									</form:select>&nbsp;to&nbsp;
+									<form:select path="maxSalary.salaryId">
+										<%-- <form:option value="0" label="Max Annual Salary" /> --%>
+										<c:forEach items="${salaryList}" var="salary">
+											<form:option value="${salary.salaryId}"
+												label="${salary.salary}" />
+										</c:forEach>
+									</form:select></td>
 			</tr>
 			<tr>
 				<td>Experience</td>
