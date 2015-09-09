@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.JobDescription;
+import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.model.Registration;
 import com.job4sure.model.Salary;
 import com.job4sure.model.Skills;
@@ -58,6 +59,9 @@ public class JobDescriptionController {
 	    HttpSession session = request.getSession(false);
 	    Registration registration = (Registration) session.getAttribute("registration");
 	    jobDescription.setRegistration(registration);
+	   JobDescriptionApprovalStatus approvalStatus=new JobDescriptionApprovalStatus();
+	   approvalStatus.setStatusId(1);
+	    jobDescription.setApprovalStatus(approvalStatus);
 	    boolean state = jobDescriptionService.saveJobDescription(jobDescription,skill);
 	    if (state) {
 		model.addAttribute("status", "Successfully save job description...");

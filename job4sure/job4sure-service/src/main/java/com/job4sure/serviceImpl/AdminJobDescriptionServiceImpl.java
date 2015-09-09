@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.job4sure.model.JobDescription;
+import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.repository.AdminJobDescriptionRepository;
 import com.job4sure.service.AdminJobDescriptionService;
 @Service
@@ -23,7 +24,9 @@ private AdminJobDescriptionRepository adminJobDescriptionRepository;
 	}
 	public boolean approveJobDescription(Integer jobId) {
 		JobDescription jobDescription = adminJobDescriptionRepository.findOne(jobId);
-		jobDescription.setJdApprovalStatus(1);
+		JobDescriptionApprovalStatus approvalStatus=new JobDescriptionApprovalStatus();
+		approvalStatus.setStatusId(2);
+		jobDescription.setApprovalStatus(approvalStatus);
 		if(jobDescription!=null){
 		adminJobDescriptionRepository.save(jobDescription);
 		return true;
@@ -33,7 +36,9 @@ private AdminJobDescriptionRepository adminJobDescriptionRepository;
 	}
 	public boolean rejectJobDescription(Integer jobId) {
 		JobDescription jobDescription = adminJobDescriptionRepository.findOne(jobId);
-		jobDescription.setJdApprovalStatus(0);
+		JobDescriptionApprovalStatus approvalStatus=new JobDescriptionApprovalStatus();
+		approvalStatus.setStatusId(1);
+		jobDescription.setApprovalStatus(approvalStatus);
 		if(jobDescription!=null){
 		adminJobDescriptionRepository.save(jobDescription);
 		return true;
@@ -41,4 +46,11 @@ private AdminJobDescriptionRepository adminJobDescriptionRepository;
 		return false;
 	}
 	}
+	public List<JobDescription> getAllPendingJobDescriptions(Integer jdApprovedStatus) {
+	   
+	    List<JobDescription> approvedJobDescriptionsList=adminJobDescriptionRepository.getAllPendingJobDescriptions(jdApprovedStatus);
+		return approvedJobDescriptionsList;
+	}
+	
+	
 }

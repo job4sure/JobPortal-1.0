@@ -33,10 +33,11 @@ public class JobDescription implements Serializable {
 	private String experience;
 	private String education;
 	private String role;
-	private Integer jdApprovalStatus;
+	//private Integer jdApprovalStatus;
 	private Registration registration;
 	private Set<Skills> skillsSet = new HashSet<Skills>();
 	private String skill;
+	private JobDescriptionApprovalStatus approvalStatus;
 	private Salary minSalary;
 	private Salary maxSalary;
 	
@@ -65,6 +66,16 @@ public class JobDescription implements Serializable {
 	    this.maxSalary = maxSalary;
 	}
 
+	@OneToOne(targetEntity = JobDescriptionApprovalStatus.class)
+	@JoinColumn(name = "JD_APPROVAL_STATUS_ID" )
+	
+	public JobDescriptionApprovalStatus getApprovalStatus() {
+	    return approvalStatus;
+	}
+
+	public void setApprovalStatus(JobDescriptionApprovalStatus approvalStatus) {
+	    this.approvalStatus = approvalStatus;
+	}
 	
 	@Transient
 	public String getSkill() {
@@ -132,13 +143,13 @@ public class JobDescription implements Serializable {
 		this.noOfCandidates = noOfCandidates;
 	}
 	//===sandeep
-	@Column(name = "JD_APPROVAL_STATUS_ID")
+	/*@Column(name = "JD_APPROVAL_STATUS_ID")
 	public Integer getJdApprovalStatus() {
 		return jdApprovalStatus;
 	}
 	public void setJdApprovalStatus(Integer jdApprovalStatus) {
 		this.jdApprovalStatus = jdApprovalStatus;
-	}
+	}*/
 	//end sandeep
 	@Column(name = "POSTED_DATE", length = 10)
 	public String getPostedDate() {
@@ -204,5 +215,7 @@ public class JobDescription implements Serializable {
 	public void setSkillsSet(Set<Skills> skillsSet) {
 		this.skillsSet = skillsSet;
 	}
+
+	
 
 }

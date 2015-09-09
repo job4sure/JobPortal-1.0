@@ -101,7 +101,7 @@
 
 
 <a href="viewJobDescription.do?jobId=${job.jobDescriptionId}">View</a>
- <c:if test="${job.jdApprovalStatus!=1}">
+ <c:if test="${job.approvalStatus.statusId!=2}">
  <a href="approveJobDescription.do?jobId=${job.jobDescriptionId}">Approve</a>
  </c:if>
   <a href="rejectApprovedJds.do?jobId=${job.jobDescriptionId}">Reject</a>

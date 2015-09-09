@@ -22,21 +22,27 @@ public class AdminJobDescriptionController {
 	
 	@RequestMapping(value = "/showApprovedJobDescriptions", method = RequestMethod.GET)
 	public String showAllApprovedJds(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
-		int jdApprovedStatus=1;
+		int jdApprovedStatus=2;
 		List<JobDescription> approvedJobDescriptionsList =adminJobDescriptionService.getAllAprovedJobDescriptions(jdApprovedStatus);
 		model.addAttribute("approvedJobDescriptionsList", approvedJobDescriptionsList);
 		return "showJobDescriptionPage";
 	}
+	
+	
 	  @RequestMapping(value = "/viewJobDescription", method = { RequestMethod.GET, RequestMethod.POST })
 	    public String viewJobDescription(ModelMap model, @RequestParam Integer jobId) {
 		JobDescription jobDescription = adminJobDescriptionService.viewJobDescription(jobId);
 		model.addAttribute("jobDescription", jobDescription);
 		return "adminViewJobDescriptionPage";
 	    }
+	  
+	  
 	  @RequestMapping(value = "/showPendingJobDescriptions", method = RequestMethod.GET)
 		public String showAllPendingJds(Map<String, Object> map,String message,ModelMap model,HttpServletRequest request) {
-			int jdApprovedStatus=0;
-			List<JobDescription> approvedJobDescriptionsList =adminJobDescriptionService.getAllAprovedJobDescriptions(jdApprovedStatus);
+	      Integer jdApprovedStatus=1;
+			
+						
+			List<JobDescription> approvedJobDescriptionsList =adminJobDescriptionService.getAllPendingJobDescriptions(jdApprovedStatus);
 			model.addAttribute("approvedJobDescriptionsList", approvedJobDescriptionsList);
 			model.addAttribute("message", message);
 			return "showJobDescriptionPage";
@@ -59,6 +65,6 @@ public class AdminJobDescriptionController {
 			    } else {
 				model.addAttribute("message", "Failed rejection of job description");
 			    }
-		 return "redirect:/showPendingJobDescriptions";
+		 return "redirect:/showApprovedJobDescriptions";
 	    }
 }

@@ -11,6 +11,9 @@ import com.job4sure.model.JobDescription;
 public interface AdminJobDescriptionRepository extends
 JpaRepository<JobDescription, Integer> {
 
-	 @Query("select jb from JobDescription jb where jb.jdApprovalStatus =:jdApprovedStatus")
+	 @Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdApprovedStatus")
 	List<JobDescription> getAllAprovedJobDescriptions(@Param("jdApprovedStatus") int jdApprovedStatus);
+	 
+	 @Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdApprovedStatus")
+		List<JobDescription> getAllPendingJobDescriptions(@Param("jdApprovedStatus") Integer jdApprovedStatus);
 }
