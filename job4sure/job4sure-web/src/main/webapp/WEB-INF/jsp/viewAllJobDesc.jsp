@@ -14,7 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View All Job Desc</title>
 
-	
+ 
 <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
 </head>
 <body>
@@ -57,21 +57,36 @@
       
       </div>
       <!-- /padding -->
-      <ul class="box">
-     		</ul>
-	
-          <!-- Active -->
-         
-    
+     <ul class="box">
+     </ul>   
     </div>
     
     
-    <h3 style="color: red;">${message}</h3>
+     <div class="box" id="content">
+<h3 style="color: red;">${message}</h3>
+    <center><h2>List of Job Description</h2></center>
+  <table style="border-collapse: separate; border-spacing: 12px;" class="nostyle" class="fixed" >
+  <c:forEach items="${jobList}" var="job">
+<tr>
+<td width="10%"></td>
+<td><div style="background-color:#CCFFFF; color:black; padding:10px; float:center-right">
+<img src="resources\images\user84.png" width="100" height="80" alt="My Pic">
+<h2>${job.jobTitle}</h2>
+<p>${job.jobDesc}</p>
+
+<a href="editJob.do?jobId=${job.jobDescriptionId}">View or Edit</a>
+ <a href="deleteJob.do?jobDescriptionId=${job.jobDescriptionId}">Delete</a>
+
+</td>
+</div> 
+<td></td>
+</tr></c:forEach>
+    
+    
+   <%--  <h3 style="color: red;">${message}</h3>
     <center><h2>List of Job Description</h2></center>
 <table style="border-collapse: separate; border-spacing: 12px;">
 <c:forEach items="${jobList}" var="job">
-
-
 <tr>
 <td width="10%"></td>
 <td><div style="background-color:#CCFFFF; color:black; padding:10px; float:center-right">
@@ -79,16 +94,19 @@
 <p>${job.jobDesc}</p>
 
 
-<a href="editJob.do?jobId=${job.jobDescriptionId}">View or Edit</a>
- <a href="deleteJob.do?jobDescriptionId=${job.jobDescriptionId}">Delete</a>
+
  </div> 
 
 </td>
 
 <td></td>
-</tr></c:forEach>
+</tr></c:forEach> --%>
 </table>
       
       </div>
+      
+      <div>
+  
+</div>
 </body>
 </html>

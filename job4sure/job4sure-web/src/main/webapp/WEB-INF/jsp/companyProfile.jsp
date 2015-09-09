@@ -11,6 +11,30 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script type="text/javascript">
+	$(document).ready(function(){
+		$(".tabs > ul").tabs();
+	});
+	</script>
+	 -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#formID").validationEngine();
+		
+	});
+		
+		
+function clearAllErrors() {
+	$('#formID').validationEngine('hideAll');
+}
+
+
+		</script>
+
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
 	<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
    <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>

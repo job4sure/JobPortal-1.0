@@ -103,28 +103,7 @@
        
       </div>
       
-      <ul class="box">
-       <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
-		&nbsp
-        &nbsp
-		&nbsp
-		&nbsp
-        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
-		&nbsp
-		&nbsp
-		&nbsp
-		&nbsp
-		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
-		 &nbsp
-		&nbsp
-		&nbsp
-		&nbsp
-		 
-		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
-		&nbsp
-		&nbsp
-		&nbsp
-		&nbsp
+     
     </div>
      <div id="content" class="box">
      Profile Complete
