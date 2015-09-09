@@ -19,7 +19,7 @@ public class AdminRegistrationController {
 	@Autowired
 	private RegistrationService registrationService;
 
-	@RequestMapping("/adminRegistration")  
+	@RequestMapping("/adminRegistration")
 	public String showRegistration(Map<String, Object> map) {
 		map.put("Registration", new Registration());
 		return "adminRegistration";
@@ -30,11 +30,11 @@ public class AdminRegistrationController {
 		boolean status = false;
 		status = registrationService.saveadmininformation(registration);
 		if (status) {
-			model.addAttribute("message", IConstant.REGISTRATION_SUCCESS_MESSAGE);
+			model.addAttribute("message", IConstant.SUCCESS_MESSAGE);
 		} else {
-			model.addAttribute("message", IConstant.REGISTRATION_FAILURE_MESSAGE);
+			model.addAttribute("message", IConstant.FAILURE_MESSAGE);
 		}
-		return "redirect:/adminRegistration";
+		return "redirect:/OpenloginPage";
 	}
 
 }

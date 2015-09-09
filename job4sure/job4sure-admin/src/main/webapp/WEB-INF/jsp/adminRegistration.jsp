@@ -24,9 +24,19 @@ jQuery(document).ready(function(){
 </script>
 </head>
 <body>
+<div id="main">
+  <!-- Tray -->
+ 
+  <!--  /tray -->
+  <hr class="noscreen" />
+  <!-- Menu -->
+    <div id="menu" class="box">
+ 	<ul class="box">
+      <li id="menu-active"><a href="OpenloginPage"><span>Login</span></a></li>
+      <center><h2>ADMIN REGISTRATION PAGE</h2></center>
+    </ul>
+  </div>
  <div id="content" class="box">
- <center>
-  <h2>ADMIN REGISTRATION PAGE</h2></center>
     </div>
     <hr class="noscreen" />
   <div id="content" class="box">
