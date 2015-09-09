@@ -1,5 +1,6 @@
 package com.job4sure.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import com.job4sure.model.Registration;
 import com.job4sure.model.userProfile;
 import com.job4sure.service.ProfileCompleteService;
 import com.job4sure.service.RegistrationService;
+import com.job4sure.service.UserDetaiFatchService;
 import com.job4sure.util.IConstant;
 import com.job4sure.validator.RegistrationValidator;
 @Controller
@@ -31,6 +33,8 @@ public class userProfileController {
      	private RegistrationService registrationService;
      	@Autowired
      	private RegistrationValidator registrationValidator;
+     	@Autowired
+     	private UserDetaiFatchService userdetailfatch;
 	
 	@RequestMapping(value = "/userProfileHomePage", method = RequestMethod.GET)
 	public String showuserProfile(Map<String, Object> map,String message,ModelMap model, HttpServletRequest request) {
@@ -73,6 +77,22 @@ public class userProfileController {
 		if(userProfile!=null){
 		 map.put("userProfile", userProfile);
 		 model.addAttribute("message",message);
+		 List currentLocation= userdetailfatch.currentLocation();
+			model.addAttribute("location", currentLocation);
+			List annualSalary=userdetailfatch.salaryAnnual();
+			model.addAttribute("salary", annualSalary);
+			List preferedLocation=userdetailfatch.prefferedLocation();
+			model.addAttribute("preferlocation", preferedLocation);
+			List industry=userdetailfatch.industryData();
+			model.addAttribute("industrydata", industry);
+			List role=userdetailfatch.roleData();
+			model.addAttribute("roletype12", role);
+			List day=userdetailfatch.dobDay();
+			model.addAttribute("day1", day);
+			List month=userdetailfatch.dobMonth();
+			model.addAttribute("month1", month);
+			List year=userdetailfatch.dobYear();
+			model.addAttribute("year1", year);
 		 return "userCompleteInfo";
 		}else{
 		 model.addAttribute("message",IConstant.FIRST_COMPLETE_INFO_MESSAGE);	

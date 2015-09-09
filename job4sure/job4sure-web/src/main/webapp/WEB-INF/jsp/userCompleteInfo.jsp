@@ -128,6 +128,133 @@ function previewImage(input) {
 						<td> <label>Select Resume: </label><input type="file" name="upload" path="uploadImagesName" multiple="multiple"/></td>
 
 					</tr>
+						<tr>
+						<td>Resume Headine.*:</td>
+						<td><form:input type="text" size="40" path="resume"
+								class="validate[required] input-text" maxlength="10"/><br></td>
+			 <tr>	
+			  <tr>	
+			 
+			 <td>Current Location*:</td>
+	         <td><form:select  path="currentlocation">
+	         <option value="null">select</option>
+                <c:forEach items="${location}" var="location">
+
+<option value="${location.currentlocation }">${location.currentlocation }</option>
+
+ </c:forEach>
+                   </form:select>
+                          <br> </td>
+                           </tr> 
+                           
+                           
+                            <tr>	
+			 
+			 <td>Preffered Location*:</td>
+	         <td><form:select  path="prefferedlocation">
+	         <option value="null">select</option>
+                <c:forEach items="${preferlocation}" var="location">
+
+<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
+
+ </c:forEach>
+                   </form:select>
+                          <br> </td>
+                           </tr> 
+                           
+                           
+                             <tr>	
+			 
+			 <td>Role*:</td>
+	         <td><form:select  path="roletype">
+	         <option value="null">select</option>
+                <c:forEach items="${roletype12}" var="roleUser">
+
+<option value="${roleUser.roletype }">${roleUser.roletype }</option>
+
+ </c:forEach>
+                   </form:select>
+                          <br> </td>
+                           </tr> 
+                           
+                           
+                               <tr>	
+			 
+			 <td>DOB*:</td>
+	         <td><form:select  path="DOBday">
+	         <option value="null">day</option>
+                <c:forEach items="${day1}" var="daydata">
+
+<option value="${daydata.DOBday }">${daydata.DOBday }</option>
+
+ </c:forEach>
+                   </form:select>
+                       
+                         
+                    <form:select  path="DOBmonth">
+	         <option value="null">month</option>
+                <c:forEach items="${month1}" var="month">
+
+<option value="${month.DOBmonth }">${month.DOBmonth }</option>
+
+ </c:forEach>
+                   </form:select>
+                          
+                         
+                         
+                         <form:select  path="DOByear">
+	         <option value="null">year</option>
+                <c:forEach items="${year1}" var="year">
+
+<option value="${year.DOByear }">${year.DOByear }</option>
+
+ </c:forEach>
+                   </form:select>
+                         </td>   
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                           </tr> 
+                           
+                       <%--     
+                              <tr>	
+			 
+			 <td>Industry*:</td>
+	         <td><form:select  path="jobIndustry">
+	         <option value="null">select</option>
+                <c:forEach items="${industrydata}" var="industryList">
+
+<option value="${industryList.jobIndustry }">${industryList.jobIndustry }</option>
+
+ </c:forEach>
+                   </form:select>
+                          <br> </td>
+                           </tr>  --%>
+                           
+                           
+                            <tr>	
+			 
+			 
+			 
+			
+			 <td>Annual Salary*:</td>
+	         <td><form:select  path="salary">
+	         <option value="null">select</option>
+                <c:forEach items="${salary}" var="salary1">
+
+<option value="${salary1.salary }">${salary1.salary }</option>
+
+ 
+ 
+</c:forEach>
+                   </form:select>
+                          <br> </td>
+                           </tr> 
+				</tr>
 					<tr>
 						<td>address.*:</td>
 						<td><form:input type="text" size="40" path="address"
