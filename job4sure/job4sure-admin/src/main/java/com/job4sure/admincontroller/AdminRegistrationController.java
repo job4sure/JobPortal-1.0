@@ -19,7 +19,7 @@ public class AdminRegistrationController {
 	@Autowired
 	private RegistrationService registrationService;
 
-	@RequestMapping("/adminRegistration")
+	@RequestMapping("/adminRegistration")  
 	public String showRegistration(Map<String, Object> map) {
 		map.put("Registration", new Registration());
 		return "adminRegistration";

@@ -15,7 +15,7 @@
    <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){	
-	$('input[name=rollType]').click(function() {
+	$('input[name=roleType]').click(function() {
 		if($(this).val() == "1") {
 			$('#companyname').hide();
 			$('#username').show();
