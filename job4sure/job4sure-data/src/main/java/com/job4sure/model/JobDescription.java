@@ -132,7 +132,7 @@ public class JobDescription implements Serializable {
 		this.noOfCandidates = noOfCandidates;
 	}
 	//===sandeep
-	@Column(name = "JD_APPROVAL_STATUS")
+	@Column(name = "JD_APPROVAL_STATUS_ID")
 	public Integer getJdApprovalStatus() {
 		return jdApprovalStatus;
 	}
