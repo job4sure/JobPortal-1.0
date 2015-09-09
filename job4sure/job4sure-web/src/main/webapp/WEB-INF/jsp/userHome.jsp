@@ -20,12 +20,7 @@
 <script type="text/javascript" src="resources/js/ui.core.js"></script>
 <script type="text/javascript" src="resources/js/ui.tabs.js"></script>
      <style>
-            body {
-                /* Demo only */
-                font-family: Arial, sans-serif;
-                padding: 0 10%;
-                background-color: #eaeaea;
-            }
+           
             .graph {
                 width: 20%; /* width and height are arbitrary, just make sure the #bar styles are changed accordingly */
                 height: 19px;
