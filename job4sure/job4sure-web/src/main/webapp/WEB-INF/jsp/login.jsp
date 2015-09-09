@@ -7,27 +7,27 @@
 <head>
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-	<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+ <script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+ <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <!-- <script type="text/javascript">
-	$(document).ready(function(){
-		$(".tabs > ul").tabs();
-	});
-	</script>
-	 -->
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#formID").validationEngine();
-		
-	});
-		
-		
+ $(document).ready(function(){
+  $(".tabs > ul").tabs();
+ });
+ </script>
+  -->
+ <script type="text/javascript">
+ $(document).ready(function() {
+  $("#formID").validationEngine();
+  
+ });
+  
+  
 function clearAllErrors() {
-	$('#formID').validationEngine('hideAll');
+ $('#formID').validationEngine('hideAll');
 }
 
 
-		</script>
+  </script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
@@ -38,10 +38,10 @@ function clearAllErrors() {
   <hr class="noscreen" />
   <!-- Menu -->
     <div id="menu" class="box">
- 	
+  
     <ul class="box">
-      <li id="menu-active"><a href="OpenloginPage"><span>Login</span></a></li>
-	  <li id="menu-active"><a href="registration"><span>Sign Up</span></a></li> 
+     <li> &nbsp;</li>
+      <li> &nbsp;</li>
     </ul>
   </div>
   <!-- /header -->
@@ -63,7 +63,8 @@ function clearAllErrors() {
             <input type="submit" value="OK" class="input-submit-02" />
             <br />
             <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
-           <div id="search-options" style="display:none;">
+          Advanced search
+          <div id="search-options" style="display:none;">
             <p>
               <label>
               <input type="checkbox" name="" checked="checked" />
@@ -78,12 +79,12 @@ function clearAllErrors() {
               Option III.</label>
             </p>
           </div>
-         
+          /search-options
           </fieldset>
         </form>
       <ul class="box">
       
-		</ul>
+  </ul>
       </div>
       <!-- /padding -->
 
@@ -93,8 +94,8 @@ function clearAllErrors() {
     <!-- Content (Right Column) -->
     <div id="content" class="box">
     <fieldset>
-  		 <h3 style="color: red;">${message}</h3>
-		<form name='loginForm' id="formID" action="<c:url value='/login' />" onsubmit="return jQuery(this).validationEngine('validate');" method='POST'>
+     <h3 style="color: red;">${message}</h3>
+  <form name='loginForm' id="formID" action="<c:url value='/login' />" onsubmit="return jQuery(this).validationEngine('validate');" method='POST'>
       <table class="nostyle" style="border-collapse: separate; border-spacing: 10px;">
        <tr>
          <td style="width:70px;" >Email Id:</td>
@@ -105,16 +106,16 @@ function clearAllErrors() {
           <td><input type="password" size="40" name='password' class="validate[required] input-text" /></td>
         </tr>
         <tr><td>
-	        <input type="submit" class="input-submit" value="Login"  /></td>
-	        <td> <input type="button" class="input-submit" value="Cancel" onclick="clearAllErrors();"/></td>
-		</tr>
-       <tr><td></td><td><a href="registration">SignUp</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="forgotPassword">Forgot Password?</a></td>	
+         <input type="submit" class="input-submit" value="Login"  /></td>
+         <td> <input type="button" class="input-submit" value="Cancel" onclick="clearAllErrors();"/></td>
+  </tr>
+       <tr><td></td><td><a href="registration">SignUp</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="forgotPassword">Forgot Password?</a></td> 
        </tr>
-		 </table>
-      	<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
+   </table>
+       <input type="hidden" name="${_csrf.parameterName}"
+    value="${_csrf.token}" />
       </form>
-		 </fieldset>
+   </fieldset>
      
     </div>
     <!-- /content -->

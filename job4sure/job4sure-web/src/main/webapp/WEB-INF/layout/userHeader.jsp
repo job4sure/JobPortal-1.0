@@ -49,17 +49,16 @@
     <ul class="box">
      
      
-	 <li id="menu-active"><a href="updateBasicProfile"
-       ><span>Update Your Basic Profile</span></a></li>
-       <li id="menu-active"><a href="educationupdate"><span>User education</span></a>
+	 <li id="menu-active"><a href="updateBasicProfile"><span>Update Your Basic Profile</span></a></li>
+       <li id="menu-active"><a href="educationupdate"><span>User education</span></a></li>
       <!--  <li id="menu-active"><a href="#"
        ><span>Update Your Complete Info</span></a></li>
 	  <li id="menu-active"><a href="#"><span>Reset Password</span></a></li> -->
 	   <li id="menu-active"><a href="#"><span>User Profile</span></a>
 	   
 		   <ul class="sub-menu">
-			   <li><a href="updateCompleteInfo">Update Your Complete Info</li>
-			   <li><a href="setNewPassword">Reset Password</li>
+			   <li><a href="updateCompleteInfo">Update Your Complete Info</a></li>
+			   <li><a href="setNewPassword">Reset Password</a></li>
 		   </ul>
 	   </li>
     </ul>

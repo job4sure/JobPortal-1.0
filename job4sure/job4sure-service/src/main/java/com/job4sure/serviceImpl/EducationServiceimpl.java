@@ -18,7 +18,7 @@ public class EducationServiceimpl implements EducationService {
 		
 	}
 
-	public Education viewEducation(Integer regid,Education edu) {
+	public Education viewEducation(Integer regid) {
 		
 		
 		Education edu1=edurepository.view(regid);
@@ -26,6 +26,8 @@ public class EducationServiceimpl implements EducationService {
 		return edu1;
 		
 	}
+
+	
 
 	
 }
