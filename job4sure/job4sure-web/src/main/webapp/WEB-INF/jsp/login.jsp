@@ -63,8 +63,7 @@ function clearAllErrors() {
             <input type="submit" value="OK" class="input-submit-02" />
             <br />
             <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
-          Advanced search
-          <div id="search-options" style="display:none;">
+           <div id="search-options" style="display:none;">
             <p>
               <label>
               <input type="checkbox" name="" checked="checked" />
@@ -79,7 +78,7 @@ function clearAllErrors() {
               Option III.</label>
             </p>
           </div>
-          /search-options
+         
           </fieldset>
         </form>
       <ul class="box">
