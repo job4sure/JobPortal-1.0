@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -8,295 +9,297 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
-	<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
-   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-   <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
+<link
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+	rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
+	type="text/css" />
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery.validationEngine-en.js"
+	type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="resources/css/template.css" type="text/css" />
+<script src="resources/js/jquery.validationEngine.js"
+	type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <title>Insert title here</title>
+<style>
+.verticalLine {
+	border-bottom: thick solid #050505;
+}
+
+</style>
+<style>
+.hidden-div {
+	display: none;
+}
+</style>
 <script type="text/javascript">
-jQuery(document).ready(function(){
-			// binds form submission and fields to the validation engine
-			jQuery("#formID").validationEngine({
-				onFormSuccess:formSuccess,
-				onFormFailure:formFailure
-			});
+	jQuery(document).ready(function() {
+		// binds form submission and fields to the validation engine
+		jQuery("#formID").validationEngine({
+			onFormSuccess : formSuccess,
+			onFormFailure : formFailure
 		});
+	});
 </script>
 <script type="text/javascript">
-function previewImage(input) {
-    var preview = document.getElementById('preview');
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        preview.setAttribute('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      preview.setAttribute('src');
-    }
-  }
+	document.getElementById('show_button').addEventListener('click', hideshow,
+			false);
+
+	function hideshow() {
+		document.getElementById('hidden-div').style.display = 'block';
+		this.style.display = 'none'
+	}
+	</script>
+<script type="text/javascript">
+	function previewImage(input) {
+		var preview = document.getElementById('preview');
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				preview.setAttribute('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		} else {
+			preview.setAttribute('src');
+		}
+	}
+</script>
+
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#datepicker").datepicker();
+	});
 </script>
 </head>
 <div id="main">
-  <hr class="noscreen" />
-     <hr class="noscreen" />
-  <!-- Columns -->
-  <div id="cols" class="box">
-    <!-- Aside (Left Column) -->
-    <div id="aside" class="box">
-      <div class="padding box">
-        <!-- Logo (Max. width = 200px) -->
-        <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/design/logo.gif" alt="" /></a></p>
-        <!-- Search -->
-        <form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
-          <fieldset>
-          
-          <legend>Search</legend>
-          <p>
-            <input type="text" size="17" name="" class="input-text" />
-            &nbsp;
-            <input type="submit" value="OK" class="input-submit-02" />
-            <br />
-            <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
-          <!-- Advanced search -->
-          <div id="search-options" style="display:none;">
-            <p>
-              <label>
-              <input type="checkbox" name="" checked="checked" />
-              By Location</label>
-              <br />
-              <label>
-              <input type="checkbox" name="" />
-              By keywords</label>
-              <br />
-              <label>
-              <input type="checkbox" name="" />
-              By name</label>
-            </p>
-          </div> 
-          <!-- /search-options -->
-          </fieldset>
-        </form>
-        <!-- Create a new project -->
-      
-      </div>
-      <!-- /padding -->
-      <ul class="box">
-    </ul>
-     </div>
-<body align="center">
+	<hr class="noscreen" />
+	<hr class="noscreen" />
+	<!-- Columns -->
+	<div id="cols" class="box">
+		<!-- Aside (Left Column) -->
+		<div id="aside" class="box">
+			<div class="padding box">
+				<!-- Logo (Max. width = 200px) -->
+				<p id="logo">
+					<a href="http://all-free-download.com/free-website-templates/"><img
+						src="resources/design/logo.gif" alt="" /></a>
+				</p>
+				<!-- Search -->
+				<form action="http://all-free-download.com/free-website-templates/"
+					method="get" id="search">
+					<fieldset>
 
- <h3 style="color: red;">${message}</h3>
- 
-<form:form method="POST" action="saveCompleteUserProfile" modelAttribute="userProfile"  id="formID"  enctype="multipart/form-data"  onsubmit="return jQuery(this).validationEngine('validate');">
+						<legend>Search</legend>
+						<p>
+							<input type="text" size="17" name="" class="input-text" />
+							&nbsp; <input type="submit" value="OK" class="input-submit-02" />
+							<br /> <a href="javascript:toggle('search-options');"
+								class="ico-drop">Advanced search</a>
+						</p>
+						<!-- Advanced search -->
+						<div id="search-options" style="display: none;">
+							<p>
+								<label> <input type="checkbox" name="" checked="checked" />
+									By Location
+								</label> <br /> <label> <input type="checkbox" name="" /> By
+									keywords
+								</label> <br /> <label> <input type="checkbox" name="" /> By
+									name
+								</label>
+							</p>
+						</div>
+						<!-- /search-options -->
+					</fieldset>
+				</form>
+				<!-- Create a new project -->
 
-<div id="content" class="box">
-  <h2>User Complete Information</h2>
-    </div>
-<table>
-			 <form:hidden path="userId"/>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<%-- <tr>
-						<td>lastName*:</td>
-						<td><form:input type="text" size="40" path="lastName"
-								class="validate[required] input-text" id="lastName" maxlength="12"/></td>
-					</tr> --%>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td> <label>Select Profile: </label><input type="file" name="upload" path="uploadImagesName"
-							onchange="previewImage(this)" accept="image/*"
-							multiple="multiple"/></td>
+			</div>
+			<!-- /padding -->
+			<ul class="box">
+			</ul>
+		</div>
+		<body align="center">
 
-					</tr>
-					<tr>
-						<td> <label>Select Resume: </label><input type="file" name="upload" path="uploadImagesName" multiple="multiple"/></td>
+			<h3 style="color: red;">${message}</h3>
 
-					</tr>
+			<form:form method="POST" action="saveCompleteUserProfile"
+				modelAttribute="userProfile" id="formID"
+				enctype="multipart/form-data"
+				onsubmit="return jQuery(this).validationEngine('validate');">
+
+				<div id="content" class="box">
+					<div class="verticalLine">
+
+						<h2>User Complete Information</h2>
+
+					</div>
+						<a href="#" id="show_button" onclick="hideshow()">Click here to upload files</a>
+						<div class="hidden-div" id="hidden-div">
+                         <table>
+                         	<tr>
+							<td><label>Select Profile<font color="red">*</font>:
+							</label><input type="file" name="upload" path="uploadImagesName"
+								onchange="previewImage(this)" accept="image/*"
+								multiple="multiple" /></td>
+
+						</tr>
 						<tr>
-						<td>Resume Headine.*:</td>
-						<td><form:input type="text" size="40" path="resume"
-								class="validate[required] input-text" maxlength="10"/><br></td>
-			 <tr>	
-			  <tr>	
-			 
-			 <td>Current Location*:</td>
-	         <td><form:select  path="currentlocation">
-	         <option value="null">select</option>
-                <c:forEach items="${location}" var="location">
+							<td><label>Select Resume: </label><input type="file"
+								name="upload" path="uploadImagesName" multiple="multiple" /></td>
 
-<option value="${location.currentlocation }">${location.currentlocation }</option>
+						</tr></table></div>
+						<table width="100%" class="nostyle"
+						style="border-collapse: separate; border-spacing: 5px">
+						<form:hidden path="userId" />
+						<tr>
+							<td>Resume Headine<font color="red">*</font>:
+							</td>
+							<td><form:input type="text" size="40" path="resume"
+									class="validate[required] input-text" maxlength="10" /><br></td>
+						<tr>
+						<tr>
 
- </c:forEach>
-                   </form:select>
-                          <br> </td>
-                           </tr> 
-                           
-                           
-                            <tr>	
-			 
-			 <td>Preffered Location*:</td>
-	         <td><form:select  path="prefferedlocation">
-	         <option value="null">select</option>
-                <c:forEach items="${preferlocation}" var="location">
+							<td>Current Location<font color="red">*</font>:
+							</td>
+							<td><form:select path="currentlocation">
+									<option value="null">select</option>
+									<c:forEach items="${location}" var="location">
 
-<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
+										<option value="${location.currentlocation }">${location.currentlocation}</option>
 
- </c:forEach>
-                   </form:select>
-                          <br> </td>
-                           </tr> 
-                           
-                           
-                             <tr>	
-			 
-			 <td>Role*:</td>
-	         <td><form:select  path="roletype">
-	         <option value="null">select</option>
-                <c:forEach items="${roletype12}" var="roleUser">
+									</c:forEach>
+								</form:select> <br></td>
+						</tr>
 
-<option value="${roleUser.roletype }">${roleUser.roletype }</option>
 
- </c:forEach>
-                   </form:select>
-                          <br> </td>
-                           </tr> 
-                           
-                           
-                               <tr>	
-			 
-			 <td>DOB*:</td>
-	         <td><form:select  path="DOBday">
-	         <option value="null">day</option>
-                <c:forEach items="${day1}" var="daydata">
+						<tr>
 
-<option value="${daydata.DOBday }">${daydata.DOBday }</option>
+							<td>Preffered Location<font color="red">*</font>:
+							</td>
+							<td><form:select path="prefferedlocation">
+									<option value="null">select</option>
+									<c:forEach items="${preferlocation}" var="location">
 
- </c:forEach>
-                   </form:select>
-                       
-                         
-                    <form:select  path="DOBmonth">
-	         <option value="null">month</option>
-                <c:forEach items="${month1}" var="month">
+										<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
 
-<option value="${month.DOBmonth }">${month.DOBmonth }</option>
+									</c:forEach>
+								</form:select> <br></td>
+						</tr>
 
- </c:forEach>
-                   </form:select>
-                          
-                         
-                         
-                         <form:select  path="DOByear">
-	         <option value="null">year</option>
-                <c:forEach items="${year1}" var="year">
 
-<option value="${year.DOByear }">${year.DOByear }</option>
+						<tr>
 
- </c:forEach>
-                   </form:select>
-                         </td>   
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                           </tr> 
-                           
-                       <%--     
-                              <tr>	
+							<td>Role<font color="red">*</font>:
+							</td>
+							<td><form:select path="roletype">
+									<option value="null">select</option>
+									<c:forEach items="${roletype12}" var="roleUser">
+
+										<option value="${roleUser.roletype }">${roleUser.roletype }</option>
+
+									</c:forEach>
+								</form:select> <br></td>
+						</tr>
+						<%--    
+                        <tr>	
 			 
 			 <td>Industry*:</td>
-	         <td><form:select  path="jobIndustry">
+	         <td><form:select  path="Industrydata">
 	         <option value="null">select</option>
                 <c:forEach items="${industrydata}" var="industryList">
 
-<option value="${industryList.jobIndustry }">${industryList.jobIndustry }</option>
+<option value="${industryList.Industrydata }">${industryList.Industrydata }</option>
 
  </c:forEach>
                    </form:select>
                           <br> </td>
-                           </tr>  --%>
-                           
-                           
-                            <tr>	
-			 
-			 
-			 
-			
-			 <td>Annual Salary*:</td>
-	         <td><form:select  path="salary">
-	         <option value="null">select</option>
-                <c:forEach items="${salary}" var="salary1">
-
-<option value="${salary1.salary }">${salary1.salary }</option>
-
- 
- 
-</c:forEach>
-                   </form:select>
-                          <br> </td>
-                           </tr> 
-				</tr>
-					<tr>
-						<td>address.*:</td>
-						<td><form:input type="text" size="40" path="address"
-								class="validate[required] input-text" maxlength="10"/><br></td>
-					</tr>
-					
-					
-					
-					<tr>
-						<td>city.*:</td>
-						<td><form:input type="text" size="40" path="city"
-								class="validate[required] input-text" maxlength="10"/><br></td>
-					</tr>
-					
-					
-					<tr>
-						<td>State.*:</td>
-						<td><form:input type="text" size="40" path="State"
-								class="validate[required] input-text"  maxlength="10"/><br></td>
-					</tr>
-					
-					<tr>
-						<td>zip.*:</td>
-						<td><form:input type="text" size="40" path="zip"
-								class="validate[required] input-text" maxlength="10"/><br></td>
-					</tr>
-					
-					
-				 
-					<tr>
-						<td><input type="submit" value="submit"
-							class="input-submit-02" onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
-					</tr>
-					  <tr>
-                      <td width="41%" align="right" valign="middle"><img
-						id="preview" height="100px" width="100px" />
-						</td>
-					</tr>
-				</table>
+                           </tr>  
+                            --%>
 
 
-</form:form>
-</body>
-</div></div>
+						<tr>
+							<td>DateOfBirth<font color="red">*</font>:
+							</td>
+							<td>
+								<%-- <form:input  path="dob"/> --%>
+								<form>
+									<form:input path="dob" id="datepicker" />
+								</form>
+							</td>
+						</tr>
+
+
+
+
+
+						<tr>
+							<td>Annual Salary<font color="red">*</font>:
+							</td>
+							<td><form:select path="salary">
+									<option value="null">select</option>
+									<c:forEach items="${salary}" var="salary1">
+
+										<option value="${salary1.salary }">${salary1.salary }</option>
+
+
+
+									</c:forEach>
+								</form:select> <br></td>
+						</tr>
+						</tr>
+						<tr>
+							<td>Address<font color="red">*</font>:
+							</td>
+							<td><form:input type="text" size="40" path="address"
+									class="validate[required] input-text" maxlength="10" /><br></td>
+						</tr>
+
+
+
+						<tr>
+							<td>City<font color="red">*</font>:
+							</td>
+							<td><form:input type="text" size="40" path="city"
+									class="validate[required] input-text" maxlength="10" /><br></td>
+						</tr>
+
+
+						<tr>
+							<td>State<font color="red">*</font>:
+							</td>
+							<td><form:input type="text" size="40" path="State"
+									class="validate[required] input-text" maxlength="10" /><br></td>
+						</tr>
+
+						<tr>
+							<td>Zip<font color="red">*</font>:
+							</td>
+							<td><form:input type="text" size="40" path="zip"
+									class="validate[required] input-text" maxlength="10" /><br></td>
+						</tr>
+
+
+
+						<tr>
+							<td><input type="submit" value="submit"
+								class="input-submit-02"
+								onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
+						</tr>
+						<tr>
+							<td width="41%" align="right" valign="middle"><img
+								id="preview" height="100px" width="100px" /></td>
+						</tr>
+					</table>
+				</div>
+
+			</form:form>
+		</body>
+	</div>
+</div>
 </html>

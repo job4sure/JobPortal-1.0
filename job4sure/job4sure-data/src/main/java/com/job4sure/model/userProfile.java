@@ -34,12 +34,8 @@ public class userProfile {
 
 	@Column(name = "ROLE")
 	private String roletype;
-	@Column(name = "DOB_MONTH")
-	private String DOBmonth;
-	@Column(name = "DOB_DAY")
-	private String DOBday;
-	@Column(name = "DOB_YEAR")
-	private String DOByear;
+	@Column(name="DATE_OF_BIRTH")
+	private String dob;
 	@Column(name = "GENDER")
 	private String gender;
 
@@ -127,28 +123,12 @@ public class userProfile {
 		this.roletype = roletype;
 	}
 
-	public String getDOBmonth() {
-		return DOBmonth;
+	public String getDob() {
+		return dob;
 	}
 
-	public void setDOBmonth(String dOBmonth) {
-		DOBmonth = dOBmonth;
-	}
-
-	public String getDOBday() {
-		return DOBday;
-	}
-
-	public void setDOBday(String dOBday) {
-		DOBday = dOBday;
-	}
-
-	public String getDOByear() {
-		return DOByear;
-	}
-
-	public void setDOByear(String dOByear) {
-		DOByear = dOByear;
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 
 	public String getGender() {
@@ -191,4 +171,5 @@ public class userProfile {
 		this.zip = zip;
 	}
 
+	
 }

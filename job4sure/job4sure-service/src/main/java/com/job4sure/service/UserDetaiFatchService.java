@@ -15,11 +15,7 @@ public interface UserDetaiFatchService {
 	
 	public List roleData();
 	
-	public List dobDay();
 	
-	public List dobMonth();
-	
-	public List dobYear();
 	
 	
 	

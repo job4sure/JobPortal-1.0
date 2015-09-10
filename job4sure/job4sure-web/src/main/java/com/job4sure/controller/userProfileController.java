@@ -87,12 +87,7 @@ public class userProfileController {
 			model.addAttribute("industrydata", industry);
 			List role=userdetailfatch.roleData();
 			model.addAttribute("roletype12", role);
-			List day=userdetailfatch.dobDay();
-			model.addAttribute("day1", day);
-			List month=userdetailfatch.dobMonth();
-			model.addAttribute("month1", month);
-			List year=userdetailfatch.dobYear();
-			model.addAttribute("year1", year);
+			
 		 return "userCompleteInfo";
 		}else{
 		 model.addAttribute("message",IConstant.FIRST_COMPLETE_INFO_MESSAGE);	
