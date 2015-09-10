@@ -111,12 +111,6 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 		}
 
 	}
-
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String showUserPage() {
-		return "userPage";
-	}
-
 	@RequestMapping(value = "/companyHome", method = RequestMethod.GET)
 	public String showCompPage(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
 		HttpSession session=request.getSession();
@@ -124,15 +118,6 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 		map.put("Registration", new Registration());
 		model.addAttribute("registration", registration);
 		return "companyHomePage";
-	}
-	
-	@RequestMapping(value = "/showAdminHomePage", method = RequestMethod.GET)
-	public String showAdminHomePage(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
-		/*HttpSession session=request.getSession();
-		Registration registration = (Registration) session.getAttribute("registration");
-		map.put("Registration", new Registration());
-		model.addAttribute("registration", registration);*/
-		return "adminHomePage";
 	}
 	
 	@RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)

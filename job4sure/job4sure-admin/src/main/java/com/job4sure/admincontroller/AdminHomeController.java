@@ -45,16 +45,6 @@ public class AdminHomeController {
 		model.addAttribute("message", message);
 		return "loginPage";
 	}
-	
-	
-/*	@RequestMapping(value = "/OpenloginPage", method = RequestMethod.GET)
-public String showloginPage(@RequestParam(value = "message", required = false) String message, Model model) {
-	if (message != null) {
-		model.addAttribute("msg", message);
-	}
-	return "loginPage";
-}*/
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(
 			@RequestParam(value = "error", required = false) String error,
@@ -79,8 +69,6 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 	public String showsuccesspage(HttpServletRequest request,
 			Principal principal) {
 		HttpSession session=request.getSession();
-		/*boolean isUser = request.isUserInRole("USER");
-		boolean isComp = request.isUserInRole("COMP");*/
 		boolean isAdmin = request.isUserInRole("ADMIN");
 		String userName=principal.getName();
 		Registration registration=	registrationService.getLoggedInUserInfo(userName);
@@ -107,80 +95,9 @@ public String showloginPage(@RequestParam(value = "message", required = false) S
 		} else {
 			return "loginPage";
 		}
-
 	}
-
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String showUserPage() {
-		return "userPage";
-	}
-
-	@RequestMapping(value = "/companyHome", method = RequestMethod.GET)
-	public String showCompPage(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
-		HttpSession session=request.getSession();
-		Registration registration = (Registration) session.getAttribute("registration");
-		map.put("Registration", new Registration());
-		model.addAttribute("registration", registration);
-		return "companyHomePage";
-	}
-	
 	@RequestMapping(value = "/showAdminHomePage", method = RequestMethod.GET)
 	public String showAdminHomePage(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
 		return "adminHomePage";
 	}
-	
-	@RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
-public String ShowforgotPassPage(Map<String, Object> map,@RequestParam(required = false) String message,ModelMap model) {
-	map.put("login", new Login());
-	model.addAttribute("message", message);
-	return "forgotPassPage";
-}
-
-@RequestMapping(value = "/sendMailToResetPass", method =  RequestMethod.POST)
-private String sendMailToResetPass(@ModelAttribute("login") Login login,ModelMap model)  {
-	
-	
-	Registration registration=	registrationService.getLoggedInUserInfo(login.getEmail());
-	boolean status=false;
-	try {
-	login.setRegistration_Id(registration.getRegistrationId());
-		status = registrationService.sendMailToResetPass(login);
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	if (status) {
-		model.addAttribute("message", IConstant.MAIL_SUCCESS_MESSAGE);
-	} else {
-		model.addAttribute("message", IConstant.MAIL_FAILURE_MESSAGE);
-	}
-	return "redirect:/forgotPassword";
-}
-
-
-@RequestMapping(value = "/reCreatePass", method = {RequestMethod.GET,RequestMethod.POST})
-public String reCreatePass(@RequestParam(required = false) String registrationId,String message,Map<String, Object> map,ModelMap model) throws Exception {
-	 registrationId = EncryptDecrypt.decrypt(registrationId);
-	Integer regId = Integer.parseInt(registrationId);
-	Registration registration=new Registration();
-	registration.setRegistrationId(regId);
-	map.put("registration",registration);
-	model.addAttribute("message", message);
-	return "newPassword";
-}
-
-
-
- @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
- public String UpdatePassword(@ModelAttribute("registration") Registration registration,
-   BindingResult result, Model model, Map<String, Object> map) {
-
-
-	 registrationService.updatePassword(registration.getRegistrationId(),registration.getPassword());
-	 model.addAttribute("message", "Your password successfully updated" );
-  //System.out.print("into forget pass");
-  return "redirect:/OpenloginPage";
- }
-	
-
 }
