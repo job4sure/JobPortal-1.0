@@ -12,8 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
+import com.job4sure.model.Education;
 import com.job4sure.model.userProfile;
 import com.job4sure.repository.AttachmentRepository;
+import com.job4sure.repository.EducationRepository;
 import com.job4sure.repository.ProfileCompleteRepository;
 import com.job4sure.service.ProfileCompleteService;
 import com.job4sure.util.IConstant;
@@ -26,6 +28,9 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 
 	@Autowired
 	private AttachmentRepository attachmentRepository;
+	
+	@Autowired
+	private EducationRepository EducationRepository;
 
 	@SuppressWarnings("resource")
 	public boolean saveCompleteUserProfile(userProfile userProfile, MultipartFile filePart,
@@ -84,12 +89,20 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 	}
 
 	public int getprofileCompletedInPercent(Integer registrationId) {
-		int noOfTables = 2;
+		int noOfTables = 3;
 		int noOfTablesField = 1;
 
 		userProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
 
 		if (userProfile != null) {
+			noOfTablesField++;
+		}
+		
+		Education education=EducationRepository.view(registrationId);
+		if(education==null){
+			
+		}
+		else{
 			noOfTablesField++;
 		}
 
