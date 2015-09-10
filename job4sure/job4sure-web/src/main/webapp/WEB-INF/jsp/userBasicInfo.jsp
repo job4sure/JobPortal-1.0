@@ -137,9 +137,9 @@ jQuery(document).ready(function(){
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<!-- <input type="radio" name="rollType" value="2" />Employer -->
 			<div id="DivFree">
-			<table>
+			<center><table>
 					<tr>
-						<td style="width: 150px;"><label id="username">Full Name*:</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
+						<td style="width: 150px;"><label id="username">Full Name<font color="red">*</font>:</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
 						<td><form:input type="text" size="30" path="fullName"
 								class="validate[required] input-text"  maxlength="80" id="fullName"/></td>
 					</tr>
@@ -165,9 +165,9 @@ jQuery(document).ready(function(){
 					</tr>
 					
 					<tr>
-						<td>Mobile No.*:</td>
-						<td><form:input type="text" size="10" path="mobileNo"
-								class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
+						<td>Mobile No.<font color="red">*</font>:</td>
+						<td><form:input type="text" size="10" path="mobileNo" style="font-size:18pt;height:30;width:260;"
+							maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 					</tr>
 					
 					<tr>
@@ -203,6 +203,7 @@ jQuery(document).ready(function(){
 					</tr>
 
 				</table>
+				</center>
 			</div>
 		</p>
 	</form:form>
