@@ -101,6 +101,8 @@ public class JobDescriptionController {
 	JobDescription jobDescription = jobDescriptionService.editJob(jobId);
 	List<Salary> salaryList=jobDescriptionService.getAllSalary();
 	 List<Experience> experienceList=jobDescriptionService.getAllExperience();
+	 List<Skills> skillsList = jobDescriptionService.getAllSkills();
+	 model.addAttribute("skillsList", skillsList);
 	model.addAttribute("salaryList", salaryList);
 	model.addAttribute("experienceList", experienceList);
 	model.addAttribute("jobDescription", jobDescription);
