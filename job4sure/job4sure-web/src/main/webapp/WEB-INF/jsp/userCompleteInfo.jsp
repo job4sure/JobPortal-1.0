@@ -148,8 +148,14 @@
 						<center>
 							<h2>User Complete Information</h2>
 						</center>
-							<table width="100%" class="nostyle"
-							style="border-collapse: separate; border-spacing: 5px">
+						
+						
+			<div id="content" class="box">
+			<fieldset>
+			
+			<center>
+		<table width="100%" class="nostyle" style="border-collapse: separate;border-spacing: 5px">
+							
 
 
 							<form:hidden path="userId" />
@@ -342,6 +348,10 @@
 							</tr>
 
 						</table>
+						</center>
+						</fieldset>
+						</div>
+						</div>
 
 						<div width="41%" valign="middle">
 							<img id="preview" height="140px" width="140px" />

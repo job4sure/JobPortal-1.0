@@ -152,10 +152,13 @@ jQuery(document).ready(function(){
       <ul class="box">
      
 		</ul>
-    </div><center><h2>Company Profile</h2></center>
+   </div><center><h2>Company Profile</h2></center>
     <h3 style="color: red;">${message}</h3>
     <div id="content" class="box">
+    <fieldset>
+    <center>
   <table>
+
   <form:hidden path="registrationId"/>
   <tr>
 	<%-- <td>Company name*:</td>
@@ -207,9 +210,12 @@ jQuery(document).ready(function(){
 	<td><form:input path="zipcode" class="validate[required] input-text"/></td>
 	</tr>
 	<tr><td><input type="submit" value="submit" onclick="jQuery('#formID').submit();"/></td></tr>
-	
+
   </table>
+  </center>
+ </fieldset>
     </div>
+    
     </div>
     
   </div>
