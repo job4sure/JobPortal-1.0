@@ -109,6 +109,27 @@
      Profile Complete
     	 <div id="progress" class="graph"><div id="bar" style="width:${profilecompleted}%"><p>${profilecompleted}% complete</p></div></div>
     </div>
+    <div><br>
+   <div class="wrapper">
+        <div class="column">
+        <b>Resume Headline:</b>${userProfile.resume}<br><br>
+         <b>Current Location:</b>${userProfile.currentlocation}<br><br>
+          <b>Preferred Location:</b>${userProfile.prefferedlocation}<br><br>
+           <b>Preferred Industry:</b>${userProfile.industry}<br><br>
+           <b>Role:</b>${userProfile.roletype}<br><br>
+           <b>Annual Salary:</b>${userProfile.salary}<br><br>
+        </div>
+        <div class="column">
+         <b>Date of Birth:</b>${userProfile.dob}<br><br>
+          <b>Gender:</b>${userProfile.gender}<br><br>
+           <b>Permanent Address:</b>${userProfile.address}<br><br>
+              <b>Hometown/City:</b>${userProfile.city}<br><br>
+               <b>Zip:</b>${userProfile.zip}<br><br>
+              <b>State:</b>${userProfile.state}<br><br>
+       </div>
+        <div class="colNew">hello deepak
+        </div>
+</div>
   </div>
   </div>
     		<c:url value="/logout" var="logoutUrl" />

@@ -132,3 +132,18 @@ DISPLAY TAG END HERE
 	padding: 5px;
 	background: #FFF !important;
 }
+
+
+.wrapper {
+    margin: 0 auto;
+    width: 850px;
+}
+
+.column {
+       float: left;
+       width: 33%;
+}
+.colNew {
+       float: right;
+       width: 33%;
+}
