@@ -201,11 +201,26 @@
 					</tr>
 					<tr>
 						<td><font color="red">*</font>Experience</td>
-						<td><form:input path="experience" size="10"
+						<%-- <td><form:input path="experience" size="10"
 								class="validate[required] input-text" />
 							<div id="error">
 								<form:errors path="experience" />
-							</div></td>
+							</div></td> --%>
+							
+							<td><form:select path="minExperience.experienceId">
+								<%-- <form:option value="0" label="Min Annual Salary" /> --%>
+								<c:forEach items="${experienceList}" var="experience">
+									<form:option value="${experience.experienceId}"
+										label="${experience.experience}" />
+								</c:forEach>
+							</form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId">
+								<%-- <form:option value="0" label="Max Annual Salary" /> --%>
+								<c:forEach items="${experienceList}" var="experience">
+									<form:option value="${experience.experienceId}"
+										label="${experience.experience}" />
+								</c:forEach>
+							</form:select></td>
+							
 					</tr>
 					<tr>
 						<td>Education</td>

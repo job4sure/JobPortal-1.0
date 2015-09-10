@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.job4sure.model.Experience;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.model.Registration;
@@ -46,9 +47,10 @@ public class JobDescriptionController {
 	
 	 List<Salary> salaryList=jobDescriptionService.getAllSalary();
 	
-	 
+	 List<Experience> experienceList=jobDescriptionService.getAllExperience();
 	 
 	 model.addAttribute("salaryList", salaryList);
+	 model.addAttribute("experienceList", experienceList);
 	 
 	 model.addAttribute("skillsList", skillsList);
 	if (methodType.equals("POST")) {
@@ -98,7 +100,9 @@ public class JobDescriptionController {
     public String editJob(ModelMap model, @RequestParam Integer jobId) {
 	JobDescription jobDescription = jobDescriptionService.editJob(jobId);
 	List<Salary> salaryList=jobDescriptionService.getAllSalary();
+	 List<Experience> experienceList=jobDescriptionService.getAllExperience();
 	model.addAttribute("salaryList", salaryList);
+	model.addAttribute("experienceList", experienceList);
 	model.addAttribute("jobDescription", jobDescription);
 	return "addJobDesc";
     }

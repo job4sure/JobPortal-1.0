@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.job4sure.model.Experience;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Salary;
 import com.job4sure.model.Skills;
+import com.job4sure.repository.ExperienceRepository;
 import com.job4sure.repository.JobDescriptionRepository;
 import com.job4sure.repository.SalaryRepository;
 import com.job4sure.repository.SkillsRepository;
@@ -27,6 +29,9 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 
 	@Autowired
 	private SalaryRepository salaryRepository;
+	
+	@Autowired
+	private ExperienceRepository experienceRepository;
 	
 	
 	
@@ -71,6 +76,11 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 	public List<Salary> getAllSalary() {
 	   List<Salary> minSalaryList=salaryRepository.findAll();
 	    return minSalaryList;
+	}
+
+	public List<Experience> getAllExperience() {
+	    List<Experience>experienceList=experienceRepository.findAll();
+	    return experienceList;
 	}
 	
 	
