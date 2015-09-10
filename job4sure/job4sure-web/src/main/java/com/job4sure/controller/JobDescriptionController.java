@@ -36,23 +36,18 @@ public class JobDescriptionController {
     @Qualifier("jobDescriptionValidator")
     private Validator validator;
 
-    
     @RequestMapping(value = "/createJobDescription", method = { RequestMethod.GET, RequestMethod.POST })
     public String createJobDescription(@ModelAttribute JobDescription jobDescription, HttpServletRequest request,
-		    BindingResult bindingResult, Model model,@RequestParam(required = false)String status,String skill) {
+		    BindingResult bindingResult, Model model, @RequestParam(required = false) String status,
+		    String skill) {
 	String methodType = request.getMethod();
 	model.addAttribute("status", status);
-	
 	List<Skills> skillsList = jobDescriptionService.getAllSkills();
-	
-	 List<Salary> salaryList=jobDescriptionService.getAllSalary();
-	
-	 List<Experience> experienceList=jobDescriptionService.getAllExperience();
-	 
-	 model.addAttribute("salaryList", salaryList);
-	 model.addAttribute("experienceList", experienceList);
-	 
-	 model.addAttribute("skillsList", skillsList);
+	List<Salary> salaryList = jobDescriptionService.getAllSalary();
+	List<Experience> experienceList = jobDescriptionService.getAllExperience();
+	model.addAttribute("salaryList", salaryList);
+	model.addAttribute("experienceList", experienceList);
+	model.addAttribute("skillsList", skillsList);
 	if (methodType.equals("POST")) {
 	    validator.validate(jobDescription, bindingResult);
 	    if (bindingResult.hasErrors()) {
@@ -61,10 +56,10 @@ public class JobDescriptionController {
 	    HttpSession session = request.getSession(false);
 	    Registration registration = (Registration) session.getAttribute("registration");
 	    jobDescription.setRegistration(registration);
-	   JobDescriptionApprovalStatus approvalStatus=new JobDescriptionApprovalStatus();
-	   approvalStatus.setStatusId(1);
+	    JobDescriptionApprovalStatus approvalStatus = new JobDescriptionApprovalStatus();
+	    approvalStatus.setStatusId(1);
 	    jobDescription.setApprovalStatus(approvalStatus);
-	    boolean state = jobDescriptionService.saveJobDescription(jobDescription,skill);
+	    boolean state = jobDescriptionService.saveJobDescription(jobDescription, skill);
 	    if (state) {
 		model.addAttribute("status", "Successfully save job description...");
 	    } else {
@@ -99,10 +94,10 @@ public class JobDescriptionController {
     @RequestMapping(value = "/editJob", method = { RequestMethod.GET, RequestMethod.POST })
     public String editJob(ModelMap model, @RequestParam Integer jobId) {
 	JobDescription jobDescription = jobDescriptionService.editJob(jobId);
-	List<Salary> salaryList=jobDescriptionService.getAllSalary();
-	 List<Experience> experienceList=jobDescriptionService.getAllExperience();
-	 List<Skills> skillsList = jobDescriptionService.getAllSkills();
-	 model.addAttribute("skillsList", skillsList);
+	List<Salary> salaryList = jobDescriptionService.getAllSalary();
+	List<Experience> experienceList = jobDescriptionService.getAllExperience();
+	List<Skills> skillsList = jobDescriptionService.getAllSkills();
+	model.addAttribute("skillsList", skillsList);
 	model.addAttribute("salaryList", salaryList);
 	model.addAttribute("experienceList", experienceList);
 	model.addAttribute("jobDescription", jobDescription);

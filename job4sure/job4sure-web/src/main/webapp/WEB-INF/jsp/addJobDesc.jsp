@@ -262,8 +262,8 @@ function showCheckboxes() {
 						<td>Skills</td>
 						<td>
 							<div class="multiselect">
-								<div class="selectBox" onclick="showCheckboxes()">
-									<select>
+								<div class="selectBox" onclick="showCheckboxes()" >
+									<select >
 										<option>Select an option</option>
 									</select>
 									<div class="overSelect"></div>
@@ -272,17 +272,19 @@ function showCheckboxes() {
 
 
 									<c:forEach items="${skillsList}" var="refskills">
-										<label><form:checkbox path="skill"
+										<label><form:checkbox path="skill" class="validate[required]"
 												id="${refskills.skillsName}" value="${refskills.skillsId}" />${refskills.skillsName}</label>
 									</c:forEach>
 								</div>
+							</div><div id="error">
+								<form:errors path="skill" />
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td><font color="red">*</font>Job Role</td>
 						<td><form:input path="role" size="20"
-								class="validate[required] input-text" />
+								class="validate[required,custom[onlyLetterSp]] input-text" />
 							<div id="error">
 								<form:errors path="role" />
 							</div></td>
@@ -290,7 +292,7 @@ function showCheckboxes() {
 					<tr>
 						<td>Number Of Candidates</td>
 						<td><form:input path="noOfCandidates" size="3"
-								class="validate[required] input-text" />
+								class="validate[required,custom[integer]] input-text" />
 							<div id="error">
 								<form:errors path="noOfCandidates" />
 							</div></td>
