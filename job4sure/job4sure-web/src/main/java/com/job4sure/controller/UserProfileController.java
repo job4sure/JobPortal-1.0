@@ -19,30 +19,29 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Registration;
 import com.job4sure.model.UserProfile;
-import com.job4sure.service.UserProfileService;
 import com.job4sure.service.RegistrationService;
-import com.job4sure.service.UserDetaiFatchService;
+import com.job4sure.service.UserProfileService;
 import com.job4sure.util.IConstant;
 import com.job4sure.validator.RegistrationValidator;
 @Controller
 public class UserProfileController {
 
          @Autowired
-	    private UserProfileService profileCompleteService;
+	    private UserProfileService userProfileService;
          @Autowired
      	private RegistrationService registrationService;
      	@Autowired
      	private RegistrationValidator registrationValidator;
-     	@Autowired
-     	private UserDetaiFatchService userdetailfatch;
+     	/*@Autowired
+     	private UserDetaiFatchService userdetailfatch;*/
 	
 	@RequestMapping(value = "/userProfileHomePage", method = RequestMethod.GET)
 	public String showuserProfile(Map<String, Object> map,String message,ModelMap model, HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
-		UserProfile userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+		UserProfile userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
 		String loggedInEmail=registration.getEmail();
-		int profilecompleted=profileCompleteService.getprofileCompletedInPercent(registration.getRegistrationId());
+		int profilecompleted=userProfileService.getprofileCompletedInPercent(registration.getRegistrationId());
 		model.addAttribute("profilecompleted", profilecompleted);
 		map.put("Registration", new Registration());
 		model.addAttribute("registration", registration);
@@ -66,15 +65,15 @@ public class UserProfileController {
 	@RequestMapping(value = "/userCompletInfoPageShow", method = RequestMethod.GET)
 	public String Complete_profile(Map<String,Object>map,String message,ModelMap model) 
 	{
-		List currentLocation= userdetailfatch.currentLocation();
+		List currentLocation= userProfileService.currentLocation();
 		model.addAttribute("location", currentLocation);
-		List annualSalary=userdetailfatch.salaryAnnual();
+		List annualSalary=userProfileService.salaryAnnual();
 		model.addAttribute("salary", annualSalary);
-		List preferedLocation=userdetailfatch.prefferedLocation();
+		List preferedLocation=userProfileService.prefferedLocation();
 		model.addAttribute("preferlocation", preferedLocation);
-		List industry=userdetailfatch.industryData();
+		List industry=userProfileService.industryData();
 		model.addAttribute("industrydata", industry);
-		List role=userdetailfatch.roleData();
+		List role=userProfileService.roleData();
 		model.addAttribute("roletype12", role);
 		map.put("userProfile", new UserProfile());
 		model.addAttribute("message", message);
@@ -85,19 +84,19 @@ public class UserProfileController {
 	public String updateCompleteProfile(@ModelAttribute("userProfile") UserProfile userProfile,Map<String, Object> map,String message,ModelMap model,HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
-		userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+		userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
 		if(userProfile!=null){
 		 map.put("userProfile", userProfile);
 		 model.addAttribute("message",message);
-		    List currentLocation= userdetailfatch.currentLocation();
+		    List currentLocation= userProfileService.currentLocation();
 			model.addAttribute("location", currentLocation);
-			List annualSalary=userdetailfatch.salaryAnnual();
+			List annualSalary=userProfileService.salaryAnnual();
 			model.addAttribute("salary", annualSalary);
-			List preferedLocation=userdetailfatch.prefferedLocation();
+			List preferedLocation=userProfileService.prefferedLocation();
 			model.addAttribute("preferlocation", preferedLocation);
-			List industry=userdetailfatch.industryData();
+			List industry=userProfileService.industryData();
 			model.addAttribute("industrydata", industry);
-			List role=userdetailfatch.roleData();
+			List role=userProfileService.roleData();
 			model.addAttribute("roletype12", role);
 			
 		 return "userCompleteInfo";
@@ -118,7 +117,7 @@ public class UserProfileController {
 		 HttpSession session=request.getSession();
 		 Registration  registration = (Registration) session.getAttribute("registration");
 		      userProfile.setRegistrationId(registration.getRegistrationId());
-		     profileCompleteService.saveCompleteUserProfile(userProfile,filePart,upload,attchmentName);
+		      userProfileService.saveCompleteUserProfile(userProfile,filePart,upload,attchmentName);
 		     model.addAttribute("message", IConstant.USER_COMPLETE_INFO_SUCCESS_MESSAGE);
 		     return "redirect:/updateCompleteInfo";
 }

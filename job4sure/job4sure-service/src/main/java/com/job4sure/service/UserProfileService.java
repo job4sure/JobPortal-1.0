@@ -1,5 +1,7 @@
 package com.job4sure.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -12,4 +14,14 @@ public interface UserProfileService {
 			Integer registrationId);
 
 	public int getprofileCompletedInPercent(Integer registrationId);
+	
+	  public List salaryAnnual();
+		
+		public List industryData();
+		
+		public List currentLocation();
+		
+		public List prefferedLocation();
+		
+		public List roleData();
 }
