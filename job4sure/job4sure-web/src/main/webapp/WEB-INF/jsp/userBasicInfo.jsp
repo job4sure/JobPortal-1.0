@@ -136,8 +136,16 @@ jQuery(document).ready(function(){
 		<input hidden ="radio" name="rollType" value="1" checked /> 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<!-- <input type="radio" name="rollType" value="2" />Employer -->
-			<div id="DivFree">
-			<center><table>
+			<!-- <div id="DivFree"> -->
+			
+			
+			<div id="content" class="box">
+			
+			<fieldset>
+			
+			<center>
+		<table width="100%" class="nostyle" style="border-collapse: separate;border-spacing: 5px">
+		
 					<tr>
 						<td style="width: 150px;"><label id="username">Full Name<font color="red">*</font>:</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
 						<td><form:input type="text" size="30" path="fullName"
@@ -147,17 +155,7 @@ jQuery(document).ready(function(){
 					<tr>
 						<td></td>
 						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-
-
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
+					
 					
 					<tr>
 						<td></td>
@@ -198,14 +196,20 @@ jQuery(document).ready(function(){
 						<td></td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="submit"
+						<td><input type="submit" value="submit" 
 							class="input-submit-02" onclick="return confirm('Are you sure you want to update this item?'); jQuery('#formID').submit();" /></td>
 					</tr>
 
 				</table>
 				</center>
+				</div>
+					
+				</fieldset>
+			
 			</div>
-		</p>
+				
+			
+
 	</form:form>
  </div>
   </div>
