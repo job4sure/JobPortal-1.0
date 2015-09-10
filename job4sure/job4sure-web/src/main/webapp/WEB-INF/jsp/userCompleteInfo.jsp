@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
 	rel="stylesheet" type="text/css" />
@@ -23,12 +23,7 @@
 	type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <title>Insert title here</title>
-<style>
-.verticalLine {
-	border-bottom: thick solid #050505;
-}
 
-</style>
 <style>
 .hidden-div {
 	display: none;
@@ -83,6 +78,14 @@
       
 	}
 </script>
+<style>
+#preview {
+	float: right;
+	border: 1px dotted black;
+	margin-right: 5%;
+	margin-top: -52%;
+}
+</style>
 </head>
 <div id="main">
 	<hr class="noscreen" />
@@ -92,7 +95,6 @@
 		<!-- Aside (Left Column) -->
 		<div id="aside" class="box">
 			<div class="padding box">
-				<!-- Logo (Max. width = 200px) -->
 				<p id="logo">
 					<a href="http://all-free-download.com/free-website-templates/"><img
 						src="resources/design/logo.gif" alt="" /></a>
@@ -143,201 +145,208 @@
 				<div id="content" class="box">
 					<div class="verticalLine">
 
-						<h2>User Complete Information</h2>
+						<center>
+							<h2>User Complete Information</h2>
+						</center>
+							<table width="100%" class="nostyle"
+							style="border-collapse: separate; border-spacing: 5px">
 
+
+							<form:hidden path="userId" />
+							<tr>
+								<td style="padding: 15;" align="center">Resume Headine<font
+									color="red">*</font>:
+								</td>
+								<td><form:input type="text" size="40" path="resume"
+										class="validate[required] input-text" maxlength="10" /><br></td>
+							</tr>
+							<tr>
+
+								<td style="padding: 15;" align="center">Current Location<font
+									color="red">*</font>:
+								</td>
+								<td><form:select path="currentlocation"
+										style="width: 330px;">
+										<option value="null">select</option>
+										<c:forEach items="${location}" var="location">
+
+											<option value="${location.currentlocation }">${location.currentlocation}</option>
+
+										</c:forEach>
+									</form:select> <br></td>
+							</tr>
+
+
+							<tr>
+
+								<td style="padding: 15;" align="center">Preffered Location<font
+									color="red">*</font>:
+								</td>
+								<td><form:select path="prefferedlocation"
+										style="width: 330px;">
+										<option value="null">select</option>
+										<c:forEach items="${preferlocation}" var="location">
+
+											<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
+
+										</c:forEach>
+									</form:select> <br></td>
+							</tr>
+
+
+							<tr>
+
+								<td style="padding: 15;" align="center">Role<font
+									color="red">*</font>:
+								</td>
+								<td><form:select path="roletype" style="width: 330px;">
+										<option value="null">select</option>
+										<c:forEach items="${roletype12}" var="roleUser">
+
+											<option value="${roleUser.roletype }">${roleUser.roletype }</option>
+
+										</c:forEach>
+									</form:select> <br></td>
+							</tr>
+							<tr>
+								<td style="padding: 15;" align="center">DateOfBirth<font
+									color="red">*</font>:
+								</td>
+								<td>
+
+									<form>
+										<form:input path="dob" id="datepicker" style="width: 330px;" />
+									</form>
+								</td>
+							</tr>
+
+
+							<tr>
+
+
+								<td style="padding: 15;" align="center">Gender<font
+									color="red">*</font></td>
+
+								<td><form:radiobutton path="gender" value="Male" />Male <form:radiobutton
+										path="gender" value="Female" />Female</td>
+							</tr>
+
+
+
+							<tr>
+								<td style="padding: 15;" align="center">Experience<font
+									color="red">*</font>:
+								</td>
+								<td><form:input type="text" size="40" path="experience"
+										class="validate[required] input-text" maxlength="10" /><br></td>
+							</tr>
+
+
+							<tr>
+								<td style="padding: 15;" align="center">Phone<font
+									color="red">*</font>:
+								</td>
+								<td><form:input type="text" size="40" path="phone"
+										class="validate[required] input-text" maxlength="10" /><br></td>
+							</tr>
+
+
+							<tr>
+
+								<td style="padding: 15;" align="center">Marital Status<font
+									color="red">*</font></td>
+
+								<td><form:radiobutton path="maritalstatus" value="single" />Single
+									<form:radiobutton path="maritalstatus" value="married" />Married
+								</td>
+							</tr>
+
+
+							<tr>
+								<td style="padding: 15;" align="center">Annual Salary<font
+									color="red">*</font>:
+								</td>
+								<td><form:select path="salary" style="width:330px;">
+										<option value="null">select</option>
+										<c:forEach items="${salary}" var="salary1">
+
+											<option value="${salary1.salary }">${salary1.salary }</option>
+
+
+
+										</c:forEach>
+									</form:select> <br></td>
+							</tr>
+							</tr>
+							<tr>
+								<td style="padding: 15;" align="center">Address<font
+									color="red">*</font>:
+								</td>
+								<td><form:input type="text" size="40" path="address"
+										class="validate[required] input-text" maxlength="10" /><br></td>
+							</tr>
+
+
+
+							<tr>
+								<td style="padding: 15;" align="center">City<font
+									color="red">*</font>:
+								</td>
+								<td><form:input type="text" size="40" path="city"
+										class="validate[required] input-text" maxlength="10" /><br></td>
+							</tr>
+
+
+							<tr>
+								<td style="padding: 15;" align="center">State<font
+									color="red">*</font>:
+								</td>
+								<td><form:input type="text" size="40" path="State"
+										class="validate[required] input-text" maxlength="10" /><br></td>
+							</tr>
+
+							<tr>
+								<td style="padding: 15;" align="center">Zip<font
+									color="red">*</font>:
+								</td>
+								<td><form:input type="text" size="40" path="zip"
+										class="validate[required] input-text" maxlength="10" /><br></td>
+							</tr>
+
+							</div>
+							<!-- <a href="#" id="show_button" onclick="hideshow()">Click here to upload files</a> -->
+							<div class="hidden-div" id="hidden-div">
+
+								<tr>
+									<td style="padding: 15;" align="center"><label>Select
+											Profile<font color="red">*</font>:
+									</label></td>
+									<td><input type="file" name="upload"
+										path="uploadImagesName" onchange="previewImage(this)"
+										accept="image/*" multiple="multiple" /></td>
+
+								</tr>
+								<tr>
+									<td style="padding: 15;" align="center"><label>Select
+											Resume: </label></td>
+									<td><input type="file" name="upload"
+										path="uploadImagesName" multiple="multiple" /></td>
+
+								</tr>
+							</div>
+
+							<tr>
+								<td style="padding: 15;" align="center"><input
+									type="submit" value="submit" class="input-submit-02"
+									onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
+							</tr>
+
+						</table>
+
+						<div width="41%" valign="middle">
+							<img id="preview" height="140px" width="140px" />
+						</div>
 					</div>
-						<a href="#" id="show_button" onclick="hideshow()">Click here to upload files</a>
-						<div class="hidden-div" id="hidden-div">
-                         <table>
-                         	<tr>
-							<td><label>Select Profile<font color="red">*</font>:
-							</label><input type="file" name="upload" path="uploadImagesName"
-								onchange="previewImage(this)" accept="image/*"
-								multiple="multiple" /></td>
-
-						</tr>
-						<tr>
-							<td><label>Select Resume: </label><input type="file"
-								name="upload" path="uploadImagesName" multiple="multiple" /></td>
-
-						</tr></table></div>
-						<table width="100%" class="nostyle"
-						style="border-collapse: separate; border-spacing: 5px">
-						<form:hidden path="userId" />
-						<tr>
-							<td>Resume Headine<font color="red">*</font>:
-							</td>
-							<td><form:input type="text" size="40" path="resume"
-									class="validate[required] input-text" maxlength="10" /><br></td>
-						</tr>
-						<tr>
-
-							<td>Current Location<font color="red">*</font>:
-							</td>
-							<td><form:select path="currentlocation" style="width: 330px;">
-									<option value="null">select</option>
-									<c:forEach items="${location}" var="location">
-
-										<option value="${location.currentlocation }">${location.currentlocation}</option>
-
-									</c:forEach>
-								</form:select> <br></td>
-						</tr>
-
-
-						<tr>
-
-							<td>Preffered Location<font color="red">*</font>:
-							</td>
-							<td><form:select path="prefferedlocation" style="width: 330px;">
-									<option value="null">select</option>
-									<c:forEach items="${preferlocation}" var="location">
-
-										<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
-
-									</c:forEach>
-								</form:select> <br></td>
-						</tr>
-
-
-						<tr>
-
-							<td>Role<font color="red">*</font>:
-							</td>
-							<td><form:select path="roletype" style="width: 330px;">
-									<option value="null">select</option>
-									<c:forEach items="${roletype12}" var="roleUser">
-
-										<option value="${roleUser.roletype }">${roleUser.roletype }</option>
-
-									</c:forEach>
-								</form:select> <br></td>
-						</tr>
-						<%--    
-                        <tr>	
-			 
-			 <td>Industry*:</td>
-	         <td><form:select  path="Industrydata">
-	         <option value="null">select</option>
-                <c:forEach items="${industrydata}" var="industryList">
-
-<option value="${industryList.Industrydata }">${industryList.Industrydata }</option>
-
- </c:forEach>
-                   </form:select>
-                          <br> </td>
-                           </tr>  
-                            --%>
-
-
-						<tr>
-							<td>DateOfBirth<font color="red">*</font>:
-							</td>
-							<td>
-							
-								<form>
-									<form:input path="dob" id="datepicker" style="width: 330px;" />
-								</form>
-							</td>
-						</tr>
-						
-						
-						<tr>
-
-
-<td>Gender<font color="red">*</font></td>
-
-<td><form:radiobutton path="gender" value="Male"/>Male 
-<form:radiobutton path="gender" value="Female"/>Female </td>
-</tr>
-						
-		
-						
-						<tr>
-							<td>Experience<font color="red">*</font>:
-							</td>
-							<td><form:input type="text" size="40" path="experience"
-									class="validate[required] input-text" maxlength="10" /><br></td>
-						</tr>
-						
-						
-						<tr>
-							<td>Phone<font color="red">*</font>:
-							</td>
-							<td><form:input type="text" size="40" path="phone"
-									class="validate[required] input-text" maxlength="10" /><br></td>
-						</tr>
-
-
-<tr>
-
-<td>Marital Status<font color="red">*</font></td>
-
-<td><form:radiobutton path="maritalstatus" value="single"/>Single 
-<form:radiobutton path="maritalstatus" value="married"/>Married </td>
-</tr>				
-						
-						
-						<tr>
-							<td>Annual Salary<font color="red">*</font>:
-							</td>
-							<td><form:select path="salary" style="width:330px;">
-									<option value="null">select</option>
-									<c:forEach items="${salary}" var="salary1">
-
-										<option value="${salary1.salary }">${salary1.salary }</option>
-
-
-
-									</c:forEach>
-								</form:select> <br></td>
-						</tr>
-						</tr>
-						<tr>
-							<td>Address<font color="red">*</font>:
-							</td>
-							<td><form:input type="text" size="40" path="address"
-									class="validate[required] input-text" maxlength="10" /><br></td>
-						</tr>
-
-
-
-						<tr>
-							<td>City<font color="red">*</font>:
-							</td>
-							<td><form:input type="text" size="40" path="city"
-									class="validate[required] input-text" maxlength="10" /><br></td>
-						</tr>
-
-
-						<tr>
-							<td>State<font color="red">*</font>:
-							</td>
-							<td><form:input type="text" size="40" path="State"
-									class="validate[required] input-text" maxlength="10" /><br></td>
-						</tr>
-
-						<tr>
-							<td>Zip<font color="red">*</font>:
-							</td>
-							<td><form:input type="text" size="40" path="zip"
-									class="validate[required] input-text" maxlength="10" /><br></td>
-						</tr>
-
-
-
-						<tr>
-							<td><input type="submit" value="submit"
-								class="input-submit-02"
-								onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
-						</tr>
-						<tr>
-							<td width="41%" align="right" valign="middle"><img
-								id="preview" height="100px" width="100px" /></td>
-						</tr>
-					</table>
-				</div>
-
 			</form:form>
 		</body>
 	</div>
