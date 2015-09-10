@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
 	type="text/css" />
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<link rel="stylesheet" href="resources/css/dropdown.css" type="text/css" />
+<!-- <link rel="stylesheet" href="resources/css/dropdown.css" type="text/css" /> -->
 
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="resources/js/jquery.validationEngine-en.js"
@@ -59,46 +59,53 @@
         }
     }
 </script> -->
-<script type="text/javascript">
-	$(function() {
-		$(".dropdown1 dt a").on('click', function() {
-			$(".dropdown1 dd ul").slideToggle('fast');
-		});
+<style>
+.multiselect {
+	width: 200px;
+}
 
-		$(".dropdown1 dd ul a").on('click', function() {
-			$(".dropdown1 dd ul").hide();
-		});
+.selectBox {
+	position: relative;
+}
 
-		function getSelectedValue(id) {
-			return $("#" + id).find("dt a span.value").html();
-		}
+.selectBox select {
+	width: 100%;
+	font-weight: bold;
+}
 
-		$(document).bind('click', function(e) {
-			var $clicked = $(e.target);
-			if (!$clicked.parents().hasClass("dropdown1"))
-				$(".dropdown1 dd ul").hide();
-		});
+.overSelect {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
 
-		$('.mutliSelect input[type="checkbox"]').on(
-				'click',
-				function() {
-					var title = $(this).closest('.mutliSelect').find(
-							'input[type="checkbox"]').val(), title = $(this)
-							.val()
-							+ ",";
+#checkboxes {
+	display: none;
+	border: 1px #dadada solid;
+}
 
-					if ($(this).is(':checked')) {
-						var html = '<span title="' + title + '">' + title
-								+ '</span>';
-						$('.multiSel').append(html);
-						$(".hida").hide();
-					} else {
-						$('span[title="' + title + '"]').remove();
-						var ret = $(".hida");
-						$('.dropdown1 dt a').append(ret);
-					}
-				});
-	});
+#checkboxes label {
+	display: block;
+}
+
+#checkboxes label:hover {
+	background-color: #1e90ff;
+}
+</style>
+<script>
+var expanded = false;
+function showCheckboxes() {
+    var checkboxes = document.getElementById("checkboxes");
+    if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+    } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+    }
+}
 </script>
 </head>
 <body>
@@ -206,8 +213,8 @@
 							<div id="error">
 								<form:errors path="experience" />
 							</div></td> --%>
-							
-							<td><form:select path="minExperience.experienceId">
+
+						<td><form:select path="minExperience.experienceId">
 								<%-- <form:option value="0" label="Min Annual Salary" /> --%>
 								<c:forEach items="${experienceList}" var="experience">
 									<form:option value="${experience.experienceId}"
@@ -220,14 +227,14 @@
 										label="${experience.experience}" />
 								</c:forEach>
 							</form:select></td>
-							
+
 					</tr>
 					<tr>
 						<td>Education</td>
 						<td><form:input path="education" size="10"
 								class="validate[required] input-text" /></td>
 					</tr>
-					<tr>
+					<%-- <tr>
 						<td>Skills</td>
 						<td>
 							<dl class="dropdown1">
@@ -250,8 +257,28 @@
 								</dd>
 							</dl>
 						</td>
-					</tr>
+					</tr> --%>
+					<tr>
+						<td>Skills</td>
+						<td>
+							<div class="multiselect">
+								<div class="selectBox" onclick="showCheckboxes()">
+									<select>
+										<option>Select an option</option>
+									</select>
+									<div class="overSelect"></div>
+								</div>
+								<div id="checkboxes">
 
+
+									<c:forEach items="${skillsList}" var="refskills">
+										<label><form:checkbox path="skill"
+												id="${refskills.skillsName}" value="${refskills.skillsId}" />${refskills.skillsName}</label>
+									</c:forEach>
+								</div>
+							</div>
+						</td>
+					</tr>
 					<tr>
 						<td><font color="red">*</font>Job Role</td>
 						<td><form:input path="role" size="20"
@@ -278,12 +305,10 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
-							value="Submit" onclick="jQuery('#formID').submit();" />
-							<input type="button"
-							value="Clear" onclick="clearAllErrors();" />
-							</td>
+							value="Submit" onclick="jQuery('#formID').submit();" /> <input
+							type="button" value="Clear" onclick="clearAllErrors();" /></td>
 
-						
+
 
 
 					</tr>
