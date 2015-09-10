@@ -26,7 +26,7 @@ public class Educationcontoller {
 	private EducationServiceimpl eduserviceimpl;
 
 	@RequestMapping(value = "/educationupdate", method = RequestMethod.GET)
-	public String showeducationsettings(HttpServletRequest request,Map<String, Object> map) {
+	public String showeducationsettings(HttpServletRequest request,@RequestParam(required = false) String message, Model model,Map<String, Object> map) {
 		Education education=new Education();
 		HttpSession session = request.getSession(false);
 		Registration registration = (Registration) session
@@ -34,6 +34,7 @@ public class Educationcontoller {
 		Integer reg_id = registration.getRegistrationId();
 		 education = eduserviceimpl.viewEducation(reg_id);
 		 if(education!=null){
+			 model.addAttribute("message", message);
 		map.put("ED", education);
 		}
 		 else {
@@ -52,7 +53,7 @@ public class Educationcontoller {
 		edu.setRegistration_id(registration.getRegistrationId());
 		eduserviceimpl.save(edu);
 		model.addAttribute("message", IConstant.EDUCATION_SAVE);
-		return "viewedudetails";
+		return "redirect:/educationupdate";
 	}
 
 	

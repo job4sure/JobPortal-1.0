@@ -84,7 +84,7 @@
 			<!-- /aside -->
 
 			<div id="content" class="box">
-
+<h3>${message}</h3>
 				<div class="reform">
 					<form:form action="edusave" method="POST" id="formID"
 						modelAttribute="ED">
@@ -253,6 +253,7 @@
 
 						<h3 align="center"><input type="submit" value="Save" style="width: 13em;height: 3em;font-size:large;"></h3>
 					</form:form>
+				</div>
 				</div>
 </body>
 </html>

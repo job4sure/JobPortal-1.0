@@ -40,7 +40,7 @@
   <hr class="noscreen" />
   <div id="menu" class="box">
     <ul class="box">
-     
+      <li id="menu-active"><a href="companyHome"><span>Home</span></a></li>
       <li id="menu-active"><a href="createJobDescription"><span>Create Job Description</span></a></li>
 	  <li id="menu-active"><a href="viewAllJobDescription"><span>View Job Description List</span></a></li>
 	    <li id="menu-active"><a href="#"><span>Company Profile</span></a>
@@ -51,6 +51,7 @@
 			   <li id="menu-active"><a href="setNewPasswordForComp">Reset Password</a></li>
 		   </ul>
 	   </li>
+	  
 	   
     </ul>
   </div>
