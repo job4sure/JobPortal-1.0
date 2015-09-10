@@ -16,18 +16,18 @@ public class Industry {
 	@Column(name="ID")
 	private int id;
 	@Column(name="INDUSTRY")
-	private String jobIndustry;
-	public String getJobIndustry() {
-		return jobIndustry;
-	}
-	public void setJobIndustry(String jobIndustry) {
-		this.jobIndustry = jobIndustry;
-	}
+	private String Industrydata;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getIndustrydata() {
+		return Industrydata;
+	}
+	public void setIndustrydata(String Industrydata) {
+		this.Industrydata = Industrydata;
 	}
 	
 	
