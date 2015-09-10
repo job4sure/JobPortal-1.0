@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,6 +43,17 @@ public class JobDescription implements Serializable {
     private Experience minExperience;
     private Experience maxExperience;
 
+    
+    @ManyToMany()//cascade = { CascadeType.ALL }
+    @JoinTable(name = "DESCRIPTION_SKILLS", joinColumns = { @JoinColumn(name = "JOB_ID") }, inverseJoinColumns = { @JoinColumn(name = "SKILLS_ID") })
+    public Set<Skills> getSkillsSet() {
+	return skillsSet;
+    }
+
+    public void setSkillsSet(Set<Skills> skillsSet) {
+	this.skillsSet = skillsSet;
+    }
+    
     
     @OneToOne(targetEntity = Experience.class)
     @JoinColumn(name = "MIN_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
@@ -213,14 +225,6 @@ public class JobDescription implements Serializable {
 	this.registration = registration;
     }
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name = "DESCRIPTION_SKILLS", joinColumns = { @JoinColumn(name = "JOB_ID") }, inverseJoinColumns = { @JoinColumn(name = "SKILLS_ID") })
-    public Set<Skills> getSkillsSet() {
-	return skillsSet;
-    }
-
-    public void setSkillsSet(Set<Skills> skillsSet) {
-	this.skillsSet = skillsSet;
-    }
+    
 
 }
