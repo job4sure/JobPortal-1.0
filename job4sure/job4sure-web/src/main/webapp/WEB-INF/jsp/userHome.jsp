@@ -112,22 +112,25 @@
     <div><br>
    <div class="wrapper">
         <div class="column">
-        <b>Resume Headline:</b>${userProfile.resume}<br><br>
-         <b>Current Location:</b>${userProfile.currentlocation}<br><br>
-          <b>Preferred Location:</b>${userProfile.prefferedlocation}<br><br>
-           <b>Preferred Industry:</b>${userProfile.industry}<br><br>
-           <b>Role:</b>${userProfile.roletype}<br><br>
-           <b>Annual Salary:</b>${userProfile.salary}<br><br>
+        <b>Resume Headline:&nbsp;&nbsp;</b>${userProfile.resume}<br><br>
+         <b>Current Location:&nbsp;&nbsp;</b>${userProfile.currentlocation}<br><br>
+          <b>Preferred Location:&nbsp;&nbsp;</b>${userProfile.prefferedlocation}<br><br>
+           <b>Preferred Industry:&nbsp;&nbsp;</b>${userProfile.industry}<br><br>
+           <b>Role:&nbsp;&nbsp;</b>${userProfile.roletype}<br><br>
+           <b>Annual Salary:&nbsp;&nbsp;</b>${userProfile.salary}<br><br>
+            <b>Phone:&nbsp;&nbsp;</b>8601124585<br><br>
         </div>
         <div class="column">
-         <b>Date of Birth:</b>${userProfile.dob}<br><br>
-          <b>Gender:</b>${userProfile.gender}<br><br>
-           <b>Permanent Address:</b>${userProfile.address}<br><br>
-              <b>Hometown/City:</b>${userProfile.city}<br><br>
-               <b>Zip:</b>${userProfile.zip}<br><br>
-              <b>State:</b>${userProfile.state}<br><br>
+         <b>Date of Birth:&nbsp;&nbsp;</b>${userProfile.dob}<br><br>
+          <b>Gender:&nbsp;&nbsp;</b>${userProfile.gender}<br><br>
+            <b>Marital Status:&nbsp;&nbsp;</b>Merried<br><br>
+           <b>Permanent Address:&nbsp;&nbsp;</b>${userProfile.address}<br><br>
+              <b>Hometown/City:&nbsp;&nbsp;</b>${userProfile.city}<br><br>
+               <b>Zip:&nbsp;&nbsp;</b>${userProfile.zip}<br><br>
+              <b>State:&nbsp;&nbsp;</b>${userProfile.state}<br><br>
        </div>
-        <div class="colNew">hello deepak
+        <div class="colNew">
+      <img src="resources/design/sandy.jpg" id="preview" height="100px" width="100px" />
         </div>
 </div>
   </div>
