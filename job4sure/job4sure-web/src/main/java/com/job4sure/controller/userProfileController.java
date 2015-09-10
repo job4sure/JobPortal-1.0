@@ -19,7 +19,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Registration;
 import com.job4sure.model.UserProfile;
-import com.job4sure.service.ProfileCompleteService;
+import com.job4sure.service.UserProfileService;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.service.UserDetaiFatchService;
 import com.job4sure.util.IConstant;
@@ -28,7 +28,7 @@ import com.job4sure.validator.RegistrationValidator;
 public class UserProfileController {
 
          @Autowired
-	    private ProfileCompleteService profileCompleteService;
+	    private UserProfileService profileCompleteService;
          @Autowired
      	private RegistrationService registrationService;
      	@Autowired

@@ -5,7 +5,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.UserProfile;
 
-public interface ProfileCompleteService {
+public interface UserProfileService {
 	public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart, CommonsMultipartFile[] upload, String attchmentName) ;
 
 	public UserProfile getLoggedInUserCompleteInfo(

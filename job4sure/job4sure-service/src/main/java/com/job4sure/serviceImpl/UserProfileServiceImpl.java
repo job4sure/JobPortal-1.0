@@ -17,11 +17,11 @@ import com.job4sure.model.UserProfile;
 import com.job4sure.repository.AttachmentRepository;
 import com.job4sure.repository.EducationRepository;
 import com.job4sure.repository.ProfileCompleteRepository;
-import com.job4sure.service.ProfileCompleteService;
+import com.job4sure.service.UserProfileService;
 import com.job4sure.util.IConstant;
 
 @Service
-public class ProfileCompleteServiceImpl implements ProfileCompleteService {
+public class UserProfileServiceImpl implements UserProfileService {
 
 	@Autowired
 	private ProfileCompleteRepository profileCompleteRepository;
