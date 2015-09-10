@@ -36,9 +36,17 @@ public class userProfile {
 	private String roletype;
 	@Column(name="DATE_OF_BIRTH")
 	private String dob;
-	@Column(name = "GENDER")
+	@Column(name="GENDER")
 	private String gender;
-
+	
+	@Column(name="EXPERIENCE")
+	private String experience;
+	@Column(name="MARITAL_STATUS")
+	private String maritalstatus;
+	
+	@Column(name="PHONE")
+	private String phone;
+	
 	@Column(name = "ADDRESS")
 	private String address;
 
@@ -139,6 +147,30 @@ public class userProfile {
 		this.gender = gender;
 	}
 
+	public String getExperience() {
+		return experience;
+	}
+
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+
+	public String getMaritalstatus() {
+		return maritalstatus;
+	}
+
+	public void setMaritalstatus(String maritalstatus) {
+		this.maritalstatus = maritalstatus;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -173,3 +205,5 @@ public class userProfile {
 
 	
 }
+
+	

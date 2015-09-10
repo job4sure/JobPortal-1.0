@@ -76,6 +76,13 @@
 		$("#datepicker").datepicker();
 	});
 </script>
+<script type="text/javascript">
+
+#wgtmsr option{
+	  width:1000px; 
+      
+	}
+</script>
 </head>
 <div id="main">
 	<hr class="noscreen" />
@@ -162,12 +169,12 @@
 							</td>
 							<td><form:input type="text" size="40" path="resume"
 									class="validate[required] input-text" maxlength="10" /><br></td>
-						<tr>
+						</tr>
 						<tr>
 
 							<td>Current Location<font color="red">*</font>:
 							</td>
-							<td><form:select path="currentlocation">
+							<td><form:select path="currentlocation" style="width: 330px;">
 									<option value="null">select</option>
 									<c:forEach items="${location}" var="location">
 
@@ -182,7 +189,7 @@
 
 							<td>Preffered Location<font color="red">*</font>:
 							</td>
-							<td><form:select path="prefferedlocation">
+							<td><form:select path="prefferedlocation" style="width: 330px;">
 									<option value="null">select</option>
 									<c:forEach items="${preferlocation}" var="location">
 
@@ -197,7 +204,7 @@
 
 							<td>Role<font color="red">*</font>:
 							</td>
-							<td><form:select path="roletype">
+							<td><form:select path="roletype" style="width: 330px;">
 									<option value="null">select</option>
 									<c:forEach items="${roletype12}" var="roleUser">
 
@@ -227,21 +234,54 @@
 							<td>DateOfBirth<font color="red">*</font>:
 							</td>
 							<td>
-								<%-- <form:input  path="dob"/> --%>
+							
 								<form>
-									<form:input path="dob" id="datepicker" />
+									<form:input path="dob" id="datepicker" style="width: 330px;" />
 								</form>
 							</td>
 						</tr>
+						
+						
+						<tr>
 
 
+<td>Gender<font color="red">*</font></td>
+
+<td><form:radiobutton path="gender" value="Male"/>Male 
+<form:radiobutton path="gender" value="Female"/>Female </td>
+</tr>
+						
+		
+						
+						<tr>
+							<td>Experience<font color="red">*</font>:
+							</td>
+							<td><form:input type="text" size="40" path="experience"
+									class="validate[required] input-text" maxlength="10" /><br></td>
+						</tr>
+						
+						
+						<tr>
+							<td>Phone<font color="red">*</font>:
+							</td>
+							<td><form:input type="text" size="40" path="phone"
+									class="validate[required] input-text" maxlength="10" /><br></td>
+						</tr>
 
 
+<tr>
 
+<td>Marital Status<font color="red">*</font></td>
+
+<td><form:radiobutton path="maritalstatus" value="single"/>Single 
+<form:radiobutton path="maritalstatus" value="married"/>Married </td>
+</tr>				
+						
+						
 						<tr>
 							<td>Annual Salary<font color="red">*</font>:
 							</td>
-							<td><form:select path="salary">
+							<td><form:select path="salary" style="width:330px;">
 									<option value="null">select</option>
 									<c:forEach items="${salary}" var="salary1">
 
