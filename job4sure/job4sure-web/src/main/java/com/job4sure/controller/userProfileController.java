@@ -18,14 +18,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Registration;
-import com.job4sure.model.userProfile;
+import com.job4sure.model.UserProfile;
 import com.job4sure.service.ProfileCompleteService;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.service.UserDetaiFatchService;
 import com.job4sure.util.IConstant;
 import com.job4sure.validator.RegistrationValidator;
 @Controller
-public class userProfileController {
+public class UserProfileController {
 
          @Autowired
 	    private ProfileCompleteService profileCompleteService;
@@ -40,12 +40,14 @@ public class userProfileController {
 	public String showuserProfile(Map<String, Object> map,String message,ModelMap model, HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
-		userProfile userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+		UserProfile userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+		String loggedInEmail=registration.getEmail();
 		int profilecompleted=profileCompleteService.getprofileCompletedInPercent(registration.getRegistrationId());
 		model.addAttribute("profilecompleted", profilecompleted);
 		map.put("Registration", new Registration());
 		model.addAttribute("registration", registration);
 		model.addAttribute("userProfile", userProfile);
+		model.addAttribute("loggedInEmail", loggedInEmail);
 		model.addAttribute("message", message);
 		//return "userProfilePage";
 		return "userHomePage";
@@ -64,20 +66,30 @@ public class userProfileController {
 	@RequestMapping(value = "/userCompletInfoPageShow", method = RequestMethod.GET)
 	public String Complete_profile(Map<String,Object>map,String message,ModelMap model) 
 	{
-		map.put("userProfile", new userProfile());
+		List currentLocation= userdetailfatch.currentLocation();
+		model.addAttribute("location", currentLocation);
+		List annualSalary=userdetailfatch.salaryAnnual();
+		model.addAttribute("salary", annualSalary);
+		List preferedLocation=userdetailfatch.prefferedLocation();
+		model.addAttribute("preferlocation", preferedLocation);
+		List industry=userdetailfatch.industryData();
+		model.addAttribute("industrydata", industry);
+		List role=userdetailfatch.roleData();
+		model.addAttribute("roletype12", role);
+		map.put("userProfile", new UserProfile());
 		model.addAttribute("message", message);
 		
 		return "userCompleteInfo";
 }
 	@RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
-	public String updateCompleteProfile(@ModelAttribute("userProfile") userProfile userProfile,Map<String, Object> map,String message,ModelMap model,HttpServletRequest request) {
+	public String updateCompleteProfile(@ModelAttribute("userProfile") UserProfile userProfile,Map<String, Object> map,String message,ModelMap model,HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		userProfile = profileCompleteService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
 		if(userProfile!=null){
 		 map.put("userProfile", userProfile);
 		 model.addAttribute("message",message);
-		 List currentLocation= userdetailfatch.currentLocation();
+		    List currentLocation= userdetailfatch.currentLocation();
 			model.addAttribute("location", currentLocation);
 			List annualSalary=userdetailfatch.salaryAnnual();
 			model.addAttribute("salary", annualSalary);
@@ -97,7 +109,7 @@ public class userProfileController {
 	
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompleteUserProfile", method = RequestMethod.POST)
-	public String saveCompleteUserProfile(@ModelAttribute("userProfile") userProfile userProfile,
+	public String saveCompleteUserProfile(@ModelAttribute("userProfile") UserProfile userProfile,
 			@RequestParam CommonsMultipartFile[] upload,@RequestParam("upload") MultipartFile file,String attchmentName,ModelMap model,HttpServletRequest request ) 
 	{
 		final MultipartFile filePart = file;

@@ -13,7 +13,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
 import com.job4sure.model.Education;
-import com.job4sure.model.userProfile;
+import com.job4sure.model.UserProfile;
 import com.job4sure.repository.AttachmentRepository;
 import com.job4sure.repository.EducationRepository;
 import com.job4sure.repository.ProfileCompleteRepository;
@@ -33,7 +33,7 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 	private EducationRepository EducationRepository;
 
 	@SuppressWarnings("resource")
-	public boolean saveCompleteUserProfile(userProfile userProfile, MultipartFile filePart,
+	public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
 			CommonsMultipartFile[] upload, String attchmentName) {
 		OutputStream outputStream = null;
 		InputStream inputStream = null;
@@ -44,7 +44,7 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 					attchmentName = multipartFile.getOriginalFilename();
 					try {
 						inputStream = filePart.getInputStream();
-						userProfile userProfile2 = profileCompleteRepository.save(userProfile);
+						UserProfile userProfile2 = profileCompleteRepository.save(userProfile);
 						File newFile = new File(IConstant.FILE_PATH);
 						File filePath = new File(newFile + File.separator + userProfile2.getRegistrationId() + "_"
 								+ attchmentName);
@@ -83,8 +83,8 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 		return true;
 	}
 
-	public userProfile getLoggedInUserCompleteInfo(Integer registrationId) {
-		userProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
+	public UserProfile getLoggedInUserCompleteInfo(Integer registrationId) {
+		UserProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
 		return userProfile;
 	}
 
@@ -92,7 +92,7 @@ public class ProfileCompleteServiceImpl implements ProfileCompleteService {
 		int noOfTables = 3;
 		int noOfTablesField = 1;
 
-		userProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
+		UserProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
 
 		if (userProfile != null) {
 			noOfTablesField++;

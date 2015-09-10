@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "userprofile")
-public class userProfile {
+public class UserProfile {
 	@Id
 	@GeneratedValue
 	@Column(name = "USERID")

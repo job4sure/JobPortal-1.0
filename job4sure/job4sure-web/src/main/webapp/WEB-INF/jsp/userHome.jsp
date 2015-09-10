@@ -69,9 +69,9 @@
  <div id="aside" class="box">
       <div class="padding box">
         <!-- Logo (Max. width = 200px) -->
-        <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/design/logo.gif" alt="" /></a></p>
+        <p id="logo"><a href="#"><img src="resources/design/logo.gif" alt="" /></a></p>
         <!-- Search -->
-        <form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
+        <form action="#" method="get" id="search">
           <fieldset>
           <legend>Search</legend>
           <p>
@@ -113,21 +113,23 @@
    <div class="wrapper">
         <div class="column">
         <b>Resume Headline:&nbsp;&nbsp;</b>${userProfile.resume}<br><br>
+         <b>Email:&nbsp;&nbsp;</b>${loggedInEmail}<br><br>
          <b>Current Location:&nbsp;&nbsp;</b>${userProfile.currentlocation}<br><br>
           <b>Preferred Location:&nbsp;&nbsp;</b>${userProfile.prefferedlocation}<br><br>
            <b>Preferred Industry:&nbsp;&nbsp;</b>${userProfile.industry}<br><br>
            <b>Role:&nbsp;&nbsp;</b>${userProfile.roletype}<br><br>
            <b>Annual Salary:&nbsp;&nbsp;</b>${userProfile.salary}<br><br>
-            <b>Phone:&nbsp;&nbsp;</b>8601124585<br><br>
+            <b>Phone:&nbsp;&nbsp;</b>${userProfile.phone}<br><br>
         </div>
         <div class="column">
          <b>Date of Birth:&nbsp;&nbsp;</b>${userProfile.dob}<br><br>
           <b>Gender:&nbsp;&nbsp;</b>${userProfile.gender}<br><br>
-            <b>Marital Status:&nbsp;&nbsp;</b>Merried<br><br>
+            <b>Marital Status:&nbsp;&nbsp;</b>${userProfile.maritalstatus}<br><br>
            <b>Permanent Address:&nbsp;&nbsp;</b>${userProfile.address}<br><br>
               <b>Hometown/City:&nbsp;&nbsp;</b>${userProfile.city}<br><br>
                <b>Zip:&nbsp;&nbsp;</b>${userProfile.zip}<br><br>
               <b>State:&nbsp;&nbsp;</b>${userProfile.state}<br><br>
+               <b>Total Experience: &nbsp;&nbsp;</b>${userProfile.experience}<br><br>
        </div>
         <div class="colNew">
       <img src="resources/design/sandy.jpg" id="preview" height="100px" width="100px" />

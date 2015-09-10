@@ -36,7 +36,7 @@ public class CompanyProfileController {
 	 */
 
 	@RequestMapping(value = "/showCompleteCompanyProfilePage", method = RequestMethod.GET)
-	public String Complete_profile(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,
+	public String showCompleteCompanyProfilePage(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,
 			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
@@ -53,7 +53,7 @@ public class CompanyProfileController {
 
 	/* This method for saving company complete info here savecompanyProfile */
 	@RequestMapping(value = "/saveCompanyCompleteProfile", method = RequestMethod.POST)
-	public String savecomplete_profile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,
+	public String saveCompanyCompleteProfile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,
 			ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
