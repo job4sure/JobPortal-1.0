@@ -181,4 +181,4 @@ public class UserProfileController {
 		}
 		return "redirect:/updateBasicProfile";
 	}
-}
+}  
