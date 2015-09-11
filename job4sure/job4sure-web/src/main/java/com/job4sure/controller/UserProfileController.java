@@ -69,7 +69,7 @@ public class UserProfileController {
 		map.put("Registration", registration);
 		model.addAttribute("registration", registration);
 		model.addAttribute("message", message);
-		return "userBasicInfoPage";
+		return "userBasicInfoPage";  
 	}
 
 	@RequestMapping(value = "/userCompletInfoPageShow", method = RequestMethod.GET)
