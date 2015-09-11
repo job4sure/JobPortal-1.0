@@ -22,44 +22,32 @@ import com.job4sure.util.IConstant;
 public class EducationController {
 
 	@Autowired
-	private EducationServiceImpl eduserviceimpl;
+	private EducationServiceImpl educationServiceImpl;
 
-	@RequestMapping(value = "/educationupdate", method = RequestMethod.GET)
-	public String showeducationsettings(HttpServletRequest request,@RequestParam(required = false) String message, Model model,Map<String, Object> map) {
-		Education education=new Education();
+	@RequestMapping(value = "/educationUpdate", method = RequestMethod.GET)
+	public String showEducationSettings(HttpServletRequest request, @RequestParam(required = false) String message,
+					Model model, Map<String, Object> map) {
+		Education education = new Education();
 		HttpSession session = request.getSession(false);
-		Registration registration = (Registration) session
-				.getAttribute("registration");
+		Registration registration = (Registration) session.getAttribute("registration");
 		Integer reg_id = registration.getRegistrationId();
-		 education = eduserviceimpl.viewEducation(reg_id);
-		 if(education!=null){
-			 model.addAttribute("message", message);
-		map.put("ED", education);
+		education = educationServiceImpl.viewEducation(reg_id);
+		if (education != null) {
+			model.addAttribute("message", message);
+			map.put("ED", education);
+		} else {
+			map.put("ED", new Education());
 		}
-		 else {
-			 map.put("ED", new Education());
-			 }
-		return "educationupdate";
-
+		return "educationUpdate";
 	}
 
-	@RequestMapping(value = "/edusave", method = RequestMethod.POST)
-	public String saveeducation(@ModelAttribute Education edu,
-			HttpServletRequest request, Model model) {
+	@RequestMapping(value = "/eduSave", method = RequestMethod.POST)
+	public String saveEducation(@ModelAttribute Education edu, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(false);
-		Registration registration = (Registration) session
-				.getAttribute("registration");
+		Registration registration = (Registration) session.getAttribute("registration");
 		edu.setRegistration_id(registration.getRegistrationId());
-		eduserviceimpl.save(edu);
+		educationServiceImpl.save(edu);
 		model.addAttribute("message", IConstant.EDUCATION_SAVE);
 		return "redirect:/educationupdate";
 	}
-
-	
-	
-	
-	
-	
-	
-
 }

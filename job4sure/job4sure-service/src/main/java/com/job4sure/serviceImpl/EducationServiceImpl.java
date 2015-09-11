@@ -14,20 +14,20 @@ import com.job4sure.service.EducationService;
 @Service
 public class EducationServiceImpl implements EducationService {
 
- @Autowired
- private EducationRepository edurepository;
+	@Autowired
+	private EducationRepository educationRepository;
 
- public void save(Education education) {
-  edurepository.saveAndFlush(education);
+	public void save(Education education) {
+		educationRepository.saveAndFlush(education);
 
- }
+	}
 
- public Education viewEducation(Integer registrationId) {
+	public Education viewEducation(Integer registrationId) {
 
-  Education education = edurepository.viewEducation(registrationId);
+		Education education = educationRepository.viewEducation(registrationId);
 
-  return education;
+		return education;
 
- }
+	}
 
 }
