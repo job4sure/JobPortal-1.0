@@ -61,7 +61,6 @@ table, th, td {
           </fieldset>
         </form>
         <!-- Create a new project -->
-      
       </div>
       <!-- /padding -->
       <ul class="box">

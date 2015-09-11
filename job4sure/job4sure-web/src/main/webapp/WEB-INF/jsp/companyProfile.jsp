@@ -60,6 +60,7 @@ function clearAllErrors() {
 	<style>
 	table,tr,td,th
 	{
+	
 	border:0px;
 	}
     .multiselect {
