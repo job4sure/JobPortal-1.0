@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,16 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Job Description</title>
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
-	type="text/css" />
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
 <!-- <link rel="stylesheet" href="resources/css/dropdown.css" type="text/css" /> -->
 
-<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="resources/js/jquery.validationEngine.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript" ></script>
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8" ></script>
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8" ></script>
 
 <!--  <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
 <!--  <script type="text/javascript">
@@ -24,6 +20,9 @@
 		$(".tabs > ul").tabs();
 	});
 	</script> -->
+	
+	
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#formID").validationEngine();
@@ -95,48 +94,73 @@
 }
 </style>
 <script>
-var expanded = false;
-function showCheckboxes() {
-    var checkboxes = document.getElementById("checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
+	var expanded = false;
+	function showCheckboxes() {
+		var checkboxes = document.getElementById("checkboxes");
+		if (!expanded) {
+			checkboxes.style.display = "block";
+			expanded = true;
+		} else {
+			checkboxes.style.display = "none";
+			expanded = false;
+		}
+	}
 </script>
+
+<script type="text/javascript">
+	function checkMinExp(elem) {
+		var firstValue = document.getElementById('sel1').value;
+		var secondValue = Number(firstValue) + Number(1);
+		document.getElementById('sel2').value = secondValue;
+		var lastValue = $('#sel1 option:last-child').val();
+		if (firstValue == lastValue) {
+			document.getElementById('sel2').value = firstValue;
+		}
+
+	}
+
+	function disableMaxExpDropDown() {
+		document.getElementById("sel2").disabled = true;
+		document.getElementById("salary2").disabled = true;
+
+	}
+
+	function checkMinSal(elem) {
+		var firstValue = document.getElementById('salary1').value;
+		var secondValue = Number(firstValue) + Number(1);
+		document.getElementById('salary2').value = secondValue;
+		var lastValue = $('#salary1 option:last-child').val();
+		if (firstValue == lastValue) {
+			document.getElementById('salary2').value = firstValue;
+		}
+
+	}
+</script>
+
 </head>
-<body>
+<body onload="disableMaxExpDropDown();">
 	<div id="cols" class="box">
 		<div id="aside" class="box">
 			<div class="padding box">
 				<!-- Logo (Max. width = 200px) -->
 				<p id="logo">
-					<a href="http://all-free-download.com/free-website-templates/"><img
-						src="resources/tmp/logo.gif" alt="" /></a>
+					<a href="http://all-free-download.com/free-website-templates/"><img src="resources/tmp/logo.gif" alt="" /></a>
 				</p>
 				<!-- Search -->
-				<form action="http://all-free-download.com/free-website-templates/"
-					method="get" id="search">
+				<form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
 					<fieldset>
 						<legend>Search</legend>
 						<p>
-							<input type="text" size="17" name="" class="input-text" />
-							&nbsp; <input type="submit" value="OK" class="input-submit-02" />
-							<br /> <a href="javascript:toggle('search-options');"
-								class="ico-drop">Advanced search</a>
+							<input type="text" size="17" name="" class="input-text" /> &nbsp; <input type="submit" value="OK"
+								class="input-submit-02" /> <br /> <a href="javascript:toggle('search-options');" class="ico-drop">Advanced
+								search</a>
 						</p>
 						<!-- Advanced search -->
 						<div id="search-options" style="display: none;">
 							<p>
-								<label> <input type="checkbox" name="" checked="checked" />
-									By Location
-								</label> <br /> <label> <input type="checkbox" name="" /> By
-									keywords
-								</label> <br /> <label> <input type="checkbox" name="" /> By
-									name
+								<label> <input type="checkbox" name="" checked="checked" /> By Location
+								</label> <br /> <label> <input type="checkbox" name="" /> By keywords
+								</label> <br /> <label> <input type="checkbox" name="" /> By name
 								</label>
 							</p>
 						</div>
@@ -157,8 +181,7 @@ function showCheckboxes() {
 
 			<h5 style="color: red;">${status}</h5>
 			<form:form action="createJobDescription" method="POST" id="formID"
-				onsubmit="return jQuery(this).validationEngine('validate');"
-				modelAttribute="jobDescription">
+				onsubmit="return jQuery(this).validationEngine('validate');" modelAttribute="jobDescription">
 				<form:hidden path="jobDescriptionId" />
 
 				<table width="100%">
@@ -166,25 +189,22 @@ function showCheckboxes() {
 						<td colspan="2" align="center"><h5>Job Description</h5></td>
 					</tr>
 					<tr>
-						<td><font color="red">*</font>Job Title</td>
-						<td><form:input path="jobTitle"
-								class="validate[required,custom[onlyLetterSp]] input-text" maxlength="50"/>
+						<td>Job Title<font color="red">*</font></td>
+						<td><form:input path="jobTitle" class="validate[required,custom[onlyLetterSp]] input-text" maxlength="50" />
 							<div id="error">
 								<form:errors path="jobTitle" />
 							</div></td>
 					</tr>
 					<tr>
 						<td>Job Description</td>
-						<td><form:textarea path="jobDesc"
-								class="validate[required] input-text" cols="50" rows="5" maxlength="200"/>
+						<td><form:textarea path="jobDesc" class="validate[required] input-text" cols="50" rows="5" maxlength="200" />
 							<div id="error">
 								<form:errors path="jobDesc" />
 							</div></td>
 					</tr>
 					<tr>
-						<td><font color="red">*</font>Job Location</td>
-						<td><form:input path="jobLocation"
-								class="validate[required,custom[onlyLetterSp]] input-text allmydiv"
+						<td>Job Location<font color="red">*</font></td>
+						<td><form:input path="jobLocation" class="validate[required,custom[onlyLetterSp]] input-text allmydiv"
 								maxlength="30" />
 							<div id="error">
 								<form:errors path="jobLocation" />
@@ -192,78 +212,45 @@ function showCheckboxes() {
 					</tr>
 					<tr>
 						<td>Salary</td>
-						<td><form:select path="minSalary.salaryId">
+						<td><form:select path="minSalary.salaryId" onChange="checkMinSal(this);" id="salary1">
 								<%-- <form:option value="0" label="Min Annual Salary" /> --%>
 								<c:forEach items="${salaryList}" var="salary">
-									<form:option value="${salary.salaryId}"
-										label="${salary.salary}" />
+									<form:option value="${salary.salaryId}" label="${salary.salary}" />
 								</c:forEach>
-							</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId">
+							</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId" id="salary2">
 								<%-- <form:option value="0" label="Max Annual Salary" /> --%>
 								<c:forEach items="${salaryList}" var="salary">
-									<form:option value="${salary.salaryId}"
-										label="${salary.salary}" />
+									<form:option value="${salary.salaryId}" label="${salary.salary}" />
 								</c:forEach>
-							</form:select></td>
+							</form:select> (Annual Salary)</td>
 					</tr>
 					<tr>
-						<td><font color="red">*</font>Experience</td>
-						<%-- <td><form:input path="experience" size="10"
-								class="validate[required] input-text" />
-							<div id="error">
-								<form:errors path="experience" />
-							</div></td> --%>
+						<td>Experience<font color="red">*</font></td>
 
-						<td><form:select path="minExperience.experienceId">
+						<td><form:select path="minExperience.experienceId" onChange="checkMinExp(this);" id="sel1">
 								<%-- <form:option value="0" label="Min Annual Salary" /> --%>
 								<c:forEach items="${experienceList}" var="experience">
-									<form:option value="${experience.experienceId}"
-										label="${experience.experience}" />
+									<form:option value="${experience.experienceId}" label="${experience.experience}" />
 								</c:forEach>
-							</form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId">
+							</form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId" disable="disable" id="sel2">
 								<%-- <form:option value="0" label="Max Annual Salary" /> --%>
 								<c:forEach items="${experienceList}" var="experience">
-									<form:option value="${experience.experienceId}"
-										label="${experience.experience}" />
+									<form:option value="${experience.experienceId}" label="${experience.experience}" />
 								</c:forEach>
-							</form:select></td>
+							</form:select> in Year</td>
 
 					</tr>
 					<tr>
 						<td>Education</td>
-						<td><form:input path="education" maxlength="20"
-								class="validate[required] input-text" /></td>
+						<td><form:input path="education" maxlength="20" class="validate[required] input-text" /></td>
 					</tr>
-					<%-- <tr>
-						<td>Skills</td>
-						<td>
-							<dl class="dropdown1">
-								<dt>
-									<a href="javascript:void(0);"> <span class="hida">Select</span>
-										<p class="multiSel"></p>
-									</a>
-								</dt>
-								<dd>
-									<div class="mutliSelect">
-										<ul>
-											<c:forEach items="${skillsList}" var="refskills">
-												<li><form:checkbox path="skill"
-														value="${refskills.skillsId}"
-														label="${refskills.skillsName}"
-														id="${refskills.skillsName}" /></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</dd>
-							</dl>
-						</td>
-					</tr> --%>
+
 					<tr>
 						<td>Skills</td>
 						<td>
 							<div class="multiselect">
-								<div class="selectBox" onclick="showCheckboxes()" >
-									<select >
+								<div class="selectBox" onclick="showCheckboxes()">
+									<select>
 										<option>Select an option</option>
 									</select>
 									<div class="overSelect"></div>
@@ -272,46 +259,40 @@ function showCheckboxes() {
 
 
 									<c:forEach items="${skillsList}" var="refskills">
-										<label><form:checkbox path="skill" class="validate[required]"
-												id="${refskills.skillsName}" value="${refskills.skillsId}" />${refskills.skillsName}</label>
+										<label><form:checkbox path="skill" class="validate[required]" id="${refskills.skillsName}"
+												value="${refskills.skillsId}" />${refskills.skillsName}</label>
 									</c:forEach>
 								</div>
-							</div><div id="error">
+							</div>
+							<div id="error">
 								<form:errors path="skill" />
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td><font color="red">*</font>Job Role</td>
-						<td><form:input path="role" maxlength="20"
-								class="validate[required,custom[onlyLetterSp]] input-text" />
+						<td>Job Role<font color="red">*</font></td>
+						<td><form:input path="role" maxlength="20" class="validate[required,custom[onlyLetterSp]] input-text" />
 							<div id="error">
 								<form:errors path="role" />
 							</div></td>
 					</tr>
 					<tr>
-						<td>Number Of Candidates</td>
-						<td><form:input path="noOfCandidates" maxlength="3"
-								class="validate[required,custom[integer]] input-text" />
+						<td>Number Of Vacancies</td>
+						<td><form:input path="noOfCandidates" maxlength="3" class="validate[required,custom[integer]] input-text" />
 							<div id="error">
 								<form:errors path="noOfCandidates" />
 							</div></td>
 					</tr>
 					<tr>
-						<td><font color="red">*</font>Job Valid Date</td>
-						<td><form:input path="jobValidDate" maxlength="10"
-								class="validate[required] input-text" />
+						<td>Last Date of Submission<font color="red">*</font></td>
+						<td><form:input path="jobValidDate" maxlength="10" class="validate[required] input-text" />
 							<div id="error">
 								<form:errors path="jobValidDate" />
 							</div></td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							value="Submit" onclick="jQuery('#formID').submit();" /> <input
-							type="button" value="Clear" onclick="clearAllErrors();" /></td>
-
-
-
+						<td colspan="2" align="center"><input type="submit" value="Submit" onclick="jQuery('#formID').submit();" />
+							<input type="button" value="Clear" onclick="clearAllErrors();" /></td>
 
 					</tr>
 				</table>
