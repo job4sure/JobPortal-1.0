@@ -7,211 +7,154 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
-	<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-   <link rel="stylesheet" href="resources/css/template.css" type="text/css"/>
-   <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript"
+	charset="utf-8"></script>
+<link rel="stylesheet" href="resources/css/template.css" type="text/css" />
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript"
+	charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){	
-	$('input[name=rollType]').click(function() {
-		if($(this).val() == "1") {
-			$('#companyname').hide();
-			$('#username').show();
-			$('#companyemail').hide();
-			$('#useremail').show();
-			$('#Companyurl').hide();
-			$('#urllabel').hide();
-		} else {
-			$('#username').hide();
-			$('#companyname').show();
-			$('#useremail').hide();
-			$('#companyemail').show();
-			$('#Companyurl').show();
-			$('#urllabel').show();
-		
-		}
-		document.getElementById("cpassword").value="";
-		document.getElementById("password").value="";
-		document.getElementById("fullName").value="";
-		document.getElementById("email").value="";
-		document.getElementById("mobileNo").value="";
-	});
+$(document).ready(function() {
+	$("#formID").validationEngine();
+
 });
-</script>
-<script type="text/javascript">
-function myFunction() {
-    var password = document.getElementById("password").value;
-    var cpassword = document.getElementById("cpassword").value;
-    var ok = true;
-    if (password != cpassword) {
-        document.getElementById('error').innerHTML = "wrong confirm password";
-        ok = false;
-    }
-    else {
-        alert("Passwords Match!!!");
-    }
-    return ok;
-}
-</script>
-<script type="text/javascript">
-jQuery(document).ready(function(){
-			// binds form submission and fields to the validation engine
-			jQuery("#formID").validationEngine({
-				onFormSuccess:formSuccess,
-				onFormFailure:formFailure
-			});
-		});
+
 </script>
 </head>
 <body>
-<div id="main">
-  <div id="cols" class="box">
-      <div id="aside" class="box">
-      <div class="padding box">
-        <!-- Logo (Max. width = 200px) -->
-        <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/tmp/logo.gif" alt="" /></a></p>
-        <!-- Search -->
-        <form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
-          <fieldset>
-          <legend>Search</legend>
-          <p>
-            <input type="text" size="17" name="" class="input-text" />
-            &nbsp;
-            <input type="submit" value="OK" class="input-submit-02" />
-            <br />
-            <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a></p>
-          <!-- Advanced search -->
-          <div id="search-options" style="display:none;">
-            <p>
-              <label>
-              <input type="checkbox" name="" checked="checked" />
-              By Location</label>
-              <br />
-              <label>
-              <input type="checkbox" name="" />
-              By keywords</label>
-              <br />
-              <label>
-              <input type="checkbox" name="" />
-              By name</label>
-            </p>
-          </div>
-          <!-- /search-options -->
-          </fieldset>
-        </form>
-        <!-- Create a new project -->
-      
-      </div>
-      <!-- /padding -->
-      <ul class="box">
- </ul>
-	
-       
-          <!-- Active -->
-         
-    
-    </div>
-    
-    <div id="content" class="box">
-  <h2>User Basic Information</h2>
-    </div>
- 
-  
-  
-  <hr class="noscreen" />
- 
-  
-	<form:form method="POST" action="updateUserInformation" modelAttribute="Registration" id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
-	<p>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	</p>
-	<form:hidden path="registrationId"/>
-	<form:hidden path="password"/>
-	<form:hidden path="email"/>
-	<h3 style="color: red;">${message}</h3>
-		<input hidden ="radio" name="rollType" value="1" checked /> 
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<!-- <input type="radio" name="rollType" value="2" />Employer -->
-			<!-- <div id="DivFree"> -->
-			
-			
-			<div id="content" class="box">
-			
-			<fieldset>
-			
-			<center>
-		<table width="100%" class="nostyle" style="border-collapse: separate;border-spacing: 5px">
-		
-					<tr>
-						<td style="width: 150px;"><label id="username">Full Name<font color="red">*</font>:</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
-						<td><form:input type="text" size="30" path="fullName"
-								class="validate[required] input-text"  maxlength="80" id="fullName"/></td>
-					</tr>
+	<div id="main">
+		<div id="cols" class="box">
+			<div id="aside" class="box">
+				<div class="padding box">
+					<!-- Logo (Max. width = 200px) -->
+					<p id="logo">
+						<a href="#"><img src="resources/tmp/logo.gif" alt="" /></a>
+					</p>
+					<!-- Search -->
+					<form action="#" method="get" id="search">
+						<fieldset>
+							<legend>Search</legend>
+							<p>
+								<input type="text" size="17" name="" class="input-text" /> &nbsp; <input
+									type="submit" value="OK" class="input-submit-02" /> <br /> <a
+									href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a>
+							</p>
+							<!-- Advanced search -->
+							<div id="search-options" style="display: none;">
+								<p>
+									<label> <input type="checkbox" name="" checked="checked" /> By Location
+									</label> <br /> <label> <input type="checkbox" name="" /> By keywords
+									</label> <br /> <label> <input type="checkbox" name="" /> By name
+									</label>
+								</p>
+							</div>
+							<!-- /search-options -->
+						</fieldset>
+					</form>
+					<!-- Create a new project -->
 
-					<tr>
-						<td></td>
-						<td></td>
-					
-					
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<tr>
-						<td>Mobile No.<font color="red">*</font>:</td>
-						<td><form:input type="text" size="10" path="mobileNo" style="font-size:18pt;height:30;width:260;"
-							maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
-					</tr>
-					
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					
-			
-					<tr>
-					
-						<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
-					
-						<td><div id="Companyurl" style="display: none;"><form:input type="text" size="40" path="Companyurl"
-								class="validate[required] input-text" maxlength="80"/></div></td>
-							
-					</tr>
-		
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><input type="submit" value="submit" 
-							class="input-submit-02" onclick="return confirm('Are you sure you want to update this item?'); jQuery('#formID').submit();" /></td>
-					</tr>
-
-				</table>
-				</center>
 				</div>
-					
-				</fieldset>
-			
-			</div>
-				
-			
+				<!-- /padding -->
+				<ul class="box">
+				</ul>
 
-	</form:form>
- </div>
-  </div>
+
+				<!-- Active -->
+
+
+			</div>
+
+			<div id="content" class="box">
+				<h2>User Basic Information</h2>
+			</div>
+
+
+
+			<hr class="noscreen" />
+
+
+			<form:form method="POST" action="updateUserInformation" modelAttribute="Registration"
+				id="formID" onsubmit="return jQuery(this).validationEngine('validate');">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+				<form:hidden path="registrationId" />
+				<form:hidden path="password" />
+				<form:hidden path="email" />
+				<h3 style="color: red;">${message}</h3>
+				<input hidden="radio" name="roleType" value="1" checked /> 
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div id="content" class="box">
+
+					<fieldset>
+
+						<center>
+							<table width="100%" class="nostyle"
+								style="border-collapse: separate; border-spacing: 5px">
+
+								<tr>
+									<td style="width: 150px;"><label id="username">Full Name<font
+											color="red">*</font>:
+									</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
+									<td><form:input type="text" size="30" path="fullName"
+											class="validate[required] input-text" maxlength="80" id="fullName" /></td>
+								</tr>
+
+								<tr>
+									<td></td>
+									<td></td>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<td>Mobile No.<font color="red">*</font>:
+									</td>
+									<td><form:input type="text" size="10" path="mobileNo" maxlength="10"
+											class="validate[required,custom[integer,maxSize[10],minSize[10]]] input-text" id="mobileNo" />&nbsp&nbsp&nbsp&nbsp<span
+										style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
+								</tr>
+
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
+
+									<td><div id="Companyurl" style="display: none;">
+											<form:input type="text" size="40" path="Companyurl"
+												class="validate[required] input-text" maxlength="80" />
+										</div></td>
+
+								</tr>
+
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><input type="submit" value="submit" class="input-submit-02"
+										onclick="return confirm('Are you sure you want to update this item?'); jQuery('#formID').submit();" /></td>
+								</tr>
+
+							</table>
+						</center>
+				</div>
+
+				</fieldset>
+		</div>
+		</form:form>
+	</div>
+	</div>
 </body>
 </html>

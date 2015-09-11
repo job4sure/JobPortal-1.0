@@ -130,11 +130,11 @@ jQuery(document).ready(function(){
 			<div id="DivFree">
 			<table>
 					<tr>
-						<td style="width: 150px;"><label id="username">Full Name*:</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
+						<td style="width: 150px;"><label id="username">Company*</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
 						<td><form:input type="text" size="30" path="fullName" class="validate[required] input-text"  maxlength="80" id="fullName"/></td>
 					</tr>
 					<tr>
-						<td>Mobile No.*:</td>
+						<td>Contact No.*</td>
 						<td><form:input type="text" size="40" path="mobileNo"
 								class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text" maxlength="10" id="mobileNo"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 				</tr>
