@@ -119,7 +119,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 			noOfTablesField++;
 		}
 		
-		Education education=EducationRepository.view(registrationId);
+		Education education=EducationRepository.viewEducation(registrationId);
 		if(education==null){
 			
 		}
