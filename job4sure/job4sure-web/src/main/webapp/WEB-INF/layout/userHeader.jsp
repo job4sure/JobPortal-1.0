@@ -48,7 +48,7 @@
 			<p class="f-right">
 				User: <strong><a href="#">${registration.fullName}</a></strong>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><a
-					href="OpenloginPage" id="logout">Log out</a></strong>
+					href="javascript:formSubmit()" id="logout">Log out</a></strong>
 			</p>
 
 			<h1 class="center">User Home</h1>

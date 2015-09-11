@@ -12,42 +12,41 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.job4sure.util.IConstant;
 
-
+/**
+ * @author Vipulraj
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder;
-	}
-	
-	@Autowired
-	@Qualifier("userDetailsService")
-	UserDetailsService userDetailsService;
-	
-	
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
-	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-						.antMatchers("/success/**").permitAll()
-						.antMatchers("/userProfileHomePage/**").access("hasRole('USER')")
-						.antMatchers("/companyHome/**").access("hasRole('COMP')")
-						.antMatchers("/showAdminHomePage/**").access("hasRole('ADMIN')")
-						.and().formLogin()
-						.loginPage("/login").failureUrl("/login?error").usernameParameter("userName")
-						.passwordParameter("password").defaultSuccessUrl("/success")
-						.and().logout()
-						.logoutSuccessUrl("/login?logout").and().csrf().disable().exceptionHandling()
-						.accessDeniedPage("/error");
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+	PasswordEncoder encoder = new BCryptPasswordEncoder();
+	return encoder;
+    }
 
-	}
-	
+    @Autowired
+    @Qualifier("userDetailsService")
+    UserDetailsService userDetailsService;
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+	authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+	http.authorizeRequests().antMatchers("/success/**").permitAll().antMatchers("/userProfileHomePage/**")
+			.access("hasRole('" + IConstant.USER_ROLE + "')").antMatchers("/companyHome/**")
+			.access("hasRole('" + IConstant.COMPANY_ROLE + "')").antMatchers("/showAdminHomePage/**")
+			.access("hasRole('" + IConstant.ADMIN_ROLE + "')").and().formLogin().loginPage("/login")
+			.failureUrl("/login?error").usernameParameter("userName").passwordParameter("password")
+			.defaultSuccessUrl("/success").and().logout().logoutSuccessUrl("/login?logout").and().csrf()
+			.disable().exceptionHandling().accessDeniedPage("/error");
+
+    }
+
 }
