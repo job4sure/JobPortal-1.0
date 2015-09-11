@@ -135,8 +135,18 @@
 		}
 
 	}
+	
+	
 </script>
-
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+	rel="stylesheet" type="text/css" />
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#datepicker").datepicker();
+	});
+</script>
 </head>
 <body onload="disableMaxExpDropDown();">
 	<div id="cols" class="box">
@@ -144,10 +154,10 @@
 			<div class="padding box">
 				<!-- Logo (Max. width = 200px) -->
 				<p id="logo">
-					<a href="http://all-free-download.com/free-website-templates/"><img src="resources/tmp/logo.gif" alt="" /></a>
+					<a href="#"><img src="resources/tmp/logo.gif" alt="" /></a>
 				</p>
 				<!-- Search -->
-				<form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
+				<form action="#" method="get" id="search">
 					<fieldset>
 						<legend>Search</legend>
 						<p>
@@ -222,7 +232,7 @@
 								<c:forEach items="${salaryList}" var="salary">
 									<form:option value="${salary.salaryId}" label="${salary.salary}" />
 								</c:forEach>
-							</form:select> (Annual Salary)</td>
+							</form:select> (Salary in Lpa)</td>
 					</tr>
 					<tr>
 						<td>Experience<font color="red">*</font></td>
@@ -285,7 +295,7 @@
 					</tr>
 					<tr>
 						<td>Last Date of Submission<font color="red">*</font></td>
-						<td><form:input path="jobValidDate" maxlength="10" class="validate[required] input-text" />
+						<td><form:input path="jobValidDate" maxlength="10" id="datepicker"  class="validate[required] input-text" />
 							<div id="error">
 								<form:errors path="jobValidDate" />
 							</div></td>
