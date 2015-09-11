@@ -148,6 +148,6 @@ public class UserProfileController {
 		} else {
 			model.addAttribute("message",IConstant.USER_BASIC_INFO_FAILURE_MESSAGE);
 		}
-		return "redirect:/updateBasicProfile";
+		return "redirect:/updateBasicProfile";  
 	}
 }
