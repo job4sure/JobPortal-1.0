@@ -12,6 +12,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.Registration;
@@ -52,13 +55,18 @@ public class CompanyProfileController {
 	}
 
 	/* This method for saving company complete info here savecompanyProfile */
+	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompanyCompleteProfile", method = RequestMethod.POST)
 	public String saveCompanyCompleteProfile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,
-			ModelMap model, HttpServletRequest request) {
+			@RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
+			String attchmentName, ModelMap model, HttpServletRequest request) {
+		final MultipartFile filePart = file;
+		boolean status = false;
+		file.getOriginalFilename();
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		companyProfile.setRegistrationId(registration.getRegistrationId());
-		companyProfileService.savecompany_profile(companyProfile);
+		companyProfileService.savecompany_profile(companyProfile,filePart,upload,attchmentName);
 		if (companyProfile.getRegistrationId() == null) {
 			model.addAttribute("message", IConstant.COMPANY_COMPLETE_INFO_MESSAGE);
 			return "redirect:/CompanyProfile";

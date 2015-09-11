@@ -296,7 +296,7 @@
 													class="validate[required] input-text"
 													style="width: 302px; height: 80px;" /><br></td>
 										</tr>
-									<tr>
+										<tr>
 											<td style="padding: 15;" align="center">City<font
 												color="red">*</font>:
 											</td>
@@ -359,7 +359,7 @@
 					</div>
 
 					<div width="41%" valign="middle">
-						<img id="preview" height="140px" width="140px" />
+						<img src="${attachment}" id="preview" height="140px" width="140px" />
 					</div>
 				</div>
 			</form:form>
