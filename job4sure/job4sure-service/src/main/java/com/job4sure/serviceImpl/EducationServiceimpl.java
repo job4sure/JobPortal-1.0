@@ -7,27 +7,27 @@ import com.job4sure.model.Education;
 import com.job4sure.repository.EducationRepository;
 import com.job4sure.service.EducationService;
 
+/**
+ * @author ankit.sharma
+ * 
+ */
 @Service
-public class EducationServiceimpl implements EducationService {
+public class EducationServiceImpl implements EducationService {
 
 	@Autowired
 	private EducationRepository edurepository;
-	
-	public void save(Education ed) {
-		edurepository.saveAndFlush(ed);
-		
+
+	public void save(Education education) {
+		edurepository.saveAndFlush(education);
+
 	}
 
-	public Education viewEducation(Integer regid) {
-		
-		
-		Education edu1=edurepository.view(regid);
-		
-		return edu1;
-		
+	public Education viewEducation(Integer registrationId) {
+
+		Education education = edurepository.viewEducation(registrationId);
+
+		return education;
+
 	}
 
-	
-
-	
 }

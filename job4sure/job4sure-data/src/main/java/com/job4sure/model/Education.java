@@ -3,40 +3,39 @@ package com.job4sure.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * @author ankit.sharma
+ * 
+ */
 @Entity
 @Table(name = "education")
 public class Education {
 
-	
-	@Column(name="GRADUATION")
+	@Column(name = "GRADUATION")
 	private String graduation;
-	@Column(name="SPECIALIZATION")
+	@Column(name = "SPECIALIZATION")
 	private String specialization;
-	@Column(name="INSTITUTE")
+	@Column(name = "INSTITUTE")
 	private String institute;
-	
-	
-	
-	@Column(name="POSTGRADUATION")
+
+	@Column(name = "POSTGRADUATION")
 	private String postgraduation;
-	@Column(name="POSTSPECIALIZATION")
+	@Column(name = "POSTSPECIALIZATION")
 	private String post_specialization;
-	@Column(name="POSTINSTITUTE")
+	@Column(name = "POSTINSTITUTE")
 	private String post_institute;
-	
-	@Column(name="POSTYEAR")
+
+	@Column(name = "POSTYEAR")
 	private String post_yearr;
-	
-	@Column(name="POSTEDUCATION")
+
+	@Column(name = "POSTEDUCATION")
 	private String posteducation;
-	
-	
+
 	public String getPostgraduation() {
 		return postgraduation;
 	}
@@ -117,20 +116,18 @@ public class Education {
 		this.doc_education = doc_education;
 	}
 
-	@Column(name="DOCTORATE")
+	@Column(name = "DOCTORATE")
 	private String doctorate;
-	@Column(name="DOC_SPECIALIZATION")
+	@Column(name = "DOC_SPECIALIZATION")
 	private String doc_specialization;
-	@Column(name="DOC_INSTITUTE")
+	@Column(name = "DOC_INSTITUTE")
 	private String doc_institute;
-	
-	@Column(name="DOC_YEAR")
+
+	@Column(name = "DOC_YEAR")
 	private String doc_yearr;
-	
-	@Column(name="DOC_EDUCATION")
+
+	@Column(name = "DOC_EDUCATION")
 	private String doc_education;
-	
-	
 
 	public String getGraduation() {
 		return graduation;
@@ -180,11 +177,10 @@ public class Education {
 		this.education_id = education_id;
 	}
 
-	
-	@Column(name="YEAR")
+	@Column(name = "YEAR")
 	private String yearr;
-	
-	@Column(name="EDUCATION")
+
+	@Column(name = "EDUCATION")
 	private String education;
 
 	@Id
@@ -193,12 +189,11 @@ public class Education {
 	private Integer education_id;
 
 	@ManyToOne(targetEntity = Registration.class)
-	@JoinColumn(name = "REGISTRATION_ID", referencedColumnName = "registration_Id",insertable=false, updatable=false)
+	@JoinColumn(name = "REGISTRATION_ID", referencedColumnName = "registration_Id", insertable = false, updatable = false)
 	private Registration registration;
 
-	@Column(name="REGISTRATION_ID")
+	@Column(name = "REGISTRATION_ID")
 	private Integer registration_id;
-
 
 	public Registration getRegistration() {
 		return registration;

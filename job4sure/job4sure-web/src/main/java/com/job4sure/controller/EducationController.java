@@ -15,37 +15,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.Education;
 import com.job4sure.model.Registration;
-import com.job4sure.service.EducationService;
-import com.job4sure.serviceImpl.EducationServiceimpl;
+import com.job4sure.serviceImpl.EducationServiceImpl;
 import com.job4sure.util.IConstant;
 
+/**
+ * @author ankit.sharma
+ * 
+ */
 @Controller
-public class Educationcontoller {
+public class EducationController {
 
 	@Autowired
-	private EducationServiceimpl eduserviceimpl;
+	private EducationServiceImpl eduserviceimpl;
 
-	@RequestMapping(value = "/educationupdate", method = RequestMethod.GET)
-	public String showeducationsettings(HttpServletRequest request,@RequestParam(required = false) String message, Model model,Map<String, Object> map) {
-		Education education=new Education();
+	@RequestMapping(value = "/educationUpdate", method = RequestMethod.GET)
+	public String showEducationSettings(HttpServletRequest request,
+			@RequestParam(required = false) String message, Model model,
+			Map<String, Object> map) {
+		Education education = new Education();
 		HttpSession session = request.getSession(false);
 		Registration registration = (Registration) session
 				.getAttribute("registration");
 		Integer reg_id = registration.getRegistrationId();
-		 education = eduserviceimpl.viewEducation(reg_id);
-		 if(education!=null){
-			 model.addAttribute("message", message);
-		map.put("ED", education);
+		education = eduserviceimpl.viewEducation(reg_id);
+		if (education != null) {
+			model.addAttribute("message", message);
+			map.put("ED", education);
+		} else {
+			map.put("ED", new Education());
 		}
-		 else {
-			 map.put("ED", new Education());
-			 }
-		return "educationupdate";
+		return "educationUpdate";
 
 	}
 
-	@RequestMapping(value = "/edusave", method = RequestMethod.POST)
-	public String saveeducation(@ModelAttribute Education edu,
+	@RequestMapping(value = "/eduSave", method = RequestMethod.POST)
+	public String saveEducation(@ModelAttribute Education edu,
 			HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(false);
 		Registration registration = (Registration) session
@@ -53,14 +57,7 @@ public class Educationcontoller {
 		edu.setRegistration_id(registration.getRegistrationId());
 		eduserviceimpl.save(edu);
 		model.addAttribute("message", IConstant.EDUCATION_SAVE);
-		return "redirect:/educationupdate";
+		return "redirect:/educationUpdate";
 	}
-
-	
-	
-	
-	
-	
-	
 
 }
