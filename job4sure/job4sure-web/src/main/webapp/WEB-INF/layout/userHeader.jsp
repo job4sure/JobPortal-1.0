@@ -49,7 +49,7 @@
      
      <li id="menu-active"><a href="userProfileHomePage"><span>Home</span></a></li>
 	 <li id="menu-active"><a href="updateBasicProfile"><span>Update Your Basic Profile</span></a></li>
-       <li id="menu-active"><a href="educationupdate"><span>User education</span></a></li>
+       <li id="menu-active"><a href="educationupdate"><span>User Education</span></a></li>
       <!--  <li id="menu-active"><a href="#"
        ><span>Update Your Complete Info</span></a></li>
 	  <li id="menu-active"><a href="#"><span>Reset Password</span></a></li> -->

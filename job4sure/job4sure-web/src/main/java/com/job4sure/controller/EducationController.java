@@ -15,15 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.Education;
 import com.job4sure.model.Registration;
-import com.job4sure.service.EducationService;
-import com.job4sure.serviceImpl.EducationServiceimpl;
+import com.job4sure.serviceImpl.EducationServiceImpl;
 import com.job4sure.util.IConstant;
 
 @Controller
 public class EducationController {
 
 	@Autowired
-	private EducationServiceimpl eduserviceimpl;
+	private EducationServiceImpl eduserviceimpl;
 
 	@RequestMapping(value = "/educationupdate", method = RequestMethod.GET)
 	public String showeducationsettings(HttpServletRequest request,@RequestParam(required = false) String message, Model model,Map<String, Object> map) {

@@ -13,7 +13,7 @@ public interface EducationRepository extends JpaRepository<Education, Integer>{
 
 	
 	 @Query("select edu  from Education edu where edu.registration_id =:registration_id")
-	public Education view(@Param("registration_id") Integer reg);
+	public Education viewEducation(@Param("registration_id") Integer reg);
 
 	
 
