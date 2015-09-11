@@ -20,7 +20,7 @@ import com.job4sure.serviceImpl.EducationServiceimpl;
 import com.job4sure.util.IConstant;
 
 @Controller
-public class Educationcontoller {
+public class EducationController {
 
 	@Autowired
 	private EducationServiceimpl eduserviceimpl;
