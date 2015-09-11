@@ -81,7 +81,7 @@
    <c:forEach items="${jobList}" var="job">
     <tr>
      <td width="10%"></td>  
-     <td><img src="resources/images/user84.png" width="100" height="80" alt="My Pic"></td>
+     <td><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td>
      <td><div style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
       <!--  <img src="resources/images/user84.png" width="100" height="80"
         alt="My Pic"> -->

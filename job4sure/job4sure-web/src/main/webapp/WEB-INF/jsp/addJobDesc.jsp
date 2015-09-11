@@ -168,7 +168,7 @@ function showCheckboxes() {
 					<tr>
 						<td><font color="red">*</font>Job Title</td>
 						<td><form:input path="jobTitle"
-								class="validate[required] input-text" size="30" />
+								class="validate[required,custom[onlyLetterSp]] input-text" maxlength="50"/>
 							<div id="error">
 								<form:errors path="jobTitle" />
 							</div></td>
@@ -176,7 +176,7 @@ function showCheckboxes() {
 					<tr>
 						<td>Job Description</td>
 						<td><form:textarea path="jobDesc"
-								class="validate[required] input-text" cols="50" rows="5" />
+								class="validate[required] input-text" cols="50" rows="5" maxlength="200"/>
 							<div id="error">
 								<form:errors path="jobDesc" />
 							</div></td>
@@ -185,7 +185,7 @@ function showCheckboxes() {
 						<td><font color="red">*</font>Job Location</td>
 						<td><form:input path="jobLocation"
 								class="validate[required,custom[onlyLetterSp]] input-text allmydiv"
-								size="30" />
+								maxlength="30" />
 							<div id="error">
 								<form:errors path="jobLocation" />
 							</div></td>
@@ -231,7 +231,7 @@ function showCheckboxes() {
 					</tr>
 					<tr>
 						<td>Education</td>
-						<td><form:input path="education" size="10"
+						<td><form:input path="education" maxlength="20"
 								class="validate[required] input-text" /></td>
 					</tr>
 					<%-- <tr>
@@ -283,7 +283,7 @@ function showCheckboxes() {
 					</tr>
 					<tr>
 						<td><font color="red">*</font>Job Role</td>
-						<td><form:input path="role" size="20"
+						<td><form:input path="role" maxlength="20"
 								class="validate[required,custom[onlyLetterSp]] input-text" />
 							<div id="error">
 								<form:errors path="role" />
@@ -291,7 +291,7 @@ function showCheckboxes() {
 					</tr>
 					<tr>
 						<td>Number Of Candidates</td>
-						<td><form:input path="noOfCandidates" size="3"
+						<td><form:input path="noOfCandidates" maxlength="3"
 								class="validate[required,custom[integer]] input-text" />
 							<div id="error">
 								<form:errors path="noOfCandidates" />
@@ -299,7 +299,7 @@ function showCheckboxes() {
 					</tr>
 					<tr>
 						<td><font color="red">*</font>Job Valid Date</td>
-						<td><form:input path="jobValidDate" size="10"
+						<td><form:input path="jobValidDate" maxlength="10"
 								class="validate[required] input-text" />
 							<div id="error">
 								<form:errors path="jobValidDate" />
