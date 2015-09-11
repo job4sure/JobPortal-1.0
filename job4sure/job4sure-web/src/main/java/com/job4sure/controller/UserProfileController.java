@@ -138,7 +138,8 @@ public class UserProfileController {
 		boolean status = false;
 		registrationValidator.validate(registration, result);
 		if (result.hasErrors()) {
-			return "registration";
+			model.addAttribute("message","Mobile number should be 10 digit");
+			return "redirect:/updateBasicProfile";
 		}
 		status = registrationService.updateUserInformation(registration);
 		if (status) {
