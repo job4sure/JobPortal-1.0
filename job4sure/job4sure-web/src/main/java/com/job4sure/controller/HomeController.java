@@ -55,11 +55,11 @@ public class HomeController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		if (error != null) {
-			model.addAttribute("error",
+			model.addAttribute("message",
 					"<h3 class='msg error'>Incorrect Username or Password</h3>");
 		}
 		if (logout != null) {
-			model.addAttribute("msg",
+			model.addAttribute("logout",
 					"<p class='msg done'>You've been logged out successfully.</p>");
 		}
 		return "loginPage";
