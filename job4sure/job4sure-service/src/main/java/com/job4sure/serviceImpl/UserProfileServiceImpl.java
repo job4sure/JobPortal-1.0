@@ -34,28 +34,29 @@ public class UserProfileServiceImpl implements UserProfileService {
 
 	@Autowired
 	private AttachmentRepository attachmentRepository;
-	
+
 	@Autowired
 	private EducationRepository EducationRepository;
-	
+
 	@Autowired
 	private RoleRepository role;
-	
+
 	@Autowired
 	private IndustryRepository industry;
-	
+
 	@Autowired
 	private PrefferedLocationRepository prefferedlocation;
-	
+
 	@Autowired
 	private SalaryRepositoryForUser salary;
-	
+
 	@Autowired
 	private LocationRepository currentlocation;
 
 	@SuppressWarnings("resource")
-	public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
-			CommonsMultipartFile[] upload, String attchmentName) {
+	public boolean saveCompleteUserProfile(UserProfile userProfile,
+			MultipartFile filePart, CommonsMultipartFile[] upload,
+			String attchmentName) {
 		OutputStream outputStream = null;
 		InputStream inputStream = null;
 		if (userProfile != null) {
@@ -65,9 +66,11 @@ public class UserProfileServiceImpl implements UserProfileService {
 					attchmentName = multipartFile.getOriginalFilename();
 					try {
 						inputStream = filePart.getInputStream();
-						UserProfile userProfile2 = profileCompleteRepository.save(userProfile);
+						UserProfile userProfile2 = profileCompleteRepository
+								.save(userProfile);
 						File newFile = new File(IConstant.FILE_PATH);
-						File filePath = new File(newFile + File.separator + userProfile2.getRegistrationId() + "_"
+						File filePath = new File(newFile + File.separator
+								+ userProfile2.getRegistrationId() + "_"
 								+ attchmentName);
 						if (!newFile.exists()) {
 							newFile.mkdir();
@@ -81,11 +84,14 @@ public class UserProfileServiceImpl implements UserProfileService {
 							outputStream.write(bytes, 0, read);
 						}
 						Attachment attchment = new Attachment();
-						if (attchmentName != null && attchmentName != "" && attchment != null) {
+						if (attchmentName != null && attchmentName != ""
+								&& attchment != null) {
 							attchment.setAttachmentName(attchmentName);
-							attchment.setPath(newFile + File.separator + userProfile2.getRegistrationId() + "_"
+							attchment.setPath(newFile + File.separator
+									+ userProfile2.getRegistrationId() + "_"
 									+ attchmentName);
-							attchment.setRegistrationId(userProfile2.getRegistrationId());
+							attchment.setRegistrationId(userProfile2
+									.getRegistrationId());
 							attchment.setProfilePic(i);
 							attchment.setResume(j);
 							attachmentRepository.save(attchment);
@@ -105,7 +111,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 	}
 
 	public UserProfile getLoggedInUserCompleteInfo(Integer registrationId) {
-		UserProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
+		UserProfile userProfile = profileCompleteRepository
+				.getLoggedInUserCompleteInfo(registrationId);
 		return userProfile;
 	}
 
@@ -113,17 +120,17 @@ public class UserProfileServiceImpl implements UserProfileService {
 		int noOfTables = 3;
 		int noOfTablesField = 1;
 
-		UserProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
+		UserProfile userProfile = profileCompleteRepository
+				.getLoggedInUserCompleteInfo(registrationId);
 
 		if (userProfile != null) {
 			noOfTablesField++;
 		}
-		
-		Education education=EducationRepository.viewEducation(registrationId);
-		if(education==null){
-			
-		}
-		else{
+
+		Education education = EducationRepository.viewEducation(registrationId);
+		if (education == null) {
+
+		} else {
 			noOfTablesField++;
 		}
 
@@ -131,29 +138,30 @@ public class UserProfileServiceImpl implements UserProfileService {
 		int profileCompleted = (int) per;
 		return profileCompleted;
 	}
-	public List salaryAnnual() {
-		List	salarydata=salary.findAll();
-			return salarydata;
-		}
 
-		public List industryData() {
-			List industrydata=industry.findAll();
-			return industrydata;
-		}
+	public List getAnnualSalary() {
+		List salarydata = salary.findAll();
+		return salarydata;
+	}
 
-		public List currentLocation() {
-		List currentlocation1=currentlocation.findAll();
-			return currentlocation1;
-		}
+	public List industryData() {
+		List industrydata = industry.findAll();
+		return industrydata;
+	}
 
-		public List prefferedLocation() {
-			List preferedlocation=prefferedlocation.findAll();
-			return preferedlocation;
-		}
+	public List currentLocation() {
+		List currentlocation1 = currentlocation.findAll();
+		return currentlocation1;
+	}
 
-		public List roleData() {
-		List roletype=	role.findAll();
-			return roletype;
-		}
+	public List prefferedLocation() {
+		List preferedlocation = prefferedlocation.findAll();
+		return preferedlocation;
+	}
+
+	public List roleData() {
+		List roletype = role.findAll();
+		return roletype;
+	}
 
 }
