@@ -66,9 +66,6 @@
 				<li id="menu-active"><a href="userProfileHomePage"><span>Home</span></a></li>
 				<li id="menu-active"><a href="educationUpdate"><span>User
 							Education</span></a></li>
-				<!--  <li id="menu-active"><a href="#"
-       ><span>Update Your Complete Info</span></a></li>
-	  <li id="menu-active"><a href="#"><span>Reset Password</span></a></li> -->
 				<li id="menu-active"><a href="#"><span>User Profile</span></a>
 
 					<ul class="sub-menu">

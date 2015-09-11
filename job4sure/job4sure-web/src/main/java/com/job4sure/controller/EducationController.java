@@ -48,6 +48,6 @@ public class EducationController {
 		edu.setRegistration_id(registration.getRegistrationId());
 		educationServiceImpl.save(edu);
 		model.addAttribute("message", IConstant.EDUCATION_SAVE);
-		return "redirect:/educationupdate";
+		return "redirect:/educationUpdate";
 	}
 }
