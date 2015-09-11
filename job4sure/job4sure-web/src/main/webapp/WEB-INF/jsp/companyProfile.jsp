@@ -58,6 +58,10 @@ function clearAllErrors() {
 	});
 	</script>
 	<style>
+	table,tr,td,th
+	{
+	border:0px;
+	}
     .multiselect {
         width: 200px;
     }
@@ -145,13 +149,7 @@ jQuery(document).ready(function(){
           
           </fieldset>
         </form>
-       
-       
-      </div>
-      
-      <ul class="box">
-     
-		</ul>
+       </div>
    </div><center><h2>Company Profile</h2></center>
     <h3 style="color: red;">${message}</h3>
     <div id="content" class="box">

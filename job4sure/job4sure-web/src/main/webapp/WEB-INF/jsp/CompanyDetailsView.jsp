@@ -12,11 +12,8 @@
 	</script>
 	<style>
 table, th, td {
-    border: 1px solid black;
+    border: 0px solid black;
     border-collapse: collapse;
-}
-th, td {
-    padding: 15px;
 }
 </style>
 </head>
@@ -24,21 +21,7 @@ th, td {
 <div id="main">
   <hr class="noscreen" />
  
-  <!-- <div id="menu" class="box">
- 
-	<div id="menu" class="box">
-  
-	
-	
-    <ul class="box">
-     
-	 <li id="menu-active"><a href="CompanyProfile"><span>Create Company Profile</span></a></li>
-	  <li id="menu-active"><a href="updateCompProfile"><span>Update Company Profile</span></a></li>
-    </ul>
-  </div>
-		  
-  </div> -->
-  
+
      <hr class="noscreen" />
   <!-- Columns -->
   <div id="cols" class="box">
@@ -84,6 +67,7 @@ th, td {
       <ul class="box">
       </ul>
     </div>
+    
      <body>
      <c:if test= "${companyProfile.registrationId !=null}">
      <table style="width:80%">
@@ -134,3 +118,4 @@ th, td {
      </body>
 	</div>
 	</div>
+</html>
