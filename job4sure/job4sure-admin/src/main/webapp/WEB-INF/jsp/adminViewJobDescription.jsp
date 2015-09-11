@@ -203,18 +203,18 @@ function clearAllErrors() {
 			</tr>
 			<tr>
 				<td>Salary</td>
-				<td><form:input path="minSalary.salary" size="10" class="validate[required] input-text" disabled="true"/>
+				<td><form:input path="minSalary.salary" size="10" class="validate[required] input-text" disabled="true"/>To
 				<form:input path="maxSalary.salary" size="10" class="validate[required] input-text" disabled="true"/>
 				</td>
 			</tr>
 			
-			<tr>
+			<%-- <tr>
 				<td>Experience</td>
 				<td><form:input path="experience" size="30" class="validate[required] input-text" disabled="true" />
 					<div id="error">
 						<form:errors path="experience" />
 					</div></td>
-			</tr>
+			</tr> --%>
 			<tr>
 				<td>Education</td>
 				<td><form:input path="education" size="50" class="validate[required] input-text"  disabled="true"/></td>

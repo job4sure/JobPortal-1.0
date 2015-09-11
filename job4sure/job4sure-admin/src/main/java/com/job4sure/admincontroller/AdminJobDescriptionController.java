@@ -21,10 +21,11 @@ public class AdminJobDescriptionController {
 	private AdminJobDescriptionService adminJobDescriptionService;
 	
 	@RequestMapping(value = "/showApprovedJobDescriptions", method = RequestMethod.GET)
-	public String showAllApprovedJds(Map<String, Object> map,ModelMap model,HttpServletRequest request) {
+	public String showAllApprovedJds(Map<String, Object> map,String message,ModelMap model,HttpServletRequest request) {
 		int jdApprovedStatus=2;
 		List<JobDescription> approvedJobDescriptionsList =adminJobDescriptionService.getAllAprovedJobDescriptions(jdApprovedStatus);
 		model.addAttribute("approvedJobDescriptionsList", approvedJobDescriptionsList);
+		model.addAttribute("message",message);
 		return "showJobDescriptionPage";
 	}
 	
