@@ -14,4 +14,7 @@ public interface AttachmentRepository extends JpaRepository<Attachment, Integer>
 	@Query("select attachment from Attachment attachment where attachment.registrationId=:regId")
 	List<Attachment> getAllAttachment(@Param("regId") Integer regId);
 
+	@Query("select attachment from Attachment attachment where attachment.registrationId=:regId and attachment.attachmentType=:attachmentType")
+	Attachment getProfilePicAttachment(@Param("regId")Integer registrationId,@Param("attachmentType") String attachmentType);
+
 }

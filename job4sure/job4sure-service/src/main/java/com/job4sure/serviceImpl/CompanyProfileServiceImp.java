@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
 import com.job4sure.model.CompanyProfileModel;
-import com.job4sure.model.UserProfile;
 import com.job4sure.repository.AttachmentRepository;
 import com.job4sure.repository.companyProfileRepository;
 import com.job4sure.service.CompanyProfileService;
@@ -29,16 +29,15 @@ public class CompanyProfileServiceImp implements CompanyProfileService {
 
 	@Autowired
 	private AttachmentRepository attachmentRepository;
-	
+
 	@SuppressWarnings("resource")
 	@Transactional
-	public boolean saveCompanyProfile(CompanyProfileModel companyProfile, MultipartFile filePart,
+	public boolean savecompany_profile(CompanyProfileModel companyProfile, MultipartFile filePart,
 			CommonsMultipartFile[] upload, String attchmentName) {
 		OutputStream outputStream = null;
 		InputStream inputStream = null;
 		if (companyProfile != null) {
 			if (upload != null && upload.length > 0) {
-				int i = 1, j = 0;
 				for (CommonsMultipartFile multipartFile : upload) {
 					attchmentName = multipartFile.getOriginalFilename();
 					try {
@@ -58,17 +57,22 @@ public class CompanyProfileServiceImp implements CompanyProfileService {
 						while ((read = inputStream.read(bytes)) != -1) {
 							outputStream.write(bytes, 0, read);
 						}
-						Attachment attchment = new Attachment();
-						if (attchmentName != null && attchmentName != "" && attchment != null) {
+						String profilePic = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
+						if (profilePic.equals("jpg") || profilePic.equals("png") || profilePic.equals("bpg")
+								|| profilePic.equals("jpeg")) {
+							String attchmentType = "companyLogo";
+							Attachment attchment = new Attachment();
+							Attachment oldAttchment = new Attachment();
+							oldAttchment = attachmentRepository.getProfilePicAttachment(companyProfile2.getRegistrationId(), attchmentType);
+							if (oldAttchment != null) {
+								attchment = oldAttchment;
+							}
+							attchment.setAttachmentType(attchmentType);
 							attchment.setAttachmentName(attchmentName);
 							attchment.setPath(newFile + File.separator + companyProfile2.getRegistrationId() + "_"
 									+ attchmentName);
 							attchment.setRegistrationId(companyProfile2.getRegistrationId());
-							attchment.setProfilePic(i);
-							attchment.setResume(j);
 							attachmentRepository.save(attchment);
-							i--;
-							j++;
 						}
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -82,21 +86,35 @@ public class CompanyProfileServiceImp implements CompanyProfileService {
 		return true;
 	}
 
+	public List<CompanyProfileModel> view_profile(CompanyProfileModel companyProfile) {
 
-	public List<CompanyProfileModel> view_profile(
-			CompanyProfileModel companyProfile) {
-
-		List<CompanyProfileModel> list = companyProfileRepository
-				.findByRegistrationId(companyProfile.getRegistrationId());
+		List<CompanyProfileModel> list = companyProfileRepository.findByRegistrationId(companyProfile
+				.getRegistrationId());
 		return list;
 	}
 
-	public CompanyProfileModel getLoggedInCompanyCompleteInfo(
-			Integer registrationId) {
-		CompanyProfileModel companyProfile = companyProfileRepository
-				.getLoggedInCompanyCompleteInfo(registrationId);
+	public CompanyProfileModel getLoggedInCompanyCompleteInfo(Integer registrationId) {
+		CompanyProfileModel companyProfile = companyProfileRepository.getLoggedInCompanyCompleteInfo(registrationId);
 		return companyProfile;
 
+	}
+	
+	public Attachment getCompanyProfile(Integer registrationId) {
+		Attachment attachment = null;
+		if (registrationId != null) {
+			List<Attachment> list = attachmentRepository.getAllAttachment(registrationId);
+			if (list != null) {
+				attachment = null;
+				for (Object object : list) {
+					attachment = (Attachment) object;
+					if (attachment.getAttachmentType().equals("companyLogo")){
+						return attachment;
+					}
+
+				}
+			}
+		}
+		return attachment;
 	}
 
 }

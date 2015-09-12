@@ -1,5 +1,6 @@
 package com.job4sure.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.job4sure.model.Attachment;
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.Registration;
 import com.job4sure.service.CompanyProfileService;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.util.IConstant;
+import com.job4sure.util.ImageFormat;
 import com.job4sure.validator.RegistrationValidator;
 
 @Controller
@@ -39,10 +42,15 @@ public class CompanyProfileController {
 	 */
 
 	@RequestMapping(value = "/showCompleteCompanyProfilePage", method = RequestMethod.GET)
-	public String showCompleteCompanyProfile(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,
-			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
+	public String showCompleteCompanyProfilePage(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,
+			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) throws IOException {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
+		Attachment attachment = companyProfileService.getCompanyProfile(registration.getRegistrationId());
+		if (attachment != null) {
+			String path = ImageFormat.readImage(attachment.getPath());
+			model.addAttribute("attachment", path);
+		}
 		companyProfile = companyProfileService.getLoggedInCompanyCompleteInfo(registration.getRegistrationId());
 		if (companyProfile != null) {
 			map.put("companyProfile", companyProfile);
@@ -55,16 +63,18 @@ public class CompanyProfileController {
 	}
 
 	/* This method for saving company complete info here savecompanyProfile */
+	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompanyCompleteProfile", method = RequestMethod.POST)
 	public String saveCompanyCompleteProfile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,
 			@RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
 			String attchmentName, ModelMap model, HttpServletRequest request) {
 		final MultipartFile filePart = file;
+		boolean status = false;
 		file.getOriginalFilename();
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		companyProfile.setRegistrationId(registration.getRegistrationId());
-		companyProfileService.saveCompanyProfile(companyProfile,filePart,upload,attchmentName);
+		companyProfileService.savecompany_profile(companyProfile,filePart,upload,attchmentName);
 		if (companyProfile.getRegistrationId() == null) {
 			model.addAttribute("message", IConstant.COMPANY_COMPLETE_INFO_MESSAGE);
 			return "redirect:/CompanyProfile";
@@ -75,8 +85,8 @@ public class CompanyProfileController {
 	}
 
 	/* this methos for show the company details page as non changeble */
-	@RequestMapping(value = "/companyProfileView", method = RequestMethod.GET)
-	public String companyProfileView(Map<String, Object> map, ModelMap model, HttpServletRequest request) {
+	@RequestMapping(value = "/CompanyProfileView", method = RequestMethod.GET)
+	public String CompanyProfileView(Map<String, Object> map, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		CompanyProfileModel companyProfile = companyProfileService.getLoggedInCompanyCompleteInfo(registration
@@ -116,13 +126,14 @@ public class CompanyProfileController {
 		if (status) {
 			session.setAttribute("registration", registration);
 			model.addAttribute("message", IConstant.COMPANY_BASIC_INFO_UPDATE_MESSAGE);
-		} else
+		} else {
 			model.addAttribute("message", IConstant.COMPANY_BASIC_INFO_UPDATE_FAILURE_MESSAGE);
+		}
 		return "redirect:/updateCompanyBasicProfile";
 	}
 
 	@RequestMapping(value = "/setNewPasswordForComp", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reCreatePass(Map<String, Object> map,HttpServletRequest request) throws Exception {
+	public String reCreatePass(Map<String, Object> map, ModelMap model, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		registration.setRegistrationId(registration.getRegistrationId());

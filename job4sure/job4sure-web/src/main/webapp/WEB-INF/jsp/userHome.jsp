@@ -131,9 +131,9 @@
               <b>State:&nbsp;&nbsp;</b>${userProfile.state}<br><br>
                <b>Total Experience: &nbsp;&nbsp;</b>${userProfile.experience}<br><br>
        </div>
-        <div class="colNew">
-      <img src="resources/design/sandy.jpg" id="preview" height="100px" width="100px" />
-        </div>
+       <div width="41%" valign="middle">
+						<img src="${attachment}" id="preview" height="140px" width="140px" />
+					</div>
 </div>
   </div>
   </div>

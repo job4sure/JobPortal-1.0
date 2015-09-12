@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
@@ -24,15 +25,16 @@ public class Attachment implements Serializable {
 	@Column(name = "ATTACHMENT_NAME")
 	private String attachmentName;
 
-	@Column(name = "PROFILE_PIC")
-	private Integer profilePic;
+	@Column(name = "ATTACHMENT_TYPE")
+	private String attachmentType;
 
-	@Column(name = "RESUME")
-	private Integer resume;
 
 	@Column(name = "REGISTRATION_ID")
 	private Integer registrationId;
 
+	@Transient
+	
+	
 	public Integer getAttachmentId() {
 		return attachmentId;
 	}
@@ -57,20 +59,13 @@ public class Attachment implements Serializable {
 		this.attachmentName = attachmentName;
 	}
 
-	public Integer getProfilePic() {
-		return profilePic;
+
+	public String getAttachmentType() {
+		return attachmentType;
 	}
 
-	public void setProfilePic(Integer profilePic) {
-		this.profilePic = profilePic;
-	}
-
-	public Integer getResume() {
-		return resume;
-	}
-
-	public void setResume(Integer resume) {
-		this.resume = resume;
+	public void setAttachmentType(String attachmentType) {
+		this.attachmentType = attachmentType;
 	}
 
 	public Integer getRegistrationId() {

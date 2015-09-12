@@ -9,11 +9,11 @@ import com.job4sure.model.Attachment;
 import com.job4sure.model.UserProfile;
 
 public interface UserProfileService {
-	public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart, CommonsMultipartFile[] upload, String attchmentName) ;
+	
 
 	public UserProfile getLoggedInUserCompleteInfo(
 			Integer registrationId);
-
+	public Attachment getAllAttachment(Integer registrationId);
 	public int getprofileCompletedInPercent(Integer registrationId);
 	
 	  public List salaryAnnual();
@@ -25,6 +25,8 @@ public interface UserProfileService {
 		public List prefferedLocation();
 		
 		public List roleData();
+		public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
+				CommonsMultipartFile[] upload, String attchmentName);
 
-		public Attachment getAllAttachment(Integer registrationId);
+		
 }

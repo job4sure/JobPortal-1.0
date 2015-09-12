@@ -1,5 +1,6 @@
 package com.job4sure.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.Map;
 
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.job4sure.model.Attachment;
 import com.job4sure.model.Login;
 import com.job4sure.model.Registration;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.util.DateFormatUtil;
 import com.job4sure.util.EncryptDecrypt;
 import com.job4sure.util.IConstant;
+import com.job4sure.util.ImageFormat;
 
 @Controller
 public class HomeController {
@@ -74,11 +77,16 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/companyHome", method = RequestMethod.GET)
-    public String showCompPage(Map<String, Object> map, ModelMap model, HttpServletRequest request) {
+    public String showCompPage(Map<String, Object> map, ModelMap model, HttpServletRequest request) throws IOException {
 	HttpSession session = request.getSession();
 	Registration registration = (Registration) session.getAttribute("registration");
 	map.put("Registration", new Registration());
 	model.addAttribute("registration", registration);
+	Attachment attachment = registrationService.getAllAttachment(registration.getRegistrationId());
+	if (attachment != null) {
+		String path = ImageFormat.readImage(attachment.getPath());
+		model.addAttribute("attachment", path);
+	}
 	return "companyHomePage";
     }
 

@@ -12,9 +12,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.job4sure.model.Attachment;
 import com.job4sure.model.Login;
 import com.job4sure.model.Registration;
 import com.job4sure.repository.AdminRegistrationRepository;
+import com.job4sure.repository.AttachmentRepository;
 import com.job4sure.repository.RegistrationRepository;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.util.EncryptDecrypt;
@@ -31,6 +33,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 	
 	@Autowired
 	private AdminRegistrationRepository adminRegistrationRepository;
+	
+	@Autowired
+	private AttachmentRepository attachmentRepository;
 
 	@Transactional
 	public boolean saveUserInformation(Registration registration) throws Exception {
@@ -136,4 +141,22 @@ public class RegistrationServiceImpl implements RegistrationService {
 		 registrationRepository.save(registration);
 		return true;
 }
+	public Attachment getAllAttachment(Integer registrationId) {
+		Attachment attachment = null;
+		if (registrationId != null) {
+			List<Attachment> list = attachmentRepository.getAllAttachment(registrationId);
+			if (list != null) {
+				attachment = null;
+				for (Object object : list) {
+					attachment = (Attachment) object;
+					if (attachment.getAttachmentType().equals("profilePic")){
+						return attachment;
+					}
+
+				}
+			}
+		}
+		return attachment;
+	}
+
 }

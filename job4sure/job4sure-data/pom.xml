@@ -41,21 +41,21 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.1.6.RELEASE</version>
 		</dependency>
-		
-		<!-- Display TAG Libeary -->
-  <dependency>
-   <groupId>displaytag</groupId>
-   <artifactId>displaytag</artifactId>
-   <version>1.1.1</version>
-  </dependency>
 
-  <dependency>
-   <groupId>displaytag</groupId>
-   <artifactId>displaytag-export-poi</artifactId>
-   <version>1.1.1</version>
-  </dependency>
-  <!-- End -->
-  		
+		<!-- Display TAG Libeary -->
+		<dependency>
+			<groupId>displaytag</groupId>
+			<artifactId>displaytag</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>displaytag</groupId>
+			<artifactId>displaytag-export-poi</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<!-- End -->
+
 		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -82,8 +82,8 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
-		
-		
+
+
 
 		<!-- Hibernate -->
 		<dependency>
@@ -235,6 +235,11 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.2</version>
 		</dependency>
 		<!-- Mail Libeary -->
 		<dependency>
