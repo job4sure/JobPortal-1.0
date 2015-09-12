@@ -48,5 +48,8 @@ public class IConstant {
 	//Messages for AdminHomeController
 	public static final String WRONG_CREDENTIAL = "<h3 class='msg error'>Incorrect Username or Password</h3>";
 	public static final String RIGHT_CREDENTIAL = "<p class='msg done'>You've been logged out successfully.</p>";
+	
+	//Messages for HomeController
+	public static final String PASSWORD_UPDATED="<p class='msg done'>Your password successfully updated.</p>";
 }
 

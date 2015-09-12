@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,14 +65,12 @@ public class HomeController {
 	int numberOfDaysRemaining = DateFormatUtil.getRemainingDays(registration.getValidUpTo());
 	session.setAttribute("registration", registration);
 	session.setAttribute("daysLeft", numberOfDaysRemaining);
-	if (isUser) {
+	if (isUser)
 	    return "redirect:/userProfileHomePage";
-	} else if (isComp) {
+	else if (isComp)
 	    return "redirect:/companyHome";
-	} else {
+	else
 	    return "loginPage";
-	}
-
     }
 
     @RequestMapping(value = "/companyHome", method = RequestMethod.GET)
@@ -86,7 +83,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/forgotPassword", method = RequestMethod.GET)
-    public String ShowforgotPassPage(Map<String, Object> map, @RequestParam(required = false) String message,
+    public String ShowForgotPassPage(Map<String, Object> map, @RequestParam(required = false) String message,
 		    ModelMap model) {
 	map.put("login", new Login());
 	model.addAttribute("message", message);
@@ -104,11 +101,10 @@ public class HomeController {
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
-	if (status) {
+	if (status)
 	    model.addAttribute("message", IConstant.MAIL_SUCCESS_MESSAGE);
-	} else {
+	else
 	    model.addAttribute("message", IConstant.MAIL_FAILURE_MESSAGE);
-	}
 	return "redirect:/forgotPassword";
     }
 
@@ -125,11 +121,9 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
-    public String UpdatePassword(@ModelAttribute("registration") Registration registration, BindingResult result,
-		    Model model, Map<String, Object> map) {
+    public String updatePassword(@ModelAttribute("registration") Registration registration, Model model) {
 	registrationService.updatePassword(registration.getRegistrationId(), registration.getPassword());
-	model.addAttribute("message", "Your password successfully updated");
+	model.addAttribute("message", IConstant.PASSWORD_UPDATED);
 	return "redirect:/OpenloginPage";
     }
-
 }
