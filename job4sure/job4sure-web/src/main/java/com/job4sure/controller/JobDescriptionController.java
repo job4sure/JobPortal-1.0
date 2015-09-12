@@ -68,9 +68,8 @@ public class JobDescriptionController {
 	HttpSession session = request.getSession(false);
 	Registration registration = (Registration) session.getAttribute("registration");
 	List<JobDescription> jobList = jobDescriptionService.getAllJobDescription(registration.getRegistrationId());
-	if(jobList.isEmpty()){
+	if(jobList.isEmpty())
 	    model.addAttribute("message", IConstant.EMPTY_LIST);
-	}
 	else{
 	model.addAttribute("jobList", jobList);
 	model.addAttribute("message", IConstant.NOT_EMPTY_LIST);

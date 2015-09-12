@@ -1,11 +1,6 @@
 package com.job4sure.controller;
 
 import java.security.Principal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.job4sure.model.Login;
 import com.job4sure.model.Registration;
 import com.job4sure.service.RegistrationService;
+import com.job4sure.util.DateFormatUtil;
 import com.job4sure.util.EncryptDecrypt;
 import com.job4sure.util.IConstant;
 
@@ -53,37 +49,21 @@ public class HomeController {
 		    Model model) {
 	HttpSession session = request.getSession();
 	session.invalidate();
-	if (error != null) {
-	    model.addAttribute("message", "<h3 class='msg error'>Incorrect Username or Password</h3>");
-	}
-	if (logout != null) {
-	    model.addAttribute("message", "<p class='msg done'>You've been logged out successfully.</p>");
-	}
+	if (error != null)
+	    model.addAttribute("message", IConstant.WRONG_CREDENTIAL);
+	if (logout != null)
+	    model.addAttribute("message", IConstant.RIGHT_CREDENTIAL);
 	return "loginPage";
     }
 
     @RequestMapping(value = "/success", method = RequestMethod.GET)
-    public String showsuccesspage(HttpServletRequest request, Principal principal) {
+    public String showSuccessPage(HttpServletRequest request, Principal principal) {
 	HttpSession session = request.getSession();
 	boolean isUser = request.isUserInRole("USER");
 	boolean isComp = request.isUserInRole("COMP");
 	String userName = principal.getName();
 	Registration registration = registrationService.getLoggedInUserInfo(userName);
-	Date now = new Date();
-	int numberOfDaysRemaining = 0;
-	DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	try {
-	    Date ValidityDate = (Date) formatter.parse(registration.getValidUpTo());
-	    if (ValidityDate.compareTo(now) > 0) {
-		Calendar day1 = Calendar.getInstance();
-		Calendar day2 = Calendar.getInstance();
-		day1.setTime(ValidityDate);
-		day2.setTime(now);
-		numberOfDaysRemaining = day1.get(Calendar.DAY_OF_YEAR) - day2.get(Calendar.DAY_OF_YEAR);
-	    }
-	} catch (ParseException e) {
-	    e.printStackTrace();
-	}
+	int numberOfDaysRemaining = DateFormatUtil.getRemainingDays(registration.getValidUpTo());
 	session.setAttribute("registration", registration);
 	session.setAttribute("daysLeft", numberOfDaysRemaining);
 	if (isUser) {

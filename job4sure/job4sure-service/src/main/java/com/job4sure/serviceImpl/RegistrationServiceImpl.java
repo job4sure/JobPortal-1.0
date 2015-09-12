@@ -38,7 +38,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			Calendar c = new GregorianCalendar();
 			c.add(Calendar.DATE, 30);
 			Date date = c.getTime();
-			SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO);
+			SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO_DATE_FORMAT);
 			String strDate = date1.format(date);
 			registration.setValidUpTo(strDate);
 			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -105,7 +105,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			Calendar c = new GregorianCalendar();
 			c.add(Calendar.DATE, 30);
 			Date date = c.getTime();
-			SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO);
+			SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO_DATE_FORMAT);
 			String strDate = date1.format(date);
 			registration.setValidUpTo(strDate);
 			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -130,7 +130,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 		Calendar c = new GregorianCalendar();
 		c.add(Calendar.DATE, 30);
 		Date date = c.getTime();
-		SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO);
+		SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO_DATE_FORMAT);
 		String strDate = date1.format(date);
 		registration.setValidUpTo(strDate);
 		 registrationRepository.save(registration);

@@ -31,7 +31,7 @@ public class IConstant {
 	public static final String MAIL_FAILURE_MESSAGE = "<h4 class = 'msg error'>Your request for re-create password is failed , Please try again with registered Email ID!</h4>";
 
 	//Date format
-	public static final String VALID_UP_TO="yyyy-MM-dd hh:mm:ss";
+	public static final String VALID_UP_TO_DATE_FORMAT="yyyy-MM-dd hh:mm:ss";
 	
 	//path
 	public static final String FILE_PATH = "D:/jobPortal-1.0-2/localImages/";
