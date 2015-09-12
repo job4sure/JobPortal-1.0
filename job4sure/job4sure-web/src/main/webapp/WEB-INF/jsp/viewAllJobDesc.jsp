@@ -64,7 +64,9 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<c:if test="${jobList!=null}">
 		<div id="pageNavPosition"></div>
+		</c:if>
 		<script type="text/javascript">
 			var pager = new Pager('results', 2);
 			pager.init();
