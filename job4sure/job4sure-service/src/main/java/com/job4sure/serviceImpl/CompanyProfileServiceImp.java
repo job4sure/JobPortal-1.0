@@ -32,7 +32,7 @@ public class CompanyProfileServiceImp implements CompanyProfileService {
 	
 	@SuppressWarnings("resource")
 	@Transactional
-	public boolean savecompany_profile(CompanyProfileModel companyProfile, MultipartFile filePart,
+	public boolean saveCompanyProfile(CompanyProfileModel companyProfile, MultipartFile filePart,
 			CommonsMultipartFile[] upload, String attchmentName) {
 		OutputStream outputStream = null;
 		InputStream inputStream = null;

@@ -12,7 +12,7 @@ public interface CompanyProfileService {
 
 	public CompanyProfileModel getLoggedInCompanyCompleteInfo(Integer registrationId);
 
-	public boolean savecompany_profile(CompanyProfileModel companyProfile, MultipartFile filePart,
+	public boolean saveCompanyProfile(CompanyProfileModel companyProfile, MultipartFile filePart,
 			CommonsMultipartFile[] upload, String attchmentName);
 
 }

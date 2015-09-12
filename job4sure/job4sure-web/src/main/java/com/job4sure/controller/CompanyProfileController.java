@@ -39,7 +39,7 @@ public class CompanyProfileController {
 	 */
 
 	@RequestMapping(value = "/showCompleteCompanyProfilePage", method = RequestMethod.GET)
-	public String showCompleteCompanyProfilePage(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,
+	public String showCompleteCompanyProfile(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,
 			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
@@ -66,7 +66,7 @@ public class CompanyProfileController {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		companyProfile.setRegistrationId(registration.getRegistrationId());
-		companyProfileService.savecompany_profile(companyProfile,filePart,upload,attchmentName);
+		companyProfileService.saveCompanyProfile(companyProfile,filePart,upload,attchmentName);
 		if (companyProfile.getRegistrationId() == null) {
 			model.addAttribute("message", IConstant.COMPANY_COMPLETE_INFO_MESSAGE);
 			return "redirect:/CompanyProfile";
