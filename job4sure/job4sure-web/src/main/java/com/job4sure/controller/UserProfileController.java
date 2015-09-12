@@ -67,7 +67,7 @@ public class UserProfileController {
 	
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/userCompletInfoPageShow", method = RequestMethod.GET)
-	public String Complete_profile(Map<String,Object>map,String message,ModelMap model) 
+	public String userCompletInfoPageShow(Map<String,Object>map,String message,ModelMap model) 
 	{
 		List currentLocation= userProfileService.currentLocation();
 		model.addAttribute("location", currentLocation);
