@@ -3,8 +3,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -27,23 +25,11 @@
 }
 </style>
 <script type="text/javascript">
-	jQuery(document).ready(function() {
-		// binds form submission and fields to the validation engine
-		jQuery("#formID").validationEngine({
-			onFormSuccess : formSuccess,
-			onFormFailure : formFailure
-		});
+	$(document).ready(function() {
+		$("#formID").validationEngine();
+
 	});
 </script>
-<script type="text/javascript">
-	document.getElementById('show_button').addEventListener('click', hideshow,
-			false);
-
-	function hideshow() {
-		document.getElementById('hidden-div').style.display = 'block';
-		this.style.display = 'none'
-	}
-	</script>
 <script type="text/javascript">
 	function previewImage(input) {
 		var preview = document.getElementById('preview');
@@ -59,8 +45,8 @@
 	}
 </script>
 
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<!-- <script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script>
 	$(document).ready(function() {

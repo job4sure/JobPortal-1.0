@@ -109,7 +109,7 @@ $(document).ready(function() {
 								</tr>
 
 								<tr>
-									<td>Mobile No.<font color="red">*</font>:
+									<td>Contact No.<font color="red">*</font>:
 									</td>
 									<td><form:input type="text" size="10" path="mobileNo" maxlength="10"
 											class="validate[required,custom[integer,maxSize[10],minSize[10]]] input-text" id="mobileNo" />&nbsp&nbsp&nbsp&nbsp<span
