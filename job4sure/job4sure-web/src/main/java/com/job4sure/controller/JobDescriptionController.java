@@ -17,14 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.job4sure.model.Experience;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.model.Registration;
-import com.job4sure.model.Salary;
-import com.job4sure.model.Skills;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.IConstant;
+import com.job4sure.util.JobDescriptionDropDownList;
 
 @Controller
 public class JobDescriptionController {
@@ -40,15 +38,9 @@ public class JobDescriptionController {
     public String createJobDescription(@ModelAttribute JobDescription jobDescription, HttpServletRequest request,
 		    BindingResult bindingResult, Model model, @RequestParam(required = false) String status,
 		    String skill) {
-	String methodType = request.getMethod();
 	model.addAttribute("status", status);
-	List<Skills> skillsList = jobDescriptionService.getAllSkills();
-	List<Salary> salaryList = jobDescriptionService.getAllSalary();
-	List<Experience> experienceList = jobDescriptionService.getAllExperience();
-	model.addAttribute("salaryList", salaryList);
-	model.addAttribute("experienceList", experienceList);
-	model.addAttribute("skillsList", skillsList);
-	if (methodType.equals("POST")) {
+	JobDescriptionDropDownList.getAllJobDescriptionDropDownList(model, jobDescriptionService);
+	if (request.getMethod().equals("POST")) {
 	    validator.validate(jobDescription, bindingResult);
 	    if (bindingResult.hasErrors()) {
 		return "addJobDesc";
@@ -91,14 +83,9 @@ public class JobDescriptionController {
     }
 
     @RequestMapping(value = "/editJob", method = { RequestMethod.GET, RequestMethod.POST })
-    public String editJob(ModelMap model, @RequestParam Integer jobId) {
+    public String editJob(Model model, @RequestParam Integer jobId) {
 	JobDescription jobDescription = jobDescriptionService.editJob(jobId);
-	List<Salary> salaryList = jobDescriptionService.getAllSalary();
-	List<Experience> experienceList = jobDescriptionService.getAllExperience();
-	List<Skills> skillsList = jobDescriptionService.getAllSkills();
-	model.addAttribute("skillsList", skillsList);
-	model.addAttribute("salaryList", salaryList);
-	model.addAttribute("experienceList", experienceList);
+	JobDescriptionDropDownList.getAllJobDescriptionDropDownList(model, jobDescriptionService);
 	model.addAttribute("jobDescription", jobDescription);
 	return "addJobDesc";
     }
