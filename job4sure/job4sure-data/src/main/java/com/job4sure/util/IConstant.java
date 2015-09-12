@@ -51,5 +51,9 @@ public class IConstant {
 	
 	//Messages for HomeController
 	public static final String PASSWORD_UPDATED="<p class='msg done'>Your password successfully updated.</p>";
+	
+	//Message for UserProfileController
+	public static final String MOBILE_LENGTH_VALIDATION="Mobile number should be 10 digit";
+	
 }
 
