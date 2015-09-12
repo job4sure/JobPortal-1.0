@@ -10,9 +10,9 @@
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
 <!-- <link rel="stylesheet" href="resources/css/dropdown.css" type="text/css" /> -->
 
-<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript" ></script>
-<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8" ></script>
-<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8" ></script>
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
 <!--  <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
 <!--  <script type="text/javascript">
@@ -20,8 +20,8 @@
 		$(".tabs > ul").tabs();
 	});
 	</script> -->
-	
-	
+
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -138,10 +138,9 @@
 	
 	
 </script>
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
-	rel="stylesheet" type="text/css" />
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<link href="resources/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script src="resources/js/jquery-ui.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#datepicker").datepicker();
@@ -295,7 +294,7 @@
 					</tr>
 					<tr>
 						<td>Last Date of Submission<font color="red">*</font></td>
-						<td><form:input path="jobValidDate" maxlength="10" id="datepicker"  class="validate[required] input-text" />
+						<td><form:input path="jobValidDate" maxlength="10" id="datepicker" class="validate[required] input-text" />
 							<div id="error">
 								<form:errors path="jobValidDate" />
 							</div></td>
