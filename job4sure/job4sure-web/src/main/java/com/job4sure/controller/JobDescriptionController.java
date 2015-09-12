@@ -77,7 +77,6 @@ public class JobDescriptionController {
 		    @RequestParam(required = false) String message) {
 	HttpSession session = request.getSession(false);
 	Registration registration = (Registration) session.getAttribute("registration");
-
 	List<JobDescription> jobList = jobDescriptionService.getAllJobDescription(registration.getRegistrationId());
 	model.addAttribute("jobList", jobList);
 	model.addAttribute("message", message);

@@ -8,18 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 import com.job4sure.model.JobDescription;
 
-public interface AdminJobDescriptionRepository extends
-		JpaRepository<JobDescription, Integer> {
+public interface AdminJobDescriptionRepository extends JpaRepository<JobDescription, Integer> {
 
-	@Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdApprovedStatus")
-	List<JobDescription> getAllAprovedJobDescriptions(
-			@Param("jdApprovedStatus") int jdApprovedStatus);
-
-	@Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdApprovedStatus")
-	List<JobDescription> getAllPendingJobDescriptions(
-			@Param("jdApprovedStatus") Integer jdApprovedStatus);
-
-	@Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdApprovedStatus")
-	List<JobDescription> getAllRejectedJobDescriptions(
-			@Param("jdApprovedStatus") Integer jdApprovedStatus);
+    @Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdStatus")
+    List<JobDescription> getJobDescriptionStatusList(@Param("jdStatus") int jdStatus);
 }

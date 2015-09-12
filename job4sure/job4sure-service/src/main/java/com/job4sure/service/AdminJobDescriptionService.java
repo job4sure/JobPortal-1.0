@@ -6,11 +6,7 @@ import com.job4sure.model.JobDescription;
 
 public interface AdminJobDescriptionService {
 
-	List<JobDescription> getAllAprovedJobDescriptions(int jdApprovedStatus);
-
-	List<JobDescription> getAllPendingJobDescriptions(Integer jdApprovedStatus);
-
-	List<JobDescription> getAllRejectedJobDescriptions(Integer jdApprovedStatus);
+	List<JobDescription> getJobDescriptionStatusList(int jdApprovedStatus);
 
 	JobDescription viewJobDescription(Integer jobId);
 

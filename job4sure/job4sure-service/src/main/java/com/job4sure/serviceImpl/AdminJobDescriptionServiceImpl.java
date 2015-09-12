@@ -16,10 +16,10 @@ public class AdminJobDescriptionServiceImpl implements
 	@Autowired
 	private AdminJobDescriptionRepository adminJobDescriptionRepository;
 
-	public List<JobDescription> getAllAprovedJobDescriptions(
+	public List<JobDescription> getJobDescriptionStatusList(
 			int jdApprovedStatus) {
 		List<JobDescription> approvedJobDescriptionsList = adminJobDescriptionRepository
-				.getAllAprovedJobDescriptions(jdApprovedStatus);
+				.getJobDescriptionStatusList(jdApprovedStatus);
 		return approvedJobDescriptionsList;
 	}
 
@@ -35,12 +35,8 @@ public class AdminJobDescriptionServiceImpl implements
 		JobDescriptionApprovalStatus approvalStatus = new JobDescriptionApprovalStatus();
 		approvalStatus.setStatusId(2);
 		jobDescription.setApprovalStatus(approvalStatus);
-		if (jobDescription != null) {
-			adminJobDescriptionRepository.save(jobDescription);
-			return true;
-		} else {
-			return false;
-		}
+		adminJobDescriptionRepository.save(jobDescription);
+		return true;
 	}
 
 	public boolean rejectJobDescription(Integer jobId) {
@@ -49,27 +45,8 @@ public class AdminJobDescriptionServiceImpl implements
 		JobDescriptionApprovalStatus approvalStatus = new JobDescriptionApprovalStatus();
 		approvalStatus.setStatusId(3);
 		jobDescription.setApprovalStatus(approvalStatus);
-		if (jobDescription != null) {
-			adminJobDescriptionRepository.save(jobDescription);
-			return true;
-		} else {
-			return false;
-		}
+		adminJobDescriptionRepository.save(jobDescription);
+		return true;
 	}
 
-	public List<JobDescription> getAllPendingJobDescriptions(
-			Integer jdApprovedStatus) {
-
-		List<JobDescription> approvedJobDescriptionsList = adminJobDescriptionRepository
-				.getAllPendingJobDescriptions(jdApprovedStatus);
-		return approvedJobDescriptionsList;
-	}
-
-	public List<JobDescription> getAllRejectedJobDescriptions(
-			Integer jdApprovedStatus) {
-
-		List<JobDescription> approvedJobDescriptionsList = adminJobDescriptionRepository
-				.getAllRejectedJobDescriptions(jdApprovedStatus);
-		return approvedJobDescriptionsList;
-	}
 }
