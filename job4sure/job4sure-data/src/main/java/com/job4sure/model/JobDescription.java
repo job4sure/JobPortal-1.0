@@ -44,7 +44,7 @@ public class JobDescription implements Serializable {
     private Experience maxExperience;
 
     
-    @ManyToMany()//cascade = { CascadeType.ALL }
+    @ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinTable(name = "DESCRIPTION_SKILLS", joinColumns = { @JoinColumn(name = "JOB_ID") }, inverseJoinColumns = { @JoinColumn(name = "SKILLS_ID") })
     public Set<Skills> getSkillsSet() {
 	return skillsSet;

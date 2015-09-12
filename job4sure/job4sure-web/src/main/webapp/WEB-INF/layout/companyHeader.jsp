@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
@@ -25,48 +24,55 @@
 	});
 	</script>
 </head>
-<body >
+<body>
 
-<div id="main">
+	<div id="main">
 
 
-  <div id="tray" class="box">
-  <p class="f-left box">
-    <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="resources/design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="resources/design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>Job4Sure</strong> </p>
-<p class="f-right">User: <strong><a href="#">${registration.fullName}</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><a href="javascript:formSubmit()" id="logout">Log out</a></strong></p>    
-	
-	<h1 class="center"> Company Home</h1>
-  </div>
-  <hr class="noscreen" />
-  <div id="menu" class="box">
-    <ul class="box">
-      <li id="menu-active"><a href="companyHome"><span>Home</span></a></li>
-      <li id="menu-active"><a href="createJobDescription"><span>Create Job Description</span></a></li>
-	  <li id="menu-active"><a href="viewAllJobDescription"><span>View Job Description List</span></a></li>
-	    <li id="menu-active"><a href="#"><span>Company Profile</span></a>
-		   <ul class="sub-menu">
-		    <li id="menu-active"><a href="CompanyProfileView">View Company Profile</a></li>
-		     <li id="menu-active"><a href="updateCompanyBasicProfile">Update Basic Company Profile</a></li>
-		     <li id="menu-active"><a href="showCompleteCompanyProfilePage">Update Company Profile</a></li>
-			   <li id="menu-active"><a href="setNewPasswordForComp">Reset Password</a></li>
-		   </ul>
-	   </li>
-	  
-	   
-    </ul>
-  </div>
-      	  
-  </div>
-     <hr class="noscreen" />
-  </div>
-    		<c:url value="/logout" var="logoutUrl" />
-		<form action="${logoutUrl}" method="post" id="logoutForm">
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		</form>
-		<script>
+		<div id="tray" class="box">
+			<p class="f-left box">
+				<span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1"
+					title="Display one column"><img src="resources/design/switcher-1col.gif" alt="1 Column" /></a> <a
+					href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img
+						src="resources/design/switcher-2col.gif" alt="" /></a>
+				</span> Project: <strong>Job4Sure</strong>
+			</p>
+			<p class="f-right">
+				User: <strong><a href="#">${registration.fullName}</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><a
+					href="javascript:formSubmit()" id="logout">Log out</a></strong>
+			</p>
+
+			<h1 class="center">Company Home</h1>
+		</div>
+		<hr class="noscreen" />
+		<div id="menu" class="box">
+			<ul class="box">
+				<li id="menu-active"><a href="companyHome"><span>Home</span></a></li>
+				<li id="menu-active"><a href="createJobDescription"><span>Create Job Description</span></a></li>
+				<li id="menu-active"><a href="viewAllJobDescription"><span>View Job Description List</span></a></li>
+				<li id="menu-active"><a href="javascript:void(0)"><span>Company Profile</span></a>
+					<ul class="sub-menu">
+						<li id="menu-active"><a href="companyProfileView">View Company Profile</a></li>
+						<li id="menu-active"><a href="updateCompanyBasicProfile">Update Basic Company Profile</a></li>
+						<li id="menu-active"><a href="showCompleteCompanyProfilePage">Update Company Profile</a></li>
+						<li id="menu-active"><a href="setNewPasswordForComp">Reset Password</a></li>
+					</ul></li>
+
+
+			</ul>
+		</div>
+
+	</div>
+	<hr class="noscreen" />
+	</div>
+	<c:url value="/logout" var="logoutUrl" />
+	<form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	</form>
+	<script>
 					function formSubmit() {
 						document.getElementById("logoutForm").submit();
 					}
 				</script>
-  </body>
+</body>
 </html>
