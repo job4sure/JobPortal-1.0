@@ -35,18 +35,17 @@ public class EducationController {
 		if (education != null) {
 			model.addAttribute("message", message);
 			map.put("ED", education);
-		} else {
+		} else 
 			map.put("ED", new Education());
-		}
 		return "educationUpdate";
 	}
 
 	@RequestMapping(value = "/eduSave", method = RequestMethod.POST)
-	public String saveEducation(@ModelAttribute Education edu, HttpServletRequest request, Model model) {
+	public String saveEducation(@ModelAttribute Education education, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(false);
 		Registration registration = (Registration) session.getAttribute("registration");
-		edu.setRegistration_id(registration.getRegistrationId());
-		educationServiceImpl.save(edu);
+		education.setRegistration_id(registration.getRegistrationId());
+		educationServiceImpl.save(education);
 		model.addAttribute("message", IConstant.EDUCATION_SAVE);
 		return "redirect:/educationUpdate";
 	}
