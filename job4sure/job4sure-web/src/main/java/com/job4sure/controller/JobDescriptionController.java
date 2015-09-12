@@ -42,9 +42,8 @@ public class JobDescriptionController {
 	JobDescriptionDropDownList.getAllJobDescriptionDropDownList(model, jobDescriptionService);
 	if (request.getMethod().equals("POST")) {
 	    validator.validate(jobDescription, bindingResult);
-	    if (bindingResult.hasErrors()) {
+	    if (bindingResult.hasErrors()) 
 		return "addJobDesc";
-	    }
 	    HttpSession session = request.getSession(false);
 	    Registration registration = (Registration) session.getAttribute("registration");
 	    jobDescription.setRegistration(registration);
@@ -52,11 +51,10 @@ public class JobDescriptionController {
 	    approvalStatus.setStatusId(1);
 	    jobDescription.setApprovalStatus(approvalStatus);
 	    boolean state = jobDescriptionService.saveJobDescription(jobDescription, skill);
-	    if (state) {
+	    if (state)
 		model.addAttribute("status", "Successfully save job description...");
-	    } else {
+	    else
 		model.addAttribute("status", "Failed save job description...");
-	    }
 	    return "redirect:/createJobDescription.do";
 	} else {
 	    model.addAttribute("jobDescription", new JobDescription());
@@ -70,8 +68,13 @@ public class JobDescriptionController {
 	HttpSession session = request.getSession(false);
 	Registration registration = (Registration) session.getAttribute("registration");
 	List<JobDescription> jobList = jobDescriptionService.getAllJobDescription(registration.getRegistrationId());
+	if(jobList.isEmpty()){
+	    model.addAttribute("message", "<h2 id="+"show"+">You have not created any job.</h2>");
+	}
+	else{
 	model.addAttribute("jobList", jobList);
-	model.addAttribute("message", message);
+	model.addAttribute("message", "<h2 id="+"show"+">List of Job Descriptions : </h2>");
+	}
 	return "viewAllJobDesc";
     }
 

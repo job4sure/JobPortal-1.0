@@ -72,9 +72,9 @@
  </div>
  <div class="box" id="content">
  
-  <h3 style="color: red;">${message}</h3>
+  <%-- <h3 style="color: red;">${message}</h3> --%>
   <center>
-   <h2>List of Job Description</h2>
+   <h2 id="show">${message}</h2>
   </center>
   <table id="results" style="border-collapse: separate; border-spacing: 12px;"
    class="nostyle">
