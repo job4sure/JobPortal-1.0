@@ -98,7 +98,6 @@ public class RegistrationServiceImpl implements RegistrationService {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encriptedPassword = passwordEncoder.encode(password);
 		int status = registrationRepository.updatePassword(registrationId, password, encriptedPassword);
-		System.out.println(status);
 	}
 
 	public boolean updateUserInformation(Registration registration) throws Exception {
