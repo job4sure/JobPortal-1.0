@@ -64,7 +64,7 @@
 			<ul class="box">
 
 				<li id="menu-active"><a href="userProfileHomePage"><span>Home</span></a></li>
-				<li id="menu-active"><a href="educationupdate"><span>User
+				<li id="menu-active"><a href="educationUpdate"><span>User
 							Education</span></a></li>
 				<!--  <li id="menu-active"><a href="#"
        ><span>Update Your Complete Info</span></a></li>
