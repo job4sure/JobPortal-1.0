@@ -69,11 +69,11 @@ public class JobDescriptionController {
 	Registration registration = (Registration) session.getAttribute("registration");
 	List<JobDescription> jobList = jobDescriptionService.getAllJobDescription(registration.getRegistrationId());
 	if(jobList.isEmpty()){
-	    model.addAttribute("message", "<h2 id="+"show"+">You have not created any job.</h2>");
+	    model.addAttribute("message", IConstant.EMPTY_LIST);
 	}
 	else{
 	model.addAttribute("jobList", jobList);
-	model.addAttribute("message", "<h2 id="+"show"+">List of Job Descriptions : </h2>");
+	model.addAttribute("message", IConstant.NOT_EMPTY_LIST);
 	}
 	return "viewAllJobDesc";
     }
