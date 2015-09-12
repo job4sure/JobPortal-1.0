@@ -45,7 +45,7 @@
 	  <li id="menu-active"><a href="viewAllJobDescription"><span>View Job Description List</span></a></li>
 	    <li id="menu-active"><a href="#"><span>Company Profile</span></a>
 		   <ul class="sub-menu">
-		    <li id="menu-active"><a href="CompanyProfileView">View Company Profile</a></li>
+		    <li id="menu-active"><a href="companyProfileView">View Company Profile</a></li>
 		     <li id="menu-active"><a href="showCompleteCompanyProfilePage">Update Company Profile</a></li>
 			    <li id="menu-active"><a href="updateCompanyBasicProfile">Update Basic Company Profile</a></li>
 			   <li id="menu-active"><a href="setNewPasswordForComp">Reset Password</a></li>

@@ -55,13 +55,11 @@ public class CompanyProfileController {
 	}
 
 	/* This method for saving company complete info here savecompanyProfile */
-	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompanyCompleteProfile", method = RequestMethod.POST)
 	public String saveCompanyCompleteProfile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,
 			@RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
 			String attchmentName, ModelMap model, HttpServletRequest request) {
 		final MultipartFile filePart = file;
-		boolean status = false;
 		file.getOriginalFilename();
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
@@ -77,8 +75,8 @@ public class CompanyProfileController {
 	}
 
 	/* this methos for show the company details page as non changeble */
-	@RequestMapping(value = "/CompanyProfileView", method = RequestMethod.GET)
-	public String CompanyProfileView(Map<String, Object> map, ModelMap model, HttpServletRequest request) {
+	@RequestMapping(value = "/companyProfileView", method = RequestMethod.GET)
+	public String companyProfileView(Map<String, Object> map, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		CompanyProfileModel companyProfile = companyProfileService.getLoggedInCompanyCompleteInfo(registration
@@ -118,14 +116,13 @@ public class CompanyProfileController {
 		if (status) {
 			session.setAttribute("registration", registration);
 			model.addAttribute("message", IConstant.COMPANY_BASIC_INFO_UPDATE_MESSAGE);
-		} else {
+		} else
 			model.addAttribute("message", IConstant.COMPANY_BASIC_INFO_UPDATE_FAILURE_MESSAGE);
-		}
 		return "redirect:/updateCompanyBasicProfile";
 	}
 
 	@RequestMapping(value = "/setNewPasswordForComp", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reCreatePass(Map<String, Object> map, ModelMap model, HttpServletRequest request) throws Exception {
+	public String reCreatePass(Map<String, Object> map,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		registration.setRegistrationId(registration.getRegistrationId());
