@@ -118,7 +118,7 @@
           <b>Preferred Location:&nbsp;&nbsp;</b>${userProfile.prefferedlocation}<br><br>
            <b>Preferred Industry:&nbsp;&nbsp;</b>${userProfile.industry}<br><br>
            <b>Role:&nbsp;&nbsp;</b>${userProfile.roletype}<br><br>
-           <b>Annual Salary:&nbsp;&nbsp;</b>${userProfile.salary}<br><br>
+            <b>Annual Salary:&nbsp;&nbsp;</b>${userProfile.minSalary.salary}<br><br> 
             <b>Phone:&nbsp;&nbsp;</b>${userProfile.phone}<br><br>
         </div>
         <div class="column">
@@ -129,7 +129,7 @@
               <b>Hometown/City:&nbsp;&nbsp;</b>${userProfile.city}<br><br>
                <b>Zip:&nbsp;&nbsp;</b>${userProfile.zip}<br><br>
               <b>State:&nbsp;&nbsp;</b>${userProfile.state}<br><br>
-               <b>Total Experience: &nbsp;&nbsp;</b>${userProfile.experience}<br><br>
+           <b>Total Experience: &nbsp;&nbsp;</b>${userProfile.minExperience.experience}<br><br>
        </div>
        <div width="41%" valign="middle">
 						<img src="${attachment}" id="preview" height="140px" width="140px" />

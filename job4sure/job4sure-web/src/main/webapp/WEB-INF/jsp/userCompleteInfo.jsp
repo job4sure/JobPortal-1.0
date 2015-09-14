@@ -62,6 +62,7 @@
 	}
 </script>
 
+<script src="resources/js/addJobDescp.js"></script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script
@@ -133,7 +134,7 @@
 			<ul class="box">
 			</ul>
 		</div>
-		<body align="center">
+		<body align="center" onload="disableMaxExpDropDown();">
 
 			<h3 style="color: red;">${message}</h3>
 
@@ -249,7 +250,7 @@
 											<td style="padding: 15;" align="center">Experience<font
 												color="red">*</font>:
 											</td>
-											<td>	<form:select path="experience"
+											<%-- <td>	<form:select path="experience"
 													style="height:25px;  width:158px;">
 													<option value="null">select</option>
 													<c:forEach items="${experienceList}" var="experienceUser">
@@ -257,7 +258,20 @@
 														<option value="${experienceUser.experience }">${experienceUser.experience }</option>
 
 													</c:forEach>
-												</form:select> <br></td>
+												</form:select> <br></td> --%>
+												
+												
+												<td><form:select path="minExperience.experienceId" onChange="checkMinExp(this);" id="sel1">
+        <%-- <form:option value="0" label="Min Annual Salary" /> --%>
+        <c:forEach items="${experienceList}" var="experience">
+         <form:option value="${experience.experienceId}" label="${experience.experience}" />
+        </c:forEach>
+       </form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId" disable="disable" id="sel2">
+        <%-- <form:option value="0" label="Max Annual Salary" /> --%>
+        <c:forEach items="${experienceList}" var="experience">
+         <form:option value="${experience.experienceId}" label="${experience.experience}" />
+        </c:forEach>
+       </form:select> in Year</td>
 										</tr>
 
 
@@ -285,7 +299,7 @@
 											<td style="padding: 15;" align="center">Annual Salary<font
 												color="red">*</font>:
 											</td>
-											<td><form:select path="salary"
+											<%-- <td><form:select path="salary"
 													style="height:25px;  width:158px;">
 													<option value="null">select</option>
 													<c:forEach items="${salary}" var="salary1">
@@ -295,9 +309,21 @@
 
 
 													</c:forEach>
-												</form:select> <br></td>
+												</form:select> <br></td> --%>
+												
+												<td><form:select path="minSalary.salaryId" onChange="checkMinSal(this);" id="salary1">
+        <%-- <form:option value="0" label="Min Annual Salary" /> --%>
+        <c:forEach items="${salary}" var="salary">
+         <form:option value="${salary.salaryId}" label="${salary.salary}" />
+        </c:forEach>
+       </form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId" id="salary2">
+        <%-- <form:option value="0" label="Max Annual Salary" /> --%>
+        <c:forEach items="${salary}" var="salary">
+         <form:option value="${salary.salaryId}" label="${salary.salary}" />
+        </c:forEach>
+       </form:select> (Salary in Lpa)</td>
 										</tr>
-										</tr>
+										
 										<tr>
 											<td style="padding: 15;" align="center">Address<font
 												color="red">*</font>:

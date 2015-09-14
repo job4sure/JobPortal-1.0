@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +25,29 @@ public class UserProfile {
 	private String resume;
 	@Column(name = "CURRENT_LOCATION")
 	private String currentlocation;
+	@OneToOne(targetEntity = Salary.class)
+	@JoinColumn(name = "MIN_SALARY_ID", referencedColumnName = "SALARY_ID")
+	private Salary minSalary;
+	@OneToOne(targetEntity = Salary.class)
+	@JoinColumn(name = "MAX_SALARY_ID", referencedColumnName = "SALARY_ID")
+	private Salary maxSalary;
 
-	@Column(name = "SALARY")
-	private String salary;
+	public Salary getMinSalary() {
+		return minSalary;
+	}
+
+	public void setMinSalary(Salary minSalary) {
+		this.minSalary = minSalary;
+	}
+
+	public Salary getMaxSalary() {
+		return maxSalary;
+	}
+
+	public void setMaxSalary(Salary maxSalary) {
+		this.maxSalary = maxSalary;
+	}
+
 	@Column(name = "PREFFERED_LOCATION")
 	private String prefferedlocation;
 	@Column(name = "INDUSTRY")
@@ -34,19 +55,44 @@ public class UserProfile {
 
 	@Column(name = "ROLE")
 	private String roletype;
-	@Column(name="DATE_OF_BIRTH")
+	@Column(name = "DATE_OF_BIRTH")
 	private String dob;
-	@Column(name="GENDER")
+	@Column(name = "GENDER")
 	private String gender;
-	
-	@Column(name="EXPERIENCE")
-	private String experience;
-	@Column(name="MARITAL_STATUS")
+
+	/*
+	 * @Column(name="EXPERIENCE") private String experience;
+	 */
+	@OneToOne(targetEntity = Experience.class)
+	@JoinColumn(name = "MIN_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
+	private Experience minExperience;
+
+	@OneToOne(targetEntity = Experience.class)
+	@JoinColumn(name = "MAX_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
+	private Experience maxExperience;
+
+	public Experience getMinExperience() {
+		return minExperience;
+	}
+
+	public void setMinExperience(Experience minExperience) {
+		this.minExperience = minExperience;
+	}
+
+	public Experience getMaxExperience() {
+		return maxExperience;
+	}
+
+	public void setMaxExperience(Experience maxExperience) {
+		this.maxExperience = maxExperience;
+	}
+
+	@Column(name = "MARITAL_STATUS")
 	private String maritalstatus;
-	
-	@Column(name="PHONE")
+
+	@Column(name = "PHONE")
 	private String phone;
-	
+
 	@Column(name = "ADDRESS")
 	private String address;
 
@@ -99,14 +145,6 @@ public class UserProfile {
 		this.currentlocation = currentlocation;
 	}
 
-	public String getSalary() {
-		return salary;
-	}
-
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
-
 	public String getPrefferedlocation() {
 		return prefferedlocation;
 	}
@@ -145,14 +183,6 @@ public class UserProfile {
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public String getExperience() {
-		return experience;
-	}
-
-	public void setExperience(String experience) {
-		this.experience = experience;
 	}
 
 	public String getMaritalstatus() {
@@ -203,7 +233,4 @@ public class UserProfile {
 		this.zip = zip;
 	}
 
-	
 }
-
-	
