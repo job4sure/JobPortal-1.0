@@ -197,7 +197,7 @@ public class Education {
 	private Registration registration;
 
 	@Column(name="REGISTRATION_ID")
-	private Integer registration_id;
+	private Integer registrationId;
 
 
 	public Registration getRegistration() {
@@ -208,11 +208,11 @@ public class Education {
 		this.registration = registration;
 	}
 
-	public Integer getRegistration_id() {
-		return registration_id;
+	public Integer getRegistrationId() {
+		return registrationId;
 	}
 
-	public void setRegistration_id(Integer registration_id) {
-		this.registration_id = registration_id;
+	public void setRegistrationId(Integer registrationId) {
+		this.registrationId = registrationId;
 	}
 }

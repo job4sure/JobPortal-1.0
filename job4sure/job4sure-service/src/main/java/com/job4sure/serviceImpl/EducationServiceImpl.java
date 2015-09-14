@@ -16,18 +16,11 @@ public class EducationServiceImpl implements EducationService {
 
 	@Autowired
 	private EducationRepository educationRepository;
-
 	public void save(Education education) {
 		educationRepository.saveAndFlush(education);
-
 	}
 
 	public Education viewEducation(Integer registrationId) {
-
-		Education education = educationRepository.viewEducation(registrationId);
-
-		return education;
-
+		 return educationRepository.viewEducation(registrationId);
 	}
-
 }

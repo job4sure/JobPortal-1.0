@@ -86,7 +86,7 @@
 			<div id="content" class="box">
 <h3>${message}</h3>
 				<div class="reform">
-					<form:form action="eduSave" method="POST" id="formID"
+					<form:form action="educationSave" method="POST" id="formID"
 						modelAttribute="ED">
 						<form:hidden path="education_id" />
 

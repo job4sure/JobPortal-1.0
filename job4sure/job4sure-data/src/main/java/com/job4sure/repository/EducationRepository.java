@@ -11,6 +11,6 @@ import com.job4sure.model.Education;
 @Repository
 public interface EducationRepository extends JpaRepository<Education, Integer> {
 
-	@Query("select edu  from Education edu where edu.registration_id =:registration_id")
-	public Education viewEducation(@Param("registration_id") Integer reg);
+	@Query("select edu  from Education edu where edu.registrationId =:registrationId")
+	public Education viewEducation(@Param("registrationId") Integer registrationId);
 }

@@ -27,24 +27,23 @@ public class EducationController {
 	@RequestMapping(value = "/educationUpdate", method = RequestMethod.GET)
 	public String showEducationSettings(HttpServletRequest request, @RequestParam(required = false) String message,
 					Model model, Map<String, Object> map) {
-		Education education = new Education();
 		HttpSession session = request.getSession(false);
 		Registration registration = (Registration) session.getAttribute("registration");
-		Integer reg_id = registration.getRegistrationId();
-		education = educationServiceImpl.viewEducation(reg_id);
+		Integer registrationId = registration.getRegistrationId();
+		Education education = educationServiceImpl.viewEducation(registrationId);
 		if (education != null) {
 			model.addAttribute("message", message);
 			map.put("ED", education);
-		} else 
+		} else
 			map.put("ED", new Education());
 		return "educationUpdate";
 	}
 
-	@RequestMapping(value = "/eduSave", method = RequestMethod.POST)
+	@RequestMapping(value = "/educationSave", method = RequestMethod.POST)
 	public String saveEducation(@ModelAttribute Education education, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(false);
 		Registration registration = (Registration) session.getAttribute("registration");
-		education.setRegistration_id(registration.getRegistrationId());
+		education.setRegistrationId(registration.getRegistrationId());
 		educationServiceImpl.save(education);
 		model.addAttribute("message", IConstant.EDUCATION_SAVE);
 		return "redirect:/educationUpdate";
