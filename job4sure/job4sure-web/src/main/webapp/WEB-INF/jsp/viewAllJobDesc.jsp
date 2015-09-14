@@ -59,7 +59,7 @@
 							<h2>${job.jobTitle}</h2>
 							<p>${job.jobDesc}</p>
 							<a href="editJob.do?jobId=${job.jobDescriptionId}">View or Edit</a> <a
-								href="deleteJob.do?jobDescriptionId=${job.jobDescriptionId}">Delete</a>
+								href="deleteJob.do?jobDescriptionId=${job.jobDescriptionId}" onclick="return confirm('Are you sure you want to delete this item?'); jQuery('#formID').submit();">Delete</a>
 						</div></td>
 				</tr>
 			</c:forEach>
