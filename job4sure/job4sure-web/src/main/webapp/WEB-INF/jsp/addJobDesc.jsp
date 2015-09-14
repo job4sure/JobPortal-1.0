@@ -103,8 +103,18 @@
 		$("#datepicker").datepicker();
 	});
 </script>
+
+<script type="text/javascript">
+
+function checkedSkill(){
+	<c:forEach items="${checkedSkillsList}" var="checkedSkills">
+	 $('#${checkedSkills.skillsId}').attr('checked', true);
+	</c:forEach>
+}
+
+</script>
 </head>
-<body onload="disableMaxExpDropDown();">
+<body onload="disableMaxExpDropDown();checkedSkill()">
 	<div id="cols" class="box">
 		<div id="aside" class="box">
 			<div class="padding box">
@@ -215,17 +225,15 @@
 						<td>Skills</td>
 						<td>
 							<div class="multiselect">
-								<div class="selectBox" onclick="showCheckboxes()">
+								<div class="selectBox" onclick="showCheckboxes();">
 									<select>
 										<option>Select an option</option>
 									</select>
 									<div class="overSelect"></div>
 								</div>
 								<div id="checkboxes">
-
-
 									<c:forEach items="${skillsList}" var="refskills">
-										<label><form:checkbox path="skill" class="validate[required]" id="${refskills.skillsName}"
+										<label><form:checkbox path="skill" class="validate[required]" id="${refskills.skillsId}"
 												value="${refskills.skillsId}" />${refskills.skillsName}</label>
 									</c:forEach>
 								</div>

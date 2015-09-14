@@ -1,7 +1,9 @@
 package com.job4sure.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -35,7 +37,7 @@ public class JobDescription implements Serializable {
     private String role;
     // private Integer jdApprovalStatus;
     private Registration registration;
-    private Set<Skills> skillsSet = new HashSet<Skills>();
+    private Set<Skills> skillsSet=new HashSet<Skills>();
     private String skill;
     private JobDescriptionApprovalStatus approvalStatus;
     private Salary minSalary;
@@ -44,7 +46,7 @@ public class JobDescription implements Serializable {
     private Experience maxExperience;
 
     
-    @ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.EAGER)//cascade = CascadeType.ALL,
     @JoinTable(name = "DESCRIPTION_SKILLS", joinColumns = { @JoinColumn(name = "JOB_ID") }, inverseJoinColumns = { @JoinColumn(name = "SKILLS_ID") })
     public Set<Skills> getSkillsSet() {
 	return skillsSet;

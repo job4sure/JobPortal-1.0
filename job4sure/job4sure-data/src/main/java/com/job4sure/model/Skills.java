@@ -1,7 +1,9 @@
 package com.job4sure.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -44,8 +46,9 @@ public class Skills implements Serializable {
 		this.skillsName = skillsName;
 	}
 	
-	@ManyToMany(mappedBy="skillsSet",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private Set<JobDescription> jobDescription = new HashSet<JobDescription>();
+	@ManyToMany(mappedBy="skillsSet",fetch=FetchType.EAGER)//,cascade=CascadeType.ALL
+	private Set<JobDescription> jobDescription=new HashSet<JobDescription>();;
+	//private List<JobDescription> jobDescription = new HashSet<JobDescription>();
 
 	public Set<JobDescription> getJobDescription() {
 		return jobDescription;

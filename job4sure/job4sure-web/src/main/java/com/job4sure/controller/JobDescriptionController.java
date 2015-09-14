@@ -1,6 +1,8 @@
 package com.job4sure.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.model.Registration;
+import com.job4sure.model.Skills;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.IConstant;
 import com.job4sure.util.JobDescriptionDropDownList;
@@ -87,7 +90,11 @@ public class JobDescriptionController {
     @RequestMapping(value = "/editJob", method = { RequestMethod.GET, RequestMethod.POST })
     public String editJob(Model model, @RequestParam Integer jobId) {
 	JobDescription jobDescription = jobDescriptionService.editJob(jobId);
+	Set<Skills> checkedSkillsSet=jobDescription.getSkillsSet();
+	List<Skills> checkedSkillsList=new ArrayList<Skills>();
+	checkedSkillsList.addAll(checkedSkillsSet);
 	JobDescriptionDropDownList.getAllJobDescriptionDropDownList(model, jobDescriptionService);
+	model.addAttribute("checkedSkillsList", checkedSkillsList);
 	model.addAttribute("jobDescription", jobDescription);
 	return "addJobDesc";
     }
