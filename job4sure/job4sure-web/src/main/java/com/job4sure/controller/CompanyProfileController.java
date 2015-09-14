@@ -94,7 +94,7 @@ public class CompanyProfileController {
 		session.setAttribute("companyProfile", companyProfile);
 		map.put("companyprofile", new CompanyProfileModel());
 		model.addAttribute("companyProfile", companyProfile);
-		return "CompanyDetailsViewPage";
+		return "companyDetailsViewPage";
 	}
 
 	/* This method for show the page of company basic info */
