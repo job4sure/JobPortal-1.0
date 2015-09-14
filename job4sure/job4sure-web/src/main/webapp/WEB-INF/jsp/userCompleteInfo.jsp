@@ -12,7 +12,6 @@
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
 	rel="stylesheet" type="text/css" />
-
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
 	type="text/css" />
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
@@ -23,7 +22,6 @@
 	type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <title>Insert title here</title>
-
 <style>
 .hidden-div {
 	display: none;
@@ -39,9 +37,7 @@
 	});
 </script>
 <script type="text/javascript">
-	document.getElementById('show_button').addEventListener('click', hideshow,
-			false);
-
+	document.getElementById('show_button').addEventListener('click', hideshow, false);
 	function hideshow() {
 		document.getElementById('hidden-div').style.display = 'block';
 		this.style.display = 'none'
@@ -61,39 +57,34 @@
 		}
 	}
 </script>
-
 <script src="resources/js/addJobDescp.js"></script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script>
-	$(document).ready(function() {
+$(document).ready(function() {
 		$("#datepicker").datepicker();
 	});
 </script>
 <script type="text/javascript">
-
 #wgtmsr option{
 	  width:1000px; 
-      
 	}
 </script>
- <style>
+<style>
 #preview {
 	float: right;
 	border: 1px dotted black;
 	margin-right: 3%;
 	margin-top: 4%;
 }
-</style> 
+</style>
 </head>
 <div id="main">
 	<hr class="noscreen" />
 	<hr class="noscreen" />
-	<!-- Columns -->
 	<div id="cols" class="box">
-		<!-- Aside (Left Column) -->
 		<div id="aside" class="box">
 			<div class="padding box">
 				<p id="logo">
@@ -104,7 +95,6 @@
 				<form action="http://all-free-download.com/free-website-templates/"
 					method="get" id="search">
 					<fieldset>
-
 						<legend>Search</legend>
 						<p>
 							<input type="text" size="17" name="" class="input-text" />
@@ -128,269 +118,203 @@
 					</fieldset>
 				</form>
 				<!-- Create a new project -->
-
 			</div>
 			<!-- /padding -->
 			<ul class="box">
 			</ul>
 		</div>
 		<body align="center" onload="disableMaxExpDropDown();">
-
 			<h3 style="color: red;">${message}</h3>
-
 			<form:form method="POST" action="saveCompleteUserProfile"
 				modelAttribute="userProfile" id="formID"
 				enctype="multipart/form-data"
 				onsubmit="return jQuery(this).validationEngine('validate');">
-
 				<div id="content" class="box">
 					<div class="verticalLine">
-
 						<center>
 							<h2>User Complete Information</h2>
 						</center>
-
-
 						<div id="content" class="box">
-						
 							<fieldset>
-
-								<center>
-									<table width="100%" class="nostyle"
-										style="border-collapse: separate; border-spacing: 5px">
-
-<div width="41%" valign="middle">
-						<img src="${attachment}" id="preview" height="140px" width="140px" />
-					</div>
-
-										<form:hidden path="userId" />
-										<tr>
-											<td style="padding: 15;" align="center">Resume Headine<font
-												color="red">*</font>:
-											</td>
-											<td><form:input type="text" size="40" path="resume"
-													class="validate[required] input-text" maxlength="10" /><br></td>
-										</tr>
-										<tr>
-
-											<td style="padding: 15;" align="center">Current Location<font
-												color="red">*</font>:
-											</td>
-											<td><form:select path="currentlocation"
-													style="height:25px; width:158px;">
-													<option value="null">select</option>
-
-													<c:forEach items="${location}" var="location">
-
-														<option value="${location.currentlocation }">${location.currentlocation}</option>
-
-													</c:forEach>
-												</form:select> <br></td>
-										</tr>
-
-
-										<tr>
-
-											<td style="padding: 15;" align="center">Preffered
-												Location<font color="red">*</font>:
-											</td>
-											<td width="50%"><form:select path="prefferedlocation"
-													style="height:25px;  width:158px;">
-													<option value="null">select</option>
-													<c:forEach items="${preferlocation}" var="location">
-
-														<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
-
-													</c:forEach>
-												</form:select> <br></td>
-										</tr>
-
-
-										<tr>
-
-											<td style="padding: 15;" align="center">Role<font
-												color="red">*</font>:
-											</td>
-											<td><form:select path="roletype"
-													style="height:25px;  width:158px;">
-													<option value="null">select</option>
-													<c:forEach items="${roletype12}" var="roleUser">
-
-														<option value="${roleUser.roletype }">${roleUser.roletype }</option>
-
-													</c:forEach>
-												</form:select> <br></td>
-										</tr>
-										<tr>
-											<td style="padding: 15;" align="center">DateOfBirth<font
-												color="red">*</font>:
-											</td>
-											<td>
-
-												<form>
-													<form:input path="dob" id="datepicker" style="height:25px;" />
-												</form>
-											</td>
-										</tr>
-
-
-										<tr>
-
-
-											<td style="padding: 15;" align="center">Gender<font
-												color="red">*</font></td>
-
-											<td><form:radiobutton path="gender" value="Male" />Male
-												<form:radiobutton path="gender" value="Female" />Female</td>
-										</tr>
-
-
-
-										<tr>
-											<td style="padding: 15;" align="center">Experience<font
-												color="red">*</font>:
-											</td>
-											<%-- <td>	<form:select path="experience"
-													style="height:25px;  width:158px;">
-													<option value="null">select</option>
-													<c:forEach items="${experienceList}" var="experienceUser">
-
-														<option value="${experienceUser.experience }">${experienceUser.experience }</option>
-
-													</c:forEach>
-												</form:select> <br></td> --%>
-												
-												
-												<td><form:select path="minExperience.experienceId" onChange="checkMinExp(this);" id="sel1">
-        <%-- <form:option value="0" label="Min Annual Salary" /> --%>
-        <c:forEach items="${experienceList}" var="experience">
-         <form:option value="${experience.experienceId}" label="${experience.experience}" />
-        </c:forEach>
-       </form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId" disable="disable" id="sel2">
-        <%-- <form:option value="0" label="Max Annual Salary" /> --%>
-        <c:forEach items="${experienceList}" var="experience">
-         <form:option value="${experience.experienceId}" label="${experience.experience}" />
-        </c:forEach>
-       </form:select> in Year</td>
-										</tr>
-
-
-										<tr>
-											<td style="padding: 15;" align="center">Phone<font
-												color="red">*</font>:
-											</td>
-											<td><form:input type="text" size="40" path="phone"
-													class="validate[required] input-text" maxlength="10" /><br></td>
-										</tr>
-
-
-										<tr>
-
-											<td style="padding: 15;" align="center">Marital Status<font
-												color="red">*</font></td>
-
-											<td><form:radiobutton path="maritalstatus"
-													value="single" />Single <form:radiobutton
-													path="maritalstatus" value="married" />Married</td>
-										</tr>
-
-
-										<tr>
-											<td style="padding: 15;" align="center">Annual Salary<font
-												color="red">*</font>:
-											</td>
-											<%-- <td><form:select path="salary"
-													style="height:25px;  width:158px;">
-													<option value="null">select</option>
-													<c:forEach items="${salary}" var="salary1">
-
-														<option value="${salary1.salary }">${salary1.salary }</option>
-
-
-
-													</c:forEach>
-												</form:select> <br></td> --%>
-												
-												<td><form:select path="minSalary.salaryId" onChange="checkMinSal(this);" id="salary1">
-        <%-- <form:option value="0" label="Min Annual Salary" /> --%>
-        <c:forEach items="${salary}" var="salary">
-         <form:option value="${salary.salaryId}" label="${salary.salary}" />
-        </c:forEach>
-       </form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId" id="salary2">
-        <%-- <form:option value="0" label="Max Annual Salary" /> --%>
-        <c:forEach items="${salary}" var="salary">
-         <form:option value="${salary.salaryId}" label="${salary.salary}" />
-        </c:forEach>
-       </form:select> (Salary in Lpa)</td>
-										</tr>
-										
-										<tr>
-											<td style="padding: 15;" align="center">Address<font
-												color="red">*</font>:
-											</td>
-											<td><form:textarea rows="3" path="address"
-													class="validate[required] input-text"
-													style="width: 302px; height: 80px;" /><br></td>
-										</tr>
-										<tr>
-											<td style="padding: 15;" align="center">City<font
-												color="red">*</font>:
-											</td>
-											<td><form:input type="text" size="40" path="city"
-													class="validate[required] input-text" /><br></td>
-										</tr>
-
-
-										<tr>
-											<td style="padding: 15;" align="center">State<font
-												color="red">*</font>:
-											</td>
-											<td><form:input type="text" size="40" path="State"
-													class="validate[required] input-text" /><br></td>
-										</tr>
-
-										<tr>
-											<td style="padding: 15;" align="center">ZipCode<font
-												color="red">*</font>:
-											</td>
-											<td><form:input type="text" size="40" path="zip"
-													class="validate[required] input-text" /><br></td>
-										</tr>
-
-										</div>
-										<!-- <a href="#" id="show_button" onclick="hideshow()">Click here to upload files</a> -->
-										<div class="hidden-div" id="hidden-div">
-
+								<div class="wrapper">
+									<center>
+										<table width="100%" class="nostyle"
+											style="border-collapse: separate; border-spacing: 5px">
+											<div width="41%" valign="right">
+												<img src="${attachment}" id="preview" height="140px"
+													width="140px" />
+											</div>
+											<form:hidden path="userId" />
 											<tr>
-												<td style="padding: 15;" align="center"><label>Select Profile: </label></td><td><input type="file"
-													name="upload"
-													onchange="previewImage(this)" accept="image/*"
-													multiple="multiple" /></td>
-
+												<td style="padding: 15;">Resume HeadLine<font
+													color="red">*</font>:
+												</td>
+												<td><form:input type="text" size="27" path="resume"
+														class="validate[required] input-text" maxlength="25" /><br></td>
 											</tr>
 											<tr>
-												<td style="padding: 15;" align="center"><label>Select Resume: </label></td><td><input type="file"
-													name="upload" multiple="multiple" /></td>
-
+												<td valign="center" padding: 15;">Role<font
+													color="red">*</font>:
+												</td>
+												<td><form:select path="roletype"
+														style="height:25px;  width:158px;">
+														<option value="null">select</option>
+														<c:forEach items="${roletype12}" var="roleUser">
+															<option value="${roleUser.roletype }">${roleUser.roletype }</option>
+														</c:forEach>
+													</form:select> <br></td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">Experience<font
+													color="red">*</font>:
+												</td>
+												<td><form:select path="minExperience.experienceId"
+														onChange="checkMinExp(this);" id="sel1">
+														<c:forEach items="${experienceList}" var="experience">
+															<form:option value="${experience.experienceId}"
+																label="${experience.experience}" />
+														</c:forEach>
+													</form:select>&nbsp;to&nbsp; <form:select
+														path="maxExperience.experienceId" disable="disable"
+														id="sel2">
+														<c:forEach items="${experienceList}" var="experience">
+															<form:option value="${experience.experienceId}"
+																label="${experience.experience}" />
+														</c:forEach>
+													</form:select> in Year</td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">Annual Salary<font
+													color="red">*</font>:
+												</td>
+												<td><form:select path="minSalary.salaryId"
+														onChange="checkMinSal(this);" id="salary1">
+														<c:forEach items="${salary}" var="salary">
+															<form:option value="${salary.salaryId}"
+																label="${salary.salary}" />
+														</c:forEach>
+													</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId"
+														id="salary2">
+														<c:forEach items="${salary}" var="salary">
+															<form:option value="${salary.salaryId}"
+																label="${salary.salary}" />
+														</c:forEach>
+													</form:select> (Salary in Lpa)</td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">Current
+													Location<font color="red">*</font>:
+												</td>
+												<td><form:select path="currentlocation"
+														style="height:25px; width:158px;">
+														<option value="null">select</option>
+														<c:forEach items="${location}" var="location">
+															<option value="${location.currentlocation }">${location.currentlocation}</option>
+														</c:forEach>
+													</form:select> <br></td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">Preffered
+													Location<font color="red">*</font>:
+												</td>
+												<td width="50%"><form:select path="prefferedlocation"
+														style="height:25px;  width:158px;">
+														<option value="null">select</option>
+														<c:forEach items="${preferlocation}" var="location">
+															<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
+														</c:forEach>
+													</form:select> <br></td>
+											</tr>
+											
+											<tr>
+												<td style="padding: 15;">DateOfBirth<font
+													color="red">*</font>:
+												</td>
+												<td>
+													<form>
+														<form:input path="dob" id="datepicker"
+															style="height:25px;" />
+													</form>
+												</td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">Gender<font
+													color="red">*</font></td>
+												<td><form:radiobutton path="gender" value="Male" />Male
+													<form:radiobutton path="gender" value="Female" />Female</td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">Marital Status<font
+													color="red">*</font></td>
+												<td><form:radiobutton path="maritalstatus"
+														value="single" />Single <form:radiobutton
+														path="maritalstatus" value="married" />Married</td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">Phone<font
+													color="red">*</font>:
+												</td>
+												<td><form:input type="text" size="40" path="phone"
+														class="validate[required] input-text" maxlength="10" /><br></td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">Address<font
+													color="red">*</font>:
+												</td>
+												<td><form:textarea rows="3" path="address"
+														class="validate[required] input-text"
+														style="width: 302px; height: 80px;" /><br></td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">City<font
+													color="red">*</font>:
+												</td>
+												<td><form:input type="text" size="40" path="city"
+														class="validate[required] input-text" /><br></td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">State<font
+													color="red">*</font>:
+												</td>
+												<td><form:input type="text" size="40" path="State"
+														class="validate[required] input-text" /><br></td>
+											</tr>
+											<tr>
+												<td style="padding: 15;">ZipCode<font
+													color="red">*</font>:
+												</td>
+												<td><form:input type="text" size="40" path="zip"
+														class="validate[required] input-text" /><br></td>
+											</tr>
+											</div>
+											<div class="hidden-div" id="hidden-div">
+												<tr>
+													<td style="padding: 15;"><label>Select
+															Profile: </label></td>
+													<td><input type="file" name="upload"
+														onchange="previewImage(this)" accept="image/*"
+														multiple="multiple" /></td>
+												</tr>
+												<tr>
+													<td style="padding: 15;"><label>Select
+															Resume: </label></td>
+													<td><input type="file" name="upload"
+														multiple="multiple" /></td>
+												</tr>
+											</div>
+										</table>
+										<div>
+											<tr>
+												<td style="padding: 15;"><input type="submit"
+													value="submit" class="input-submit-02"
+													onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
 											</tr>
 										</div>
-
-									</table>
-									<div>
-										<tr>
-											<td style="padding: 15;"><input type="submit"
-												value="submit" class="input-submit-02"
-												onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
-										</tr>
-									</div>
-
-								</center>
-
+									</center>
+								</div>
 							</fieldset>
 						</div>
 					</div>
-
-					
 				</div>
 			</form:form>
 		</body>
