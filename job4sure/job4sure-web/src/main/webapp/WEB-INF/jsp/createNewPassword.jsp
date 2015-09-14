@@ -103,7 +103,7 @@ jQuery(document).ready(function(){
     <div id="content" class="box">
 			
 					
-			 <center><h2>Profile</h2></center>
+			 <center><h2>Reset Password:-</h2></center>
 			 
 			</div>
     

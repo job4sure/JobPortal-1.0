@@ -182,7 +182,7 @@ table, tr, td, th {
 				<div id="content" class="box">
 
 					<center>
-						<h2>Company Profile</h2>
+						<h2>Update Company Profile</h2>
 					</center>
 				</div>
 
