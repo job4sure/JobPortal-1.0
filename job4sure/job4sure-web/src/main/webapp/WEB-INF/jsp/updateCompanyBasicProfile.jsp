@@ -24,7 +24,12 @@
 
 	});
 </script>
+<style type="text/css">
 
+#content table {
+    border: 0px solid #cfcfcf;
+}
+</style>
 </head>
 <body>
 
@@ -71,7 +76,11 @@
 			</ul>
 
 		</div>
-
+<div id="content" class="box">
+<center>
+<h2>Company Basic Information:-</h2>
+</center>
+</div>
 
 		<div id="content" class="box">
 			<hr class="noscreen" />
@@ -91,14 +100,14 @@
 				<div id="DivFree">
 					<table>
 						<tr>
-							<td style="width: 150px;"><label id="username">Company*</label><label
+							<td style="width: 150px;"><label id="username">Name<font color="red">*</font></label><label
 								id="companyname" style="display: none;">CompanyName*:</label></td>
 							<td><form:input type="text" size="30" path="fullName"
 									class="validate[required] input-text" maxlength="80"
 									id="fullName" /></td>
 						</tr>
 						<tr>
-							<td>Contact No.*</td>
+							<td>Contact Number<font color="red">*</font></td>
 							<td><form:input type="text" size="40" path="mobileNo"
 									class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text"
 									maxlength="10" id="mobileNo" />&nbsp&nbsp&nbsp&nbsp<span
@@ -106,9 +115,15 @@
 						</tr>
 
 						<tr>
-							<td>Company Url*:</td>
+							<td>Url<font color="red">*</font>:</td>
 							<td><form:input type="text" size="40" path="Companyurl"
 									class="validate[required] input-text" maxlength="80" /></td>
+						</tr>
+						
+						<tr>
+							<td>Email Id<font color="red">*</font>:</td>
+							<td><form:input type="text" size="40" path="Companyurl"
+									class="validate[required,custom[email]] input-text" maxlength="80" /></td>
 						</tr>
 
 						<tr>
