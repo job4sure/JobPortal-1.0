@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -11,13 +10,10 @@
 <title>Profile</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
-	type="text/css" />
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="resources/js/jquery.validationEngine.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <!-- <script type="text/javascript">
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
@@ -35,28 +31,19 @@
 	}
 </script>
 
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
-	type="text/css" />
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<script src="resources/js/jquery.validationEngine.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
-<link rel="stylesheet" media="screen,projection" type="text/css"
-	href="css/reset.css" />
-<link rel="stylesheet" media="screen,projection" type="text/css"
-	href="css/main.css" />
-<link rel="stylesheet" media="screen,projection" type="text/css"
-	href="css/2col.css" title="2col" />
-<link rel="alternate stylesheet" media="screen,projection"
-	type="text/css" href="css/1col.css" title="1col" />
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/main.css" />
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/2col.css" title="2col" />
+<link rel="alternate stylesheet" media="screen,projection" type="text/css" href="css/1col.css" title="1col" />
 <!--[if lte IE 6]><link rel="stylesheet" media="screen,projection" type="text/css" href="css/main-ie6.css" /><![endif]-->
-<link rel="stylesheet" media="screen,projection" type="text/css"
-	href="css/style.css" />
-<link rel="stylesheet" media="screen,projection" type="text/css"
-	href="css/mystyle.css" />
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/style.css" />
+<link rel="stylesheet" media="screen,projection" type="text/css" href="css/mystyle.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/switcher.js"></script>
 <script type="text/javascript" src="js/toggle.js"></script>
@@ -157,10 +144,8 @@ table, tr, td, th {
 </script>
 </head>
 <body>
-	<form:form method="POST" action="saveCompanyCompleteProfile"
-		modelAttribute="companyProfile" id="formID"
-		enctype="multipart/form-data"
-		onsubmit="return jQuery(this).validationEngine('validate');">
+	<form:form method="POST" action="saveCompanyCompleteProfile" modelAttribute="companyProfile" id="formID"
+		enctype="multipart/form-data" onsubmit="return jQuery(this).validationEngine('validate');">
 		<div id="main">
 			<hr class="noscreen" />
 			<form:hidden path="compId" />
@@ -169,30 +154,23 @@ table, tr, td, th {
 					<div class="padding box">
 						<!-- Logo (Max. width = 200px) -->
 						<p id="logo">
-							<a href="http://all-free-download.com/free-website-templates/"><img
-								src="resources/design/logo.gif" alt="" /></a>
+							<a href="http://all-free-download.com/free-website-templates/"><img src="resources/design/logo.gif" alt="" /></a>
 						</p>
 						<!-- Search -->
-						<form
-							action="http://all-free-download.com/free-website-templates/"
-							method="get" id="search">
+						<form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
 							<fieldset>
 								<legend>Search</legend>
 								<p>
-									<input type="text" size="17" name="" class="input-text" />
-									&nbsp; <input type="submit" value="OK" class="input-submit-02" />
-									<br /> <a href="javascript:toggle('search-options');"
-										class="ico-drop">Advanced search</a>
+									<input type="text" size="17" name="" class="input-text" /> &nbsp; <input type="submit" value="OK"
+										class="input-submit-02" /> <br /> <a href="javascript:toggle('search-options');" class="ico-drop">Advanced
+										search</a>
 								</p>
 
 								<div id="search-options" style="display: none;">
 									<p>
-										<label> <input type="checkbox" name=""
-											checked="checked" /> By location
-										</label> <br /> <label> <input type="checkbox" name="" /> by
-											keywords
-										</label> <br /> <label> <input type="checkbox" name="" /> By
-											name
+										<label> <input type="checkbox" name="" checked="checked" /> By location
+										</label> <br /> <label> <input type="checkbox" name="" /> by keywords
+										</label> <br /> <label> <input type="checkbox" name="" /> By name
 										</label>
 									</p>
 								</div>
@@ -202,16 +180,21 @@ table, tr, td, th {
 					</div>
 				</div>
 				<div id="content" class="box">
-				<div width="41%" valign="middle">
-									<img src="${attachment}" id="preview" height="32px"
-										width="38px" />
-								</div>
-				<center>
-					<h2>Company Profile</h2>
-				</center>
-				<h3 style="color: red;">${message}</h3>
+
+					<center>
+						<h2>Company Profile</h2>
+					</center>
+				</div>
+
 				<div id="content" class="box">
+
+					<h3 style="color: red;">${message}</h3>
 					<fieldset>
+
+						<div width="41%" valign="middle">
+							<img src="${attachment}" id="preview" height="32px" width="38px" />
+						</div>
+
 						<center>
 							<table>
 
@@ -234,8 +217,7 @@ table, tr, td, th {
 									</select>
 								<tr>
 									<td>About Us:</td>
-									<td><form:textarea path="aboutUs"
-											class="validate[required]" /></td>
+									<td><form:textarea path="aboutUs" class="validate[required]" /></td>
 								</tr>
 
 								<tr>
@@ -248,41 +230,33 @@ table, tr, td, th {
 								</tr>
 								<tr>
 									<td>Company URL*:</td>
-									<td><form:input path="companyUrl"
-											class="validate[required] text-input" /></td>
+									<td><form:input path="companyUrl" class="validate[required] text-input" /></td>
 								</tr>
 								<tr>
 									<td>Address1*:</td>
-									<td><form:input path="address1"
-											class="validate[required,minSize[5],maxSize[300]] input-text" /></td>
+									<td><form:input path="address1" class="validate[required,minSize[5],maxSize[300]] input-text" /></td>
 								</tr>
 								<tr>
 									<td>Address2*:</td>
-									<td><form:input path="address2"
-											class="validate[required,minSize[5],maxSize[300]] input-text" /></td>
+									<td><form:input path="address2" class="validate[required,minSize[5],maxSize[300]] input-text" /></td>
 								</tr>
 								<tr>
 									<td>City*:</td>
-									<td><form:input path="city"
-											class="validate[required] input-text" /></td>
+									<td><form:input path="city" class="validate[required] input-text" /></td>
 								</tr>
 								<tr>
 									<td>State*:</td>
-									<td><form:input path="state"
-											class="validate[required] input-text" /></td>
+									<td><form:input path="state" class="validate[required] input-text" /></td>
 								</tr>
 								<tr>
 									<td>ZipCode*:</td>
-									<td><form:input path="zipcode"
-											class="validate[required] input-text" /></td>
+									<td><form:input path="zipcode" class="validate[required] input-text" /></td>
 								</tr>
 
 								<tr>
-									<td><label>Select
-											Profile<font color="red">*</font>:
+									<td><label>Select Profile<font color="red">*</font>:
 									</label></td>
-									<td><input type="file" name="upload"
-										path="uploadImagesName" onchange="previewImage(this)"
+									<td><input type="file" name="upload" path="uploadImagesName" onchange="previewImage(this)"
 										accept="image/*" /></td>
 
 								</tr>
@@ -291,8 +265,7 @@ table, tr, td, th {
 										width="140px" />
 								</div> --%>
 								<tr>
-									<td><input type="submit" value="submit"
-										onclick="jQuery('#formID').submit();" /></td>
+									<td><input type="submit" value="submit" onclick="jQuery('#formID').submit();" /></td>
 								</tr>
 
 							</table>
