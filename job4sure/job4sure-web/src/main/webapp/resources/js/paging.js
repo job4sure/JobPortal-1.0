@@ -8,7 +8,7 @@ function Pager(tableName, itemsPerPage) {
     this.showRecords = function(from, to) {        
         var rows = document.getElementById(tableName).rows;
         // i starts from 1 to skip table header row
-        for (var i = 1; i < rows.length; i++) {
+        for (var i = 0; i < rows.length; i++) {
             if (i < from || i > to)  
                 rows[i].style.display = 'none';
             else
