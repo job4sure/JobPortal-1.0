@@ -43,6 +43,7 @@ jQuery(document).ready(function(){
 			});
 		});
 </script>
+
 </head>
 <body onload='document.loginForm.username.focus();'>
 
@@ -99,7 +100,14 @@ jQuery(document).ready(function(){
     <!-- /aside -->
     <hr class="noscreen" />
     <!-- Content (Right Column) -->
-    <center><h2>Profile</h2></center>
+    <div id="content" class="box">
+			
+					
+			 <center><h2>Profile</h2></center>
+			 
+			</div>
+    
+   
     <div id="content" class="box">
     <fieldset>
    

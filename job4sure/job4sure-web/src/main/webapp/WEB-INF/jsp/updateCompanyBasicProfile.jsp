@@ -8,21 +8,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <!-- for validation -->
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
+	type="text/css" />
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript"
-	charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine-en.js"
+	type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<script src="resources/js/jquery.validationEngine.js" type="text/javascript"
-	charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine.js"
+	type="text/javascript" charset="utf-8"></script>
 <!-- End validation -->
 <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-	$("#formID").validationEngine();
+	$(document).ready(function() {
+		$("#formID").validationEngine();
 
-});
+	});
 </script>
+
 </head>
 <body>
 
@@ -36,21 +38,25 @@ $(document).ready(function() {
 						src="resources/tmp/logo.gif" alt="" /></a>
 				</p>
 				<!-- Search -->
-				<form action="http://all-free-download.com/free-website-templates/" method="get"
-					id="search">
+				<form action="http://all-free-download.com/free-website-templates/"
+					method="get" id="search">
 					<fieldset>
 						<legend>Search</legend>
 						<p>
-							<input type="text" size="17" name="" class="input-text" /> &nbsp; <input
-								type="submit" value="OK" class="input-submit-02" /> <br /> <a
-								href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a>
+							<input type="text" size="17" name="" class="input-text" />
+							&nbsp; <input type="submit" value="OK" class="input-submit-02" />
+							<br /> <a href="javascript:toggle('search-options');"
+								class="ico-drop">Advanced search</a>
 						</p>
 						<!-- Advanced search -->
 						<div id="search-options" style="display: none;">
 							<p>
-								<label> <input type="checkbox" name="" checked="checked" /> By Location
-								</label> <br /> <label> <input type="checkbox" name="" /> By keywords
-								</label> <br /> <label> <input type="checkbox" name="" /> By name
+								<label> <input type="checkbox" name="" checked="checked" />
+									By Location
+								</label> <br /> <label> <input type="checkbox" name="" /> By
+									keywords
+								</label> <br /> <label> <input type="checkbox" name="" /> By
+									name
 								</label>
 							</p>
 						</div>
@@ -65,9 +71,8 @@ $(document).ready(function() {
 			</ul>
 
 		</div>
-		<center>
-			<h2>Company Profile</h2>
-		</center>
+
+
 		<div id="content" class="box">
 			<hr class="noscreen" />
 
@@ -89,14 +94,15 @@ $(document).ready(function() {
 							<td style="width: 150px;"><label id="username">Company*</label><label
 								id="companyname" style="display: none;">CompanyName*:</label></td>
 							<td><form:input type="text" size="30" path="fullName"
-									class="validate[required] input-text" maxlength="80" id="fullName" /></td>
+									class="validate[required] input-text" maxlength="80"
+									id="fullName" /></td>
 						</tr>
 						<tr>
 							<td>Contact No.*</td>
 							<td><form:input type="text" size="40" path="mobileNo"
 									class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text"
-									maxlength="10" id="mobileNo" />&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors
-										path="mobileNo"></form:errors></span><br></td>
+									maxlength="10" id="mobileNo" />&nbsp&nbsp&nbsp&nbsp<span
+								style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 						</tr>
 
 						<tr>
@@ -107,8 +113,8 @@ $(document).ready(function() {
 
 						<tr>
 							<td></td>
-							<td><input type="submit" value="submit" class="input-submit-02"
-								onclick="jQuery('#formID').submit();" /></td>
+							<td><input type="submit" value="submit"
+								class="input-submit-02" onclick="jQuery('#formID').submit();" /></td>
 						</tr>
 
 					</table>

@@ -67,8 +67,12 @@ $(document).ready(function() {
 			</div>
 
 			<div id="content" class="box">
-				<h2>User Basic Information</h2>
+			
+					
+			<center><h2>User Basic Information</h2></center>
 			</div>
+				
+			
 
 
 
@@ -154,6 +158,7 @@ $(document).ready(function() {
 				</fieldset>
 		</div>
 		</form:form>
+		</div>
 	</div>
 	</div>
 </body>

@@ -201,6 +201,11 @@ table, tr, td, th {
 						</form>
 					</div>
 				</div>
+				<div id="content" class="box">
+				<div width="41%" valign="middle">
+									<img src="${attachment}" id="preview" height="32px"
+										width="38px" />
+								</div>
 				<center>
 					<h2>Company Profile</h2>
 				</center>
@@ -273,7 +278,7 @@ table, tr, td, th {
 								</tr>
 
 								<tr>
-									<td style="padding: 15;" align="center"><label>Select
+									<td><label>Select
 											Profile<font color="red">*</font>:
 									</label></td>
 									<td><input type="file" name="upload"
@@ -281,10 +286,10 @@ table, tr, td, th {
 										accept="image/*" /></td>
 
 								</tr>
-								<div width="41%" valign="middle">
+								<%-- <div width="41%" valign="middle">
 									<img src="${attachment}" id="preview" height="140px"
 										width="140px" />
-								</div>
+								</div> --%>
 								<tr>
 									<td><input type="submit" value="submit"
 										onclick="jQuery('#formID').submit();" /></td>

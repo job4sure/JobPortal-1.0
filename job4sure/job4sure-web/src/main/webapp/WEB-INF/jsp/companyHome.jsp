@@ -81,13 +81,15 @@
 			</div>
 
 			<div id="content" class="box">
-				<h2>WELCOME IN COMPANY ACCOUNT</h2>
+			<div width="41%" valign="middle">
+						<img src="${attachment}" id="preview" height="32px" width="38px" />
+					
+			<center><h2>WELCOME IN COMPANY ACCOUNT</h2></center>
 			</div>
+			
 		</div>
 		
-		<div width="41%" valign="middle">
-						<img src="${attachment}" id="preview" height="140px" width="140px" />
-					</div>
+		
 		<marquee>
 			<h2>Your account will be expired in ${daysLeft} days.</h2>
 		</marquee>

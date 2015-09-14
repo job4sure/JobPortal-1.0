@@ -78,14 +78,14 @@
       
 	}
 </script>
-<style>
+ <style>
 #preview {
 	float: right;
 	border: 1px dotted black;
-	margin-right: 5%;
-	margin-top: -60%;
+	margin-right: 3%;
+	margin-top: 4%;
 }
-</style>
+</style> 
 </head>
 <div id="main">
 	<hr class="noscreen" />
@@ -151,13 +151,16 @@
 
 
 						<div id="content" class="box">
+						
 							<fieldset>
 
 								<center>
 									<table width="100%" class="nostyle"
 										style="border-collapse: separate; border-spacing: 5px">
 
-
+<div width="41%" valign="middle">
+						<img src="${attachment}" id="preview" height="140px" width="140px" />
+					</div>
 
 										<form:hidden path="userId" />
 										<tr>
@@ -326,14 +329,14 @@
 										<div class="hidden-div" id="hidden-div">
 
 											<tr>
-												<td><label>Select Profile: </label><input type="file"
+												<td style="padding: 15;" align="center"><label>Select Profile: </label></td><td><input type="file"
 													name="upload"
 													onchange="previewImage(this)" accept="image/*"
 													multiple="multiple" /></td>
 
 											</tr>
 											<tr>
-												<td><label>Select Resume: </label><input type="file"
+												<td style="padding: 15;" align="center"><label>Select Resume: </label></td><td><input type="file"
 													name="upload" multiple="multiple" /></td>
 
 											</tr>
@@ -354,9 +357,7 @@
 						</div>
 					</div>
 
-					<div width="41%" valign="middle">
-						<img src="${attachment}" id="preview" height="140px" width="140px" />
-					</div>
+					
 				</div>
 			</form:form>
 		</body>
