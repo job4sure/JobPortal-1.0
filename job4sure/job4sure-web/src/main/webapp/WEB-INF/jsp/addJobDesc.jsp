@@ -59,6 +59,11 @@
     }
 </script> -->
 <style>
+
+#content table {
+    border: 0px solid #cfcfcf;
+}
+
 .multiselect {
 	width: 200px;
 }
@@ -153,6 +158,12 @@ function checkedSkill(){
 		</div>
 		<hr class="noscreen" />
 		<!-- Content (Right Column) -->
+		
+		<div id="content" class="box">
+		<center>
+		<h2>Job Description</h2>
+		</center>
+		</div>
 		<div id="content" class="box">
 
 			<h5 style="color: red;">${status}</h5>
@@ -161,9 +172,9 @@ function checkedSkill(){
 				<form:hidden path="jobDescriptionId" />
 
 				<table width="100%">
-					<tr>
+					<!-- <tr>
 						<td colspan="2" align="center"><h5>Job Description</h5></td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td>Job Title<font color="red">*</font></td>
 						<td><form:input path="jobTitle" class="validate[required,custom[onlyLetterSp]] input-text" maxlength="50" />

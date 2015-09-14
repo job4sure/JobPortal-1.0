@@ -12,6 +12,7 @@
 <script type="text/javascript" src="resources/js/paging.js"></script>
 </head>
 <body>
+<div id="cols" class="box">
 	<div id="aside" class="box">
 		<div class="padding box">
 			<!-- Logo (Max. width = 200px) -->
@@ -73,6 +74,7 @@
 			pager.showPageNav('pager','pageNavPosition');
 			pager.showPage(1);
 		</script>
+	</div>
 	</div>
 </body>
 </html>
