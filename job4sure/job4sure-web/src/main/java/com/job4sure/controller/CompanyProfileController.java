@@ -85,7 +85,7 @@ public class CompanyProfileController {
 	}
 
 	/* this methos for show the company details page as non changeble */
-	@RequestMapping(value = "/CompanyProfileView", method = RequestMethod.GET)
+	@RequestMapping(value = "/companyProfileView", method = RequestMethod.GET)
 	public String CompanyProfileView(Map<String, Object> map, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
