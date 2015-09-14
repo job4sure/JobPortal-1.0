@@ -71,7 +71,7 @@ th, td {
 
 			</div>
 
-
+<div id="content" class="box">
 			<c:if test="${companyProfile.registrationId !=null}">
 
 				<div class="wrapper">
@@ -96,6 +96,10 @@ th, td {
 				<h3 style="color: red;">Sorry Nothing to display complete your
 					details !!</h3>
 			</c:if>
+			</div>
+			</div>
+			</div>
+			
 </body>
 
 
