@@ -249,8 +249,15 @@
 											<td style="padding: 15;" align="center">Experience<font
 												color="red">*</font>:
 											</td>
-											<td><form:input type="text" size="40" path="experience"
-													class="validate[required] input-text" maxlength="10" /><br></td>
+											<td>	<form:select path="experience"
+													style="height:25px;  width:158px;">
+													<option value="null">select</option>
+													<c:forEach items="${experienceList}" var="experienceUser">
+
+														<option value="${experienceUser.experience }">${experienceUser.experience }</option>
+
+													</c:forEach>
+												</form:select> <br></td>
 										</tr>
 
 

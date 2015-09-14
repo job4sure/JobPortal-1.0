@@ -44,7 +44,7 @@ public class UserProfileController {
 
 	@RequestMapping(value = "/userProfileHomePage", method = RequestMethod.GET)
 	public String showuserProfile(Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
-			throws IOException {
+					throws IOException {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		UserProfile userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
@@ -67,7 +67,7 @@ public class UserProfileController {
 
 	@RequestMapping(value = "/updateBasicProfile", method = RequestMethod.GET)
 	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,
-			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
+					Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		registration = (Registration) session.getAttribute("registration");
 		map.put("Registration", registration);
@@ -91,14 +91,16 @@ public class UserProfileController {
 		model.addAttribute("roletype12", role);
 		map.put("userProfile", new UserProfile());
 		model.addAttribute("message", message);
-
+		List experienceList = userProfileService.experienceData();
+		model.addAttribute("experienceList", experienceList);
 		return "userCompleteInfo";
 	}
 
 	@SuppressWarnings({ "static-access", "rawtypes" })
 	@RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
 	public String updateCompleteProfile(@ModelAttribute("userProfile") UserProfile userProfile,
-			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) throws IOException {
+					Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
+					throws IOException {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
@@ -120,7 +122,8 @@ public class UserProfileController {
 			model.addAttribute("industrydata", industry);
 			List role = userProfileService.roleData();
 			model.addAttribute("roletype12", role);
-
+			List experienceList = userProfileService.experienceData();
+			model.addAttribute("experienceList", experienceList);
 			return "userCompleteInfo";
 		} else {
 			model.addAttribute("message", IConstant.FIRST_COMPLETE_INFO_MESSAGE);
@@ -131,8 +134,8 @@ public class UserProfileController {
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompleteUserProfile", method = RequestMethod.POST)
 	public String saveCompleteUserProfile(@ModelAttribute("userProfile") UserProfile userProfile,
-			@RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
-			String attchmentName, ModelMap model, HttpServletRequest request) {
+					@RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
+					String attchmentName, ModelMap model, HttpServletRequest request) {
 		final MultipartFile filePart = file;
 		boolean status = false;
 		file.getOriginalFilename();
@@ -178,7 +181,7 @@ public class UserProfileController {
 
 	@RequestMapping(value = "/updateUserInformation", method = { RequestMethod.GET, RequestMethod.POST })
 	private String updateUserInformation(@ModelAttribute("Registration") Registration registration, ModelMap model,
-			BindingResult result, HttpServletRequest request) throws Exception {
+					BindingResult result, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		boolean status = false;
 		registrationValidator.validate(registration, result);

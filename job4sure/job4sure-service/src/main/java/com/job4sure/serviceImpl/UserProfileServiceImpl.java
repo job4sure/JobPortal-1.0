@@ -18,6 +18,7 @@ import com.job4sure.model.Education;
 import com.job4sure.model.UserProfile;
 import com.job4sure.repository.AttachmentRepository;
 import com.job4sure.repository.EducationRepository;
+import com.job4sure.repository.ExperienceRepository;
 import com.job4sure.repository.IndustryRepository;
 import com.job4sure.repository.LocationRepository;
 import com.job4sure.repository.PrefferedLocationRepository;
@@ -53,6 +54,9 @@ public class UserProfileServiceImpl implements UserProfileService {
 
 	@Autowired
 	private LocationRepository currentlocation;
+	
+	@Autowired
+	private ExperienceRepository experienceRepository;
 
 	@SuppressWarnings({ "resource", "unused" })
 	public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
@@ -196,6 +200,12 @@ public class UserProfileServiceImpl implements UserProfileService {
 			}
 		}
 		return attachment;
+	}
+
+	
+	public List experienceData() {
+		
+		return experienceRepository.findAll();
 	}
 
 }

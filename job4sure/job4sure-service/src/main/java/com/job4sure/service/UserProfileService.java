@@ -28,5 +28,6 @@ public interface UserProfileService {
 		public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
 				CommonsMultipartFile[] upload, String attchmentName);
 
+		public List experienceData();
 		
 }
