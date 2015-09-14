@@ -6,44 +6,38 @@
 <%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<style>
-.hidden-div {
-	display: none;
-}
-</style>
 <script type="text/javascript">
-	document.getElementById('show_button').addEventListener('click', hideshow,
-			false);
-
-	function hideshow() {
-		document.getElementById('hidden-div').style.display = 'block';
-		this.style.display = 'none'
+	function showRow(rowname) {
+		if (document.getElementById(rowname)) {
+			document.getElementById(rowname).style.display = '';
+		}
 	}
-
-	document.getElementById('show_button1').addEventListener('click',
-			hideshow1, false);
-
-	function hideshow1() {
-		document.getElementById('hidden-div1').style.display = 'block';
-		this.style.display = 'none'
+	function hideRow(rowname) {
+		if (document.getElementById(rowname)) {
+			document.getElementById(rowname).style.display = 'none';
+		}
+	}
+	function toggleRow(rowname) {
+		if (document.getElementById(rowname)) {
+			if (document.getElementById(rowname).style.display == 'none') {
+				showRow(rowname)
+			} else {
+				hideRow(rowname)
+			}
+		}
 	}
 </script>
-
 </head>
 <body>
 	<div id="main">
 		<hr class="noscreen" />
-		<!-- Columns -->
 		<div id="cols" class="box">
-			<!-- Aside (Left Column) -->
 			<div id="aside" class="box">
 				<div class="padding box">
-					<!-- Logo (Max. width = 200px) -->
 					<p id="logo">
 						<a href="http://all-free-download.com/free-website-templates/"><img
 							src="resources/tmp/logo.gif" alt="" /></a>
 					</p>
-					<!-- Search -->
 					<form action="http://all-free-download.com/free-website-templates/"
 						method="get" id="search">
 						<fieldset>
@@ -54,7 +48,6 @@
 								<br /> <a href="javascript:toggle('search-options');"
 									class="ico-drop">Advanced search</a>
 							</p>
-							<!-- Advanced search -->
 							<div id="search-options" style="display: none;">
 								<p>
 									<label> <input type="checkbox" name=""
@@ -66,86 +59,71 @@
 									</label>
 								</p>
 							</div>
-							<!-- /search-options -->
 						</fieldset>
 					</form>
-					<!-- Create a new project -->
-
 				</div>
-				<!-- /padding -->
 				<ul class="box">
-
 				</ul>
-
-				<!-- Active -->
-
-
 			</div>
-			<!-- /aside -->
-
 			<div id="content" class="box">
-<h3>${message}</h3>
+				<h3>${message}</h3>
 				<div class="reform">
 					<form:form action="educationSave" method="POST" id="formID"
 						modelAttribute="ED">
 						<form:hidden path="education_id" />
-
-						<fieldset>
-							<table width="100%" class="nostyle" style="border-collapse: separate;border-spacing: 5px">
-								<tr>
-									<td><font color="red">*</font>Basic/Graduation</td>
-									<td><form:select path="graduation">
-											<form:option value="BE/BTECH">BE/BTECH</form:option>
-											<form:option value="BSc">BSc</form:option>
-											<form:option value="Bcom">Bcom</form:option>
-										</form:select></td>
-								</tr>
-
-								<tr>
-									<td ><form:radiobutton path="education" value="Full Time" />Full
-										Time</td>
-						<td	colspan="2"><form:radiobutton path="education" value="Part Time" />Part
-										Time
-									&nbsp;&nbsp;<form:radiobutton path="education"
-											value="Correspondance/Distance learning" />Correspondance/Distance
-										learning</td>
-								</tr>
-
-								<tr>
-									<td><font color="red">*</font>Specialization</td>
-									<td><form:select path="specialization">
-											<form:option value="Automobile">Automobile</form:option>
-											<form:option value="Aviation">Aviation</form:option>
-											<form:option value="Agriculture">Agriculture</form:option>
-										</form:select></td>
-								</tr>
-
-								<tr>
-									<td><font color="red">*</font>University/Institute</td>
-									<td><form:select path="institute">
-											<form:option value="LPU">LPU</form:option>
-											<form:option value="RGPV">RGPV</form:option>
-											<form:option value="Punjab University">Punjab University</form:option>
-										</form:select></td>
-								</tr>
-
-								<tr>
-									<td><font color="red">*</font>Year</td>
-									<td><form:select path="yearr">
-											<form:option value="2012">2012</form:option>
-											<form:option value="2013">2013</form:option>
-											<form:option value="2014">2014</form:option>
-											<form:option value="2015">2015</form:option>
-										</form:select></td>
-								</tr>
-							</table>
-						</fieldset>
-
-						<a href="#" id="show_button" onclick="hideshow()">PostGraduation</a>
-						<div class="hidden-div" id="hidden-div">
-
+						<div>
 							<fieldset>
-								<table width="100%" class="nostyle" style="border-collapse: separate;border-spacing: 5px">
+								<table width="100%" class="nostyle"
+									style="border-collapse: separate; border-spacing: 5px">
+									<tr>
+										<td><font color="red">*</font>Basic/Graduation</td>
+										<td><form:select path="graduation">
+										<form:option value="BE/BTECH">BE/BTECH</form:option>
+												<form:option value="BSc">BSc</form:option>
+												<form:option value="Bcom">Bcom</form:option>
+											</form:select></td>
+									</tr>
+									<tr>
+										<td><form:radiobutton path="education" value="Full Time" />Full
+											Time</td>
+										<td colspan="2"><form:radiobutton path="education"
+												value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
+												path="education" value="Correspondance/Distance learning" />Correspondance/Distance
+											learning</td>
+									</tr>
+									<tr>
+										<td><font color="red">*</font>Specialization</td>
+										<td><form:select path="specialization">
+												<form:option value="Automobile">Automobile</form:option>
+												<form:option value="Aviation">Aviation</form:option>
+												<form:option value="Agriculture">Agriculture</form:option>
+											</form:select></td>
+									</tr>
+									<tr>
+										<td><font color="red">*</font>University/Institute</td>
+										<td><form:select path="institute">
+												<form:option value="LPU">LPU</form:option>
+												<form:option value="RGPV">RGPV</form:option>
+												<form:option value="Punjab University">Punjab University</form:option>
+											</form:select></td>
+									</tr>
+									<tr>
+										<td><font color="red">*</font>Year</td>
+										<td><form:select path="yearr">
+												<form:option value="2012">2012</form:option>
+												<form:option value="2013">2013</form:option>
+												<form:option value="2014">2014</form:option>
+												<form:option value="2015">2015</form:option>
+											</form:select></td>
+									</tr>
+								</table>
+							</fieldset>
+						</div>
+						<a href="javascript:toggleRow('row1')">PostGraduation</a>
+						<div id="row1">
+							<fieldset>
+								<table width="100%" class="nostyle"
+									style="border-collapse: separate; border-spacing: 5px">
 									<tr>
 										<td><font color="red">*</font>Post Graduation</td>
 										<td><form:select path="postgraduation">
@@ -154,17 +132,15 @@
 												<form:option value="Mcom">Mcom</form:option>
 											</form:select></td>
 									</tr>
-
 									<tr>
 										<td><form:radiobutton path="posteducation"
 												value="Full Time" />Full Time<br></td>
-										<td	colspan="2"><form:radiobutton path="posteducation"
-												value="Part Time" />Part Time
-										&nbsp;&nbsp;<form:radiobutton path="posteducation"
+										<td colspan="2"><form:radiobutton path="posteducation"
+												value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
+												path="posteducation"
 												value="Correspondance/Distance learning" />Correspondance/Distance
 											learning</td>
 									</tr>
-
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
 										<td><form:select path="post_specialization">
@@ -173,7 +149,6 @@
 												<form:option value="Agriculture">Agriculture</form:option>
 											</form:select></td>
 									</tr>
-
 									<tr>
 										<td><font color="red">*</font>University/Institute</td>
 										<td><form:select path="post_institute">
@@ -182,7 +157,6 @@
 												<form:option value="Punjab University">Punjab University</form:option>
 											</form:select></td>
 									</tr>
-
 									<tr>
 										<td><font color="red">*</font>Year</td>
 										<td><form:select path="post_yearr">
@@ -194,13 +168,13 @@
 									</tr>
 								</table>
 							</fieldset>
-
 						</div>
-						<a href="#" id="show_button1" onclick="hideshow1()">PHD</a>
-						<div class="hidden-div" id="hidden-div1">
-
+<br>
+						<a href="javascript:toggleRow('row2')">PHD</a>
+						<div id="row2">
 							<fieldset>
-								<table width="100%" class="nostyle" style="border-collapse: separate;border-spacing: 5px">
+								<table width="100%" class="nostyle"
+									style="border-collapse: separate; border-spacing: 5px">
 									<tr>
 										<td><font color="red">*</font>PhD/Doctorate</td>
 										<td><form:select path="doctorate">
@@ -208,17 +182,15 @@
 												<form:option value="Other">Other</form:option>
 											</form:select></td>
 									</tr>
-
 									<tr>
 										<td><form:radiobutton path="doc_education"
 												value="Full Time" />Full Time<br></td>
-										<td	colspan="2"><form:radiobutton path="doc_education"
-												value="Part Time" />Part Time
-										&nbsp;&nbsp;<form:radiobutton path="doc_education"
+										<td colspan="2"><form:radiobutton path="doc_education"
+												value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
+												path="doc_education"
 												value="Correspondance/Distance learning" />Correspondance/Distance
 											learning</td>
 									</tr>
-
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
 										<td><form:select path="doc_specialization">
@@ -227,7 +199,6 @@
 												<form:option value="Agriculture">Agriculture</form:option>
 											</form:select></td>
 									</tr>
-
 									<tr>
 										<td><font color="red">*</font>University/Institute</td>
 										<td><form:select path="doc_institute">
@@ -236,7 +207,6 @@
 												<form:option value="IIM">Punjab University</form:option>
 											</form:select></td>
 									</tr>
-
 									<tr>
 										<td><font color="red">*</font>Year</td>
 										<td><form:select path="doc_yearr">
@@ -249,11 +219,12 @@
 								</table>
 							</fieldset>
 						</div>
-
-
-						<h3 align="center"><input type="submit" value="Save" style="width: 13em;height: 3em;font-size:large;"></h3>
+						<h3 align="center">
+							<input type="submit" value="Save"
+								style="width: 13em; height: 3em; font-size: large;">
+						</h3>
 					</form:form>
 				</div>
-				</div>
+			</div>
 </body>
 </html>
