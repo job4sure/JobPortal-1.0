@@ -41,36 +41,36 @@
 			</form>
 		</div>
 	</div>
+	
 	<div class="box" id="content">
-
-		<%-- <h3 style="color: red;">${message}</h3> --%>
+	
 		<center>
 			<h2 id="show">${message}</h2>
 		</center>
 		<table id="results" style="border-collapse: separate; border-spacing: 12px;" class="nostyle">
 			<c:forEach items="${jobList}" var="job">
+			
 				<tr>
 					<td width="10%"></td>
 					<td><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td>
 					<td><div style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
-							<!--  <img src="resources/images/user84.png" width="100" height="80"
-        alt="My Pic"> -->
+							
 							<h2>${job.jobTitle}</h2>
 							<p>${job.jobDesc}</p>
-
 							<a href="editJob.do?jobId=${job.jobDescriptionId}">View or Edit</a> <a
 								href="deleteJob.do?jobDescriptionId=${job.jobDescriptionId}">Delete</a>
 						</div></td>
 				</tr>
 			</c:forEach>
 		</table>
+		
 		<c:if test="${jobList!=null}">
 		<div id="pageNavPosition"></div>
 		</c:if>
 		<script type="text/javascript">
 			var pager = new Pager('results', 2);
 			pager.init();
-			pager.showPageNav('pager', 'pageNavPosition');
+			pager.showPageNav('pager','pageNavPosition');
 			pager.showPage(1);
 		</script>
 	</div>
