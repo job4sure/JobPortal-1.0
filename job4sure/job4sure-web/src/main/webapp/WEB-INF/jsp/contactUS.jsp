@@ -40,8 +40,8 @@ html, body {
 <script>
 	function initMap() {
 		var myLatLng = {
-			lat : 22.719569,
-			lng : 75.857726
+			lat :  22.7257890,
+			lng : 75.8934760
 		};
 
 		var map = new google.maps.Map(document.getElementById('map'), {
