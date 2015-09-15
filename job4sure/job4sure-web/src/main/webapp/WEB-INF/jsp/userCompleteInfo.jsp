@@ -44,6 +44,26 @@
 	}
 	</script>
 <script type="text/javascript">
+
+function showRow(rowname) {
+	if (document.getElementById(rowname)) {
+		document.getElementById(rowname).style.display = '';
+	}
+}
+function hideRow(rowname) {
+	if (document.getElementById(rowname)) {
+		document.getElementById(rowname).style.display = 'none';
+	}
+}
+function toggleRow(rowname) {
+	if (document.getElementById(rowname)) {
+		if (document.getElementById(rowname).style.display == 'none') {
+			showRow(rowname)
+		} else {
+			hideRow(rowname)
+		}
+	}
+}
 	function previewImage(input) {
 		var preview = document.getElementById('preview');
 		if (input.files && input.files[0]) {
@@ -131,12 +151,14 @@ $(document).ready(function() {
 				onsubmit="return jQuery(this).validationEngine('validate');">
 				<div id="content" class="box">
 					<div class="verticalLine">
-						<center>
+						<center >
 							<h2>User Complete Information</h2>
 						</center>
-						<div id="content" class="box">
+						<br>
+											<a href="javascript:toggleRow('row1')"><h3 align="center"><font color="red">Professional Details</font></h3></a>
+						<div id="row1">
+					
 							<fieldset>
-								<div class="wrapper">
 									<center>
 										<table width="100%" class="nostyle"
 											style="border-collapse: separate; border-spacing: 5px">
@@ -146,179 +168,177 @@ $(document).ready(function() {
 											</div>
 											<form:hidden path="userId" />
 											<tr>
-												<td style="padding: 15;">Resume HeadLine<font
-													color="red">*</font>:
-												</td>
-												<td><form:input type="text" size="27" path="resume"
-														class="validate[required] input-text" maxlength="25" /><br></td>
-											</tr>
-											<tr>
-												<td valign="center" padding: 15;">Role<font
-													color="red">*</font>:
-												</td>
-												<td><form:select path="roletype"
-														style="height:25px;  width:158px;">
-														<option value="null">select</option>
-														<c:forEach items="${roletype12}" var="roleUser">
-															<option value="${roleUser.roletype }">${roleUser.roletype }</option>
-														</c:forEach>
-													</form:select> <br></td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">Experience<font
-													color="red">*</font>:
-												</td>
-												<td><form:select path="minExperience.experienceId"
-														onChange="checkMinExp(this);" id="sel1">
-														<c:forEach items="${experienceList}" var="experience">
-															<form:option value="${experience.experienceId}"
-																label="${experience.experience}" />
-														</c:forEach>
-													</form:select>&nbsp;to&nbsp; <form:select
-														path="maxExperience.experienceId" disable="disable"
-														id="sel2">
-														<c:forEach items="${experienceList}" var="experience">
-															<form:option value="${experience.experienceId}"
-																label="${experience.experience}" />
-														</c:forEach>
-													</form:select> in Year</td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">Annual Salary<font
-													color="red">*</font>:
-												</td>
-												<td><form:select path="minSalary.salaryId"
-														onChange="checkMinSal(this);" id="salary1">
-														<c:forEach items="${salary}" var="salary">
-															<form:option value="${salary.salaryId}"
-																label="${salary.salary}" />
-														</c:forEach>
-													</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId"
-														id="salary2">
-														<c:forEach items="${salary}" var="salary">
-															<form:option value="${salary.salaryId}"
-																label="${salary.salary}" />
-														</c:forEach>
-													</form:select> (Salary in Lpa)</td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">Current
-													Location<font color="red">*</font>:
-												</td>
-												<td><form:select path="currentlocation"
-														style="height:25px; width:158px;">
-														<option value="null">select</option>
-														<c:forEach items="${location}" var="location">
-															<option value="${location.currentlocation }">${location.currentlocation}</option>
-														</c:forEach>
-													</form:select> <br></td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">Preffered
-													Location<font color="red">*</font>:
-												</td>
-												<td width="50%"><form:select path="prefferedlocation"
-														style="height:25px;  width:158px;">
-														<option value="null">select</option>
-														<c:forEach items="${preferlocation}" var="location">
-															<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
-														</c:forEach>
-													</form:select> <br></td>
-											</tr>
-											
-											<tr>
-												<td style="padding: 15;">DateOfBirth<font
-													color="red">*</font>:
-												</td>
-												<td>
-													<form>
-														<form:input path="dob" id="datepicker"
-															style="height:25px;" />
-													</form>
-												</td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">Gender<font
-													color="red">*</font></td>
-												<td><form:radiobutton path="gender" value="Male" />Male
-													<form:radiobutton path="gender" value="Female" />Female</td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">Marital Status<font
-													color="red">*</font></td>
-												<td><form:radiobutton path="maritalstatus"
-														value="single" />Single <form:radiobutton
-														path="maritalstatus" value="married" />Married</td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">Phone<font
-													color="red">*</font>:
-												</td>
-												<td><form:input type="text" size="40" path="phone"
-														class="validate[required] input-text" maxlength="10" /><br></td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">Address<font
-													color="red">*</font>:
-												</td>
-												<td><form:textarea rows="3" path="address"
-														class="validate[required] input-text"
-														style="width: 302px; height: 80px;" /><br></td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">City<font
-													color="red">*</font>:
-												</td>
-												<td><form:input type="text" size="40" path="city"
-														class="validate[required] input-text" /><br></td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">State<font
-													color="red">*</font>:
-												</td>
-												<td><form:input type="text" size="40" path="State"
-														class="validate[required] input-text" /><br></td>
-											</tr>
-											<tr>
-												<td style="padding: 15;">ZipCode<font
-													color="red">*</font>:
-												</td>
-												<td><form:input type="text" size="40" path="zip"
-														class="validate[required] input-text" /><br></td>
-											</tr>
-											</div>
-											<div class="hidden-div" id="hidden-div">
-												<tr>
-													<td style="padding: 15;"><label>Select
-															Profile: </label></td>
-													<td><input type="file" name="upload"
-														onchange="previewImage(this)" accept="image/*"
-														multiple="multiple" /></td>
-												</tr>
-												<tr>
-													<td style="padding: 15;"><label>Select
-															Resume: </label></td>
-													<td><input type="file" name="upload"
-														multiple="multiple" /></td>
-												</tr>
-												<tr>
-												<td align="center"><a
-													href="downloadResume?registrationId=${registration.registrationId}">Download resume</a></td>
-											</tr>
-											</div>
-										</table>
-										<div>
-											<tr>
-												<td style="padding: 15;"><input type="submit"
-													value="submit" class="input-submit-02"
-													onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
-											</tr>
-										</div>
-									</center>
-								</div>
+											<td ">Resume HeadLine<font
+												color="red">*</font>:
+											</td>
+											<td><form:input type="text" size="27" path="resume"
+													class="validate[required] input-text" maxlength="25" /><br></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Role<font color="red">*</font>:
+											</td>
+											<td><form:select path="roletype"
+													style="height:25px;  width:158px;">
+													<option value="null">select</option>
+													<c:forEach items="${roletype12}" var="roleUser">
+														<option value="${roleUser.roletype }">${roleUser.roletype }</option>
+													</c:forEach>
+												</form:select> <br></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Experience<font color="red">*</font>:
+											</td>
+											<td><form:select path="minExperience.experienceId"
+													onChange="checkMinExp(this);" id="sel1">
+													<c:forEach items="${experienceList}" var="experience">
+														<form:option value="${experience.experienceId}"
+															label="${experience.experience}" />
+													</c:forEach>
+												</form:select>&nbsp;to&nbsp; <form:select
+													path="maxExperience.experienceId" disable="disable"
+													id="sel2">
+													<c:forEach items="${experienceList}" var="experience">
+														<form:option value="${experience.experienceId}"
+															label="${experience.experience}" />
+													</c:forEach>
+												</form:select> in Year</td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Annual Salary<font color="red">*</font>:
+											</td>
+											<td><form:select path="minSalary.salaryId"
+													onChange="checkMinSal(this);" id="salary1">
+													<c:forEach items="${salary}" var="salary">
+														<form:option value="${salary.salaryId}"
+															label="${salary.salary}" />
+													</c:forEach>
+												</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId"
+													id="salary2">
+													<c:forEach items="${salary}" var="salary">
+														<form:option value="${salary.salaryId}"
+															label="${salary.salary}" />
+													</c:forEach>
+												</form:select> (Salary in Lpa)</td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Current Location<font
+												color="red">*</font>:
+											</td>
+											<td><form:select path="currentlocation"
+													style="height:25px; width:158px;">
+													<option value="null">select</option>
+													<c:forEach items="${location}" var="location">
+														<option value="${location.currentlocation }">${location.currentlocation}</option>
+													</c:forEach>
+												</form:select> <br></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Preffered Location<font
+												color="red">*</font>:
+											</td>
+											<td width="50%"><form:select path="prefferedlocation"
+													style="height:25px;  width:158px;">
+													<option value="null">select</option>
+													<c:forEach items="${preferlocation}" var="location">
+														<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
+													</c:forEach>
+												</form:select> <br></td>
+										</tr>
+								</table>
+							</fieldset>
+						</div></div>
+					</center>
+					<br>
+					<center>
+						<a href="javascript:toggleRow('row2')"><h3 align="center"><font color="red">Personal Details</font></h3></a>
+						<div id="row2">
+							<fieldset>
+								<table width="100%" class="nostyle"
+									style="border-collapse: separate; border-spacing: 5px">
+									<div width="41%" valign="right">
+										<tr>
+											<td style="padding: 15;">DateOfBirth<font color="red">*</font>:
+											</td>
+											<td>
+												<form>
+													<form:input path="dob" id="datepicker" style="height:25px;" />
+												</form>
+											</td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Gender<font color="red">*</font></td>
+											<td><form:radiobutton path="gender" value="Male" />Male
+												<form:radiobutton path="gender" value="Female" />Female</td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Marital Status<font color="red">*</font></td>
+											<td><form:radiobutton path="maritalstatus"
+													value="single" />Single <form:radiobutton
+													path="maritalstatus" value="married" />Married</td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Phone<font color="red">*</font>:
+											</td>
+											<td><form:input type="text" size="40" path="phone"
+													class="validate[required] input-text" maxlength="10" /><br></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">Address<font color="red">*</font>:
+											</td>
+											<td><form:textarea rows="3" path="address"
+													class="validate[required] input-text"
+													style="width: 302px; height: 80px;" /><br></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">City<font color="red">*</font>:
+											</td>
+											<td><form:input type="text" size="40" path="city"
+													class="validate[required] input-text" /><br></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">State<font color="red">*</font>:
+											</td>
+											<td><form:input type="text" size="40" path="State"
+													class="validate[required] input-text" /><br></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;">ZipCode<font color="red">*</font>:
+											</td>
+											<td><form:input type="text" size="40" path="zip"
+													class="validate[required] input-text" /><br></td>
+										</tr>
+								</table>
 							</fieldset>
 						</div>
-					</div>
+					</center>
+					<br>
+					<center>
+						<a href="javascript:toggleRow('row3')"><h3 align="center"><font color="red">Attachments</font></h3></a>
+						<div id="row3">
+							<fieldset>
+								<table width="100%" class="nostyle"
+									style="border-collapse: separate; border-spacing: 5px">
+									<div width="41%" valign="right">
+										<tr>
+											<td style="padding: 15;"><label>Select Profile:
+											</label></td>
+											<td><input type="file" name="upload"
+												onchange="previewImage(this)" accept="image/*"
+												multiple="multiple" /></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;"><label>Select Resume: </label></td>
+											<td><input type="file" name="upload" multiple="multiple" /></td>
+										</tr>
+										<tr>
+											<td style="padding: 15;"><input type="submit"
+												value="submit" class="input-submit-02"
+												onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
+										</tr>
+								</table>
+							</fieldset>
+						</div>
+					</center>
 				</div>
 			</form:form>
 		</body>
