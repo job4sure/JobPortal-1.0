@@ -134,4 +134,9 @@ public class HomeController {
 	model.addAttribute("message", IConstant.PASSWORD_UPDATED);
 	return "redirect:/OpenloginPage";
     }
+    
+    @RequestMapping(value="/contact",method=RequestMethod.GET)
+    public String showContactPage(){
+    	return "contactUs";
+    }
 }
