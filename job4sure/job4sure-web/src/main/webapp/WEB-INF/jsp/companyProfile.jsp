@@ -44,69 +44,21 @@
 <!--[if lte IE 6]><link rel="stylesheet" media="screen,projection" type="text/css" href="css/main-ie6.css" /><![endif]-->
 <link rel="stylesheet" media="screen,projection" type="text/css" href="css/style.css" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="css/mystyle.css" />
+<link rel="stylesheet"  type="text/css" href="css/companyProfile.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/switcher.js"></script>
 <script type="text/javascript" src="js/toggle.js"></script>
 <script type="text/javascript" src="js/ui.core.js"></script>
 <script type="text/javascript" src="js/ui.tabs.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".tabs > ul").tabs();
 	});
 </script>
-<style>
-table, tr, td, th {
-	border: 0px;
-}
 
-.multiselect {
-	width: 200px;
-}
 
-.selectBox {
-	position: relative;
-}
-
-.selectBox select {
-	width: 100%;
-	font-weight: bold;
-}
-
-.overSelect {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-}
-
-#checkboxes {
-	display: none;
-	border: 1px #dadada solid;
-}
-
-#checkboxes label {
-	display: block;
-}
-
-#checkboxes label:hover {
-	background-color: #1e90ff;
-}
-</style>
-<script>
-	var expanded = false;
-	function showCheckboxes() {
-		var checkboxes = document.getElementById("checkboxes");
-		if (!expanded) {
-			checkboxes.style.display = "block";
-			expanded = true;
-		} else {
-			checkboxes.style.display = "none";
-			expanded = false;
-		}
-	}
-</script>
-<script type="text/javascript">
+ <script type="text/javascript">
 	jQuery(document).ready(function() {
 		// binds form submission and fields to the validation engine
 		jQuery("#formID").validationEngine({
@@ -115,19 +67,7 @@ table, tr, td, th {
 		});
 	});
 </script>
-<script>
-	var expanded = false;
-	function showCheckboxes() {
-		var checkboxes = document.getElementById("checkboxes");
-		if (!expanded) {
-			checkboxes.style.display = "block";
-			expanded = true;
-		} else {
-			checkboxes.style.display = "none";
-			expanded = false;
-		}
-	}
-</script>
+
 <script type="text/javascript">
 	function previewImage(input) {
 		var preview = document.getElementById('preview');
@@ -141,7 +81,7 @@ table, tr, td, th {
 			preview.setAttribute('src');
 		}
 	}
-</script>
+</script> 
 </head>
 <body>
 	<form:form method="POST" action="saveCompanyCompleteProfile" modelAttribute="companyProfile" id="formID"
@@ -208,7 +148,7 @@ table, tr, td, th {
 	<td><form:input type="text" size="40" path="companylogo"/></td>
 	</tr> --%>
 								<tr>
-									<td>Company size*:</td>
+									<td>Company size<font color="red">*</font>:</td>
 									<td><select name="companySize" class="validate[required]">
 											<option value="5-10">5-10</option>
 											<option value="10-50">10-50</option>
@@ -229,27 +169,27 @@ table, tr, td, th {
 										</form:select></td>
 								</tr>
 								<tr>
-									<td>Company URL*:</td>
+									<td>Company URL<font color="red">*</font>:</td>
 									<td><form:input path="companyUrl" class="validate[required] text-input" /></td>
 								</tr>
 								<tr>
-									<td>Address1*:</td>
+									<td>Address1<font color="red">*</font>:</td>
 									<td><form:input path="address1" class="validate[required,minSize[5],maxSize[300]] input-text" /></td>
 								</tr>
 								<tr>
-									<td>Address2*:</td>
+									<td>Address2<font color="red">*</font>:</td>
 									<td><form:input path="address2" class="validate[required,minSize[5],maxSize[300]] input-text" /></td>
 								</tr>
 								<tr>
-									<td>City*:</td>
+									<td>City<font color="red">*</font>:</td>
 									<td><form:input path="city" class="validate[required] input-text" /></td>
 								</tr>
 								<tr>
-									<td>State*:</td>
+									<td>State<font color="red">*</font>:</td>
 									<td><form:input path="state" class="validate[required] input-text" /></td>
 								</tr>
 								<tr>
-									<td>ZipCode*:</td>
+									<td>ZipCode<font color="red">*</font>:</td>
 									<td><form:input path="zipcode" class="validate[required] input-text" /></td>
 								</tr>
 
