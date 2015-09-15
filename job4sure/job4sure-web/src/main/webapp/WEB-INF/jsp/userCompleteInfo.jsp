@@ -100,6 +100,34 @@ $(document).ready(function() {
 	margin-top: 4%;
 }
 </style>
+<script type="text/javascript">
+function previewImage(){
+  var imgpath=document.getElementById("imageUpload");
+  if (!imgpath.value==""){
+    var img=imgpath.files[0].size;
+    var imgsize=img/1024; 
+    alert(imgsize);
+    if(imgsize== 512 || imgsize<=512){
+    	alert("sdf1");
+    }else{
+    	document.getElementById("demo").innerHTML = "Please select file of 512 kb";
+    }
+  }
+}
+function previewfile(){
+  var filepath=document.getElementById("fileUpload");
+  if (!filepath.value==""){
+    var file=filepath.files[0].size;
+    var filesize=img/1024; 
+    alert(filesize);
+    if(filesize== 512 || filesize<=512){
+    	alert("sdf2");
+    }else{
+    	document.getElementById("resume").innerHTML = "Please select file of 512 kb";
+    }
+  }
+}
+</script>
 </head>
 <div id="main">
 	<hr class="noscreen" />
@@ -322,13 +350,16 @@ $(document).ready(function() {
 										<tr>
 											<td style="padding: 15;"><label>Select Profile:
 											</label></td>
-											<td><input type="file" name="upload"
+											<td><input type="file" name="upload" id="imageUpload"
 												onchange="previewImage(this)" accept="image/*"
 												multiple="multiple" /></td>
-										</tr>
+												
+										</tr><div style="color: red" id="demo"></div>
 										<tr>
 											<td style="padding: 15;"><label>Select Resume: </label></td>
-											<td><input type="file" name="upload" multiple="multiple" /></td>
+											<td><input type="file" name="upload" id="fileUpload" multiple="multiple" onchange="previewfile(this)" />
+											</td>
+											<div style="color: red" id="resume"></div>
 										</tr>
 										<tr>
 												<td align="left"><a
