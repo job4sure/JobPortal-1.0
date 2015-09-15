@@ -120,7 +120,8 @@ public class CompanyProfileController {
 		boolean status = false;
 		registrationValidator.validate(registration, result);
 		if (result.hasErrors()) {
-			return "registration";
+		        model.addAttribute("message",IConstant.COMPANY_BASIC_INFO_UPDATE_FAILURE_MESSAGE);
+			return "redirect:/updateCompanyBasicProfile";
 		}
 		status = registrationService.updateUserInformation(registration);
 		if (status) {

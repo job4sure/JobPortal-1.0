@@ -94,7 +94,6 @@
 
 				<form:hidden path="registrationId" />
 				<form:hidden path="password" />
-				<form:hidden path="email" />
 				<h3 style="color: red;">${message}</h3>
 				<input hidden="radio" name="roleType" value="2" checked />
 				<div id="DivFree">
@@ -117,12 +116,12 @@
 						<tr>
 							<td>Url<font color="red">*</font>:</td>
 							<td><form:input type="text" size="40" path="Companyurl"
-									class="validate[required] input-text" maxlength="80" /></td>
+									class="validate[required,custom[url]] input-text" maxlength="80" /><font color="red">(Ex: http://google.com)</font></td>
 						</tr>
 						
 						<tr>
 							<td>Email Id<font color="red">*</font>:</td>
-							<td><form:input type="text" size="40" path="Companyurl"
+							<td><form:input type="text" size="40" path="email"
 									class="validate[required,custom[email]] input-text" maxlength="80" /></td>
 						</tr>
 

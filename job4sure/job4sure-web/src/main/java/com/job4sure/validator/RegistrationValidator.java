@@ -24,10 +24,8 @@ public class RegistrationValidator {
 				errors.rejectValue("email", "error.email.required");
 			}
 		}
-		//if (registration.getMobileNo() != null && !registration.getMobileNo().isEmpty()) {
 			if (registration.getMobileNo().length() != 10) {
 				errors.rejectValue("mobileNo", "error.mobileNo.length");
-			//}
 		}
 		
 	}
