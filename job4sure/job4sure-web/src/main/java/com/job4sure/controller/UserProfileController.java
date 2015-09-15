@@ -180,7 +180,8 @@ public class UserProfileController {
 	
 	
 	@RequestMapping(value = "/downloadResume", method = { RequestMethod.GET, RequestMethod.POST })
-	public void downloadResume(@RequestParam(required = false) Integer registrationId,HttpServletResponse response) throws IOException {
+	public String downloadResume(@RequestParam(required = false) Integer registrationId,HttpServletResponse response) throws IOException {
 		userProfileService.getUserResume(registrationId,response);
+		return "redirect:/updateCompleteInfo";
 	}
 }

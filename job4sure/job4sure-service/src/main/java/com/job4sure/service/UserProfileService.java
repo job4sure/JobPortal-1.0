@@ -35,6 +35,6 @@ public interface UserProfileService {
 
 	public List experienceData();
 
-	public void getUserResume(Integer registrationId, HttpServletResponse response) throws IOException;
+	public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException;
 
 }

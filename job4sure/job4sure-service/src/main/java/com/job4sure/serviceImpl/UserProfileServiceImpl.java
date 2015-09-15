@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -62,6 +63,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	private ExperienceRepository experienceRepository;
 
 	@SuppressWarnings({ "resource", "unused" })
+	@Transactional
 	public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
 			CommonsMultipartFile[] upload, String attchmentName) {
 		OutputStream outputStream = null;
@@ -212,7 +214,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 		return experienceRepository.findAll();
 	}
 
-	public void getUserResume(Integer registrationId, HttpServletResponse response) throws IOException {
+	public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException {
 		List<Attachment> attachmentlist = null;
 		attachmentlist = (List<Attachment>) attachmentRepository.getAllAttachment(registrationId);
 		if (attachmentlist != null) {
@@ -224,7 +226,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 				}
 			}
 		}
+		return "attachmentlist";
+		
+		}
 
 	}
 
-}
+
