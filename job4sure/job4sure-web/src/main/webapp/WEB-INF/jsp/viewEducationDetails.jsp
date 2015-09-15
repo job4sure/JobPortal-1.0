@@ -66,24 +66,28 @@
 				</ul>
 			</div>
 			<div id="content" class="box">
-			<center>
-			<h2>User Education Details:-</h2></center>
+				<center>
+					<h2>User Education Details:-</h2>
+				</center>
 			</div>
-			
+
 			<div id="content" class="box">
 				<h3>${message}</h3>
 				<div class="reform">
 					<form:form action="educationSave" method="POST" id="formID"
 						modelAttribute="ED">
 						<form:hidden path="education_id" />
-						<div>
+						<a href="javascript:toggleRow('row1')"><h3 align="center">
+								<font color="red">Graduation</font>
+							</h3></a>
+						<div id="row1">
 							<fieldset>
 								<table width="100%" class="nostyle"
 									style="border-collapse: separate; border-spacing: 5px">
 									<tr>
 										<td><font color="red">*</font>Basic/Graduation</td>
 										<td><form:select path="graduation">
-										<form:option value="BE/BTECH">BE/BTECH</form:option>
+												<form:option value="BE/BTECH">BE/BTECH</form:option>
 												<form:option value="BSc">BSc</form:option>
 												<form:option value="Bcom">Bcom</form:option>
 											</form:select></td>
@@ -124,8 +128,11 @@
 								</table>
 							</fieldset>
 						</div>
-						<a href="javascript:toggleRow('row1')">PostGraduation</a>
-						<div id="row1">
+						<br>
+						<a href="javascript:toggleRow('row2')"><h3 align="center">
+								<font color="red">Post Graduation</font>
+							</h3></a>
+						<div id="row2">
 							<fieldset>
 								<table width="100%" class="nostyle"
 									style="border-collapse: separate; border-spacing: 5px">
@@ -174,9 +181,12 @@
 								</table>
 							</fieldset>
 						</div>
-<br>
-						<a href="javascript:toggleRow('row2')">PHD</a>
-						<div id="row2">
+						<br>
+						<a href="javascript:toggleRow('row3')"><h3 align="center">
+								<font color="red">Phd</font>
+							</h3></a>
+						<div id="row3">
+
 							<fieldset>
 								<table width="100%" class="nostyle"
 									style="border-collapse: separate; border-spacing: 5px">

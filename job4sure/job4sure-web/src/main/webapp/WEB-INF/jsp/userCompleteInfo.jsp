@@ -335,7 +335,7 @@ $(document).ready(function() {
 													href="downloadResume?registrationId=${registration.registrationId}">Download resume</a></td>
 											</tr>
 										<tr>
-											<td style="padding: 15;"><input type="submit"
+											<td style="padding: 15;"></td><td><input type="submit"
 												value="submit" class="input-submit-02"
 												onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
 										</tr>
