@@ -42,12 +42,14 @@
 			</form>
 		</div>
 	</div>
-	
 	<div class="box" id="content">
-	
-		<center>
+	<center>
 			<h2 id="show">${message}</h2>
 		</center>
+	</div>
+	<div class="box" id="content">
+	
+		
 		<table id="results" style="border-collapse: separate; border-spacing: 12px;" class="nostyle">
 			<c:forEach items="${jobList}" var="job">
 			
