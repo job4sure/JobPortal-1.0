@@ -66,6 +66,11 @@
 				</ul>
 			</div>
 			<div id="content" class="box">
+			<center>
+			<h2>User Education Details:-</h2></center>
+			</div>
+			
+			<div id="content" class="box">
 				<h3>${message}</h3>
 				<div class="reform">
 					<form:form action="educationSave" method="POST" id="formID"
@@ -220,8 +225,8 @@
 							</fieldset>
 						</div>
 						<h3 align="center">
-							<input type="submit" value="Save"
-								style="width: 13em; height: 3em; font-size: large;">
+							<input type="submit" value="Save Details"
+								style="width: 6em; height: 2em; font-size: large;">
 						</h3>
 					</form:form>
 				</div>
