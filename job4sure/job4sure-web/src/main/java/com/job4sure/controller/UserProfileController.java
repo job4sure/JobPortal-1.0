@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -96,7 +96,7 @@ public class UserProfileController {
 		return "userCompleteInfo";
 	}
 
-	@SuppressWarnings({ "static-access", "rawtypes" })
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
 	public String updateCompleteProfile(@ModelAttribute("userProfile") UserProfile userProfile,
 					Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
@@ -147,27 +147,6 @@ public class UserProfileController {
 		return "redirect:/updateCompleteInfo";
 	}
 
-	/*
-	 * @SuppressWarnings("unused")
-	 * 
-	 * @RequestMapping(value = "/saveCompleteUserProfile", method =
-	 * RequestMethod.POST) public String
-	 * saveCompleteUserProfile(@ModelAttribute("userProfile") UserProfile
-	 * userProfile,
-	 * 
-	 * @RequestParam CommonsMultipartFile[] upload, @RequestParam("upload")
-	 * MultipartFile file, String attchmentName, ModelMap model,
-	 * HttpServletRequest request) { final MultipartFile filePart = file;
-	 * boolean status = false; file.getOriginalFilename(); HttpSession session =
-	 * request.getSession(); Registration registration = (Registration)
-	 * session.getAttribute("registration");
-	 * userProfile.setRegistrationId(registration.getRegistrationId());
-	 * userProfileService.saveCompleteUserProfile(userProfile, filePart, upload,
-	 * attchmentName); model.addAttribute("message",
-	 * IConstant.USER_COMPLETE_INFO_SUCCESS_MESSAGE); return
-	 * "redirect:/updateCompleteInfo"; }
-	 */
-
 	@RequestMapping(value = "/setNewPassword", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reCreatePass(Map<String, Object> map, ModelMap model, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
@@ -197,5 +176,11 @@ public class UserProfileController {
 			model.addAttribute("message", IConstant.USER_BASIC_INFO_FAILURE_MESSAGE);
 		}
 		return "redirect:/updateBasicProfile";
+	}
+	
+	
+	@RequestMapping(value = "/downloadResume", method = { RequestMethod.GET, RequestMethod.POST })
+	public void downloadResume(@RequestParam(required = false) Integer registrationId,HttpServletResponse response) throws IOException {
+		userProfileService.getUserResume(registrationId,response);
 	}
 }

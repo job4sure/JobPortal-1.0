@@ -301,6 +301,10 @@ $(document).ready(function() {
 													<td><input type="file" name="upload"
 														multiple="multiple" /></td>
 												</tr>
+												<tr>
+												<td align="center"><a
+													href="downloadResume?registrationId=${registration.registrationId}">Download resume</a></td>
+											</tr>
 											</div>
 										</table>
 										<div>
