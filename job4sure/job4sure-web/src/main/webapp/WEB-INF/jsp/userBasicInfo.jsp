@@ -101,7 +101,7 @@ $(document).ready(function() {
 											color="red">*</font>:
 									</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
 									<td><form:input type="text" size="30" path="fullName"
-											class="validate[required] input-text" maxlength="80" id="fullName" /></td>
+											class="validate[required,custom[fullname]] input-text" maxlength="80" id="fullName" /></td>
 								</tr>
 
 								<tr>
@@ -113,7 +113,7 @@ $(document).ready(function() {
 								</tr>
 
 								<tr>
-									<td>Contact No.<font color="red">*</font>:
+									<td>Contact Number<font color="red">*</font>:
 									</td>
 									<td><form:input type="text" size="10" path="mobileNo" maxlength="10"
 											class="validate[required,custom[integer,maxSize[10],minSize[10]]] input-text" id="mobileNo" />&nbsp&nbsp&nbsp&nbsp<span
