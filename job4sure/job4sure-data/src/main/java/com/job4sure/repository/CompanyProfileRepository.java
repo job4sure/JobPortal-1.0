@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.job4sure.model.CompanyProfileModel;
 
-public interface companyProfileRepository extends JpaRepository<CompanyProfileModel, Integer> {
+public interface CompanyProfileRepository extends JpaRepository<CompanyProfileModel, Integer> {
     @Query("select userProfile  from CompanyProfileModel userProfile where userProfile.registrationId =:registrationId")
     public CompanyProfileModel getLoggedInCompanyCompleteInfo(@Param("registrationId") Integer registrationId);
 }

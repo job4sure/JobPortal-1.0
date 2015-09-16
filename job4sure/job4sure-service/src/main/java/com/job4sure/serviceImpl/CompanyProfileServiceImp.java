@@ -17,7 +17,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.job4sure.model.Attachment;
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.repository.AttachmentRepository;
-import com.job4sure.repository.companyProfileRepository;
+import com.job4sure.repository.CompanyProfileRepository;
 import com.job4sure.service.CompanyProfileService;
 import com.job4sure.util.IConstant;
 
@@ -25,7 +25,7 @@ import com.job4sure.util.IConstant;
 public class CompanyProfileServiceImp implements CompanyProfileService {
 
     @Autowired
-    private companyProfileRepository companyProfileRepository;
+    private CompanyProfileRepository companyProfileRepository;
 
     @Autowired
     private AttachmentRepository attachmentRepository;
