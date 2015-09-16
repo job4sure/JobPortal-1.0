@@ -93,7 +93,7 @@ public class CompanyProfileServiceImp implements CompanyProfileService {
 
     }
 
-    public Attachment getCompanyProfile(Integer registrationId) {
+    public Attachment getCompanyAttachment(Integer registrationId) {
 	Attachment attachment = null;
 	if (registrationId != null) {
 	    List<Attachment> list = attachmentRepository.getAllAttachment(registrationId);

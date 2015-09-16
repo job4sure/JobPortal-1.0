@@ -13,6 +13,6 @@ public interface CompanyProfileService {
     public boolean saveCompanyProfile(CompanyProfileModel companyProfile, MultipartFile filePart,
 		    CommonsMultipartFile[] upload, String attchmentName);
 
-    public Attachment getCompanyProfile(Integer registrationId);
+    public Attachment getCompanyAttachment(Integer registrationId);
 
 }

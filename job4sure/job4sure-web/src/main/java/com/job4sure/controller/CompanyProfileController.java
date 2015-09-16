@@ -46,7 +46,7 @@ public class CompanyProfileController {
 			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) throws IOException {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
-		Attachment attachment = companyProfileService.getCompanyProfile(registration.getRegistrationId());
+		Attachment attachment = companyProfileService.getCompanyAttachment(registration.getRegistrationId());
 		if (attachment != null) {
 			String path = ImageFormat.readImage(attachment.getPath());
 			model.addAttribute("attachment", path);
