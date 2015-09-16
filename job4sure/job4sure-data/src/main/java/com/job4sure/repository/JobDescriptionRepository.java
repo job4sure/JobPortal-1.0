@@ -13,5 +13,8 @@ public interface JobDescriptionRepository extends
 
 	 @Query("select jb from JobDescription jb where jb.registration.registrationId =:companyId")
 	 public List<JobDescription> findByCompanyId(@Param("companyId") int companyId);
+	 
+	 @Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdStatus")
+	    List<JobDescription> getJobDescriptionStatusList(@Param("jdStatus") int jdStatus);
 
 }

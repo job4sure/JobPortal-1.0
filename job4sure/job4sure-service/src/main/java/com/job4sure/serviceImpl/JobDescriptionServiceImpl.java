@@ -50,7 +50,9 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
     }
 
     public List<JobDescription> getAllJobDescription(int companyId) {
-	return jobDescriptionRepository.findByCompanyId(companyId);
+    	 List<JobDescription> list=	 jobDescriptionRepository.findByCompanyId(companyId);
+    	 System.out.println(list.size());
+    	 return list;
     }
 
     public void deleteJob(Integer jobDescriptionId) {
@@ -73,5 +75,9 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
     public List<Experience> getAllExperience() {
 	return experienceRepository.findAll();
     }
+
+	public List<JobDescription> getAllJobDescriptionByStatus(int jdStatus) {
+		return jobDescriptionRepository.getJobDescriptionStatusList(jdStatus);
+	}
 
 }

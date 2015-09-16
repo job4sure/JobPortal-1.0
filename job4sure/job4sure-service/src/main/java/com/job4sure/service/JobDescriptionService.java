@@ -21,5 +21,7 @@ public interface JobDescriptionService {
     public List<Salary> getAllSalary();
 
     public List<Experience> getAllExperience();
+    
+    public List<JobDescription> getAllJobDescriptionByStatus(int jdStatus);
 
 }
