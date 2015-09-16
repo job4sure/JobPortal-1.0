@@ -51,7 +51,7 @@ public class CompanyProfileController {
 			String path = ImageFormat.readImage(attachment.getPath());
 			model.addAttribute("attachment", path);
 		}
-		companyProfile = companyProfileService.getLoggedInCompanyCompleteInfo(registration.getRegistrationId());
+		companyProfile = companyProfileService.getCompanyCompleteInfo(registration.getRegistrationId());
 		if (companyProfile != null) {
 			map.put("companyProfile", companyProfile);
 			model.addAttribute("message", message);
@@ -74,7 +74,7 @@ public class CompanyProfileController {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		companyProfile.setRegistrationId(registration.getRegistrationId());
-		companyProfileService.savecompany_profile(companyProfile,filePart,upload,attchmentName);
+		companyProfileService.saveCompanyProfile(companyProfile,filePart,upload,attchmentName);
 		if (companyProfile.getRegistrationId() == null) {
 			model.addAttribute("message", IConstant.COMPANY_COMPLETE_INFO_MESSAGE);
 			return "redirect:/CompanyProfile";
@@ -89,7 +89,7 @@ public class CompanyProfileController {
 	public String CompanyProfileView(Map<String, Object> map, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
-		CompanyProfileModel companyProfile = companyProfileService.getLoggedInCompanyCompleteInfo(registration
+		CompanyProfileModel companyProfile = companyProfileService.getCompanyCompleteInfo(registration
 				.getRegistrationId());
 		session.setAttribute("companyProfile", companyProfile);
 		map.put("companyprofile", new CompanyProfileModel());
