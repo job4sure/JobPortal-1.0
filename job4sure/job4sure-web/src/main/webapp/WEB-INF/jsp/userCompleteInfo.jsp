@@ -110,23 +110,27 @@ function previewImage(){
     if(imgsize== 512 || imgsize<=512){
     	alert("sdf1");
     }else{
-    	document.getElementById("demo").innerHTML = "Please select file of 512 kb";
+    	document.getElementById("demo").innerHTML = "Please select image of 512 kb";
     }
   }
 }
-function previewfile(){
-  var filepath=document.getElementById("fileUpload");
-  if (!filepath.value==""){
-    var file=filepath.files[0].size;
-    var filesize=img/1024; 
-    alert(filesize);
-    if(filesize== 512 || filesize<=512){
-    	alert("sdf2");
-    }else{
-    	document.getElementById("resume").innerHTML = "Please select file of 512 kb";
-    }
-  }
-}
+</script>
+<script type="text/javascript">
+ function previewfile(){
+	 alert("jj");
+	  var filepath=document.getElementById("resumeUpload");
+	  if (!filepath.value==""){
+	    var file=filepath.files[0].size;
+	    var filesize=file/1024; 
+	    alert(filesize);
+	    if(filesize== 512 || filesize<=512){
+	    	alert("sdf2");
+	    }else{
+	    	alert("else");
+	    	document.getElementById("demo1").innerHTML = "Please select file of 512 kb";
+	    }
+	  }
+	}
 </script>
 </head>
 <div id="main">
@@ -352,14 +356,13 @@ function previewfile(){
 											</label></td>
 											<td><input type="file" name="upload" id="imageUpload"
 												onchange="previewImage(this)" accept="image/*"
-												multiple="multiple" /></td>
+												multiple="multiple" /><div style="color: red" id="demo"></div></td>
 												
-										</tr><div style="color: red" id="demo"></div>
+										</tr>
 										<tr>
 											<td style="padding: 15;"><label>Select Resume: </label></td>
-											<td><input type="file" name="upload" id="fileUpload" multiple="multiple" onchange="previewfile(this)" />
-											</td>
-											<div style="color: red" id="resume"></div>
+											<td><input type="file" name="upload" id="resumeUpload" onchange="previewfile(this)"  multiple="multiple" />
+											<div style="color: red" id="demo1"></div></td>
 										</tr>
 										<tr>
 												<td align="left"><a
