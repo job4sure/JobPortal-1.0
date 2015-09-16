@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
+import com.job4sure.model.City;
 import com.job4sure.model.UserProfile;
 
 
@@ -36,5 +37,9 @@ public interface UserProfileService {
 	public List experienceData();
 
 	public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException;
+	
+public List<City> getCity(Integer stateId);
+	
+	public List getAllState();
 
 }

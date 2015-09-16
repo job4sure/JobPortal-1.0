@@ -265,16 +265,40 @@ function previewImage(){
 												</form:select> <br></td>
 										</tr>
 										<tr>
-											<td style="padding: 15;">Preffered Location<font
+										
+											<td style="padding: 15;">State<font
 												color="red">*</font>:
 											</td>
-											<td width="50%"><form:select path="prefferedlocation"
+											
+											 <td width="50%"><form:select path="stateId"
 													style="height:25px;  width:158px;">
+												
 													<option value="null">select</option>
-													<c:forEach items="${preferlocation}" var="location">
-														<option value="${location.prefferedlocation }">${location.prefferedlocation }</option>
+													
+													<c:forEach items="${stateList}" var="state">
+													
+														<option value="${state.stateId}">${state.stateName}</option>
 													</c:forEach>
-												</form:select> <br></td>
+													
+												 </form:select> <br></td> 
+										
+										
+										
+											<td style="padding: 15;">City<font
+												color="red">*</font>:
+											</td>
+											
+											 <td width="50%"><form:select path="cityId"
+													style="height:25px;  width:158px;">
+												
+													<option value="null">select</option>
+													
+													<c:forEach items="${cityList}" var="city">
+													
+														<option value="${city.id}">${city.cityname}</option>
+													</c:forEach>
+													
+												 </form:select> <br></td> 
 										</tr>
 								</table>
 							</fieldset>

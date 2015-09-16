@@ -48,8 +48,13 @@ public class UserProfile {
 		this.maxSalary = maxSalary;
 	}
 
-	@Column(name = "PREFFERED_LOCATION")
-	private String prefferedlocation;
+	@OneToOne(targetEntity = State.class)
+	@JoinColumn(name = "STATE_ID", referencedColumnName = "STATE_ID")
+	private State stateId;
+
+	@OneToOne(targetEntity = City.class)
+	@JoinColumn(name = "CITY_ID", referencedColumnName = "CITY_ID")
+	private State cityId;
 	@Column(name = "INDUSTRY")
 	private String Industry;
 
@@ -145,12 +150,20 @@ public class UserProfile {
 		this.currentlocation = currentlocation;
 	}
 
-	public String getPrefferedlocation() {
-		return prefferedlocation;
+	public State getStateId() {
+		return stateId;
 	}
 
-	public void setPrefferedlocation(String prefferedlocation) {
-		this.prefferedlocation = prefferedlocation;
+	public void setStateId(State stateId) {
+		this.stateId = stateId;
+	}
+
+	public State getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(State cityId) {
+		this.cityId = cityId;
 	}
 
 	public String getIndustry() {

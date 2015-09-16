@@ -17,9 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
+import com.job4sure.model.City;
 import com.job4sure.model.Education;
 import com.job4sure.model.UserProfile;
 import com.job4sure.repository.AttachmentRepository;
+import com.job4sure.repository.CityRepository;
 import com.job4sure.repository.EducationRepository;
 import com.job4sure.repository.ExperienceRepository;
 import com.job4sure.repository.IndustryRepository;
@@ -28,6 +30,7 @@ import com.job4sure.repository.PrefferedLocationRepository;
 import com.job4sure.repository.ProfileCompleteRepository;
 import com.job4sure.repository.RoleRepository;
 import com.job4sure.repository.SalaryRepositoryForUser;
+import com.job4sure.repository.StateRepository;
 import com.job4sure.service.UserProfileService;
 import com.job4sure.util.DownloadResume;
 import com.job4sure.util.IConstant;
@@ -62,10 +65,17 @@ public class UserProfileServiceImpl implements UserProfileService {
 	@Autowired
 	private ExperienceRepository experienceRepository;
 
+	@Autowired
+	private CityRepository cityRepository;
+
+	@Autowired
+	private StateRepository stateRepository;
+
 	@SuppressWarnings({ "resource", "unused" })
 	@Transactional
-	public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
-			CommonsMultipartFile[] upload, String attchmentName) {
+	public boolean saveCompleteUserProfile(UserProfile userProfile,
+			MultipartFile filePart, CommonsMultipartFile[] upload,
+			String attchmentName) {
 		OutputStream outputStream = null;
 		InputStream inputStream = null;
 		if (userProfile != null) {
@@ -75,9 +85,11 @@ public class UserProfileServiceImpl implements UserProfileService {
 					attchmentName = multipartFile.getOriginalFilename();
 					try {
 						inputStream = multipartFile.getInputStream();
-						UserProfile userProfile2 = profileCompleteRepository.save(userProfile);
+						UserProfile userProfile2 = profileCompleteRepository
+								.save(userProfile);
 						File newFile = new File(IConstant.FILE_PATH);
-						File filePath = new File(newFile + File.separator + userProfile2.getRegistrationId() + "_"
+						File filePath = new File(newFile + File.separator
+								+ userProfile2.getRegistrationId() + "_"
 								+ attchmentName);
 						if (!newFile.exists()) {
 							newFile.mkdir();
@@ -90,38 +102,52 @@ public class UserProfileServiceImpl implements UserProfileService {
 						while ((read = inputStream.read(bytes)) != -1) {
 							outputStream.write(bytes, 0, read);
 						}
-						String profilePic = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
-						if (profilePic.equals("jpg") || profilePic.equals("png") || profilePic.equals("bpg")
+						String profilePic = FilenameUtils
+								.getExtension(multipartFile
+										.getOriginalFilename());
+						if (profilePic.equals("jpg")
+								|| profilePic.equals("png")
+								|| profilePic.equals("bpg")
 								|| profilePic.equals("jpeg")) {
 							String attchmentType = "profilePic";
 							Attachment attchment = new Attachment();
 							Attachment oldAttchment = new Attachment();
-							oldAttchment = attachmentRepository.getProfilePicAttachment(
-									userProfile2.getRegistrationId(), attchmentType);
+							oldAttchment = attachmentRepository
+									.getProfilePicAttachment(
+											userProfile2.getRegistrationId(),
+											attchmentType);
 							if (oldAttchment != null) {
 								attchment = oldAttchment;
 							}
 							attchment.setAttachmentType(attchmentType);
 							attchment.setAttachmentName(attchmentName);
-							attchment.setPath(newFile + File.separator + userProfile2.getRegistrationId() + "_"
+							attchment.setPath(newFile + File.separator
+									+ userProfile2.getRegistrationId() + "_"
 									+ attchmentName);
-							attchment.setRegistrationId(userProfile2.getRegistrationId());
+							attchment.setRegistrationId(userProfile2
+									.getRegistrationId());
 							attachmentRepository.save(attchment);
 						} else {
-							if (profilePic.equals("txt") || profilePic.equals("doc") || profilePic.equals("sql")) {
+							if (profilePic.equals("txt")
+									|| profilePic.equals("doc")
+									|| profilePic.equals("sql")) {
 								String attchmentType = "resume";
 								Attachment attchment = new Attachment();
 								Attachment oldAttchment = new Attachment();
-								oldAttchment = attachmentRepository.getProfilePicAttachment(
-										userProfile2.getRegistrationId(), attchmentType);
+								oldAttchment = attachmentRepository
+										.getProfilePicAttachment(userProfile2
+												.getRegistrationId(),
+												attchmentType);
 								if (oldAttchment != null) {
 									attchment = oldAttchment;
 								}
 								attchment.setAttachmentType(attchmentType);
 								attchment.setAttachmentName(attchmentName);
-								attchment.setPath(newFile + File.separator + userProfile2.getRegistrationId() + "_"
-										+ attchmentName);
-								attchment.setRegistrationId(userProfile2.getRegistrationId());
+								attchment.setPath(newFile + File.separator
+										+ userProfile2.getRegistrationId()
+										+ "_" + attchmentName);
+								attchment.setRegistrationId(userProfile2
+										.getRegistrationId());
 								attachmentRepository.save(attchment);
 							}
 						}
@@ -138,7 +164,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 	}
 
 	public UserProfile getLoggedInUserCompleteInfo(Integer registrationId) {
-		UserProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
+		UserProfile userProfile = profileCompleteRepository
+				.getLoggedInUserCompleteInfo(registrationId);
 		return userProfile;
 	}
 
@@ -146,7 +173,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 		int noOfTables = 3;
 		int noOfTablesField = 1;
 
-		UserProfile userProfile = profileCompleteRepository.getLoggedInUserCompleteInfo(registrationId);
+		UserProfile userProfile = profileCompleteRepository
+				.getLoggedInUserCompleteInfo(registrationId);
 
 		if (userProfile != null) {
 			noOfTablesField++;
@@ -194,7 +222,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public Attachment getAllAttachment(Integer registrationId) {
 		Attachment attachment = null;
 		if (registrationId != null) {
-			List<Attachment> list = attachmentRepository.getAllAttachment(registrationId);
+			List<Attachment> list = attachmentRepository
+					.getAllAttachment(registrationId);
 			if (list != null) {
 				attachment = null;
 				for (Object object : list) {
@@ -214,22 +243,33 @@ public class UserProfileServiceImpl implements UserProfileService {
 		return experienceRepository.findAll();
 	}
 
-	public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException {
+	public String getUserResume(Integer registrationId,
+			HttpServletResponse response) throws IOException {
 		List<Attachment> attachmentlist = null;
-		attachmentlist = (List<Attachment>) attachmentRepository.getAllAttachment(registrationId);
+		attachmentlist = (List<Attachment>) attachmentRepository
+				.getAllAttachment(registrationId);
 		if (attachmentlist != null) {
 			for (Object object : attachmentlist) {
 				Attachment attachment = (Attachment) object;
 				if (attachment.getAttachmentType().equals("resume")) {
-					DownloadResume.downloadResume(attachment.getAttachmentName(), attachment.getPath(), response,
+					DownloadResume.downloadResume(
+							attachment.getAttachmentName(),
+							attachment.getPath(), response,
 							attachment.getAttachmentType());
 				}
 			}
 		}
 		return "attachmentlist";
-		
-		}
 
 	}
 
+	public List<City> getCity(Integer stateId) {
+		List<City> city = cityRepository.getCity(stateId);
+		return city;
+	}
 
+	public List getAllState() {
+		return stateRepository.findAll();
+
+	}
+}
