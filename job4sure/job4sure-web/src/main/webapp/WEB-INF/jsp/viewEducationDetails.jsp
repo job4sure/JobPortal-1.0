@@ -26,9 +26,11 @@
 			}
 		}
 	}
+	
+	
 </script>
 </head>
-<body>
+<body >
 	<div id="main">
 		<hr class="noscreen" />
 		<div id="cols" class="box">
@@ -80,7 +82,7 @@
 						<a href="javascript:toggleRow('row1')"><h3 align="center">
 								<font color="red">Graduation</font>
 							</h3></a>
-						<div id="row1">
+						<div id="row1" style="display:none">
 							<fieldset>
 								<table width="100%" class="nostyle"
 									style="border-collapse: separate; border-spacing: 5px">
@@ -132,7 +134,7 @@
 						<a href="javascript:toggleRow('row2')"><h3 align="center">
 								<font color="red">Post Graduation</font>
 							</h3></a>
-						<div id="row2">
+						<div id="row2" style="display:none">
 							<fieldset>
 								<table width="100%" class="nostyle"
 									style="border-collapse: separate; border-spacing: 5px">
@@ -185,7 +187,7 @@
 						<a href="javascript:toggleRow('row3')"><h3 align="center">
 								<font color="red">Phd</font>
 							</h3></a>
-						<div id="row3">
+						<div id="row3" style="display:none">
 
 							<fieldset>
 								<table width="100%" class="nostyle"
