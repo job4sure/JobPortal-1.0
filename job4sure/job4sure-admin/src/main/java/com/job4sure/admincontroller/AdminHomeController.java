@@ -86,7 +86,9 @@ public class AdminHomeController {
     }
 
     @RequestMapping(value = "/showAdminHomePage", method = RequestMethod.GET)
-    public String showAdminHomePage() {
+    public String showAdminHomePage(@RequestParam(required = false) String message,ModelMap model) {
+    	model.addAttribute("message", message);
 	return "adminHomePage";
     }
+   
 }

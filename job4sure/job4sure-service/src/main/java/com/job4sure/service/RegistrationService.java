@@ -24,4 +24,10 @@ public interface RegistrationService {
 
 	public Attachment getAllAttachment(Integer registrationId);
 
+	
+	public boolean saveSubAdmin(Registration registration) throws Exception;
+
+	public Registration getAllRecods(Integer registrationId);
+
+
 }

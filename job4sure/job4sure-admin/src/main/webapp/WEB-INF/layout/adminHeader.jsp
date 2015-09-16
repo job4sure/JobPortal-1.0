@@ -52,6 +52,9 @@
 
 		<div id="menu" class="box">
 			<ul class="box">
+			<li id="menu-active"><a href="showAdminHomePage"><span>HOME</span></a>
+			<li id="menu-active"><a href="addSubAdmin"><span>Add Sub Admin</span></a>
+			
 				<li id="menu-active"><a href="#"><span>Show Job
 							Description</span></a>
 					<ul class="sub-menu">
@@ -59,8 +62,12 @@
 						<li><a href="showPendingJobDescriptions">Pending Approval</li>
 						<li><a href="showRejectedJobDescriptions">Rejected</li>
 					</ul></li>
+					
+				
 			</ul>
+			
 		</div>
+		
 	</div>
 	<hr class="noscreen" />
 	<c:url value="/logout" var="logoutUrl" />

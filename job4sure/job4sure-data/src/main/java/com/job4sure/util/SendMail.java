@@ -60,4 +60,31 @@ public class SendMail {
 
 	}
 
+	public static Object mailSendSubAdmin(String email, Integer regId) {
+		try {
+			Message message = new MimeMessage(SendMailProperty.mailProperty());
+
+			message.setFrom(new InternetAddress(IConstant.FROM_EMAIL_ID));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+			message.setSubject("Regards:mail confirmation");
+			String msg = "Dear <br>";
+			msg += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You have been succesfully Added click on link and access jobpartal account:<br>";
+			msg += " <br>";
+			msg += "<b>User Name:</b>" + email;
+			msg += " <br>";
+			msg += "'" + IConstant.REGISTRATION_verfy_URL + "?registrationId="+regId+"'";// used
+			msg += " <br>";
+			msg += "Regards,<br>";
+			msg += "Job Portal";
+			message.setContent(msg, "text/html");
+			Transport.send(message);
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+		return null;
+
+	}
+
+
+	
 }
