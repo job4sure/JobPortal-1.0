@@ -98,5 +98,19 @@ public class JobDescriptionController {
 	model.addAttribute("jobDescription", jobDescription);
 	return "addJobDesc";
     }
+    @RequestMapping(value = "/getApprovedJobDescriptionInUser", method = RequestMethod.GET)
+	public String viewApprovedJobDescription(Model model, HttpServletRequest request,
+			@RequestParam(required = false) String message) {
+		Integer jdApprovedStatus = 1;
+		List<JobDescription> joblist = jobDescriptionService.getAllApprovedJobDescription(jdApprovedStatus);
+		if (joblist.isEmpty())
+			model.addAttribute("message", IConstant.EMPTY_LIST);
+		else {
+			model.addAttribute("jobList", joblist);
+			model.addAttribute("message", IConstant.NOT_EMPTY_LIST);
+		}
+		return "viewApprovedJobDescriptionInUser";
+	}
+
 
 }

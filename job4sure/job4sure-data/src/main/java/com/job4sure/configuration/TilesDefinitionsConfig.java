@@ -70,6 +70,7 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 		addDefaultLayoutDef("userProfileView", "userProfileViewPage", "/WEB-INF/jsp/userProfileView.jsp","/WEB-INF/layout/userHeader.jsp");
 		addDefaultLayoutDef("contactUs", "contactus", "/WEB-INF/jsp/contactUS.jsp","/WEB-INF/layout/header.jsp");
 		addDefaultLayoutDef("viewJobDesc", "showJobDescription", "/WEB-INF/jsp/userViewJobDescription.jsp","/WEB-INF/layout/userHeader.jsp");
+		addDefaultLayoutDef("viewApprovedJobDescriptionInUser", "ViewApprovedJobDescriptionInUser", "/WEB-INF/jsp/userViewJobDescription.jsp","/WEB-INF/layout/userHeader.jsp");
 	}
 	
 }
