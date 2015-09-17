@@ -24,7 +24,7 @@ public class AdminJobDescriptionController {
 			HttpServletRequest request) {
 		int jdApprovedStatus = 2;
 		List<JobDescription> approvedJobDescriptionsList = adminJobDescriptionService
-				.getJobDescriptionStatusList(jdApprovedStatus);
+				.getJobDescriptionList(jdApprovedStatus);
 		model.addAttribute("approvedJobDescriptionsList",
 				approvedJobDescriptionsList);
 		model.addAttribute("message", message);
@@ -45,7 +45,7 @@ public class AdminJobDescriptionController {
 			HttpServletRequest request) {
 		Integer jdApprovedStatus = 1;
 		List<JobDescription> pendingJobDescriptionsList = adminJobDescriptionService
-				.getJobDescriptionStatusList(jdApprovedStatus);
+				.getJobDescriptionList(jdApprovedStatus);
 		model.addAttribute("approvedJobDescriptionsList",
 				pendingJobDescriptionsList);
 		model.addAttribute("message", message);
@@ -57,7 +57,7 @@ public class AdminJobDescriptionController {
 			HttpServletRequest request) {
 		Integer jdApprovedStatus = 3;
 		List<JobDescription> rejectedJobDescriptionsList = adminJobDescriptionService
-				.getJobDescriptionStatusList(jdApprovedStatus);
+				.getJobDescriptionList(jdApprovedStatus);
 		model.addAttribute("approvedJobDescriptionsList",
 				rejectedJobDescriptionsList);
 		model.addAttribute("message", message);

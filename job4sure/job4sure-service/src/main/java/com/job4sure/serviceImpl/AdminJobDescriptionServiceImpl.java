@@ -16,7 +16,7 @@ public class AdminJobDescriptionServiceImpl implements
 	@Autowired
 	private AdminJobDescriptionRepository adminJobDescriptionRepository;
 
-	public List<JobDescription> getJobDescriptionStatusList(
+	public List<JobDescription> getJobDescriptionList(
 			int jdApprovedStatus) {
 		List<JobDescription> approvedJobDescriptionsList = adminJobDescriptionRepository
 				.getJobDescriptionStatusList(jdApprovedStatus);
