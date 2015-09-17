@@ -25,6 +25,7 @@ public class AdminRegistrationController {
 		Registration registration=	 new Registration();
 		registration = registrationService.getAllRecods(registrationId);
 		map.put("Registration", registration);
+		model.addAttribute("message", IConstant.FILUP__REGISTRATION__FORM_MESSAGE);
 		return "adminRegistration";
 	}
 

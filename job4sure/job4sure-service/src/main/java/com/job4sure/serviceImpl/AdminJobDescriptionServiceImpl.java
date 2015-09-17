@@ -9,6 +9,7 @@ import com.job4sure.model.JobDescription;
 import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.repository.AdminJobDescriptionRepository;
 import com.job4sure.service.AdminJobDescriptionService;
+import com.job4sure.util.IConstant;
 
 @Service
 public class AdminJobDescriptionServiceImpl implements AdminJobDescriptionService {
@@ -21,13 +22,13 @@ public class AdminJobDescriptionServiceImpl implements AdminJobDescriptionServic
 	return approvedJobDescriptionsList;
     }
 
-    public boolean approveJobDescription(Integer jobId, Integer statusId) {
+    public boolean approveOrRejectJobDescription(Integer jobId, Integer statusId) {
 	JobDescription jobDescription = adminJobDescriptionRepository.findOne(jobId);
 	JobDescriptionApprovalStatus approvalStatus = new JobDescriptionApprovalStatus();
-	if (statusId == 2)
-	    approvalStatus.setStatusId(2);// For approval
+	if (statusId == IConstant.JD_APPROVED_STATUS)
+	    approvalStatus.setStatusId(IConstant.JD_APPROVED_STATUS);
 	else
-	    approvalStatus.setStatusId(3);// For rejection
+	    approvalStatus.setStatusId(IConstant.JD_REJECTED_STATUS);
 	jobDescription.setApprovalStatus(approvalStatus);
 	adminJobDescriptionRepository.save(jobDescription);
 	return true;

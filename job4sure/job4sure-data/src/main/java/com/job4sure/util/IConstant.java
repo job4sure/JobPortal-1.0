@@ -16,6 +16,7 @@ public class IConstant {
 	// Messages:
 	public static final String REGISTRATION_SUCCESS_MESSAGE = "<p class='msg done'>Your registration has been completed successfully , please check your email and verify your account</p>";
 	public static final String REGISTRATION_FAILURE_MESSAGE = "<h4 class = 'msg error'>Your registration is not successfull , Please try again!</h4>";
+	public static final String FILUP__REGISTRATION__FORM_MESSAGE = "<p class='msg done'>Welcome SUB-ADMIN, please fillup your registration form </p>";
 	public static final String JOB_DELETE_MESSAGE = "<p class='msg done'>Job deleted successfully!</p>";
 	public static final String COMPANY_COMPLETE_INFO_MESSAGE = "Company profile created successfully!!";
 	public static final String COMPANY_INFO_UPDATE_MESSAGE = "Company profile updated successfully!!";
@@ -59,4 +60,11 @@ public class IConstant {
 	// Message for UserProfileController
 	public static final String MOBILE_LENGTH_VALIDATION = "Mobile number should be 10 digit";
 
+	//Message for AdminJobDescriptionController
+	public static final int JD_PENDING_STATUS=1;
+	public static final int JD_APPROVED_STATUS=2;
+	public static final int JD_REJECTED_STATUS=3;
+	public static final String JD_APPROVED_MSG="Successfully approved job description";
+	public static final String JD_REJECTED_MSG="Successfully rejected job description";
+	
 }

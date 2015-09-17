@@ -13,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.JobDescription;
 import com.job4sure.service.AdminJobDescriptionService;
+import com.job4sure.util.IConstant;
 
+/**
+ * @author Mayank and Patidar
+ *
+ */
 @Controller
 public class AdminJobDescriptionController {
     @Autowired
@@ -21,14 +26,16 @@ public class AdminJobDescriptionController {
 
     @RequestMapping(value = "/showApprovedJobDescriptions", method = RequestMethod.GET)
     public String showAllApprovedJds(String message, ModelMap model, HttpServletRequest request) {
-	int jdApprovedStatus = 2;
 	List<JobDescription> approvedJobDescriptionsList = adminJobDescriptionService
-			.getJobDescriptionList(jdApprovedStatus);
+			.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
 	model.addAttribute("approvedJobDescriptionsList", approvedJobDescriptionsList);
 	model.addAttribute("message", message);
 	return "jobDescriptionList";
     }
 
+    /*
+     * This method is to show details for selected job description.
+     */
     @RequestMapping(value = "/viewJobDescription", method = { RequestMethod.GET, RequestMethod.POST })
     public String viewJobDescription(ModelMap model, @RequestParam Integer jobId) {
 	JobDescription jobDescription = adminJobDescriptionService.viewJobDescription(jobId);
@@ -38,9 +45,8 @@ public class AdminJobDescriptionController {
 
     @RequestMapping(value = "/showPendingJobDescriptions", method = RequestMethod.GET)
     public String showAllPendingJds(String message, ModelMap model, HttpServletRequest request) {
-	Integer jdApprovedStatus = 1;
 	List<JobDescription> pendingJobDescriptionsList = adminJobDescriptionService
-			.getJobDescriptionList(jdApprovedStatus);
+			.getJobDescriptionList(IConstant.JD_PENDING_STATUS);
 	model.addAttribute("approvedJobDescriptionsList", pendingJobDescriptionsList);
 	model.addAttribute("message", message);
 	return "jobDescriptionList";
@@ -48,22 +54,28 @@ public class AdminJobDescriptionController {
 
     @RequestMapping(value = "/showRejectedJobDescriptions", method = RequestMethod.GET)
     public String showRejectedJobDescriptions(String message, ModelMap model, HttpServletRequest request) {
-	Integer jdApprovedStatus = 3;
 	List<JobDescription> rejectedJobDescriptionsList = adminJobDescriptionService
-			.getJobDescriptionList(jdApprovedStatus);
+			.getJobDescriptionList(IConstant.JD_REJECTED_STATUS);
 	model.addAttribute("approvedJobDescriptionsList", rejectedJobDescriptionsList);
 	model.addAttribute("message", message);
+	model.addAttribute("hideRejectLink", "reject");
 	return "jobDescriptionList";
     }
 
+    /**
+     * This method is used for approve or reject coming JD.
+     * 
+     * @param statusId
+     *            to check coming JD is for approval or for reject operation.
+     */
     @RequestMapping(value = "/jobDescription", method = { RequestMethod.GET, RequestMethod.POST })
     public String approvedAndRejectJds(ModelMap model, @RequestParam Integer jobId, @RequestParam Integer statusId) {
-	adminJobDescriptionService.approveJobDescription(jobId, statusId);
+	adminJobDescriptionService.approveOrRejectJobDescription(jobId, statusId);
 	if (statusId == 2) {
-	    model.addAttribute("message", "Successfully approved job description");
+	    model.addAttribute("message", IConstant.JD_APPROVED_MSG);
 	    return "redirect:/showPendingJobDescriptions";
 	} else {
-	    model.addAttribute("message", "Successfully rejected job description");
+	    model.addAttribute("message", IConstant.JD_REJECTED_MSG);
 	    return "redirect:/showApprovedJobDescriptions";
 	}
     }
