@@ -34,17 +34,15 @@
 		<hr class="noscreen" />
 		<!-- Menu -->
 		<div id="menu" class="box">
-			<ul class="box">
-				<li id="menu-active"><a href="OpenloginPage"><span>Login</span></a></li>
-				<center>
-					<h2>ADMIN REGISTRATION PAGE</h2>
+						<center>
+					<h2>SUB-ADMIN REGISTRATION PAGE</h2>
 				</center>
-			</ul>
 		</div>
 		<div id="content" class="box"></div>
 		<hr class="noscreen" />
 		<div id="content" class="box">
 
+ ${message}
 			<form:form method="POST" action="saveRegistration"
 				modelAttribute="Registration" id="formID"
 				onsubmit="return jQuery(this).validationEngine('validate');">

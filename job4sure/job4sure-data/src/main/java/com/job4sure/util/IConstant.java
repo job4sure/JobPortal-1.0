@@ -26,7 +26,7 @@ public class IConstant {
 	public static final String USER_BASIC_INFO_FAILURE_MESSAGE = "Profile Updation failed, Please try again!";
 	public static final String COMPLETE_USER_INFO_SUCCESS_MESSAGE = "SuccessFully complete your profile !!";
 	public static final String FIRST_COMPLETE_INFO_MESSAGE = "First Complete your info!!";
-	public static final String SUCCESS_MESSAGE = "<p class='msg done'>Your registration has been completed successfully </p>";
+	public static final String SUCCESS_MESSAGE = "<p class='msg done'>Welcome SUB-ADMIN, Your registration has been completed successfully </p>";
 	public static final String FAILURE_MESSAGE = "<h4 class = 'msg error'>Your registration is not successfull , Please try again!</h4>";
 	public static final String EDUCATION_SAVE = "<p class='msg done'>Your education details have been updated successfully!</p>";
 	public static final String MAIL_SUCCESS_MESSAGE = "<p class='msg done'>Your request for re-create password is Successful, please check your email and create your New-password.</p>";

@@ -72,7 +72,7 @@ public class SendMail {
 			msg += " <br>";
 			msg += "<b>User Name:</b>" + email;
 			msg += " <br>";
-			msg += "'" + IConstant.REGISTRATION_verfy_URL + "?registrationId="+regId+"'";// used
+			msg += "" + IConstant.REGISTRATION_verfy_URL + "?registrationId="+regId+"";// used
 			msg += " <br>";
 			msg += "Regards,<br>";
 			msg += "Job Portal";

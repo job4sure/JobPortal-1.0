@@ -37,7 +37,7 @@ public class AdminRegistrationController {
 		} else {
 			model.addAttribute("message", IConstant.FAILURE_MESSAGE);
 		}
-		return "redirect:/showAdminHomePage";
+		return "redirect:/OpenloginPage";
 	}
 
 	 @RequestMapping(value = "/addSubAdmin")

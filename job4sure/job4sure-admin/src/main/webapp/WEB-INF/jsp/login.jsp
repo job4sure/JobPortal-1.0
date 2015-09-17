@@ -44,7 +44,6 @@ function clearAllErrors() {
  	
     <ul class="box">
       <li id="menu-active"><a href="OpenloginPage"><span>Login</span></a></li>
-	  <li id="menu-active"><a href="adminRegistration"><span>Sign Up</span></a></li> 
     </ul>
   </div>
   <!-- /header -->
@@ -137,9 +136,7 @@ function clearAllErrors() {
         <tr><td>
 	        <input type="submit" class="input-submit" value="Login"  /></td>
 	        <td> <input type="button" class="input-submit" value="Cancel" onclick="clearAllErrors();"/></td>
-		</tr>
-       <tr><td></td><td><a href="adminRegistration">SignUp</a></td>&nbsp;&nbsp;&nbsp;&nbsp;<td><a href="forgotPassword">Forgot Password?</a></td>	
-       </tr>
+	        <td><a href="forgotPassword">Forgot Password?</a></td>
 		 </table>
       	<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
