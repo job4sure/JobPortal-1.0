@@ -126,7 +126,7 @@ jQuery(document).ready(function(){
     <hr class="noscreen" />
   <div id="content" class="box">
   
- ${message}
+  <h3 style="color: red;">${message}</h3>
 	<form:form method="POST" action="saveSubAdmin" modelAttribute="Registration" id="formID"  onsubmit="return jQuery(this).validationEngine('validate');">
 	
 			<div id="DivFree">

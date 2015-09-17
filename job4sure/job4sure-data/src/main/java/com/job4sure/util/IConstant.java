@@ -16,6 +16,7 @@ public class IConstant {
 	// Messages:
 	public static final String REGISTRATION_SUCCESS_MESSAGE = "<p class='msg done'>Your registration has been completed successfully , please check your email and verify your account</p>";
 	public static final String REGISTRATION_FAILURE_MESSAGE = "<h4 class = 'msg error'>Your registration is not successfull , Please try again!</h4>";
+	public static final String FILUP__REGISTRATION__FORM_MESSAGE = "<p class='msg done'>Welcome SUB-ADMIN, please fillup your registration form </p>";
 	public static final String JOB_DELETE_MESSAGE = "<p class='msg done'>Job deleted successfully!</p>";
 	public static final String COMPANY_COMPLETE_INFO_MESSAGE = "Company profile created successfully!!";
 	public static final String COMPANY_INFO_UPDATE_MESSAGE = "Company profile updated successfully!!";
