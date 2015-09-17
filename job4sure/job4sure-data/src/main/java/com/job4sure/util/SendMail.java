@@ -20,7 +20,7 @@ public class SendMail {
 			msg += " <br>";
 			msg += "<b>User Name:</b>" + email;
 			msg += " <br>";
-			msg += "'" + IConstant.REGISTRATION_URL + "?registrationId=" + encryptedId + "'";// used
+			msg += "" + IConstant.REGISTRATION_URL + "?registrationId=" + encryptedId + "";// used
 			msg += " <br>";
 			msg += "Regards,<br>";
 			msg += "Job Portal";
@@ -45,7 +45,7 @@ public class SendMail {
 			msg += " <br>";
 			msg += "<b>User Name:</b>" + email;
 			msg += " <br>";
-			msg += "'" + IConstant.PASSWORD_RECOVERY_URL + "?registrationId=" + registrationId + "'";// used
+			msg += "" + IConstant.PASSWORD_RECOVERY_URL + "?registrationId=" + registrationId + "";// used
 			msg += " <br>";
 			msg += "Regards,<br>";
 			msg += "Job Portal";
