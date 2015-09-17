@@ -8,14 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -110,7 +114,7 @@ public class UserProfileController {
 	public String updateCompleteProfile(
 			@ModelAttribute("userProfile") UserProfile userProfile,
 			Map<String, Object> map, String message, ModelMap model,
-			HttpServletRequest request) throws IOException {
+			HttpServletRequest request,@RequestParam(required = false)Integer stateId1) throws IOException {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session
 				.getAttribute("registration");
@@ -139,9 +143,12 @@ public class UserProfileController {
 			model.addAttribute("experienceList", experienceList);
 			List<State> stateList = userProfileService.getAllState();
 			model.addAttribute("stateList", stateList);
-			List<City> cityList = userProfileService.getCity(31);
+			// List<City> cityList = userProfileService.getCity(31);
+		/*	model.addAttribute("cityList", cityList);*/
+			// System.out.println(cityList);
+			
+			List<City> cityList = userProfileService.getCity(stateId1);
 			model.addAttribute("cityList", cityList);
-			System.out.println(cityList);
 			return "userCompleteInfo";
 		} else {
 			model.addAttribute("message", IConstant.FIRST_COMPLETE_INFO_MESSAGE);
@@ -216,5 +223,20 @@ public class UserProfileController {
 			HttpServletResponse response) throws IOException {
 		userProfileService.getUserResume(registrationId, response);
 		return "redirect:/updateCompleteInfo";
+	}
+
+	@RequestMapping(value = "/verifyUserStateId", method = { RequestMethod.GET })
+	@ResponseBody
+	public List<City> verifyUserEmailId(
+			@RequestParam(required = false) String stateId, Model model) {
+		
+		// boolean status = false;
+		Integer stateId1 = Integer.parseInt(stateId);
+		List<City> cityList = userProfileService.getCity(stateId1);
+		model.addAttribute("cityList", cityList);
+		//model.addAttRribute("stateId1", stateId1);
+		System.out.println(cityList.get(0).getCityname());
+		return cityList;
+
 	}
 }

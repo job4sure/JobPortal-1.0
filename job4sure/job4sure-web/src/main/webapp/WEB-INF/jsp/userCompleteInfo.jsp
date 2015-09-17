@@ -14,19 +14,68 @@
 	rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
 	type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="resources/js/jquery.validationEngine-en.js"
 	type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
 <script src="resources/js/jquery.validationEngine.js"
 	type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
+<!-- <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
 <title>Insert title here</title>
 <style>
 .hidden-div {
 	display: none;
 }
 </style>
+<script type="text/javascript">
+function email(){
+	
+	
+	   var stateId=document.getElementById('stateId1').value
+	   
+	   
+	   
+	   
+	   $.ajax({
+		   url : "verifyUserStateId.do?stateId="+stateId,
+		   type : "GET",
+		   contentType : "application/json; charset=utf-8",
+	 	   success : function(e) {
+		 alert("sucess");
+	/*		   $("#city").append($("<option value='0'></option>").text('Select City'))
+		    
+		 for (i = 0; i < e.length; i++) {
+		     var city = e[i]
+		     $("#city").append($("<option value='"+ city.id+ "'></option>").text(city.cityname))
+		    }
+
+		    if (e.length == 1) {
+		    	  alert("in no err");
+		     document.getElementById('city').value = e[0].id;
+		    
+		     
+		    }else
+		     {
+		     document.getElementById('city').value ="0";
+		     }  */
+   },
+		   error : function() {
+			   alert("error");
+			   $("#city").append($("<option value='0'></option>").text('Select City'))
+		   }
+		  })
+	   
+	   
+	   
+	   
+	 
+}
+
+
+
+
+</script>
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		// binds form submission and fields to the validation engine
@@ -132,6 +181,10 @@ function previewImage(){
 	  }
 	}
 </script>
+
+
+
+
 </head>
 <div id="main">
 	<hr class="noscreen" />
@@ -183,25 +236,26 @@ function previewImage(){
 				onsubmit="return jQuery(this).validationEngine('validate');">
 				<div id="content" class="box">
 					<div class="verticalLine">
-						<center >
+						<center>
 							<h2>User Complete Information</h2>
 						</center>
-						<br>
-											<a href="javascript:toggleRow('row1')"><h3 align="center"><font color="red">Professional Details</font></h3></a>
+						<br> <a href="javascript:toggleRow('row1')"><h3
+								align="center">
+								<font color="red">Professional Details</font>
+							</h3></a>
 						<div id="row1">
-					
+
 							<fieldset>
-									<center>
-										<table width="100%" class="nostyle"
-											style="border-collapse: separate; border-spacing: 5px">
-											<div width="41%" valign="right">
-												<img src="${attachment}" id="preview" height="140px"
-													width="140px" />
-											</div>
-											<form:hidden path="userId" />
-											<tr>
-											<td ">Resume HeadLine<font
-												color="red">*</font>:
+								<center>
+									<table width="100%" class="nostyle"
+										style="border-collapse: separate; border-spacing: 5px">
+										<div width="41%" valign="right">
+											<img src="${attachment}" id="preview" height="140px"
+												width="140px" />
+										</div>
+										<form:hidden path="userId" />
+										<tr>
+											<td">Resume HeadLine<font color="red">*</font>:
 											</td>
 											<td><form:input type="text" size="27" path="resume"
 													class="validate[required] input-text" maxlength="25" /><br></td>
@@ -265,48 +319,50 @@ function previewImage(){
 												</form:select> <br></td>
 										</tr>
 										<tr>
-										
-											<td style="padding: 15;">State<font
-												color="red">*</font>:
+
+											<td style="padding: 15;">State<font color="red">*</font>:
 											</td>
-											
-											 <td width="50%"><form:select path="stateId"
-													style="height:25px;  width:158px;">
-												
+
+											<td width="50%"><form:select path="stateId"
+													style="height:25px;  width:158px;"
+													onchange="return email()" id="stateId1">
+
 													<option value="null">select</option>
-													
+
 													<c:forEach items="${stateList}" var="state">
-													
-														<option value="${state.stateId}">${state.stateName}</option>
+
+														<option value="${state.stateId}">${state.stateName},${state.stateId}</option>
 													</c:forEach>
-													
-												 </form:select> <br></td> 
-										
-										
-										
-											<td style="padding: 15;">City<font
-												color="red">*</font>:
+
+												</form:select> <br></td>
+
+
+
+											<td style="padding: 15;">City<font color="red">*</font>:
 											</td>
-											
-											 <td width="50%"><form:select path="cityId"
+
+											<td width="50%"><form:select path="cityId" id="city"
 													style="height:25px;  width:158px;">
-												
+
 													<option value="null">select</option>
-													
+
 													<c:forEach items="${cityList}" var="city">
-													
+
 														<option value="${city.id}">${city.cityname}</option>
 													</c:forEach>
-													
-												 </form:select> <br></td> 
+
+												</form:select> <br></td>
 										</tr>
-								</table>
+									</table>
 							</fieldset>
-						</div></div>
+						</div>
+					</div>
 					</center>
 					<br>
 					<center>
-						<a href="javascript:toggleRow('row2')"><h3 align="center"><font color="red">Personal Details</font></h3></a>
+						<a href="javascript:toggleRow('row2')"><h3 align="center">
+								<font color="red">Personal Details</font>
+							</h3></a>
 						<div id="row2">
 							<fieldset>
 								<table width="100%" class="nostyle"
@@ -369,7 +425,9 @@ function previewImage(){
 					</center>
 					<br>
 					<center>
-						<a href="javascript:toggleRow('row3')"><h3 align="center"><font color="red">Attachments</font></h3></a>
+						<a href="javascript:toggleRow('row3')"><h3 align="center">
+								<font color="red">Attachments</font>
+							</h3></a>
 						<div id="row3">
 							<fieldset>
 								<table width="100%" class="nostyle"
@@ -380,21 +438,25 @@ function previewImage(){
 											</label></td>
 											<td><input type="file" name="upload" id="imageUpload"
 												onchange="previewImage(this)" accept="image/*"
-												multiple="multiple" /><div style="color: red" id="demo"></div></td>
-												
+												multiple="multiple" />
+											<div style="color: red" id="demo"></div></td>
+
 										</tr>
 										<tr>
 											<td style="padding: 15;"><label>Select Resume: </label></td>
-											<td><input type="file" name="upload" id="resumeUpload" onchange="previewfile(this)"  multiple="multiple" />
-											<div style="color: red" id="demo1"></div></td>
+											<td><input type="file" name="upload" id="resumeUpload"
+												onchange="previewfile(this)" multiple="multiple" />
+												<div style="color: red" id="demo1"></div></td>
 										</tr>
 										<tr>
-												<td align="left"><a
-													href="downloadResume?registrationId=${registration.registrationId}">Download resume</a></td>
-											</tr>
+											<td align="left"><a
+												href="downloadResume?registrationId=${registration.registrationId}">Download
+													resume</a></td>
+										</tr>
 										<tr>
-											<td style="padding: 15;"></td><td><input type="submit"
-												value="submit" class="input-submit-02"
+											<td style="padding: 15;"></td>
+											<td><input type="submit" value="submit"
+												class="input-submit-02"
 												onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
 										</tr>
 								</table>

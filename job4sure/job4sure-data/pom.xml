@@ -255,5 +255,15 @@
 			<artifactId>javaee-api</artifactId>
 			<version>7.0</version>
 		</dependency>
+		
+		
+		
+		 <dependency>
+   <groupId>org.codehaus.jackson</groupId>
+   <artifactId>jackson-mapper-asl</artifactId>
+   <version>1.7.1</version>
+  </dependency>
+		
+		
 	</dependencies>
 </project>
