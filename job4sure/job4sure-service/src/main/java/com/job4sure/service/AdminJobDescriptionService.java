@@ -6,10 +6,10 @@ import com.job4sure.model.JobDescription;
 
 public interface AdminJobDescriptionService {
 
-	List<JobDescription> getJobDescriptionList(int jdApprovedStatus);
+    List<JobDescription> getJobDescriptionList(int jdApprovedStatus);
 
-	boolean approveJobDescription(Integer jobId);
+    boolean approveJobDescription(Integer jobId, Integer statusId);
 
-	boolean rejectJobDescription(Integer jobId);
+    JobDescription viewJobDescription(Integer jobId);
 
 }
