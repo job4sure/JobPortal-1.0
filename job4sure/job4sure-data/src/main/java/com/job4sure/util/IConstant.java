@@ -60,4 +60,11 @@ public class IConstant {
 	// Message for UserProfileController
 	public static final String MOBILE_LENGTH_VALIDATION = "Mobile number should be 10 digit";
 
+	//Message for AdminJobDescriptionController
+	public static final int JD_PENDING_STATUS=1;
+	public static final int JD_APPROVED_STATUS=2;
+	public static final int JD_REJECTED_STATUS=3;
+	public static final String JD_APPROVED_MSG="Successfully approved job description";
+	public static final String JD_REJECTED_MSG="Successfully rejected job description";
+	
 }
