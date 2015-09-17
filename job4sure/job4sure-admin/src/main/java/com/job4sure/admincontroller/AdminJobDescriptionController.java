@@ -57,7 +57,7 @@ public class AdminJobDescriptionController {
 
     @RequestMapping(value = "/jobDescription", method = { RequestMethod.GET, RequestMethod.POST })
     public String approvedAndRejectJds(ModelMap model, @RequestParam Integer jobId, @RequestParam Integer statusId) {
-	adminJobDescriptionService.approveJobDescription(jobId, statusId);
+	adminJobDescriptionService.approveOrRejectJobDescription(jobId, statusId);
 	if (statusId == 2) {
 	    model.addAttribute("message", IConstant.JD_APPROVED_MSG);
 	    return "redirect:/showPendingJobDescriptions";
