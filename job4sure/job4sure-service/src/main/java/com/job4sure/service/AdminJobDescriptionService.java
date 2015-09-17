@@ -8,8 +8,6 @@ public interface AdminJobDescriptionService {
 
 	List<JobDescription> getJobDescriptionList(int jdApprovedStatus);
 
-	JobDescription viewJobDescription(Integer jobId);
-
 	boolean approveJobDescription(Integer jobId);
 
 	boolean rejectJobDescription(Integer jobId);

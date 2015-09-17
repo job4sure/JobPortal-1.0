@@ -23,12 +23,6 @@ public class AdminJobDescriptionServiceImpl implements
 		return approvedJobDescriptionsList;
 	}
 
-	public JobDescription viewJobDescription(Integer jobId) {
-		JobDescription jobDescription = adminJobDescriptionRepository
-				.findOne(jobId);
-		return jobDescription;
-	}
-
 	public boolean approveJobDescription(Integer jobId) {
 		JobDescription jobDescription = adminJobDescriptionRepository
 				.findOne(jobId);

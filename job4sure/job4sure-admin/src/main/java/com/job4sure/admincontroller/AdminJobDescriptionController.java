@@ -31,15 +31,6 @@ public class AdminJobDescriptionController {
 		return "showJobDescriptionPage";
 	}
 
-	@RequestMapping(value = "/viewJobDescription", method = {
-			RequestMethod.GET, RequestMethod.POST })
-	public String viewJobDescription(ModelMap model, @RequestParam Integer jobId) {
-		JobDescription jobDescription = adminJobDescriptionService
-				.viewJobDescription(jobId);
-		model.addAttribute("jobDescription", jobDescription);
-		return "adminViewJobDescriptionPage";
-	}
-
 	@RequestMapping(value = "/showPendingJobDescriptions", method = RequestMethod.GET)
 	public String showAllPendingJds(String message, ModelMap model,
 			HttpServletRequest request) {
