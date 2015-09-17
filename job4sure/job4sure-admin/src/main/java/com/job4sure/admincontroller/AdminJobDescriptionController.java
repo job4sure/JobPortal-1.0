@@ -53,6 +53,7 @@ public class AdminJobDescriptionController {
 			.getJobDescriptionList(jdApprovedStatus);
 	model.addAttribute("approvedJobDescriptionsList", rejectedJobDescriptionsList);
 	model.addAttribute("message", message);
+	model.addAttribute("hideRejectLink", "reject");
 	return "jobDescriptionList";
     }
 
