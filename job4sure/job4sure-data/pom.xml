@@ -15,6 +15,14 @@
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
 	</properties>
 	<dependencies>
+
+		<!-- For Ajax and Json -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+
 		<!-- Spring 4 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -101,7 +109,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.3.0.Final</version>
-			
+
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -255,15 +263,15 @@
 			<artifactId>javaee-api</artifactId>
 			<version>7.0</version>
 		</dependency>
-		
-		
-		
-		 <dependency>
-   <groupId>org.codehaus.jackson</groupId>
-   <artifactId>jackson-mapper-asl</artifactId>
-   <version>1.7.1</version>
-  </dependency>
-		
-		
+
+
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+
 	</dependencies>
 </project>
