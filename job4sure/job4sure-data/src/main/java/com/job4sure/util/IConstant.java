@@ -44,7 +44,8 @@ public class IConstant {
 	// Security roles:
 	public static final String USER_ROLE = "USER";
 	public static final String COMPANY_ROLE = "COMP";
-	public static final String ADMIN_ROLE = "ADMIN";
+	//public static final String ADMIN_ROLE = "ADMIN";
+	//public static final String SUBADMIN_ROLE = "SUBADMIN";
 
 	// Messages for viewAllJobDesc.jsp
 	public static final String EMPTY_LIST = "<h2 id=" + "show" + ">You have not created any job.</h2>";

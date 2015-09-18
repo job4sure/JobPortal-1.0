@@ -39,10 +39,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-	http.authorizeRequests().antMatchers("/success/**").permitAll().antMatchers("/userProfileHomePage/**")
-			.access("hasRole('" + IConstant.USER_ROLE + "')").antMatchers("/companyHome/**")
-			.access("hasRole('" + IConstant.COMPANY_ROLE + "')").antMatchers("/showAdminHomePage/**")
-			.access("hasRole('" + IConstant.ADMIN_ROLE + "')").and().formLogin().loginPage("/login")
+	http.authorizeRequests().antMatchers("/success/**").permitAll()
+	.antMatchers("/userProfileHomePage/**").access("hasRole('" + IConstant.USER_ROLE + "')")
+			.antMatchers("/companyHome/**").access("hasRole('" + IConstant.COMPANY_ROLE + "')")
+			.antMatchers("/showAdminHomePage/**").permitAll()
+			//.access("hasRole('" + IConstant.ADMIN_ROLE + "')").and().formLogin().loginPage("/login")
+			//.access("hasRole('" + IConstant.SUBADMIN_ROLE + "')")
+			.and().formLogin().loginPage("/login")
 			.failureUrl("/login?error").usernameParameter("userName").passwordParameter("password")
 			.defaultSuccessUrl("/success").and().logout().logoutSuccessUrl("/login?logout").and().csrf()
 			.disable().exceptionHandling().accessDeniedPage("/error");
