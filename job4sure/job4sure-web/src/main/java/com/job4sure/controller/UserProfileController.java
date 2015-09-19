@@ -1,6 +1,8 @@
 package com.job4sure.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,206 +39,175 @@ import com.job4sure.validator.RegistrationValidator;
 @Controller
 public class UserProfileController {
 
-	@Autowired
-	private UserProfileService userProfileService;
-	@Autowired
-	private RegistrationService registrationService;
-	@Autowired
-	private RegistrationValidator registrationValidator;
+    @Autowired
+    private UserProfileService userProfileService;
+    @Autowired
+    private RegistrationService registrationService;
+    @Autowired
+    private RegistrationValidator registrationValidator;
 
-	/*
-	 * @Autowired private UserDetaiFatchService userdetailfatch;
-	 */
+    /*
+     * @Autowired private UserDetaiFatchService userdetailfatch;
+     */
 
-	@RequestMapping(value = "/userProfileHomePage", method = RequestMethod.GET)
-	public String showuserProfile(Map<String, Object> map, String message,
-			ModelMap model, HttpServletRequest request) throws IOException {
-		HttpSession session = request.getSession();
-		Registration registration = (Registration) session
-				.getAttribute("registration");
-		UserProfile userProfile = userProfileService
-				.getLoggedInUserCompleteInfo(registration.getRegistrationId());
-		String loggedInEmail = registration.getEmail();
-		int profilecompleted = userProfileService
-				.getprofileCompletedInPercent(registration.getRegistrationId());
-		model.addAttribute("profilecompleted", profilecompleted);
-		Attachment attachment = userProfileService
-				.getAllAttachment(registration.getRegistrationId());
-		if (attachment != null) {
-			String path = ImageFormat.readImage(attachment.getPath());
-			model.addAttribute("attachment", path);
-		}
-		map.put("Registration", new Registration());
-		model.addAttribute("registration", registration);
-		model.addAttribute("userProfile", userProfile);
-		model.addAttribute("loggedInEmail", loggedInEmail);
-		model.addAttribute("message", message);
-		// return "userProfilePage";
-		return "userHomePage";
+    @RequestMapping(value = "/userProfileHomePage", method = RequestMethod.GET)
+    public String showuserProfile(Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
+		    throws IOException {
+	HttpSession session = request.getSession();
+	Registration registration = (Registration) session.getAttribute("registration");
+	UserProfile userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+	String loggedInEmail = registration.getEmail();
+	int profilecompleted = userProfileService.getprofileCompletedInPercent(registration.getRegistrationId());
+	model.addAttribute("profilecompleted", profilecompleted);
+	Attachment attachment = userProfileService.getAllAttachment(registration.getRegistrationId());
+	if (attachment != null) {
+	    String path = ImageFormat.readImage(attachment.getPath());
+	    model.addAttribute("attachment", path);
 	}
+	map.put("Registration", new Registration());
+	model.addAttribute("registration", registration);
+	model.addAttribute("userProfile", userProfile);
+	model.addAttribute("loggedInEmail", loggedInEmail);
+	model.addAttribute("message", message);
+	// return "userProfilePage";
+	return "userHomePage";
+    }
 
-	@RequestMapping(value = "/updateBasicProfile", method = RequestMethod.GET)
-	public String updateBasicProfile(
-			@ModelAttribute("Registration") Registration registration,
-			Map<String, Object> map, String message, ModelMap model,
-			HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		registration = (Registration) session.getAttribute("registration");
-		map.put("Registration", registration);
-		model.addAttribute("registration", registration);
-		model.addAttribute("message", message);
-		return "userBasicInfoPage";
+    @RequestMapping(value = "/updateBasicProfile", method = RequestMethod.GET)
+    public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,
+		    Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
+	HttpSession session = request.getSession();
+	registration = (Registration) session.getAttribute("registration");
+	map.put("Registration", registration);
+	model.addAttribute("registration", registration);
+	model.addAttribute("message", message);
+	return "userBasicInfoPage";
+    }
+
+    @SuppressWarnings("rawtypes")
+    @RequestMapping(value = "/userCompletInfoPageShow", method = RequestMethod.GET)
+    public String Complete_profile(Map<String, Object> map, String message, ModelMap model) {
+	List currentLocation = userProfileService.currentLocation();
+	model.addAttribute("location", currentLocation);
+	List annualSalary = userProfileService.salaryAnnual();
+	model.addAttribute("salary", annualSalary);
+	List preferedLocation = userProfileService.prefferedLocation();
+	model.addAttribute("preferlocation", preferedLocation);
+	List industry = userProfileService.industryData();
+	model.addAttribute("industrydata", industry);
+	List role = userProfileService.roleData();
+	model.addAttribute("roletype12", role);
+	map.put("userProfile", new UserProfile());
+	model.addAttribute("message", message);
+	List experienceList = userProfileService.experienceData();
+	model.addAttribute("experienceList", experienceList);
+	return "userCompleteInfo";
+    }
+
+    @SuppressWarnings("rawtypes")
+    @RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
+    public String updateCompleteProfile(@ModelAttribute("userProfile") UserProfile userProfile,
+		    Map<String, Object> map, String message, ModelMap model, HttpServletRequest request,
+		    @RequestParam(required = false) Integer stateId1) throws IOException {
+	HttpSession session = request.getSession();
+	Registration registration = (Registration) session.getAttribute("registration");
+	userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
+	Attachment attachment = userProfileService.getAllAttachment(registration.getRegistrationId());
+	if (attachment != null) {
+	    String path = ImageFormat.readImage(attachment.getPath());
+	    model.addAttribute("attachment", path);
 	}
+	if (userProfile != null) {
+	    map.put("userProfile", userProfile);
+	    model.addAttribute("message", message);
+	    List currentLocation = userProfileService.currentLocation();
+	    model.addAttribute("location", currentLocation);
+	    List annualSalary = userProfileService.salaryAnnual();
+	    model.addAttribute("salary", annualSalary);
+	    List preferedLocation = userProfileService.prefferedLocation();
+	    model.addAttribute("preferlocation", preferedLocation);
+	    List industry = userProfileService.industryData();
+	    model.addAttribute("industrydata", industry);
+	    List role = userProfileService.roleData();
+	    model.addAttribute("roletype12", role);
+	    List experienceList = userProfileService.experienceData();
+	    model.addAttribute("experienceList", experienceList);
+	    List<State> stateList = userProfileService.getAllState();
+	    model.addAttribute("stateList", stateList);
+	    // List<City> cityList = userProfileService.getCity(31);
+	    /* model.addAttribute("cityList", cityList); */
+	    // System.out.println(cityList);
 
-	@SuppressWarnings("rawtypes")
-	@RequestMapping(value = "/userCompletInfoPageShow", method = RequestMethod.GET)
-	public String Complete_profile(Map<String, Object> map, String message,
-			ModelMap model) {
-		List currentLocation = userProfileService.currentLocation();
-		model.addAttribute("location", currentLocation);
-		List annualSalary = userProfileService.salaryAnnual();
-		model.addAttribute("salary", annualSalary);
-		List preferedLocation = userProfileService.prefferedLocation();
-		model.addAttribute("preferlocation", preferedLocation);
-		List industry = userProfileService.industryData();
-		model.addAttribute("industrydata", industry);
-		List role = userProfileService.roleData();
-		model.addAttribute("roletype12", role);
-		map.put("userProfile", new UserProfile());
-		model.addAttribute("message", message);
-		List experienceList = userProfileService.experienceData();
-		model.addAttribute("experienceList", experienceList);
-		return "userCompleteInfo";
+	    List<City> cityList = userProfileService.getCity(stateId1);
+	    model.addAttribute("cityList", cityList);
+	    return "userCompleteInfo";
+	} else {
+	    model.addAttribute("message", IConstant.FIRST_COMPLETE_INFO_MESSAGE);
+	    return "redirect:/userCompletInfoPageShow";
 	}
+    }
 
-	@SuppressWarnings("rawtypes")
-	@RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
-	public String updateCompleteProfile(
-			@ModelAttribute("userProfile") UserProfile userProfile,
-			Map<String, Object> map, String message, ModelMap model,
-			HttpServletRequest request,@RequestParam(required = false)Integer stateId1) throws IOException {
-		HttpSession session = request.getSession();
-		Registration registration = (Registration) session
-				.getAttribute("registration");
-		userProfile = userProfileService
-				.getLoggedInUserCompleteInfo(registration.getRegistrationId());
-		Attachment attachment = userProfileService
-				.getAllAttachment(registration.getRegistrationId());
-		if (attachment != null) {
-			String path = ImageFormat.readImage(attachment.getPath());
-			model.addAttribute("attachment", path);
-		}
-		if (userProfile != null) {
-			map.put("userProfile", userProfile);
-			model.addAttribute("message", message);
-			List currentLocation = userProfileService.currentLocation();
-			model.addAttribute("location", currentLocation);
-			List annualSalary = userProfileService.salaryAnnual();
-			model.addAttribute("salary", annualSalary);
-			List preferedLocation = userProfileService.prefferedLocation();
-			model.addAttribute("preferlocation", preferedLocation);
-			List industry = userProfileService.industryData();
-			model.addAttribute("industrydata", industry);
-			List role = userProfileService.roleData();
-			model.addAttribute("roletype12", role);
-			List experienceList = userProfileService.experienceData();
-			model.addAttribute("experienceList", experienceList);
-			List<State> stateList = userProfileService.getAllState();
-			model.addAttribute("stateList", stateList);
-			// List<City> cityList = userProfileService.getCity(31);
-		/*	model.addAttribute("cityList", cityList);*/
-			// System.out.println(cityList);
-			
-			List<City> cityList = userProfileService.getCity(stateId1);
-			model.addAttribute("cityList", cityList);
-			return "userCompleteInfo";
-		} else {
-			model.addAttribute("message", IConstant.FIRST_COMPLETE_INFO_MESSAGE);
-			return "redirect:/userCompletInfoPageShow";
-		}
+    @SuppressWarnings("unused")
+    @RequestMapping(value = "/saveCompleteUserProfile", method = RequestMethod.POST)
+    public String saveCompleteUserProfile(@ModelAttribute("userProfile") UserProfile userProfile,
+		    @RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
+		    String attchmentName, ModelMap model, HttpServletRequest request) {
+	final MultipartFile filePart = file;
+	boolean status = false;
+	file.getOriginalFilename();
+	HttpSession session = request.getSession();
+	Registration registration = (Registration) session.getAttribute("registration");
+	userProfile.setRegistrationId(registration.getRegistrationId());
+	userProfileService.saveCompleteUserProfile(userProfile, filePart, upload, attchmentName);
+	model.addAttribute("message", IConstant.USER_COMPLETE_INFO_SUCCESS_MESSAGE);
+	return "redirect:/updateCompleteInfo";
+    }
+
+    @RequestMapping(value = "/setNewPassword", method = { RequestMethod.GET, RequestMethod.POST })
+    public String reCreatePass(Map<String, Object> map, ModelMap model, HttpServletRequest request) throws Exception {
+	HttpSession session = request.getSession();
+	Registration registration = (Registration) session.getAttribute("registration");
+	registration.setRegistrationId(registration.getRegistrationId());
+	map.put("registration", registration);
+	// model.addAttribute("message",
+	// "Password is reset Successfully Please login Again!!");
+	return "newUserPassword";
+    }
+
+    @RequestMapping(value = "/updateUserInformation", method = { RequestMethod.GET, RequestMethod.POST })
+    private String updateUserInformation(@ModelAttribute("Registration") Registration registration, ModelMap model,
+		    BindingResult result, HttpServletRequest request) throws Exception {
+	HttpSession session = request.getSession();
+	boolean status = false;
+	registrationValidator.validate(registration, result);
+	if (result.hasErrors()) {
+	    model.addAttribute("message", "Mobile number should be 10 digit");
+	    return "redirect:/updateBasicProfile";
 	}
-
-	@SuppressWarnings("unused")
-	@RequestMapping(value = "/saveCompleteUserProfile", method = RequestMethod.POST)
-	public String saveCompleteUserProfile(
-			@ModelAttribute("userProfile") UserProfile userProfile,
-			@RequestParam CommonsMultipartFile[] upload,
-			@RequestParam("upload") MultipartFile file, String attchmentName,
-			ModelMap model, HttpServletRequest request) {
-		final MultipartFile filePart = file;
-		boolean status = false;
-		file.getOriginalFilename();
-		HttpSession session = request.getSession();
-		Registration registration = (Registration) session
-				.getAttribute("registration");
-		userProfile.setRegistrationId(registration.getRegistrationId());
-		userProfileService.saveCompleteUserProfile(userProfile, filePart,
-				upload, attchmentName);
-		model.addAttribute("message",
-				IConstant.USER_COMPLETE_INFO_SUCCESS_MESSAGE);
-		return "redirect:/updateCompleteInfo";
+	status = registrationService.updateUserInformation(registration);
+	if (status) {
+	    session.setAttribute("registration", registration);
+	    model.addAttribute("message", IConstant.USER_BASIC_INFO_SUCCESS_MESSAGE);
+	} else {
+	    model.addAttribute("message", IConstant.USER_BASIC_INFO_FAILURE_MESSAGE);
 	}
+	return "redirect:/updateBasicProfile";
+    }
 
-	@RequestMapping(value = "/setNewPassword", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public String reCreatePass(Map<String, Object> map, ModelMap model,
-			HttpServletRequest request) throws Exception {
-		HttpSession session = request.getSession();
-		Registration registration = (Registration) session
-				.getAttribute("registration");
-		registration.setRegistrationId(registration.getRegistrationId());
-		map.put("registration", registration);
-		// model.addAttribute("message",
-		// "Password is reset Successfully Please login Again!!");
-		return "newUserPassword";
-	}
+    @RequestMapping(value = "/downloadResume", method = { RequestMethod.GET, RequestMethod.POST })
+    public String downloadResume(@RequestParam(required = false) Integer registrationId, HttpServletResponse response)
+		    throws IOException {
+	userProfileService.getUserResume(registrationId, response);
+	return "redirect:/updateCompleteInfo";
+    }
 
-	@RequestMapping(value = "/updateUserInformation", method = {
-			RequestMethod.GET, RequestMethod.POST })
-	private String updateUserInformation(
-			@ModelAttribute("Registration") Registration registration,
-			ModelMap model, BindingResult result, HttpServletRequest request)
-			throws Exception {
-		HttpSession session = request.getSession();
-		boolean status = false;
-		registrationValidator.validate(registration, result);
-		if (result.hasErrors()) {
-			model.addAttribute("message", "Mobile number should be 10 digit");
-			return "redirect:/updateBasicProfile";
-		}
-		status = registrationService.updateUserInformation(registration);
-		if (status) {
-			session.setAttribute("registration", registration);
-			model.addAttribute("message",
-					IConstant.USER_BASIC_INFO_SUCCESS_MESSAGE);
-		} else {
-			model.addAttribute("message",
-					IConstant.USER_BASIC_INFO_FAILURE_MESSAGE);
-		}
-		return "redirect:/updateBasicProfile";
-	}
+    @RequestMapping(value = "/getCityListByStateId", method = { RequestMethod.GET })
+    @ResponseBody
+    public Map<String, List<City>> getAllCityByStateId(@RequestParam Integer stateId) {
+	Map<String, List<City>> cityListMap = new HashMap<String, List<City>>();
+	List<City> cityList = userProfileService.getCity(stateId);
+	cityListMap.put("cityList", cityList);
+	return cityListMap;
 
-	@RequestMapping(value = "/downloadResume", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	public String downloadResume(
-			@RequestParam(required = false) Integer registrationId,
-			HttpServletResponse response) throws IOException {
-		userProfileService.getUserResume(registrationId, response);
-		return "redirect:/updateCompleteInfo";
-	}
-
-	@RequestMapping(value = "/verifyUserStateId", method = { RequestMethod.GET })
-	@ResponseBody
-	public List<City> verifyUserEmailId(
-			@RequestParam(required = false) String stateId, Model model) {
-		
-		// boolean status = false;
-		Integer stateId1 = Integer.parseInt(stateId);
-		List<City> cityList = userProfileService.getCity(stateId1);
-		model.addAttribute("cityList", cityList);
-		//model.addAttRribute("stateId1", stateId1);
-		System.out.println(cityList.get(0).getCityname());
-		return cityList;
-
-	}
+    }
 }

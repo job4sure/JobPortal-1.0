@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -9,18 +8,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link
-	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
-	rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css"
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
 	type="text/css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<script src="resources/js/jquery.validationEngine.js"
-	type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <!-- <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
 <title>Insert title here</title>
 <style>
@@ -29,51 +24,41 @@
 }
 </style>
 <script type="text/javascript">
-function email(){
-	
-	
-	   var stateId=document.getElementById('stateId1').value
-	   
-	   
-	   
+$(function() {
+	$('#stateId1')
+			.change(
+		function (){
+	   		var stateId=document.getElementById('stateId1').value
 	   
 	   $.ajax({
-		   url : "verifyUserStateId.do?stateId="+stateId,
+		   url : "getCityListByStateId.do?stateId="+stateId,
 		   type : "GET",
 		   contentType : "application/json; charset=utf-8",
-	 	   success : function(e) {
-		 alert("sucess");
-	/*		   $("#city").append($("<option value='0'></option>").text('Select City'))
-		    
-		 for (i = 0; i < e.length; i++) {
-		     var city = e[i]
-		     $("#city").append($("<option value='"+ city.id+ "'></option>").text(city.cityname))
-		    }
-
-		    if (e.length == 1) {
-		    	  alert("in no err");
-		     document.getElementById('city').value = e[0].id;
-		    
-		     
-		    }else
-		     {
-		     document.getElementById('city').value ="0";
-		     }  */
+	 	   success : function(response) {
+		 
+		 var cityValues = response.cityList;
+		 $('#city').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
+		 $('#city')//Due to above line all data is clear so i add this line for "select city" label.
+			.append(
+					$(
+							"<option value='"+0+"'></option>")
+							.text(
+									"Select City"));
+			for (i = 0; i < cityValues.length; i++) {
+				$('#city')
+						.append(
+								$(
+										"<option value='"+cityValues[i].id+"'></option>")
+										.text(
+												cityValues[i].cityname));
+			}
    },
 		   error : function() {
-			   alert("error");
-			   $("#city").append($("<option value='0'></option>").text('Select City'))
+			 	   $("#city").append($("<option value='0'></option>").text('Select City'))
 		   }
-		  })
-	   
-	   
-	   
-	   
-	 
-}
-
-
-
+		  });
+});
+});
 
 </script>
 <script type="text/javascript">
@@ -127,10 +112,8 @@ function toggleRow(rowname) {
 	}
 </script>
 <script src="resources/js/addJobDescp.js"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
 		$("#datepicker").datepicker();
@@ -181,10 +164,6 @@ function previewImage(){
 	  }
 	}
 </script>
-
-
-
-
 </head>
 <div id="main">
 	<hr class="noscreen" />
@@ -193,29 +172,23 @@ function previewImage(){
 		<div id="aside" class="box">
 			<div class="padding box">
 				<p id="logo">
-					<a href="http://all-free-download.com/free-website-templates/"><img
-						src="resources/design/logo.gif" alt="" /></a>
+					<a href="http://all-free-download.com/free-website-templates/"><img src="resources/design/logo.gif" alt="" /></a>
 				</p>
 				<!-- Search -->
-				<form action="http://all-free-download.com/free-website-templates/"
-					method="get" id="search">
+				<form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
 					<fieldset>
 						<legend>Search</legend>
 						<p>
-							<input type="text" size="17" name="" class="input-text" />
-							&nbsp; <input type="submit" value="OK" class="input-submit-02" />
-							<br /> <a href="javascript:toggle('search-options');"
-								class="ico-drop">Advanced search</a>
+							<input type="text" size="17" name="" class="input-text" /> &nbsp; <input type="submit" value="OK"
+								class="input-submit-02" /> <br /> <a href="javascript:toggle('search-options');" class="ico-drop">Advanced
+								search</a>
 						</p>
 						<!-- Advanced search -->
 						<div id="search-options" style="display: none;">
 							<p>
-								<label> <input type="checkbox" name="" checked="checked" />
-									By Location
-								</label> <br /> <label> <input type="checkbox" name="" /> By
-									keywords
-								</label> <br /> <label> <input type="checkbox" name="" /> By
-									name
+								<label> <input type="checkbox" name="" checked="checked" /> By Location
+								</label> <br /> <label> <input type="checkbox" name="" /> By keywords
+								</label> <br /> <label> <input type="checkbox" name="" /> By name
 								</label>
 							</p>
 						</div>
@@ -230,41 +203,34 @@ function previewImage(){
 		</div>
 		<body align="center" onload="disableMaxExpDropDown();">
 			<h3 style="color: red;">${message}</h3>
-			<form:form method="POST" action="saveCompleteUserProfile"
-				modelAttribute="userProfile" id="formID"
-				enctype="multipart/form-data"
-				onsubmit="return jQuery(this).validationEngine('validate');">
+			<form:form method="POST" action="saveCompleteUserProfile" modelAttribute="userProfile" id="formID"
+				enctype="multipart/form-data" onsubmit="return jQuery(this).validationEngine('validate');">
 				<div id="content" class="box">
 					<div class="verticalLine">
 						<center>
 							<h2>User Complete Information</h2>
 						</center>
-						<br> <a href="javascript:toggleRow('row1')"><h3
-								align="center">
+						<br> <a href="javascript:toggleRow('row1')"><h3 align="center">
 								<font color="red">Professional Details</font>
 							</h3></a>
 						<div id="row1">
 
 							<fieldset>
 								<center>
-									<table width="100%" class="nostyle"
-										style="border-collapse: separate; border-spacing: 5px">
+									<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
 										<div width="41%" valign="right">
-											<img src="${attachment}" id="preview" height="140px"
-												width="140px" />
+											<img src="${attachment}" id="preview" height="140px" width="140px" />
 										</div>
 										<form:hidden path="userId" />
 										<tr>
 											<td">Resume HeadLine<font color="red">*</font>:
 											</td>
-											<td><form:input type="text" size="27" path="resume"
-													class="validate[required] input-text" maxlength="25" /><br></td>
+											<td><form:input type="text" size="27" path="resume" class="validate[required] input-text" maxlength="25" /><br></td>
 										</tr>
 										<tr>
 											<td style="padding: 15;">Role<font color="red">*</font>:
 											</td>
-											<td><form:select path="roletype"
-													style="height:25px;  width:158px;">
+											<td><form:select path="roletype" style="height:25px;  width:158px;">
 													<option value="null">select</option>
 													<c:forEach items="${roletype12}" var="roleUser">
 														<option value="${roleUser.roletype }">${roleUser.roletype }</option>
@@ -274,44 +240,33 @@ function previewImage(){
 										<tr>
 											<td style="padding: 15;">Experience<font color="red">*</font>:
 											</td>
-											<td><form:select path="minExperience.experienceId"
-													onChange="checkMinExp(this);" id="sel1">
+											<td><form:select path="minExperience.experienceId" onChange="checkMinExp(this);" id="sel1">
 													<c:forEach items="${experienceList}" var="experience">
-														<form:option value="${experience.experienceId}"
-															label="${experience.experience}" />
+														<form:option value="${experience.experienceId}" label="${experience.experience}" />
 													</c:forEach>
-												</form:select>&nbsp;to&nbsp; <form:select
-													path="maxExperience.experienceId" disable="disable"
-													id="sel2">
+												</form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId" disable="disable" id="sel2">
 													<c:forEach items="${experienceList}" var="experience">
-														<form:option value="${experience.experienceId}"
-															label="${experience.experience}" />
+														<form:option value="${experience.experienceId}" label="${experience.experience}" />
 													</c:forEach>
 												</form:select> in Year</td>
 										</tr>
 										<tr>
 											<td style="padding: 15;">Annual Salary<font color="red">*</font>:
 											</td>
-											<td><form:select path="minSalary.salaryId"
-													onChange="checkMinSal(this);" id="salary1">
+											<td><form:select path="minSalary.salaryId" onChange="checkMinSal(this);" id="salary1">
 													<c:forEach items="${salary}" var="salary">
-														<form:option value="${salary.salaryId}"
-															label="${salary.salary}" />
+														<form:option value="${salary.salaryId}" label="${salary.salary}" />
 													</c:forEach>
-												</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId"
-													id="salary2">
+												</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId" id="salary2">
 													<c:forEach items="${salary}" var="salary">
-														<form:option value="${salary.salaryId}"
-															label="${salary.salary}" />
+														<form:option value="${salary.salaryId}" label="${salary.salary}" />
 													</c:forEach>
 												</form:select> (Salary in Lpa)</td>
 										</tr>
 										<tr>
-											<td style="padding: 15;">Current Location<font
-												color="red">*</font>:
+											<td style="padding: 15;">Current Location<font color="red">*</font>:
 											</td>
-											<td><form:select path="currentlocation"
-													style="height:25px; width:158px;">
+											<td><form:select path="currentlocation" style="height:25px; width:158px;">
 													<option value="null">select</option>
 													<c:forEach items="${location}" var="location">
 														<option value="${location.currentlocation }">${location.currentlocation}</option>
@@ -322,35 +277,20 @@ function previewImage(){
 
 											<td style="padding: 15;">State<font color="red">*</font>:
 											</td>
-
-											<td width="50%"><form:select path="stateId"
-													style="height:25px;  width:158px;"
-													onchange="return email()" id="stateId1">
-
+											<td width="50%"><form:select path="stateId" style="height:25px;  width:158px;" id="stateId1">
 													<option value="null">select</option>
-
 													<c:forEach items="${stateList}" var="state">
-
-														<option value="${state.stateId}">${state.stateName},${state.stateId}</option>
+														<option value="${state.stateId}">${state.stateName}</option>
 													</c:forEach>
-
 												</form:select> <br></td>
-
-
-
 											<td style="padding: 15;">City<font color="red">*</font>:
 											</td>
 
-											<td width="50%"><form:select path="cityId" id="city"
-													style="height:25px;  width:158px;">
-
-													<option value="null">select</option>
-
-													<c:forEach items="${cityList}" var="city">
-
-														<option value="${city.id}">${city.cityname}</option>
-													</c:forEach>
-
+											<td width="50%"><form:select path="cityId" id="city" style="height:25px;  width:158px;">
+													<form:option value="0" label="Select City" />
+													<%-- <c:forEach items="${cityList}" var="city">
+														<form:option value="${city.id}">${city.cityname} </form:option>
+													</c:forEach> --%>
 												</form:select> <br></td>
 										</tr>
 									</table>
@@ -365,8 +305,7 @@ function previewImage(){
 							</h3></a>
 						<div id="row2">
 							<fieldset>
-								<table width="100%" class="nostyle"
-									style="border-collapse: separate; border-spacing: 5px">
+								<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
 									<div width="41%" valign="right">
 										<tr>
 											<td style="padding: 15;">DateOfBirth<font color="red">*</font>:
@@ -379,45 +318,38 @@ function previewImage(){
 										</tr>
 										<tr>
 											<td style="padding: 15;">Gender<font color="red">*</font></td>
-											<td><form:radiobutton path="gender" value="Male" />Male
-												<form:radiobutton path="gender" value="Female" />Female</td>
+											<td><form:radiobutton path="gender" value="Male" />Male <form:radiobutton path="gender" value="Female" />Female</td>
 										</tr>
 										<tr>
 											<td style="padding: 15;">Marital Status<font color="red">*</font></td>
-											<td><form:radiobutton path="maritalstatus"
-													value="single" />Single <form:radiobutton
+											<td><form:radiobutton path="maritalstatus" value="single" />Single <form:radiobutton
 													path="maritalstatus" value="married" />Married</td>
 										</tr>
 										<tr>
 											<td style="padding: 15;">Phone<font color="red">*</font>:
 											</td>
-											<td><form:input type="text" size="40" path="phone"
-													class="validate[required] input-text" maxlength="10" /><br></td>
+											<td><form:input type="text" size="40" path="phone" class="validate[required] input-text" maxlength="10" /><br></td>
 										</tr>
 										<tr>
 											<td style="padding: 15;">Address<font color="red">*</font>:
 											</td>
-											<td><form:textarea rows="3" path="address"
-													class="validate[required] input-text"
+											<td><form:textarea rows="3" path="address" class="validate[required] input-text"
 													style="width: 302px; height: 80px;" /><br></td>
 										</tr>
 										<tr>
 											<td style="padding: 15;">City<font color="red">*</font>:
 											</td>
-											<td><form:input type="text" size="40" path="city"
-													class="validate[required] input-text" /><br></td>
+											<td><form:input type="text" size="40" path="city" class="validate[required] input-text" /><br></td>
 										</tr>
 										<tr>
 											<td style="padding: 15;">State<font color="red">*</font>:
 											</td>
-											<td><form:input type="text" size="40" path="State"
-													class="validate[required] input-text" /><br></td>
+											<td><form:input type="text" size="40" path="State" class="validate[required] input-text" /><br></td>
 										</tr>
 										<tr>
 											<td style="padding: 15;">ZipCode<font color="red">*</font>:
 											</td>
-											<td><form:input type="text" size="40" path="zip"
-													class="validate[required] input-text" /><br></td>
+											<td><form:input type="text" size="40" path="zip" class="validate[required] input-text" /><br></td>
 										</tr>
 								</table>
 							</fieldset>
@@ -430,33 +362,27 @@ function previewImage(){
 							</h3></a>
 						<div id="row3">
 							<fieldset>
-								<table width="100%" class="nostyle"
-									style="border-collapse: separate; border-spacing: 5px">
+								<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
 									<div width="41%" valign="right">
 										<tr>
-											<td style="padding: 15;"><label>Select Profile:
-											</label></td>
-											<td><input type="file" name="upload" id="imageUpload"
-												onchange="previewImage(this)" accept="image/*"
+											<td style="padding: 15;"><label>Select Profile: </label></td>
+											<td><input type="file" name="upload" id="imageUpload" onchange="previewImage(this)" accept="image/*"
 												multiple="multiple" />
-											<div style="color: red" id="demo"></div></td>
+												<div style="color: red" id="demo"></div></td>
 
 										</tr>
 										<tr>
 											<td style="padding: 15;"><label>Select Resume: </label></td>
-											<td><input type="file" name="upload" id="resumeUpload"
-												onchange="previewfile(this)" multiple="multiple" />
+											<td><input type="file" name="upload" id="resumeUpload" onchange="previewfile(this)" multiple="multiple" />
 												<div style="color: red" id="demo1"></div></td>
 										</tr>
 										<tr>
-											<td align="left"><a
-												href="downloadResume?registrationId=${registration.registrationId}">Download
+											<td align="left"><a href="downloadResume?registrationId=${registration.registrationId}">Download
 													resume</a></td>
 										</tr>
 										<tr>
 											<td style="padding: 15;"></td>
-											<td><input type="submit" value="submit"
-												class="input-submit-02"
+											<td><input type="submit" value="submit" class="input-submit-02"
 												onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
 										</tr>
 								</table>
