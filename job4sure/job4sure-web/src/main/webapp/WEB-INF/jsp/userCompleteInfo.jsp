@@ -381,16 +381,25 @@ function previewImage(){
 											<td><form:textarea rows="3" path="address" class="validate[required] input-text"
 													style="width: 302px; height: 80px;" /><br></td>
 										</tr>
-										<tr>
-											<td style="padding: 15;">City<font color="red">*</font>:
-											</td>
-											<%-- <td><form:input type="text" size="40" path="city" class="validate[required] input-text" /><br></td> --%>
-										</tr>
+										
 										<tr>
 											<td style="padding: 15;">State<font color="red">*</font>:
 											</td>
-											<%-- <td><form:input type="text" size="40" path="State" class="validate[required] input-text" /><br></td> --%>
+											<td width="50%"><form:select path="stateId.stateId" style="height:25px;  width:158px;" id="stateId1">
+													<option value="null">select</option>
+													<c:forEach items="${stateList}" var="state">
+														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
+													</c:forEach>
+												</form:select> <br></td>
+												<td style="padding: 15;">City<font color="red">*</font>
+												<td width="50%"><form:select path="stateId.stateId" style="height:25px;  width:158px;" id="stateId1">
+													<option value="null">select</option>
+													<c:forEach items="${stateList}" var="state">
+														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
+													</c:forEach>
+												</form:select> <br></td>
 										</tr>
+										
 										<tr>
 											<td style="padding: 15;">ZipCode<font color="red">*</font>:
 											</td>
