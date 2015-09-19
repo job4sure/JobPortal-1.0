@@ -129,9 +129,11 @@ public class UserProfileController {
 	    // List<City> cityList = userProfileService.getCity(31);
 	    /* model.addAttribute("cityList", cityList); */
 	    // System.out.println(cityList);
-	    System.out.println("@@@ = " + userProfile.getStateId().getStateId());
+	   
 	    List<City> cityList = userProfileService.getCity(userProfile.getStateId().getStateId());
 	    List<City> currentCityList = userProfileService.getCity(userProfile.getCurrentStateId().getStateId());
+	    List<City> homeCityList = userProfileService.getCity(userProfile.getHomeState().getStateId());
+	    model.addAttribute("homeCityList", homeCityList);
 	    model.addAttribute("currentCityList", currentCityList);
 	    model.addAttribute("cityList", cityList);
 	    return "userCompleteInfo";

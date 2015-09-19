@@ -70,6 +70,16 @@ public class UserProfile {
     @JoinColumn(name = "CURRENT_CITY_ID", referencedColumnName = "CITY_ID")
     private City currentCityId;
 
+    
+    @OneToOne(targetEntity = State.class)
+    @JoinColumn(name = "HOME_STATE_ID", referencedColumnName = "STATE_ID")
+    private State homeState;
+
+    @OneToOne(targetEntity = City.class)
+    @JoinColumn(name = "HOME_CITY_ID", referencedColumnName = "CITY_ID")
+    private City homeCity;
+    
+    
     @Column(name = "INDUSTRY")
     private String Industry;
 
@@ -252,5 +262,21 @@ public class UserProfile {
 
     public void setCurrentCityId(City currentCityId) {
 	this.currentCityId = currentCityId;
+    }
+
+    public State getHomeState() {
+        return homeState;
+    }
+
+    public void setHomeState(State homeState) {
+        this.homeState = homeState;
+    }
+
+    public City getHomeCity() {
+        return homeCity;
+    }
+
+    public void setHomeCity(City homeCity) {
+        this.homeCity = homeCity;
     }
 }

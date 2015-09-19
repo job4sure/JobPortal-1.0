@@ -96,6 +96,42 @@ $(function() {
 		  });
 });
 });
+
+$(function() {
+	$('#homeState')
+			.change(
+		function (){
+	   		var stateId=document.getElementById('homeState').value
+	   
+	   $.ajax({
+		   url : "getCityListByStateId.do?stateId="+stateId,
+		   type : "GET",
+		   contentType : "application/json; charset=utf-8",
+	 	   success : function(response) {
+		 
+		 var cityValues = response.cityList;
+		 $('#homeCity').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
+		 $('#homeCity')//Due to above line all data is clear so i add this line for "select city" label.
+			.append(
+					$(
+							"<option value='"+0+"'></option>")
+							.text(
+									"Select City"));
+			for (i = 0; i < cityValues.length; i++) {
+				$('#homeCity')
+						.append(
+								$(
+										"<option value='"+cityValues[i].id+"'></option>")
+										.text(
+												cityValues[i].cityname));
+			}
+   },
+		   error : function() {
+			 	   $("#homeCity").append($("<option value='0'></option>").text('Select City'))
+		   }
+		  });
+});
+});
 </script>
 <script type="text/javascript">
 	jQuery(document).ready(function() {
@@ -385,17 +421,17 @@ function previewImage(){
 										<tr>
 											<td style="padding: 15;">State<font color="red">*</font>:
 											</td>
-											<td width="50%"><form:select path="stateId.stateId" style="height:25px;  width:158px;" id="stateId1">
+											<td width="50%"><form:select path="homeState.stateId" id="homeState" style="height:25px;  width:158px;" >
 													<option value="null">select</option>
 													<c:forEach items="${stateList}" var="state">
 														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
 													</c:forEach>
 												</form:select> <br></td>
 												<td style="padding: 15;">City<font color="red">*</font>
-												<td width="50%"><form:select path="stateId.stateId" style="height:25px;  width:158px;" id="stateId1">
+												<td width="50%"><form:select path="homeCity.id" id="homeCity" style="height:25px;  width:158px;">
 													<option value="null">select</option>
-													<c:forEach items="${stateList}" var="state">
-														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
+													<c:forEach items="${homeCityList}" var="city">
+														<form:option value="${city.id}"  >${city.cityname}</form:option>
 													</c:forEach>
 												</form:select> <br></td>
 										</tr>
