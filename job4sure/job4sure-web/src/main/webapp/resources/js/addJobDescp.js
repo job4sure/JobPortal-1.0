@@ -21,12 +21,6 @@ var expanded = false;
 
 	}
 
-	function disableMaxExpDropDown() {
-		document.getElementById("sel2").disabled = true;
-		document.getElementById("salary2").disabled = true;
-
-	}
-	
 	function checkMinSal(elem) {
 		var firstValue = document.getElementById('salary1').value;
 		var secondValue = Number(firstValue) + Number(1);

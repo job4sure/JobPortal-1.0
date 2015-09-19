@@ -12,238 +12,245 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "userprofile")
 public class UserProfile {
-	@Id
-	@GeneratedValue
-	@Column(name = "USERID")
-	private Integer userId;
-	@Column(name = "REGISTRATION_ID")
-	private Integer registrationId;
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "REGISTRATION_ID", referencedColumnName = "REGISTRATION_ID", insertable = false, updatable = false)
-	private Registration registration;
-	@Column(name = "RESUME_TITLE")
-	private String resume;
-	@Column(name = "CURRENT_LOCATION")
-	private String currentlocation;
-	@OneToOne(targetEntity = Salary.class)
-	@JoinColumn(name = "MIN_SALARY_ID", referencedColumnName = "SALARY_ID")
-	private Salary minSalary;
-	@OneToOne(targetEntity = Salary.class)
-	@JoinColumn(name = "MAX_SALARY_ID", referencedColumnName = "SALARY_ID")
-	private Salary maxSalary;
+    @Id
+    @GeneratedValue
+    @Column(name = "USERID")
+    private Integer userId;
 
-	public Salary getMinSalary() {
-		return minSalary;
-	}
+    @Column(name = "REGISTRATION_ID")
+    private Integer registrationId;
 
-	public void setMinSalary(Salary minSalary) {
-		this.minSalary = minSalary;
-	}
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "REGISTRATION_ID", referencedColumnName = "REGISTRATION_ID", insertable = false, updatable = false)
+    private Registration registration;
 
-	public Salary getMaxSalary() {
-		return maxSalary;
-	}
+    @Column(name = "RESUME_TITLE")
+    private String resume;
 
-	public void setMaxSalary(Salary maxSalary) {
-		this.maxSalary = maxSalary;
-	}
+    @Column(name = "CURRENT_LOCATION")
+    private String currentlocation;
 
-	@OneToOne(targetEntity = State.class)
-	@JoinColumn(name = "STATE_ID", referencedColumnName = "STATE_ID")
-	private State stateId;
+    @OneToOne(targetEntity = Salary.class)
+    @JoinColumn(name = "MIN_SALARY_ID", referencedColumnName = "SALARY_ID")
+    private Salary minSalary;
 
-	@OneToOne(targetEntity = City.class)
-	@JoinColumn(name = "CITY_ID", referencedColumnName = "CITY_ID")
-	private State cityId;
-	@Column(name = "INDUSTRY")
-	private String Industry;
+    public Salary getMinSalary() {
+	return minSalary;
+    }
 
-	@Column(name = "ROLE")
-	private String roletype;
-	@Column(name = "DATE_OF_BIRTH")
-	private String dob;
-	@Column(name = "GENDER")
-	private String gender;
+    public void setMinSalary(Salary minSalary) {
+	this.minSalary = minSalary;
+    }
 
-	/*
-	 * @Column(name="EXPERIENCE") private String experience;
-	 */
-	@OneToOne(targetEntity = Experience.class)
-	@JoinColumn(name = "MIN_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
-	private Experience minExperience;
+    @OneToOne(targetEntity = Salary.class)
+    @JoinColumn(name = "MAX_SALARY_ID", referencedColumnName = "SALARY_ID")
+    private Salary maxSalary;
 
-	@OneToOne(targetEntity = Experience.class)
-	@JoinColumn(name = "MAX_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
-	private Experience maxExperience;
+    public Salary getMaxSalary() {
+	return maxSalary;
+    }
 
-	public Experience getMinExperience() {
-		return minExperience;
-	}
+    public void setMaxSalary(Salary maxSalary) {
+	this.maxSalary = maxSalary;
+    }
 
-	public void setMinExperience(Experience minExperience) {
-		this.minExperience = minExperience;
-	}
+    @OneToOne(targetEntity = State.class)
+    @JoinColumn(name = "PREFERRED_STATE_ID", referencedColumnName = "STATE_ID")
+    private State stateId;
 
-	public Experience getMaxExperience() {
-		return maxExperience;
-	}
+    @OneToOne(targetEntity = City.class)
+    @JoinColumn(name = "PREFERRED_CITY_ID", referencedColumnName = "CITY_ID")
+    private City cityId;
 
-	public void setMaxExperience(Experience maxExperience) {
-		this.maxExperience = maxExperience;
-	}
+    @OneToOne(targetEntity = State.class)
+    @JoinColumn(name = "CURRENT_STATE_ID", referencedColumnName = "STATE_ID")
+    private State currentStateId;
 
-	@Column(name = "MARITAL_STATUS")
-	private String maritalstatus;
+    @OneToOne(targetEntity = City.class)
+    @JoinColumn(name = "CURRENT_CITY_ID", referencedColumnName = "CITY_ID")
+    private City currentCityId;
 
-	@Column(name = "PHONE")
-	private String phone;
+    @Column(name = "INDUSTRY")
+    private String Industry;
 
-	@Column(name = "ADDRESS")
-	private String address;
+    @Column(name = "ROLE")
+    private String roletype;
 
-	@Column(name = "CITY")
-	private String city;
+    @Column(name = "DATE_OF_BIRTH")
+    private String dob;
 
-	@Column(name = "STATE")
-	private String State;
+    @Column(name = "GENDER")
+    private String gender;
 
-	@Column(name = "ZIP")
-	private String zip;
+    @OneToOne(targetEntity = Experience.class)
+    @JoinColumn(name = "MIN_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
+    private Experience minExperience;
 
-	public Integer getUserId() {
-		return userId;
-	}
+    public Experience getMinExperience() {
+	return minExperience;
+    }
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    public void setMinExperience(Experience minExperience) {
+	this.minExperience = minExperience;
+    }
 
-	public Integer getRegistrationId() {
-		return registrationId;
-	}
+    @OneToOne(targetEntity = Experience.class)
+    @JoinColumn(name = "MAX_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
+    private Experience maxExperience;
 
-	public void setRegistrationId(Integer registrationId) {
-		this.registrationId = registrationId;
-	}
+    public Experience getMaxExperience() {
+	return maxExperience;
+    }
 
-	public Registration getRegistration() {
-		return registration;
-	}
+    public void setMaxExperience(Experience maxExperience) {
+	this.maxExperience = maxExperience;
+    }
 
-	public void setRegistration(Registration registration) {
-		this.registration = registration;
-	}
+    @Column(name = "MARITAL_STATUS")
+    private String maritalstatus;
 
-	public String getResume() {
-		return resume;
-	}
+    @Column(name = "PHONE")
+    private String phone;
 
-	public void setResume(String resume) {
-		this.resume = resume;
-	}
+    @Column(name = "ADDRESS")
+    private String address;
 
-	public String getCurrentlocation() {
-		return currentlocation;
-	}
+    @Column(name = "ZIP")
+    private String zip;
 
-	public void setCurrentlocation(String currentlocation) {
-		this.currentlocation = currentlocation;
-	}
+    public Integer getUserId() {
+	return userId;
+    }
 
-	public State getStateId() {
-		return stateId;
-	}
+    public void setUserId(Integer userId) {
+	this.userId = userId;
+    }
 
-	public void setStateId(State stateId) {
-		this.stateId = stateId;
-	}
+    public Integer getRegistrationId() {
+	return registrationId;
+    }
 
-	public State getCityId() {
-		return cityId;
-	}
+    public void setRegistrationId(Integer registrationId) {
+	this.registrationId = registrationId;
+    }
 
-	public void setCityId(State cityId) {
-		this.cityId = cityId;
-	}
+    public Registration getRegistration() {
+	return registration;
+    }
 
-	public String getIndustry() {
-		return Industry;
-	}
+    public void setRegistration(Registration registration) {
+	this.registration = registration;
+    }
 
-	public void setIndustry(String industry) {
-		Industry = industry;
-	}
+    public String getResume() {
+	return resume;
+    }
 
-	public String getRoletype() {
-		return roletype;
-	}
+    public void setResume(String resume) {
+	this.resume = resume;
+    }
 
-	public void setRoletype(String roletype) {
-		this.roletype = roletype;
-	}
+    public String getCurrentlocation() {
+	return currentlocation;
+    }
 
-	public String getDob() {
-		return dob;
-	}
+    public void setCurrentlocation(String currentlocation) {
+	this.currentlocation = currentlocation;
+    }
 
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
+    public State getStateId() {
+	return stateId;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public void setStateId(State stateId) {
+	this.stateId = stateId;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public City getCityId() {
+	return cityId;
+    }
 
-	public String getMaritalstatus() {
-		return maritalstatus;
-	}
+    public void setCityId(City cityId) {
+	this.cityId = cityId;
+    }
 
-	public void setMaritalstatus(String maritalstatus) {
-		this.maritalstatus = maritalstatus;
-	}
+    public String getIndustry() {
+	return Industry;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setIndustry(String industry) {
+	Industry = industry;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public String getRoletype() {
+	return roletype;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setRoletype(String roletype) {
+	this.roletype = roletype;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getDob() {
+	return dob;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public void setDob(String dob) {
+	this.dob = dob;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getGender() {
+	return gender;
+    }
 
-	public String getState() {
-		return State;
-	}
+    public void setGender(String gender) {
+	this.gender = gender;
+    }
 
-	public void setState(String state) {
-		State = state;
-	}
+    public String getMaritalstatus() {
+	return maritalstatus;
+    }
 
-	public String getZip() {
-		return zip;
-	}
+    public void setMaritalstatus(String maritalstatus) {
+	this.maritalstatus = maritalstatus;
+    }
 
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
+    public String getPhone() {
+	return phone;
+    }
 
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
+
+    public String getAddress() {
+	return address;
+    }
+
+    public void setAddress(String address) {
+	this.address = address;
+    }
+
+    public String getZip() {
+	return zip;
+    }
+
+    public void setZip(String zip) {
+	this.zip = zip;
+    }
+
+    public State getCurrentStateId() {
+	return currentStateId;
+    }
+
+    public void setCurrentStateId(State currentStateId) {
+	this.currentStateId = currentStateId;
+    }
+
+    public City getCurrentCityId() {
+	return currentCityId;
+    }
+
+    public void setCurrentCityId(City currentCityId) {
+	this.currentCityId = currentCityId;
+    }
 }

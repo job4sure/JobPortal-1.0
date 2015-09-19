@@ -39,7 +39,7 @@ public class IConstant {
 	public static final String VALID_UP_TO_DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
 
 	// path
-	public static final String FILE_PATH = "F:/mm/";
+	public static final String FILE_PATH = "D:/mm/";
 
 	// Security roles:
 	public static final String USER_ROLE = "USER";

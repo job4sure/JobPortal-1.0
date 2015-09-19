@@ -1,7 +1,6 @@
 package com.job4sure.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,11 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,10 +41,6 @@ public class UserProfileController {
     private RegistrationService registrationService;
     @Autowired
     private RegistrationValidator registrationValidator;
-
-    /*
-     * @Autowired private UserDetaiFatchService userdetailfatch;
-     */
 
     @RequestMapping(value = "/userProfileHomePage", method = RequestMethod.GET)
     public String showuserProfile(Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
@@ -137,8 +129,10 @@ public class UserProfileController {
 	    // List<City> cityList = userProfileService.getCity(31);
 	    /* model.addAttribute("cityList", cityList); */
 	    // System.out.println(cityList);
-
-	    List<City> cityList = userProfileService.getCity(stateId1);
+	    System.out.println("@@@ = " + userProfile.getStateId().getStateId());
+	    List<City> cityList = userProfileService.getCity(userProfile.getStateId().getStateId());
+	    List<City> currentCityList = userProfileService.getCity(userProfile.getCurrentStateId().getStateId());
+	    model.addAttribute("currentCityList", currentCityList);
 	    model.addAttribute("cityList", cityList);
 	    return "userCompleteInfo";
 	} else {
@@ -147,7 +141,6 @@ public class UserProfileController {
 	}
     }
 
-    @SuppressWarnings("unused")
     @RequestMapping(value = "/saveCompleteUserProfile", method = RequestMethod.POST)
     public String saveCompleteUserProfile(@ModelAttribute("userProfile") UserProfile userProfile,
 		    @RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,

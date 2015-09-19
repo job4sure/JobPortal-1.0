@@ -17,57 +17,44 @@ public class Experience {
 
     @Column(name = "EXPERIENCE")
     private String experience;
-    
-    
+
     @OneToOne()
     @JoinColumn(name = "EXPERIENCE_ID")
     private JobDescription minJobDescription;
-    
-    
+
     public JobDescription getMinJobDescription() {
-        return minJobDescription;
+	return minJobDescription;
     }
 
     public void setMinJobDescription(JobDescription minJobDescription) {
-        this.minJobDescription = minJobDescription;
+	this.minJobDescription = minJobDescription;
     }
-    
-    
+
     @OneToOne()
     @JoinColumn(name = "EXPERIENCE_ID")
     private JobDescription maxJobDescription;
-    
+
     public JobDescription getMaxJobDescription() {
-        return maxJobDescription;
+	return maxJobDescription;
     }
 
     public void setMaxJobDescription(JobDescription maxJobDescription) {
-        this.maxJobDescription = maxJobDescription;
+	this.maxJobDescription = maxJobDescription;
     }
 
     public Integer getExperienceId() {
-        return experienceId;
+	return experienceId;
     }
 
     public void setExperienceId(Integer experienceId) {
-        this.experienceId = experienceId;
+	this.experienceId = experienceId;
     }
 
     public String getExperience() {
-        return experience;
+	return experience;
     }
 
     public void setExperience(String experience) {
-        this.experience = experience;
+	this.experience = experience;
     }
-
-   
-
-   
-   
-
-   
-
-    
-
 }

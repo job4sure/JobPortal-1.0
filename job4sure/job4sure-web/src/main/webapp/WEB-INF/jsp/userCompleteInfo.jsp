@@ -60,6 +60,42 @@ $(function() {
 });
 });
 
+
+$(function() {
+	$('#currentState')
+			.change(
+		function (){
+	   		var stateId=document.getElementById('currentState').value
+	   
+	   $.ajax({
+		   url : "getCityListByStateId.do?stateId="+stateId,
+		   type : "GET",
+		   contentType : "application/json; charset=utf-8",
+	 	   success : function(response) {
+		 
+		 var cityValues = response.cityList;
+		 $('#currentCity').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
+		 $('#currentCity')//Due to above line all data is clear so i add this line for "select city" label.
+			.append(
+					$(
+							"<option value='"+0+"'></option>")
+							.text(
+									"Select City"));
+			for (i = 0; i < cityValues.length; i++) {
+				$('#currentCity')
+						.append(
+								$(
+										"<option value='"+cityValues[i].id+"'></option>")
+										.text(
+												cityValues[i].cityname));
+			}
+   },
+		   error : function() {
+			 	   $("#currentCity").append($("<option value='0'></option>").text('Select City'))
+		   }
+		  });
+});
+});
 </script>
 <script type="text/javascript">
 	jQuery(document).ready(function() {
@@ -201,7 +237,7 @@ function previewImage(){
 			<ul class="box">
 			</ul>
 		</div>
-		<body align="center" onload="disableMaxExpDropDown();">
+		<body align="center">
 			<h3 style="color: red;">${message}</h3>
 			<form:form method="POST" action="saveCompleteUserProfile" modelAttribute="userProfile" id="formID"
 				enctype="multipart/form-data" onsubmit="return jQuery(this).validationEngine('validate');">
@@ -251,9 +287,9 @@ function previewImage(){
 												</form:select> in Year</td>
 										</tr>
 										<tr>
-											<td style="padding: 15;">Annual Salary<font color="red">*</font>:
+											<td >Annual Salary<font color="red">*</font>:
 											</td>
-											<td><form:select path="minSalary.salaryId" onChange="checkMinSal(this);" id="salary1">
+											<td ><form:select path="minSalary.salaryId" onChange="checkMinSal(this);" id="salary1">
 													<c:forEach items="${salary}" var="salary">
 														<form:option value="${salary.salaryId}" label="${salary.salary}" />
 													</c:forEach>
@@ -265,32 +301,41 @@ function previewImage(){
 										</tr>
 										<tr>
 											<td style="padding: 15;">Current Location<font color="red">*</font>:
-											</td>
-											<td><form:select path="currentlocation" style="height:25px; width:158px;">
+											</td><td style="padding: 15;">State<font color="red">*</font></td>
+											<td><form:select path="currentStateId.stateId" id="currentState" style="height:25px; width:158px;">
+													
 													<option value="null">select</option>
-													<c:forEach items="${location}" var="location">
-														<option value="${location.currentlocation }">${location.currentlocation}</option>
+													<c:forEach items="${stateList}" var="state">
+														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
+													</c:forEach>
+												</form:select> <br></td>
+												<td style="padding: 15;">City<font color="red">*</font></td>
+												<td><form:select path="currentCityId.id" id="currentCity" style="height:25px; width:158px;">
+													<form:option value="0" label="Select City" />
+													<c:forEach items="${currentCityList}" var="city">
+														<form:option value="${city.id}">${city.cityname} </form:option>
 													</c:forEach>
 												</form:select> <br></td>
 										</tr>
 										<tr>
 
-											<td style="padding: 15;">State<font color="red">*</font>:
+											<td style="padding: 15;">Preferred Location<font color="red">*</font>:
 											</td>
-											<td width="50%"><form:select path="stateId" style="height:25px;  width:158px;" id="stateId1">
+											<td style="padding: 15;">State<font color="red">*</font></td>
+											<td width="50%"><form:select path="stateId.stateId" style="height:25px;  width:158px;" id="stateId1">
 													<option value="null">select</option>
 													<c:forEach items="${stateList}" var="state">
-														<option value="${state.stateId}">${state.stateName}</option>
+														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
 													</c:forEach>
 												</form:select> <br></td>
 											<td style="padding: 15;">City<font color="red">*</font>:
 											</td>
 
-											<td width="50%"><form:select path="cityId" id="city" style="height:25px;  width:158px;">
+											<td width="50%"><form:select path="cityId.id" id="city" style="height:25px;  width:158px;">
 													<form:option value="0" label="Select City" />
-													<%-- <c:forEach items="${cityList}" var="city">
+													<c:forEach items="${cityList}" var="city">
 														<form:option value="${city.id}">${city.cityname} </form:option>
-													</c:forEach> --%>
+													</c:forEach>
 												</form:select> <br></td>
 										</tr>
 									</table>
@@ -339,12 +384,12 @@ function previewImage(){
 										<tr>
 											<td style="padding: 15;">City<font color="red">*</font>:
 											</td>
-											<td><form:input type="text" size="40" path="city" class="validate[required] input-text" /><br></td>
+											<%-- <td><form:input type="text" size="40" path="city" class="validate[required] input-text" /><br></td> --%>
 										</tr>
 										<tr>
 											<td style="padding: 15;">State<font color="red">*</font>:
 											</td>
-											<td><form:input type="text" size="40" path="State" class="validate[required] input-text" /><br></td>
+											<%-- <td><form:input type="text" size="40" path="State" class="validate[required] input-text" /><br></td> --%>
 										</tr>
 										<tr>
 											<td style="padding: 15;">ZipCode<font color="red">*</font>:

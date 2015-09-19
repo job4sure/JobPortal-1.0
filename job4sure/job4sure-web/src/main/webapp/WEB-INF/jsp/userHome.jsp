@@ -65,8 +65,8 @@
 					<div class="column">
 						<b>Date of Birth:&nbsp;&nbsp;</b>${userProfile.dob}<br> <br> <b>Gender:&nbsp;&nbsp;</b>${userProfile.gender}<br>
 						<br> <b>Marital Status:&nbsp;&nbsp;</b>${userProfile.maritalstatus}<br> <br> <b>Permanent
-							Address:&nbsp;&nbsp;</b>${userProfile.address}<br> <br> <b>Hometown/City:&nbsp;&nbsp;</b>${userProfile.city}<br>
-						<br> <b>Zip:&nbsp;&nbsp;</b>${userProfile.zip}<br> <br> <b>State:&nbsp;&nbsp;</b>${userProfile.state}<br>
+							Address:&nbsp;&nbsp;</b>${userProfile.address}<br> <br> <b>Hometown/City:&nbsp;&nbsp;</b><%-- ${userProfile.city}<br> --%>
+						<br> <b>Zip:&nbsp;&nbsp;</b>${userProfile.zip}<br> <br>  <b>State:&nbsp;&nbsp;</b><%--${userProfile.state}<br> --%>
 						<br> <b>Total Experience: &nbsp;&nbsp;</b>${userProfile.minExperience.experience}<br> <br>
 					</div>
 					<div width="41%" valign="middle">
