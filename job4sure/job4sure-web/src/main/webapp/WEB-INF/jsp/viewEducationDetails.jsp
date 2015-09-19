@@ -7,6 +7,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <script type="text/javascript">
+
+var isVisible = $( "#myDiv" ).is( ":visible" );
+
+var isHidden = $( "#myDiv" ).is( ":hidden" );
+
 	function showRow(rowname) {
 		if (document.getElementById(rowname)) {
 			document.getElementById(rowname).style.display = '';
@@ -26,11 +31,9 @@
 			}
 		}
 	}
-	
-	
 </script>
 </head>
-<body >
+<body>
 	<div id="main">
 		<hr class="noscreen" />
 		<div id="cols" class="box">
@@ -82,13 +85,14 @@
 						<a href="javascript:toggleRow('row1')"><h3 align="center">
 								<font color="red">Graduation</font>
 							</h3></a>
-						<div id="row1" style="display:none">
+						<div id="row1" style="display: none">
 							<fieldset>
 								<table width="100%" class="nostyle"
 									style="border-collapse: separate; border-spacing: 5px">
 									<tr>
 										<td><font color="red">*</font>Basic/Graduation</td>
 										<td><form:select path="graduation">
+												<form:option value="null">select</form:option>
 												<form:option value="BE/BTECH">BE/BTECH</form:option>
 												<form:option value="BSc">BSc</form:option>
 												<form:option value="Bcom">Bcom</form:option>
@@ -105,6 +109,7 @@
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
 										<td><form:select path="specialization">
+												<form:option value="null">select</form:option>
 												<form:option value="Automobile">Automobile</form:option>
 												<form:option value="Aviation">Aviation</form:option>
 												<form:option value="Agriculture">Agriculture</form:option>
@@ -113,6 +118,7 @@
 									<tr>
 										<td><font color="red">*</font>University/Institute</td>
 										<td><form:select path="institute">
+												<form:option value="null">select</form:option>
 												<form:option value="LPU">LPU</form:option>
 												<form:option value="RGPV">RGPV</form:option>
 												<form:option value="Punjab University">Punjab University</form:option>
@@ -121,6 +127,7 @@
 									<tr>
 										<td><font color="red">*</font>Year</td>
 										<td><form:select path="yearr">
+												<form:option value="null">select</form:option>
 												<form:option value="2012">2012</form:option>
 												<form:option value="2013">2013</form:option>
 												<form:option value="2014">2014</form:option>
@@ -134,13 +141,14 @@
 						<a href="javascript:toggleRow('row2')"><h3 align="center">
 								<font color="red">Post Graduation</font>
 							</h3></a>
-						<div id="row2" style="display:none">
+						<div id="row2" style="display: none">
 							<fieldset>
 								<table width="100%" class="nostyle"
 									style="border-collapse: separate; border-spacing: 5px">
 									<tr>
 										<td><font color="red">*</font>Post Graduation</td>
 										<td><form:select path="postgraduation">
+												<form:option value="null">select</form:option>
 												<form:option value="ME/MTECH">ME/MTECH</form:option>
 												<form:option value="MSc">MSc</form:option>
 												<form:option value="Mcom">Mcom</form:option>
@@ -158,6 +166,7 @@
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
 										<td><form:select path="post_specialization">
+												<form:option value="null">select</form:option>
 												<form:option value="Automobile">Automobile</form:option>
 												<form:option value="Aviation">Aviation</form:option>
 												<form:option value="Agriculture">Agriculture</form:option>
@@ -166,6 +175,7 @@
 									<tr>
 										<td><font color="red">*</font>University/Institute</td>
 										<td><form:select path="post_institute">
+												<form:option value="null">select</form:option>
 												<form:option value="LPU">LPU</form:option>
 												<form:option value="RGPV">RGPV</form:option>
 												<form:option value="Punjab University">Punjab University</form:option>
@@ -174,6 +184,7 @@
 									<tr>
 										<td><font color="red">*</font>Year</td>
 										<td><form:select path="post_yearr">
+												<form:option value="null">select</form:option>
 												<form:option value="2012">2012</form:option>
 												<form:option value="2013">2013</form:option>
 												<form:option value="2014">2014</form:option>
@@ -187,7 +198,7 @@
 						<a href="javascript:toggleRow('row3')"><h3 align="center">
 								<font color="red">Phd</font>
 							</h3></a>
-						<div id="row3" style="display:none">
+						<div id="row3" style="display: none">
 
 							<fieldset>
 								<table width="100%" class="nostyle"
@@ -195,6 +206,7 @@
 									<tr>
 										<td><font color="red">*</font>PhD/Doctorate</td>
 										<td><form:select path="doctorate">
+												<form:option value="null">select</form:option>
 												<form:option value="MPHIL">MPHIL</form:option>
 												<form:option value="Other">Other</form:option>
 											</form:select></td>
@@ -211,6 +223,7 @@
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
 										<td><form:select path="doc_specialization">
+												<form:option value="null">select</form:option>
 												<form:option value="Automobile">Automobile</form:option>
 												<form:option value="Aviation">Aviation</form:option>
 												<form:option value="Agriculture">Agriculture</form:option>
@@ -219,6 +232,7 @@
 									<tr>
 										<td><font color="red">*</font>University/Institute</td>
 										<td><form:select path="doc_institute">
+												<form:option value="null">select</form:option>
 												<form:option value="IIT">LPU</form:option>
 												<form:option value="NIT">RGPV</form:option>
 												<form:option value="IIM">Punjab University</form:option>
@@ -227,6 +241,7 @@
 									<tr>
 										<td><font color="red">*</font>Year</td>
 										<td><form:select path="doc_yearr">
+												<form:option value="null">select</form:option>
 												<form:option value="2012">2012</form:option>
 												<form:option value="2013">2013</form:option>
 												<form:option value="2014">2014</form:option>
@@ -236,6 +251,7 @@
 								</table>
 							</fieldset>
 						</div>
+						<br>
 						<h3 align="center">
 							<input type="submit" value="Save Details"
 								style="width: 6em; height: 2em; font-size: large;">
