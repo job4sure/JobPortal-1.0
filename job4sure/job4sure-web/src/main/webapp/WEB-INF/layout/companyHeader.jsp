@@ -19,10 +19,10 @@
 <script type="text/javascript" src="resources/js/ui.core.js"></script>
 <script type="text/javascript" src="resources/js/ui.tabs.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		$(".tabs > ul").tabs();
 	});
-	</script>
+</script>
 </head>
 <body>
 
@@ -57,8 +57,11 @@
 						<li id="menu-active"><a href="showCompleteCompanyProfilePage">Update Company Profile</a></li>
 						<li id="menu-active"><a href="setNewPasswordForComp">Reset Password</a></li>
 					</ul></li>
-
-
+				<li style="padding-left: 350px;"><img width="17px" src="resources/images/mail.png" /></li>
+				<li style="padding-right: 130px;"><b>support@job4sure.com</b></li>
+				<li><img width="32px" src="resources/images/facebook.png" /></li>
+				<li><img width="32px" src="resources/images/twitter.png" /></li>
+				<li><img width="32px" src="resources/images/linkedin.png" /></li>
 			</ul>
 		</div>
 
@@ -70,9 +73,9 @@
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 	<script>
-					function formSubmit() {
-						document.getElementById("logoutForm").submit();
-					}
-				</script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
 </body>
 </html>
