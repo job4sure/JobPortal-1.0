@@ -24,12 +24,11 @@
 }
 </style>
 <script type="text/javascript">
-$(function() {
-	$('#stateId1')
-			.change(
-		function (){
-	   		var stateId=document.getElementById('stateId1').value
-	   
+
+		function getCityList(data){
+			
+	   		var stateId=document.getElementById(data.id).value;
+	   alert(stateId);
 	   $.ajax({
 		   url : "getCityListByStateId.do?stateId="+stateId,
 		   type : "GET",
@@ -37,15 +36,15 @@ $(function() {
 	 	   success : function(response) {
 		 
 		 var cityValues = response.cityList;
-		 $('#city').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
-		 $('#city')//Due to above line all data is clear so i add this line for "select city" label.
+		 $('#'+data.id+'City').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
+		 $('#'+data.id+'City')//Due to above line all data is clear so i add this line for "select city" label.
 			.append(
 					$(
 							"<option value='"+0+"'></option>")
 							.text(
 									"Select City"));
 			for (i = 0; i < cityValues.length; i++) {
-				$('#city')
+				$('#'+data.id+'City')
 						.append(
 								$(
 										"<option value='"+cityValues[i].id+"'></option>")
@@ -54,84 +53,12 @@ $(function() {
 			}
    },
 		   error : function() {
-			 	   $("#city").append($("<option value='0'></option>").text('Select City'))
+			 	   $('#'+data.id+'City').append($("<option value='0'></option>").text('Select City'))
 		   }
 		  });
-});
-});
+}
 
 
-$(function() {
-	$('#currentState')
-			.change(
-		function (){
-	   		var stateId=document.getElementById('currentState').value
-	   
-	   $.ajax({
-		   url : "getCityListByStateId.do?stateId="+stateId,
-		   type : "GET",
-		   contentType : "application/json; charset=utf-8",
-	 	   success : function(response) {
-		 
-		 var cityValues = response.cityList;
-		 $('#currentCity').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
-		 $('#currentCity')//Due to above line all data is clear so i add this line for "select city" label.
-			.append(
-					$(
-							"<option value='"+0+"'></option>")
-							.text(
-									"Select City"));
-			for (i = 0; i < cityValues.length; i++) {
-				$('#currentCity')
-						.append(
-								$(
-										"<option value='"+cityValues[i].id+"'></option>")
-										.text(
-												cityValues[i].cityname));
-			}
-   },
-		   error : function() {
-			 	   $("#currentCity").append($("<option value='0'></option>").text('Select City'))
-		   }
-		  });
-});
-});
-
-$(function() {
-	$('#homeState')
-			.change(
-		function (){
-	   		var stateId=document.getElementById('homeState').value
-	   
-	   $.ajax({
-		   url : "getCityListByStateId.do?stateId="+stateId,
-		   type : "GET",
-		   contentType : "application/json; charset=utf-8",
-	 	   success : function(response) {
-		 
-		 var cityValues = response.cityList;
-		 $('#homeCity').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
-		 $('#homeCity')//Due to above line all data is clear so i add this line for "select city" label.
-			.append(
-					$(
-							"<option value='"+0+"'></option>")
-							.text(
-									"Select City"));
-			for (i = 0; i < cityValues.length; i++) {
-				$('#homeCity')
-						.append(
-								$(
-										"<option value='"+cityValues[i].id+"'></option>")
-										.text(
-												cityValues[i].cityname));
-			}
-   },
-		   error : function() {
-			 	   $("#homeCity").append($("<option value='0'></option>").text('Select City'))
-		   }
-		  });
-});
-});
 </script>
 <script type="text/javascript">
 	jQuery(document).ready(function() {
@@ -338,7 +265,7 @@ function previewImage(){
 										<tr>
 											<td style="padding: 15;">Current Location<font color="red">*</font>:
 											</td><td style="padding: 15;">State<font color="red">*</font></td>
-											<td><form:select path="currentStateId.stateId" id="currentState" style="height:25px; width:158px;">
+											<td><form:select path="currentStateId.stateId" id="currentState" onchange="getCityList(this)" style="height:25px; width:158px;">
 													
 													<option value="null">select</option>
 													<c:forEach items="${stateList}" var="state">
@@ -346,7 +273,7 @@ function previewImage(){
 													</c:forEach>
 												</form:select> <br></td>
 												<td style="padding: 15;">City<font color="red">*</font></td>
-												<td><form:select path="currentCityId.id" id="currentCity" style="height:25px; width:158px;">
+												<td><form:select path="currentCityId.id" id="currentStateCity" style="height:25px; width:158px;">
 													<form:option value="0" label="Select City" />
 													<c:forEach items="${currentCityList}" var="city">
 														<form:option value="${city.id}">${city.cityname} </form:option>
@@ -358,7 +285,7 @@ function previewImage(){
 											<td style="padding: 15;">Preferred Location<font color="red">*</font>:
 											</td>
 											<td style="padding: 15;">State<font color="red">*</font></td>
-											<td width="50%"><form:select path="stateId.stateId" style="height:25px;  width:158px;" id="stateId1">
+											<td width="50%"><form:select path="stateId.stateId" onchange="getCityList(this)" style="height:25px;  width:158px;" id="preferredState">
 													<option value="null">select</option>
 													<c:forEach items="${stateList}" var="state">
 														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
@@ -367,7 +294,7 @@ function previewImage(){
 											<td style="padding: 15;">City<font color="red">*</font>:
 											</td>
 
-											<td width="50%"><form:select path="cityId.id" id="city" style="height:25px;  width:158px;">
+											<td width="50%"><form:select path="cityId.id" id="preferredStateCity" style="height:25px;  width:158px;">
 													<form:option value="0" label="Select City" />
 													<c:forEach items="${cityList}" var="city">
 														<form:option value="${city.id}">${city.cityname} </form:option>
@@ -421,14 +348,14 @@ function previewImage(){
 										<tr>
 											<td style="padding: 15;">State<font color="red">*</font>:
 											</td>
-											<td width="50%"><form:select path="homeState.stateId" id="homeState" style="height:25px;  width:158px;" >
+											<td width="50%"><form:select path="homeState.stateId" id="homeState" onchange="getCityList(this)" style="height:25px;  width:158px;" >
 													<option value="null">select</option>
 													<c:forEach items="${stateList}" var="state">
 														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
 													</c:forEach>
 												</form:select> <br></td>
 												<td style="padding: 15;">City<font color="red">*</font>
-												<td width="50%"><form:select path="homeCity.id" id="homeCity" style="height:25px;  width:158px;">
+												<td width="50%"><form:select path="homeCity.id" id="homeStateCity" style="height:25px;  width:158px;">
 													<option value="null">select</option>
 													<c:forEach items="${homeCityList}" var="city">
 														<form:option value="${city.id}"  >${city.cityname}</form:option>
