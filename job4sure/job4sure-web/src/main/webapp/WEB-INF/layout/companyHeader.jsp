@@ -57,11 +57,11 @@
 						<li id="menu-active"><a href="showCompleteCompanyProfilePage">Update Company Profile</a></li>
 						<li id="menu-active"><a href="setNewPasswordForComp">Reset Password</a></li>
 					</ul></li>
-				<li style="padding-left: 350px;"><img width="17px" src="resources/images/mail.png" /></li>
+		<!-- 		<li style="padding-left: 350px;"><img width="17px" src="resources/images/mail.png" /></li>
 				<li style="padding-right: 110px;"><b>support@job4sure.com</b></li>
 				<li><img width="32px" src="resources/images/facebook.png" /></li>
 				<li><img width="32px" src="resources/images/twitter.png" /></li>
-				<li><img width="32px" src="resources/images/linkedin.png" /></li>
+				<li><img width="32px" src="resources/images/linkedin.png" /></li> -->
 			</ul>
 		</div>
 
