@@ -30,5 +30,23 @@ public class DateFormatUtil {
 		}
 		return numberOfDaysRemaining;
 	}
+
+	public static boolean isValid(String validUpTo) {
+		boolean isValid = false;
+		Date now = new Date();
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			Date ValidityDate = (Date)formatter.parse(validUpTo);
+			if(ValidityDate.compareTo(now)>0){
+        		isValid=true;
+        	}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    return isValid;
+    }
+	
+	
+	
 	
 }

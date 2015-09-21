@@ -1,10 +1,6 @@
 package com.job4sure.serviceImpl;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.job4sure.model.Login;
 import com.job4sure.model.UserRole;
 import com.job4sure.repository.LoginRepository;
+import com.job4sure.util.DateFormatUtil;
 
 
 
@@ -43,21 +40,7 @@ public class LoginServiceImpl implements UserDetailsService{
 
 	
 	private User buildUserForAuthentication(Login login, List<GrantedAuthority> authorities) {
-		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date now = new Date();
-		boolean isValid=false;
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		try {
-			Date ValidityDate = (Date)formatter.parse(login.getValidUpTo());
-			if(ValidityDate.compareTo(now)>0){
-        		isValid=true;
-        	}
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
+		boolean isValid=DateFormatUtil.isValid(login.getValidUpTo());
 		return new User(login.getEmail(), login.getPassword(), login.isEnabled(), isValid, true, true, authorities);
 	}
 
