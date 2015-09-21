@@ -27,9 +27,6 @@ public class UserProfile {
     @Column(name = "RESUME_TITLE")
     private String resume;
 
-    @Column(name = "CURRENT_LOCATION")
-    private String currentlocation;
-
     @OneToOne(targetEntity = Salary.class)
     @JoinColumn(name = "MIN_SALARY_ID", referencedColumnName = "SALARY_ID")
     private Salary minSalary;
@@ -158,14 +155,6 @@ public class UserProfile {
 
     public void setResume(String resume) {
 	this.resume = resume;
-    }
-
-    public String getCurrentlocation() {
-	return currentlocation;
-    }
-
-    public void setCurrentlocation(String currentlocation) {
-	this.currentlocation = currentlocation;
     }
 
     public State getStateId() {
