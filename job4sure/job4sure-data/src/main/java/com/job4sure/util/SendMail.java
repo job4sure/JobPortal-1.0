@@ -72,7 +72,7 @@ public class SendMail {
 			msg += " <br>";
 			msg += "<b>User Name:</b>" + email;
 			msg += " <br>";
-			msg += "" + IConstant.REGISTRATION_verfy_URL + "?registrationId="+regId+"";// used
+			msg += "" + IConstant.REGISTRATION_verfy_URL + "?registrationId=" + regId + "";// used
 			msg += " <br>";
 			msg += "Regards,<br>";
 			msg += "Job Portal";
@@ -85,6 +85,21 @@ public class SendMail {
 
 	}
 
+	public static boolean commomMailSend(String toMailId, String subject, String msg) {
+		try {
+			Message message = new MimeMessage(SendMailProperty.mailProperty());
+			message.setFrom(new InternetAddress(IConstant.FROM_EMAIL_ID));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toMailId));
+			message.setSubject(subject);
+			message.setContent(msg, "text/html");
+			Transport.send(message);
+			System.out.println("Done>>" + msg);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 
-	
+	}
+
 }

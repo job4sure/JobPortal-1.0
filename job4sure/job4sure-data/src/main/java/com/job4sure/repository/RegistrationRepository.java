@@ -23,9 +23,12 @@ public interface RegistrationRepository extends JpaRepository<Registration, Inte
 	@Modifying
 	@Query("UPDATE Registration r SET r.password =:password, r.encrypted =:encrypted WHERE r.registrationId =:registrationId")
 	int updatePassword(@Param("registrationId") int registrationId, @Param("password") String password,
-			@Param("encrypted") String encryptedPassword);
+	                @Param("encrypted") String encryptedPassword);
 
 	@Query("select registration from Registration registration where registration.registrationId=:registrationId")
 	public Registration verifySubAdmin(@Param("registrationId") Integer registrationId);
+
+	@Query("select registration from Registration registration where registration.roleType=:roleType")
+	public List<Registration> getUserListByRole(@Param("roleType") Integer roleType);
 
 }

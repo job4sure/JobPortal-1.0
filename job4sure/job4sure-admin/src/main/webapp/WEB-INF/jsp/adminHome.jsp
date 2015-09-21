@@ -65,11 +65,11 @@ th, td {
 			<div class="padding box">
 				<!-- Logo (Max. width = 200px) -->
 				<p id="logo">
-					<a href="http://all-free-download.com/free-website-templates/"><img
+					<a href="javascript:void(0)"><img
 						src="resources/design/logo.gif" alt="" /></a>
 				</p>
 				<!-- Search -->
-				<form action="http://all-free-download.com/free-website-templates/"
+				<form action="javascript:void(0)"
 					method="get" id="search">
 					<fieldset>
 
@@ -102,36 +102,36 @@ th, td {
 			<!-- /padding -->
 			<ul class="box">
 				<li><a
-					href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+					href="javascript:void(0)">Privacy</a></li>
 				&nbsp &nbsp &nbsp &nbsp
 				<li><a
-					href="http://all-free-download.com/free-website-templates/">Terms
+					href="javascript:void(0)">Terms
 						And Conditions</a></li> &nbsp &nbsp &nbsp &nbsp
 				<li><a
-					href="http://all-free-download.com/free-website-templates/">Contact
+					href="javascript:void(0)">Contact
 						Us</a></li> &nbsp &nbsp &nbsp &nbsp
 
 				<li><a
-					href="http://all-free-download.com/free-website-templates/">Leave
+					href="javascript:void(0)">Leave
 						Us Feedback</a></li> &nbsp &nbsp &nbsp &nbsp
 
 				<li><a
-					href="http://all-free-download.com/free-website-templates/"></a></li>
+					href="javascript:void(0)"></a></li>
 
 				&nbsp &nbsp &nbsp &nbsp
 
 				<li><a
-					href="http://all-free-download.com/free-website-templates/"></a></li>
+					href="javascript:void(0)"></a></li>
 
 				&nbsp &nbsp &nbsp &nbsp
 
 				<li><a
-					href="http://all-free-download.com/free-website-templates/"></a></li>
+					href="javascript:void(0)"></a></li>
 
 				&nbsp &nbsp &nbsp &nbsp
 
 				<li><a
-					href="http://all-free-download.com/free-website-templates/"></a></li>
+					href="javascript:void(0)"></a></li>
 
 				&nbsp &nbsp &nbsp &nbsp
 		</div>

@@ -44,8 +44,13 @@ public class IConstant {
 	// Security roles:
 	public static final String USER_ROLE = "USER";
 	public static final String COMPANY_ROLE = "COMP";
-	//public static final String ADMIN_ROLE = "ADMIN";
-	//public static final String SUBADMIN_ROLE = "SUBADMIN";
+	public static final String ADMIN_ROLE = "ADMIN";
+	public static final String SUBADMIN_ROLE = "SUBADMIN";
+
+	public static final int USER_ROLE_ID = 1;
+	public static final int COMPANY_ROLE_ID = 2;
+	public static final int ADMIN_ROLE_ID = 3;
+	public static final int SUBADMIN_ROLE_ID = 4;
 
 	// Messages for viewAllJobDesc.jsp
 	public static final String EMPTY_LIST = "<h2 id=" + "show" + ">You have not created any job.</h2>";
@@ -61,11 +66,11 @@ public class IConstant {
 	// Message for UserProfileController
 	public static final String MOBILE_LENGTH_VALIDATION = "Mobile number should be 10 digit";
 
-	//Message for AdminJobDescriptionController
-	public static final int JD_PENDING_STATUS=1;
-	public static final int JD_APPROVED_STATUS=2;
-	public static final int JD_REJECTED_STATUS=3;
-	public static final String JD_APPROVED_MSG="Successfully approved job description";
-	public static final String JD_REJECTED_MSG="Successfully rejected job description";
-	
+	// Message for AdminJobDescriptionController
+	public static final int JD_PENDING_STATUS = 1;
+	public static final int JD_APPROVED_STATUS = 2;
+	public static final int JD_REJECTED_STATUS = 3;
+	public static final String JD_APPROVED_MSG = "Successfully approved job description";
+	public static final String JD_REJECTED_MSG = "Successfully rejected job description";
+
 }

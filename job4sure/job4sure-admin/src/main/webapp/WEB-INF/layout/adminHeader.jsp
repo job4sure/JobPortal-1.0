@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -53,8 +54,9 @@
 		<div id="menu" class="box">
 			<ul class="box">
 			<li id="menu-active"><a href="showAdminHomePage"><span>HOME</span></a>
+			<sec:authorize access="hasRole('ADMIN')">
 			<li id="menu-active"><a href="addSubAdmin"><span>Add Sub Admin</span></a>
-			
+			</sec:authorize>
 				<li id="menu-active"><a href="#"><span>Show Job
 							Description</span></a>
 					<ul class="sub-menu">
