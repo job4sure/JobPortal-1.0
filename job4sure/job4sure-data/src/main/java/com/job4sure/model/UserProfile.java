@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "userprofile")
@@ -51,25 +52,21 @@ public class UserProfile {
 	this.maxSalary = maxSalary;
     }
 
-    @OneToOne(targetEntity = State.class)
-    @JoinColumn(name = "PREFERRED_STATE_ID", referencedColumnName = "STATE_ID")
+    @Transient
     private State stateId;
 
     @OneToOne(targetEntity = City.class)
     @JoinColumn(name = "PREFERRED_CITY_ID", referencedColumnName = "CITY_ID")
     private City cityId;
 
-    @OneToOne(targetEntity = State.class)
-    @JoinColumn(name = "CURRENT_STATE_ID", referencedColumnName = "STATE_ID")
+    @Transient
     private State currentStateId;
 
     @OneToOne(targetEntity = City.class)
     @JoinColumn(name = "CURRENT_CITY_ID", referencedColumnName = "CITY_ID")
     private City currentCityId;
 
-    
-    @OneToOne(targetEntity = State.class)
-    @JoinColumn(name = "HOME_STATE_ID", referencedColumnName = "STATE_ID")
+    @Transient
     private State homeState;
 
     @OneToOne(targetEntity = City.class)
