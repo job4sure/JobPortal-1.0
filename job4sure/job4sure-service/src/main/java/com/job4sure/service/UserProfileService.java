@@ -12,34 +12,25 @@ import com.job4sure.model.Attachment;
 import com.job4sure.model.City;
 import com.job4sure.model.UserProfile;
 
-
 public interface UserProfileService {
 
-	public UserProfile getLoggedInUserCompleteInfo(Integer registrationId);
+    public UserProfile getLoggedInUserCompleteInfo(Integer registrationId);
 
-	public Attachment getAllAttachment(Integer registrationId);
+    public Attachment getAllAttachment(Integer registrationId);
 
-	public int getprofileCompletedInPercent(Integer registrationId);
+    public int getprofileCompletedInPercent(Integer registrationId);
 
-	public List salaryAnnual();
+    public List industryData();
 
-	public List industryData();
+    public List roleData();
 
-	public List currentLocation();
+    public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
+		    CommonsMultipartFile[] upload, String attchmentName);
 
-	public List prefferedLocation();
+    public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException;
 
-	public List roleData();
+    public List<City> getCity(Integer stateId);
 
-	public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
-			CommonsMultipartFile[] upload, String attchmentName);
-
-	public List experienceData();
-
-	public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException;
-	
-public List<City> getCity(Integer stateId);
-	
-	public List getAllState();
+    public List getAllState();
 
 }

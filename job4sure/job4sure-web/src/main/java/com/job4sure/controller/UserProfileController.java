@@ -24,8 +24,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.job4sure.model.Attachment;
 import com.job4sure.model.City;
 import com.job4sure.model.Registration;
-import com.job4sure.model.State;
 import com.job4sure.model.UserProfile;
+import com.job4sure.service.JobDescriptionService;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.service.UserProfileService;
 import com.job4sure.util.IConstant;
@@ -41,6 +41,8 @@ public class UserProfileController {
     private RegistrationService registrationService;
     @Autowired
     private RegistrationValidator registrationValidator;
+    @Autowired
+    private JobDescriptionService jobDescriptionService;
 
     @RequestMapping(value = "/userProfileHomePage", method = RequestMethod.GET)
     public String showuserProfile(Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
@@ -76,27 +78,6 @@ public class UserProfileController {
 	return "userBasicInfoPage";
     }
 
-    @SuppressWarnings("rawtypes")
-    @RequestMapping(value = "/userCompletInfoPageShow", method = RequestMethod.GET)
-    public String Complete_profile(Map<String, Object> map, String message, ModelMap model) {
-	List currentLocation = userProfileService.currentLocation();
-	model.addAttribute("location", currentLocation);
-	List annualSalary = userProfileService.salaryAnnual();
-	model.addAttribute("salary", annualSalary);
-	List preferedLocation = userProfileService.prefferedLocation();
-	model.addAttribute("preferlocation", preferedLocation);
-	List industry = userProfileService.industryData();
-	model.addAttribute("industrydata", industry);
-	List role = userProfileService.roleData();
-	model.addAttribute("roletype12", role);
-	map.put("userProfile", new UserProfile());
-	model.addAttribute("message", message);
-	List experienceList = userProfileService.experienceData();
-	model.addAttribute("experienceList", experienceList);
-	return "userCompleteInfo";
-    }
-
-    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
     public String updateCompleteProfile(@ModelAttribute("userProfile") UserProfile userProfile,
 		    Map<String, Object> map, String message, ModelMap model, HttpServletRequest request,
@@ -110,32 +91,17 @@ public class UserProfileController {
 	    model.addAttribute("attachment", path);
 	}
 	if (userProfile != null) {
+	    //List industry = userProfileService.industryData();
 	    map.put("userProfile", userProfile);
 	    model.addAttribute("message", message);
-	    List currentLocation = userProfileService.currentLocation();
-	    model.addAttribute("location", currentLocation);
-	    List annualSalary = userProfileService.salaryAnnual();
-	    model.addAttribute("salary", annualSalary);
-	    List preferedLocation = userProfileService.prefferedLocation();
-	    model.addAttribute("preferlocation", preferedLocation);
-	    List industry = userProfileService.industryData();
-	    model.addAttribute("industrydata", industry);
-	    List role = userProfileService.roleData();
-	    model.addAttribute("roletype12", role);
-	    List experienceList = userProfileService.experienceData();
-	    model.addAttribute("experienceList", experienceList);
-	    List<State> stateList = userProfileService.getAllState();
-	    model.addAttribute("stateList", stateList);
-	    // List<City> cityList = userProfileService.getCity(31);
-	    /* model.addAttribute("cityList", cityList); */
-	    // System.out.println(cityList);
-	   
-	    List<City> cityList = userProfileService.getCity(userProfile.getStateId().getStateId());
-	    List<City> currentCityList = userProfileService.getCity(userProfile.getCurrentStateId().getStateId());
-	    List<City> homeCityList = userProfileService.getCity(userProfile.getHomeState().getStateId());
-	    model.addAttribute("homeCityList", homeCityList);
-	    model.addAttribute("currentCityList", currentCityList);
-	    model.addAttribute("cityList", cityList);
+	    model.addAttribute("salary", jobDescriptionService.getAllSalary());
+	   // model.addAttribute("industrydata", industry);
+	    model.addAttribute("roletype12", userProfileService.roleData());
+	    model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
+	    model.addAttribute("stateList", userProfileService.getAllState());
+	    model.addAttribute("homeCityList", userProfileService.getCity(userProfile.getHomeState().getStateId()));
+	    model.addAttribute("currentCityList", userProfileService.getCity(userProfile.getCurrentStateId().getStateId()));
+	    model.addAttribute("cityList", userProfileService.getCity(userProfile.getStateId().getStateId()));
 	    return "userCompleteInfo";
 	} else {
 	    model.addAttribute("message", IConstant.FIRST_COMPLETE_INFO_MESSAGE);
@@ -148,7 +114,6 @@ public class UserProfileController {
 		    @RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
 		    String attchmentName, ModelMap model, HttpServletRequest request) {
 	final MultipartFile filePart = file;
-	boolean status = false;
 	file.getOriginalFilename();
 	HttpSession session = request.getSession();
 	Registration registration = (Registration) session.getAttribute("registration");
@@ -164,8 +129,6 @@ public class UserProfileController {
 	Registration registration = (Registration) session.getAttribute("registration");
 	registration.setRegistrationId(registration.getRegistrationId());
 	map.put("registration", registration);
-	// model.addAttribute("message",
-	// "Password is reset Successfully Please login Again!!");
 	return "newUserPassword";
     }
 
@@ -183,9 +146,8 @@ public class UserProfileController {
 	if (status) {
 	    session.setAttribute("registration", registration);
 	    model.addAttribute("message", IConstant.USER_BASIC_INFO_SUCCESS_MESSAGE);
-	} else {
+	} else
 	    model.addAttribute("message", IConstant.USER_BASIC_INFO_FAILURE_MESSAGE);
-	}
 	return "redirect:/updateBasicProfile";
     }
 
