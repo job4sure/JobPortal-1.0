@@ -461,7 +461,7 @@ console.log(all_values);
 										<tr>
 											<td style="padding: 15;">State<font color="red">*</font>:
 											</td>
-											<td width="50%"><form:select path="homeState.stateId" id="homeState" onchange="getCityList(this)" style="height:25px;  width:158px;" >
+											<td width="50%"><form:select path="homeCity.state.stateId" id="homeState" onchange="getCityList(this)" style="height:25px;  width:158px;" >
 													<option value="null">select</option>
 													<c:forEach items="${stateList}" var="state">
 														<form:option value="${state.stateId}"  >${state.stateName}</form:option>

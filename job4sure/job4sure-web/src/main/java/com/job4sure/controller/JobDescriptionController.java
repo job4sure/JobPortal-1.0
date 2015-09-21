@@ -23,6 +23,7 @@ import com.job4sure.model.JobDescription;
 import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.model.Registration;
 import com.job4sure.model.Skills;
+import com.job4sure.service.AdminJobDescriptionService;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.IConstant;
 import com.job4sure.util.JobDescriptionDropDownList;
@@ -32,7 +33,10 @@ public class JobDescriptionController {
 
     @Autowired
     private JobDescriptionService jobDescriptionService;
-
+    
+    @Autowired
+    AdminJobDescriptionService adminJobDescriptionService;
+    
     @Autowired
     @Qualifier("jobDescriptionValidator")
     private Validator validator;
@@ -101,8 +105,7 @@ public class JobDescriptionController {
     @RequestMapping(value = "/getApprovedJobDescriptionInUser", method = RequestMethod.GET)
 	public String viewApprovedJobDescription(Model model, HttpServletRequest request,
 			@RequestParam(required = false) String message) {
-		Integer jdApprovedStatus = 1;
-		List<JobDescription> joblist = jobDescriptionService.getAllApprovedJobDescription(jdApprovedStatus);
+		List<JobDescription> joblist = adminJobDescriptionService.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
 		if (joblist.isEmpty())
 			model.addAttribute("message", IConstant.EMPTY_LIST);
 		else {

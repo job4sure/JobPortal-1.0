@@ -76,8 +76,4 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 	return experienceRepository.findAll();
     }
 
-	public List<JobDescription> getAllApprovedJobDescription(int jdStatus) {
-		return jobDescriptionRepository.getJobDescriptionApprovedList(jdStatus);
-	}
-
 }

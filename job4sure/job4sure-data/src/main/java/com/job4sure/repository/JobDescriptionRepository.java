@@ -14,9 +14,6 @@ public interface JobDescriptionRepository extends JpaRepository<JobDescription, 
 	public List<JobDescription> findByCompanyId(@Param("companyId") int companyId);
 
 	@Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdStatus")
-	List<JobDescription> getJobDescriptionApprovedList(@Param("jdStatus") int jdStatus);
-
-	@Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdStatus")
 	List<JobDescription> getJobDescriptionListByStatus(@Param("jdStatus") int jdStatus);
 
 }

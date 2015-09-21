@@ -74,7 +74,7 @@
 			var pager = new Pager('results', 2);
 			pager.init();
 			pager.showPageNav('pager','pageNavPosition');
-			pager.showPage(1);
+			pager.showPage(2);
 		</script>
 	</div>
 	</div>
