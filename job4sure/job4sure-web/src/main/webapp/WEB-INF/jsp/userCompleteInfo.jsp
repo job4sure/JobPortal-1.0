@@ -163,6 +163,119 @@ function previewImage(){
 	  }
 	}
 </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+
+	var all_values=[];
+
+	var initial_options=$('#sf-sal-min').get(0).options;
+	for(i=0; i<initial_options.length; i++)
+	{
+		var val=parseInt(initial_options[i].value);
+		var lbl=initial_options[i].label;		
+		all_values[i]={value: val, label: lbl };
+
+	}
+
+	document.getElementById('sf-sal-min').options;//$('#sf-size-min').get(0).options;
+	
+	$('#sf-sal-min').change(function(){
+		var $src=$('#sf-sal-min');
+		var $target=$('#sf-sal-max');
+		var prev_max_value=$target.val();
+		var current_min_value=$src.val();
+
+		//clear max drop down list
+		$target.get(0).options.length=0;
+		
+		var j=0;
+		for(i=$src.get(0).selectedIndex; i<all_values.length; i++)
+		{
+			$target.get(0).options[j++]=new Option(all_values[i+1].label, all_values[i+1].value);
+		}
+		$target.val(prev_max_value);
+console.log(all_values);		
+		
+	});
+
+	$('#sf-sal-max').change(function(){
+		var $src=$('#sf-sal-max');
+		var $target=$('#sf-sal-min');
+		var prev_min_value=$target.val();
+		var current_max_value=parseInt($src.val());
+
+		//clear min drop down list
+		$target.get(0).options.length=0;
+		
+		var j=0;
+		for(i=0; i<all_values.length;  i++)
+		{
+			if (current_max_value > all_values[i].value)
+				$target.get(0).options[j++]=new Option(all_values[i+1].label, all_values[i+1].value);
+		}
+		$target.val(prev_min_value);
+	});
+
+
+});
+</script>
+<script>
+$(function(){
+
+	var all_values=[];
+
+	var initial_options=$('#sf-size-min').get(0).options;
+	for(i=0; i<initial_options.length; i++)
+	{
+		var val=parseInt(initial_options[i].value);
+		var lbl=initial_options[i].label;		
+		all_values[i]={value: val, label: lbl };
+
+	}
+
+	document.getElementById('sf-size-min').options;//$('#sf-size-min').get(0).options;
+	
+	$('#sf-size-min').change(function(){
+		var $src=$('#sf-size-min');
+		var $target=$('#sf-size-max');
+		var prev_max_value=$target.val();
+		var current_min_value=$src.val();
+
+		//clear max drop down list
+		$target.get(0).options.length=0;
+		
+		var j=0;
+		for(i=$src.get(0).selectedIndex; i<all_values.length; i++)
+		{
+			$target.get(0).options[j++]=new Option(all_values[i+1].label, all_values[i+1].value);
+		}
+		$target.val(prev_max_value);
+console.log(all_values);		
+		
+	});
+
+	$('#sf-size-max').change(function(){
+		var $src=$('#sf-size-max');
+		var $target=$('#sf-size-min');
+		var prev_min_value=$target.val();
+		var current_max_value=parseInt($src.val());
+
+		//clear min drop down list
+		$target.get(0).options.length=0;
+		
+		var j=0;
+		for(i=0; i<all_values.length;  i++)
+		{
+			if (current_max_value > all_values[i].value)
+				$target.get(0).options[j++]=new Option(all_values[i+1].label, all_values[i+1].value);
+		}
+		$target.val(prev_min_value);
+	});
+
+
+});
+</script>
 </head>
 <div id="main">
 	<hr class="noscreen" />
@@ -217,12 +330,12 @@ function previewImage(){
 							<fieldset>
 								<center>
 									<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
-										<div width="41%" valign="right">
+										<tr><div width="41%" valign="right">
 											<img src="${attachment}" id="preview" height="140px" width="140px" />
-										</div>
+										</div></tr>
 										<form:hidden path="userId" />
 										<tr>
-											<td">Resume HeadLine<font color="red">*</font>:
+											<td>Resume HeadLine<font color="red">*</font>:
 											</td>
 											<td><form:input type="text" size="27" path="resume" class="validate[required] input-text" maxlength="25" /><br></td>
 										</tr>
@@ -239,11 +352,11 @@ function previewImage(){
 										<tr>
 											<td style="padding: 15;">Experience<font color="red">*</font>:
 											</td>
-											<td><form:select path="minExperience.experienceId" onChange="checkMinExp(this);" id="sel1">
+											<td><form:select path="minExperience.experienceId"  id="sf-size-min">
 													<c:forEach items="${experienceList}" var="experience">
 														<form:option value="${experience.experienceId}" label="${experience.experience}" />
 													</c:forEach>
-												</form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId" disable="disable" id="sel2">
+												</form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId"  id="sf-size-max">
 													<c:forEach items="${experienceList}" var="experience">
 														<form:option value="${experience.experienceId}" label="${experience.experience}" />
 													</c:forEach>
@@ -252,11 +365,11 @@ function previewImage(){
 										<tr>
 											<td >Annual Salary<font color="red">*</font>:
 											</td>
-											<td ><form:select path="minSalary.salaryId" onChange="checkMinSal(this);" id="salary1">
+											<td ><form:select path="minSalary.salaryId"  id="sf-sal-min">
 													<c:forEach items="${salary}" var="salary">
 														<form:option value="${salary.salaryId}" label="${salary.salary}" />
 													</c:forEach>
-												</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId" id="salary2">
+												</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId" id="sf-sal-max">
 													<c:forEach items="${salary}" var="salary">
 														<form:option value="${salary.salaryId}" label="${salary.salary}" />
 													</c:forEach>
