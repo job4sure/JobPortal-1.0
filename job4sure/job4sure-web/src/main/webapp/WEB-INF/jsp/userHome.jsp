@@ -55,9 +55,13 @@
 				<br>
 				<div class="wrapper">
 					<div class="column">
-						<b>Resume Headline:&nbsp;&nbsp;</b>${userProfile.resume}<br> <br> <b>Email:&nbsp;&nbsp;</b>${loggedInEmail}<br>
-						<br> <b>Current Location:&nbsp;&nbsp;</b>${userProfile.currentlocation}<br>
-						<%-- <br> <b>Preferred Location:&nbsp;&nbsp;</b>${userProfile.prefferedlocation}<br> --%>
+						<b>Resume Headline:&nbsp;&nbsp;</b>${userProfile.resume}<br> <br> 
+						<b>Email:&nbsp;&nbsp;</b>${loggedInEmail}<br>
+						<br> <b>Current Location:&nbsp;&nbsp;</b><br>
+						<b>State:&nbsp;</b> ${userProfile.currentStateId.stateName}&nbsp;&nbsp;<br>
+						<b>City:&nbsp;</b>${userProfile.currentCityId.cityname}<br>
+						 <br> <b>Preferred Location:&nbsp;&nbsp;</b><br>
+						 <b>State:&nbsp;</b>${userProfile.stateId.stateName}&nbsp;&nbsp; <b>City:&nbsp;</b>${userProfile.cityId.cityname}<br>
 						<br> <b>Preferred Industry:&nbsp;&nbsp;</b>${userProfile.industry}<br> <br> <b>Role:&nbsp;&nbsp;</b>${userProfile.roletype}<br>
 						<br> <b>Annual Salary:&nbsp;&nbsp;</b>${userProfile.minSalary.salary}<br> <br> <b>Phone:&nbsp;&nbsp;</b>${userProfile.phone}<br>
 						<br>
@@ -65,7 +69,7 @@
 					<div class="column">
 						<b>Date of Birth:&nbsp;&nbsp;</b>${userProfile.dob}<br> <br> <b>Gender:&nbsp;&nbsp;</b>${userProfile.gender}<br>
 						<br> <b>Marital Status:&nbsp;&nbsp;</b>${userProfile.maritalstatus}<br> <br> <b>Permanent
-							Address:&nbsp;&nbsp;</b>${userProfile.address}<br> <br> <b>Hometown/City:&nbsp;&nbsp;</b><%-- ${userProfile.city}<br> --%>
+							Address:&nbsp;&nbsp;</b>${userProfile.address}<br> <br> <b>Hometown/City:&nbsp;&nbsp;</b>${userProfile.homeCity.cityname}<br>
 						<br> <b>Zip:&nbsp;&nbsp;</b>${userProfile.zip}<br> <br>  <b>State:&nbsp;&nbsp;</b><%--${userProfile.state}<br> --%>
 						<br> <b>Total Experience: &nbsp;&nbsp;</b>${userProfile.minExperience.experience}<br> <br>
 					</div>
