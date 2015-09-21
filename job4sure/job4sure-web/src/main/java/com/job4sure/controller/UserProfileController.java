@@ -99,9 +99,9 @@ public class UserProfileController {
 	    model.addAttribute("roletype12", userProfileService.roleData());
 	    model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
 	    model.addAttribute("stateList", userProfileService.getAllState());
-	    model.addAttribute("homeCityList", userProfileService.getCity(userProfile.getHomeState().getStateId()));
-	    model.addAttribute("currentCityList", userProfileService.getCity(userProfile.getCurrentStateId().getStateId()));
-	    model.addAttribute("cityList", userProfileService.getCity(userProfile.getStateId().getStateId()));
+	    model.addAttribute("homeCityList", userProfileService.getCity(userProfile.getHomeCity().getState().getStateId()));
+	    model.addAttribute("currentCityList", userProfileService.getCity(userProfile.getCurrentCityId().getState().getStateId()));
+	    model.addAttribute("cityList", userProfileService.getCity(userProfile.getCityId().getState().getStateId()));//getStateId().getStateId())
 	    return "userCompleteInfo";
 	} else {
 	    model.addAttribute("message", IConstant.FIRST_COMPLETE_INFO_MESSAGE);

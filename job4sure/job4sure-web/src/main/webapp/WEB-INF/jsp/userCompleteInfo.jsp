@@ -265,7 +265,7 @@ function previewImage(){
 										<tr>
 											<td style="padding: 15;">Current Location<font color="red">*</font>:
 											</td><td style="padding: 15;">State<font color="red">*</font></td>
-											<td><form:select path="currentStateId.stateId" id="currentState" onchange="getCityList(this)" style="height:25px; width:158px;">
+											<td><form:select path="currentCityId.state.stateId" id="currentState" onchange="getCityList(this)" style="height:25px; width:158px;">
 													
 													<option value="null">select</option>
 													<c:forEach items="${stateList}" var="state">
@@ -285,7 +285,7 @@ function previewImage(){
 											<td style="padding: 15;">Preferred Location<font color="red">*</font>:
 											</td>
 											<td style="padding: 15;">State<font color="red">*</font></td>
-											<td width="50%"><form:select path="stateId.stateId" onchange="getCityList(this)" style="height:25px;  width:158px;" id="preferredState">
+											<td width="50%"><form:select path="cityId.state.stateId" onchange="getCityList(this)" style="height:25px;  width:158px;" id="preferredState">
 													<option value="null">select</option>
 													<c:forEach items="${stateList}" var="state">
 														<form:option value="${state.stateId}"  >${state.stateName}</form:option>
