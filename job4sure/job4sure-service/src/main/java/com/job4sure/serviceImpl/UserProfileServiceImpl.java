@@ -24,8 +24,6 @@ import com.job4sure.repository.AttachmentRepository;
 import com.job4sure.repository.CityRepository;
 import com.job4sure.repository.EducationRepository;
 import com.job4sure.repository.IndustryRepository;
-import com.job4sure.repository.LocationRepository;
-import com.job4sure.repository.PrefferedLocationRepository;
 import com.job4sure.repository.ProfileCompleteRepository;
 import com.job4sure.repository.RoleRepository;
 import com.job4sure.repository.StateRepository;
@@ -50,12 +48,6 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Autowired
     private IndustryRepository industry;
-
-    @Autowired
-    private PrefferedLocationRepository prefferedlocation;
-
-    @Autowired
-    private LocationRepository currentlocation;
 
     @Autowired
     private CityRepository cityRepository;
