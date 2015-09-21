@@ -2,24 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>Profile</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
+<link rel="stylesheet" href="resources/css/template.css" type="text/css" />
+<link rel="stylesheet"  type="text/css" href="resources/css/companyProfile.css" />
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<!-- <script type="text/javascript">
-	$(document).ready(function(){
-		$(".tabs > ul").tabs();
-	});
-	</script>
-	 -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#formID").validationEngine();
@@ -30,44 +22,6 @@
 		$('#formID').validationEngine('hideAll');
 	}
 </script>
-
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
-<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-
-<link rel="stylesheet" media="screen,projection" type="text/css" href="css/reset.css" />
-<link rel="stylesheet" media="screen,projection" type="text/css" href="css/main.css" />
-<link rel="stylesheet" media="screen,projection" type="text/css" href="css/2col.css" title="2col" />
-<link rel="alternate stylesheet" media="screen,projection" type="text/css" href="css/1col.css" title="1col" />
-<!--[if lte IE 6]><link rel="stylesheet" media="screen,projection" type="text/css" href="css/main-ie6.css" /><![endif]-->
-<link rel="stylesheet" media="screen,projection" type="text/css" href="css/style.css" />
-<link rel="stylesheet" media="screen,projection" type="text/css" href="css/mystyle.css" />
-<link rel="stylesheet"  type="text/css" href="css/companyProfile.css" />
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/switcher.js"></script>
-<script type="text/javascript" src="js/toggle.js"></script>
-<script type="text/javascript" src="js/ui.core.js"></script>
-<script type="text/javascript" src="js/ui.tabs.js"></script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".tabs > ul").tabs();
-	});
-</script>
-
-
- <script type="text/javascript">
-	jQuery(document).ready(function() {
-		// binds form submission and fields to the validation engine
-		jQuery("#formID").validationEngine({
-			onFormSuccess : formSuccess,
-			onFormFailure : formFailure
-		});
-	});
-</script>
-
 <script type="text/javascript">
 	function previewImage(input) {
 		var preview = document.getElementById('preview');
