@@ -5,6 +5,9 @@ import java.security.Key;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -38,4 +41,12 @@ public class EncryptDecrypt {
 		Key key = new SecretKeySpec(keyValue, ALGO);
 		return key;
 	}
+
+	public static String springSecurityEncription(String password) {
+			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			password = passwordEncoder.encode(password);
+	    return password;
+    }
+	
+	
 }

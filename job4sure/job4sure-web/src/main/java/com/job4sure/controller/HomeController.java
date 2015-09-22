@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.Attachment;
+import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.Login;
 import com.job4sure.model.Registration;
+import com.job4sure.service.CompanyProfileService;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.util.DateFormatUtil;
 import com.job4sure.util.EncryptDecrypt;
@@ -31,6 +33,9 @@ public class HomeController {
     @Autowired
     private RegistrationService registrationService;
 
+    @Autowired
+    private CompanyProfileService companyProfileService;
+    
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String showWelcomePage() {
 	return "welcome";
@@ -80,7 +85,9 @@ public class HomeController {
     public String showCompPage(Map<String, Object> map, ModelMap model, HttpServletRequest request) throws IOException {
 	HttpSession session = request.getSession();
 	Registration registration = (Registration) session.getAttribute("registration");
-	map.put("Registration", new Registration());
+	CompanyProfileModel companyProfile = companyProfileService.getCompanyCompleteInfo(registration
+					.getRegistrationId());
+	model.addAttribute("companyProfile", companyProfile);
 	model.addAttribute("registration", registration);
 	Attachment attachment = registrationService.getAllAttachment(registration.getRegistrationId());
 	if (attachment != null) {

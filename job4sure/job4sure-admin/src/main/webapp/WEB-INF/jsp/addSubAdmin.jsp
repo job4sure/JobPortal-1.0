@@ -135,7 +135,7 @@ jQuery(document).ready(function(){
 					<tr>
 						<td><label id="useremail">User Email*:</label><label id="companyemail" style="display: none;">Employee Email*:</label></td>
 						<td><form:input type="text" size="40" path="email" id="email"
-								class="validate[required,custom[email],maxSize[50]] input-text" maxlength="80"/>&nbsp&nbsp&nbsp&nbsp<span style="color: red"><form:errors path="email"></form:errors></span></td>
+								class="validate[required,custom[email],maxSize[50]] input-text" maxlength="80"/>   <span style="color: red"><form:errors path="email"></form:errors></span></td>
 					</tr>
 			        
 					<tr>
@@ -145,7 +145,7 @@ jQuery(document).ready(function(){
 
 				</table>
 			</div>
-		</p>
+		
 	</form:form>
 	</div>
  </div>

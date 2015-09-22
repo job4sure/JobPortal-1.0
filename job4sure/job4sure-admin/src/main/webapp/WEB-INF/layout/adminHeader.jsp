@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@page session="true"%>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html  lang="en">
 <head>
 <title>Adminizio Lite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -60,9 +60,9 @@
 				<li id="menu-active"><a href="#"><span>Show Job
 							Description</span></a>
 					<ul class="sub-menu">
-						<li><a href="showApprovedJobDescriptions">Approved</li>
-						<li><a href="showPendingJobDescriptions">Pending Approval</li>
-						<li><a href="showRejectedJobDescriptions">Rejected</li>
+						<li><a href="showApprovedJobDescriptions">Approved</a></li>
+						<li><a href="showPendingJobDescriptions">Pending Approval</a></li>
+						<li><a href="showRejectedJobDescriptions">Rejected</a></li>
 					</ul></li>
 					
 				

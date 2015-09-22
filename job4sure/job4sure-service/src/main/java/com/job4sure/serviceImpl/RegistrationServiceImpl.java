@@ -47,9 +47,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO_DATE_FORMAT);
 			String strDate = date1.format(date);
 			registration.setValidUpTo(strDate);
-			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			String password = registration.getPassword();
-			password = passwordEncoder.encode(password);
+			String password =EncryptDecrypt.springSecurityEncription(registration.getPassword());
 			registration.setEnabled(0);
 			registration.setEncrypted(password);
 			Registration userregistration = registrationRepository.save(registration);

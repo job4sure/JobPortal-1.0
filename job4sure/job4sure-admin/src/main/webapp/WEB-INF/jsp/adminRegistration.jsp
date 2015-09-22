@@ -71,7 +71,7 @@
 							<td><form:input type="text" size="40" path="email"
 									id="email"
 									class="validate[required,custom[email],maxSize[50]] input-text"
-									maxlength="80" onblur="emailVarification(this);" />&nbsp&nbsp&nbsp&nbsp<span
+									maxlength="80" onblur="emailVarification(this);" />&nbsp;&nbsp;&nbsp;&nbsp;<span
 								style="color: red"><form:errors path="email"></form:errors></span></td>
 						</tr>
 						<tr>
@@ -94,8 +94,7 @@
 							<td><form:input type="password" size="40"
 									path="conformPassword"
 									class="validate[required,equals[password]] input-text"
-									id="cpassword" maxlength="12" />&nbsp&nbsp&nbsp&nbsp<span
-								id="error" style="color: #F00;" /></td>
+									id="cpassword" maxlength="12" />&nbsp;&nbsp;&nbsp;&nbsp;<span id="error" style="color: #F00;"></span></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -106,7 +105,7 @@
 								id="contactNo" style="display: none;">Contact Number.*:</label></td>
 							<td><form:input type="text" size="40" path="mobileNo"
 									class="validate[required,custom[phone],minSize[10],maxSize[10]] input-text"
-									maxlength="10" id="mobileNo" />&nbsp&nbsp&nbsp&nbsp<span
+									maxlength="10" id="mobileNo" />&nbsp;&nbsp;&nbsp;&nbsp;<span
 								style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 						</tr>
 						<tr>
@@ -117,5 +116,7 @@
 					</table>
 				</div>
 			</form:form>
+			</div>
+			</div>
 </body>
 </html>

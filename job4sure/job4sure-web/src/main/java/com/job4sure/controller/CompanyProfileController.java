@@ -43,7 +43,8 @@ public class CompanyProfileController {
 
 	@RequestMapping(value = "/showCompleteCompanyProfilePage", method = RequestMethod.GET)
 	public String showCompleteCompanyProfilePage(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,
-			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) throws IOException {
+	                Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
+	                throws IOException {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		Attachment attachment = companyProfileService.getCompanyAttachment(registration.getRegistrationId());
@@ -66,15 +67,15 @@ public class CompanyProfileController {
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompanyCompleteProfile", method = RequestMethod.POST)
 	public String saveCompanyCompleteProfile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,
-			@RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
-			String attchmentName, ModelMap model, HttpServletRequest request) {
+	                @RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
+	                String attchmentName, ModelMap model, HttpServletRequest request) {
 		final MultipartFile filePart = file;
 		boolean status = false;
 		file.getOriginalFilename();
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		companyProfile.setRegistrationId(registration.getRegistrationId());
-		companyProfileService.saveCompanyProfile(companyProfile,filePart,upload,attchmentName);
+		companyProfileService.saveCompanyProfile(companyProfile, filePart, upload, attchmentName);
 		if (companyProfile.getRegistrationId() == null) {
 			model.addAttribute("message", IConstant.COMPANY_COMPLETE_INFO_MESSAGE);
 			return "redirect:/CompanyProfile";
@@ -90,9 +91,7 @@ public class CompanyProfileController {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		CompanyProfileModel companyProfile = companyProfileService.getCompanyCompleteInfo(registration
-				.getRegistrationId());
-		session.setAttribute("companyProfile", companyProfile);
-		map.put("companyprofile", new CompanyProfileModel());
+		                .getRegistrationId());
 		model.addAttribute("companyProfile", companyProfile);
 		return "companyDetailsViewPage";
 	}
@@ -100,7 +99,7 @@ public class CompanyProfileController {
 	/* This method for show the page of company basic info */
 	@RequestMapping(value = "/updateCompanyBasicProfile", method = RequestMethod.GET)
 	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,
-			Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
+	                Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		registration = (Registration) session.getAttribute("registration");
 		map.put("Registration", registration);
@@ -115,12 +114,12 @@ public class CompanyProfileController {
 	 */
 	@RequestMapping(value = "/saveUpdatedCompanyBasicInformation", method = { RequestMethod.GET, RequestMethod.POST })
 	private String updateUserInformation(@ModelAttribute("Registration") Registration registration, ModelMap model,
-			BindingResult result, HttpServletRequest request) throws Exception {
+	                BindingResult result, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		boolean status = false;
 		registrationValidator.validate(registration, result);
 		if (result.hasErrors()) {
-		        model.addAttribute("message",IConstant.COMPANY_BASIC_INFO_UPDATE_FAILURE_MESSAGE);
+			model.addAttribute("message", IConstant.COMPANY_BASIC_INFO_UPDATE_FAILURE_MESSAGE);
 			return "redirect:/updateCompanyBasicProfile";
 		}
 		status = registrationService.updateUserInformation(registration);

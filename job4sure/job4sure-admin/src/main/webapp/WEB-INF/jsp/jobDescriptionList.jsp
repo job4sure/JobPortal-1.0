@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -45,16 +46,15 @@
 			</div>
 			<!-- /padding -->
 			<ul class="box">
-				<li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li> &nbsp &nbsp &nbsp &nbsp
-				<li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li> &nbsp &nbsp &nbsp
-				&nbsp
-				<li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li> &nbsp &nbsp &nbsp &nbsp
+				<li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
+				<li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
 
-				<li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> &nbsp &nbsp &nbsp
-				&nbsp
+				<li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
 
+				<li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li>
+			</ul>
 
-				<!-- Active -->
+			<!-- Active -->
 		</div>
 
 		<h3 style="color: red;">${message}</h3>
@@ -69,12 +69,18 @@
 							<h2>${job.jobTitle}</h2>
 							<p>${job.jobDesc}</p>
 							<a href="viewJobDescription.do?jobId=${job.jobDescriptionId}">View</a>
-							<c:if test="${job.approvalStatus.statusId!=2}">
-								<a href="jobDescription.do?jobId=${job.jobDescriptionId}&statusId=2">Approve</a>
-							</c:if>
-							<c:if test='${hideRejectLink!="reject"}'>
-								<a href="jobDescription.do?jobId=${job.jobDescriptionId}&statusId=3">Reject</a>
-							</c:if>
+
+							<sec:authorize access="hasRole('ADMIN')">
+								<c:if test="${job.approvalStatus.statusId!=2}">
+									<a href="jobDescription.do?jobId=${job.jobDescriptionId}&statusId=2">Approve</a>
+								</c:if>
+							</sec:authorize>
+							<sec:authorize access="hasRole('ADMIN')">
+								<c:if test='${hideRejectLink!="reject"}'>
+									<a href="jobDescription.do?jobId=${job.jobDescriptionId}&statusId=3">Reject</a>
+								</c:if>
+							</sec:authorize>
+
 						</div></td>
 					<td></td>
 				</tr>

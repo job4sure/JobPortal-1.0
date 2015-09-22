@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 <head>
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css"/>
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
@@ -86,26 +86,10 @@ function clearAllErrors() {
         </form>
       <ul class="box">
         <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
-		&nbsp
-        &nbsp
-		&nbsp
-		&nbsp
         <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
-		&nbsp
-		&nbsp
-		&nbsp
-		&nbsp
 		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
-		 &nbsp
-		&nbsp
-		&nbsp
-		&nbsp
-		 
 		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
-		&nbsp
-		&nbsp
-		&nbsp
-		&nbsp
+		  </ul>
       </div>
       <!-- /padding -->
 
