@@ -40,10 +40,10 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 			<div id="aside" class="box">
 				<div class="padding box">
 					<p id="logo">
-						<a href="http://all-free-download.com/free-website-templates/"><img
+						<a href="javascript:void(0)"><img
 							src="resources/tmp/logo.gif" alt="" /></a>
 					</p>
-					<form action="http://all-free-download.com/free-website-templates/"
+					<form action="javascript:void(0)"
 						method="get" id="search">
 						<fieldset>
 							<legend>Search</legend>

@@ -48,10 +48,10 @@
 					<div class="padding box">
 						<!-- Logo (Max. width = 200px) -->
 						<p id="logo">
-							<a href="http://all-free-download.com/free-website-templates/"><img src="resources/design/logo.gif" alt="" /></a>
+							<a href="javascript:void(0)"><img src="resources/design/logo.gif" alt="" /></a>
 						</p>
 						<!-- Search -->
-						<form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
+						<form action="javascript:void(0)" method="get" id="search">
 							<fieldset>
 								<legend>Search</legend>
 								<p>
