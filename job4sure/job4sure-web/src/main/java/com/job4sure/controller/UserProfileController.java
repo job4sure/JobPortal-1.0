@@ -89,22 +89,22 @@ public class UserProfileController {
 	    String path = ImageFormat.readImage(attachment.getPath());
 	    model.addAttribute("attachment", path);
 	}
+	 model.addAttribute("roletype12", userProfileService.roleData());
+	    model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
+	    model.addAttribute("stateList", userProfileService.getAllState());
+	    model.addAttribute("salary", jobDescriptionService.getAllSalary());
 	if (userProfile != null) {
 	    //List industry = userProfileService.industryData();
 	    map.put("userProfile", userProfile);
 	    model.addAttribute("message", message);
-	    model.addAttribute("salary", jobDescriptionService.getAllSalary());
 	   // model.addAttribute("industrydata", industry);
-	    model.addAttribute("roletype12", userProfileService.roleData());
-	    model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
-	    model.addAttribute("stateList", userProfileService.getAllState());
 	    model.addAttribute("homeCityList", userProfileService.getCity(userProfile.getHomeCity().getState().getStateId()));
 	    model.addAttribute("currentCityList", userProfileService.getCity(userProfile.getCurrentCityId().getState().getStateId()));
 	    model.addAttribute("cityList", userProfileService.getCity(userProfile.getCityId().getState().getStateId()));//getStateId().getStateId())
 	    return "userCompleteInfo";
 	} else {
 	    model.addAttribute("message", IConstant.FIRST_COMPLETE_INFO_MESSAGE);
-	    return "redirect:/userCompletInfoPageShow";
+	    return "userCompleteInfo";
 	}
     }
 
