@@ -53,7 +53,7 @@ public class UserProfileController {
 	int profilecompleted = userProfileService.getprofileCompletedInPercent(registration.getRegistrationId());
 	model.addAttribute("profilecompleted", profilecompleted);
 	Attachment attachment = userProfileService.getAllAttachment(registration.getRegistrationId());
-	if (attachment != null) {
+	if (attachment != null && attachment.getAttachmentType().equals("profilePic")) {
 	    String path = ImageFormat.readImage(attachment.getPath());
 	    model.addAttribute("attachment", path);
 	}
