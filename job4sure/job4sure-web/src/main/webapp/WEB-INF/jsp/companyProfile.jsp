@@ -12,6 +12,7 @@
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jsp/companyProfile.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#formID").validationEngine();
@@ -22,20 +23,7 @@
 		$('#formID').validationEngine('hideAll');
 	}
 </script>
-<script type="text/javascript">
-	function previewImage(input) {
-		var preview = document.getElementById('preview');
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				preview.setAttribute('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		} else {
-			preview.setAttribute('src');
-		}
-	}
-</script> 
+
 </head>
 <body>
 	<form:form method="POST" action="saveCompanyCompleteProfile" modelAttribute="companyProfile" id="formID"
@@ -48,10 +36,10 @@
 					<div class="padding box">
 						<!-- Logo (Max. width = 200px) -->
 						<p id="logo">
-							<a href="javascript:void(0)"><img src="resources/design/logo.gif" alt="" /></a>
+							<a href="http://all-free-download.com/free-website-templates/"><img src="resources/design/logo.gif" alt="" /></a>
 						</p>
 						<!-- Search -->
-						<form action="javascript:void(0)" method="get" id="search">
+						<form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
 							<fieldset>
 								<legend>Search</legend>
 								<p>
