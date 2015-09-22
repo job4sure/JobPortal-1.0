@@ -10,6 +10,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
 import com.job4sure.model.City;
+import com.job4sure.model.Industry;
 import com.job4sure.model.UserProfile;
 
 public interface UserProfileService {
@@ -20,12 +21,11 @@ public interface UserProfileService {
 
     public int getprofileCompletedInPercent(Integer registrationId);
 
-    public List industryData();
+    public List<Industry> industryData();
 
     public List roleData();
 
-    public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
-		    CommonsMultipartFile[] upload, String attchmentName);
+    public boolean saveCompleteUserProfile(UserProfile userProfile, CommonsMultipartFile[] upload);
 
     public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException;
 

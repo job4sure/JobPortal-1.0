@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
@@ -86,7 +85,7 @@ public class UserProfileController {
 	Registration registration = (Registration) session.getAttribute("registration");
 	userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
 	Attachment attachment = userProfileService.getAllAttachment(registration.getRegistrationId());
-	if (attachment != null) {
+	if (attachment != null && attachment.getAttachmentType().equals("profilePic")) {
 	    String path = ImageFormat.readImage(attachment.getPath());
 	    model.addAttribute("attachment", path);
 	}
@@ -111,14 +110,11 @@ public class UserProfileController {
 
     @RequestMapping(value = "/saveCompleteUserProfile", method = RequestMethod.POST)
     public String saveCompleteUserProfile(@ModelAttribute("userProfile") UserProfile userProfile,
-		    @RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
-		    String attchmentName, ModelMap model, HttpServletRequest request) {
-	final MultipartFile filePart = file;
-	file.getOriginalFilename();
+		    @RequestParam CommonsMultipartFile[] upload, ModelMap model, HttpServletRequest request) {
 	HttpSession session = request.getSession();
 	Registration registration = (Registration) session.getAttribute("registration");
 	userProfile.setRegistrationId(registration.getRegistrationId());
-	userProfileService.saveCompleteUserProfile(userProfile, filePart, upload, attchmentName);
+	userProfileService.saveCompleteUserProfile(userProfile, upload);
 	model.addAttribute("message", IConstant.USER_COMPLETE_INFO_SUCCESS_MESSAGE);
 	return "redirect:/updateCompleteInfo";
     }

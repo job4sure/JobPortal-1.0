@@ -13,7 +13,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
@@ -57,20 +56,19 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @SuppressWarnings({ "resource", "unused" })
     @Transactional
-    public boolean saveCompleteUserProfile(UserProfile userProfile, MultipartFile filePart,
-		    CommonsMultipartFile[] upload, String attchmentName) {
+    public boolean saveCompleteUserProfile(UserProfile userProfile,CommonsMultipartFile[] upload) {
+    String attchmentName = null;
 	OutputStream outputStream = null;
 	InputStream inputStream = null;
 	if (userProfile != null) {
 	    if (upload != null && upload.length > 0) {
-		int i = 1, j = 0;
 		for (CommonsMultipartFile multipartFile : upload) {
 		    attchmentName = multipartFile.getOriginalFilename();
 		    try {
 			inputStream = multipartFile.getInputStream();
-			UserProfile userProfile2 = profileCompleteRepository.save(userProfile);
+			UserProfile currentUserProfile = profileCompleteRepository.save(userProfile);
 			File newFile = new File(IConstant.FILE_PATH);
-			File filePath = new File(newFile + File.separator + userProfile2.getRegistrationId() + "_"
+			File filePath = new File(newFile + File.separator + currentUserProfile.getRegistrationId() + "_"
 					+ attchmentName);
 			if (!newFile.exists()) {
 			    newFile.mkdir();
@@ -90,15 +88,15 @@ public class UserProfileServiceImpl implements UserProfileService {
 			    Attachment attchment = new Attachment();
 			    Attachment oldAttchment = new Attachment();
 			    oldAttchment = attachmentRepository.getProfilePicAttachment(
-					    userProfile2.getRegistrationId(), attchmentType);
+			    				currentUserProfile.getRegistrationId(), attchmentType);
 			    if (oldAttchment != null) {
 				attchment = oldAttchment;
 			    }
 			    attchment.setAttachmentType(attchmentType);
 			    attchment.setAttachmentName(attchmentName);
-			    attchment.setPath(newFile + File.separator + userProfile2.getRegistrationId() + "_"
+			    attchment.setPath(newFile + File.separator + currentUserProfile.getRegistrationId() + "_"
 					    + attchmentName);
-			    attchment.setRegistrationId(userProfile2.getRegistrationId());
+			    attchment.setRegistrationId(currentUserProfile.getRegistrationId());
 			    attachmentRepository.save(attchment);
 			} else {
 			    if (profilePic.equals("txt") || profilePic.equals("doc") || profilePic.equals("sql")) {
@@ -106,15 +104,15 @@ public class UserProfileServiceImpl implements UserProfileService {
 				Attachment attchment = new Attachment();
 				Attachment oldAttchment = new Attachment();
 				oldAttchment = attachmentRepository.getProfilePicAttachment(
-						userProfile2.getRegistrationId(), attchmentType);
+								currentUserProfile.getRegistrationId(), attchmentType);
 				if (oldAttchment != null) {
 				    attchment = oldAttchment;
 				}
 				attchment.setAttachmentType(attchmentType);
 				attchment.setAttachmentName(attchmentName);
-				attchment.setPath(newFile + File.separator + userProfile2.getRegistrationId() + "_"
+				attchment.setPath(newFile + File.separator + currentUserProfile.getRegistrationId() + "_"
 						+ attchmentName);
-				attchment.setRegistrationId(userProfile2.getRegistrationId());
+				attchment.setRegistrationId(currentUserProfile.getRegistrationId());
 				attachmentRepository.save(attchment);
 			    }
 			}
