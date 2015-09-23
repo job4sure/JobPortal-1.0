@@ -1,6 +1,8 @@
 package com.job4sure.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,14 +16,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
+import com.job4sure.model.City;
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.Registration;
 import com.job4sure.service.CompanyProfileService;
 import com.job4sure.service.RegistrationService;
+import com.job4sure.service.UserProfileService;
 import com.job4sure.util.IConstant;
 import com.job4sure.util.ImageFormat;
 import com.job4sure.validator.RegistrationValidator;
@@ -35,6 +40,9 @@ public class CompanyProfileController {
 	private RegistrationValidator registrationValidator;
 	@Autowired
 	private CompanyProfileService companyProfileService;
+	
+	@Autowired
+    private UserProfileService userProfileService;
 
 	/*
 	 * This method is show the form of complete company profile here
@@ -53,9 +61,11 @@ public class CompanyProfileController {
 			model.addAttribute("attachment", path);
 		}
 		companyProfile = companyProfileService.getCompanyCompleteInfo(registration.getRegistrationId());
+		model.addAttribute("stateList", userProfileService.getAllState());
 		if (companyProfile != null) {
 			map.put("companyProfile", companyProfile);
 			model.addAttribute("message", message);
+			
 		} else {
 			map.put("companyProfile", new CompanyProfileModel());
 			model.addAttribute("message", message);
@@ -140,4 +150,14 @@ public class CompanyProfileController {
 		map.put("registration", registration);
 		return "newUserPasswordForComp";
 	}
+	
+    @RequestMapping(value = "/1getCityListByStateId", method = { RequestMethod.GET })
+    @ResponseBody
+    public Map<String, List<City>> getAllCityByStateId(@RequestParam Integer stateId) {
+	Map<String, List<City>> cityListMap = new HashMap<String, List<City>>();
+	List<City> cityList = userProfileService.getCity(stateId);
+	cityListMap.put("cityList", cityList);
+	return cityListMap;
+
+    }
 }
