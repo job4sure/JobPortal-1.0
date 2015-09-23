@@ -64,6 +64,7 @@ public class CompanyProfileController {
 		model.addAttribute("stateList", userProfileService.getAllState());
 		if (companyProfile != null) {
 			map.put("companyProfile", companyProfile);
+			model.addAttribute("currentCityList", userProfileService.getCity(companyProfile.getCurrentCityId().getState().getStateId()));
 			model.addAttribute("message", message);
 			
 		} else {

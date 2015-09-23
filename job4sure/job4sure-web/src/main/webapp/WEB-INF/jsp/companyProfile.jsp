@@ -194,7 +194,7 @@
 									<td>City<font color="red">*</font></td>
 									<td><form:select path="currentCityId.id"
 											id="currentStateCity" style="height:25px; width:158px;">
-											<form:option value="0" label="Select City" />
+											<%-- <form:option value="0" label="Select City" /> --%>
 											<c:forEach items="${currentCityList}" var="city">
 												<form:option value="${city.id}">${city.cityname} </form:option>
 											</c:forEach>
