@@ -1,7 +1,10 @@
 package com.job4sure.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +21,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.job4sure.model.City;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.model.Registration;
@@ -115,5 +120,23 @@ public class JobDescriptionController {
 		return "viewApprovedJobDescriptionInUser";
 	}
 
+    @RequestMapping(value = "/getAllJobsBySkillId", method = { RequestMethod.GET })
+    @ResponseBody
+    public Map<String, List<Object>> getAllJobsBySkillId(@RequestParam Integer skillId) {
+	Map<String, List<Object>> jobListMap = new HashMap<String, List<Object>>();
+	List<Skills> skillList = jobDescriptionService.getAllJobsBySkillId(skillId);
+	Skills s=skillList.get(0);
+	Set<JobDescription> aa=s.getJobDescription();
+	Iterator<JobDescription> ff=aa.iterator();
+	List<Object> jobDescriptionList=new ArrayList<Object>();
+	
+	while(ff.hasNext()){
+	    jobDescriptionList.add(ff.next());
+	}
+	
+	jobListMap.put("jobDescriptionList", jobDescriptionList);
+	return jobListMap;
+
+    }
 
 }

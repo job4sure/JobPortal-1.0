@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "skills")
@@ -45,6 +47,7 @@ public class Skills implements Serializable {
 	private Set<JobDescription> jobDescription=new HashSet<JobDescription>();;
 	//private List<JobDescription> jobDescription = new HashSet<JobDescription>();
 
+	@JsonIgnore
 	public Set<JobDescription> getJobDescription() {
 		return jobDescription;
 	}

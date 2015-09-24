@@ -18,6 +18,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "job_description", catalog = "jobportal")
 public class JobDescription implements Serializable {
@@ -45,6 +47,7 @@ public class JobDescription implements Serializable {
     
     @ManyToMany(fetch=FetchType.EAGER)//cascade = CascadeType.ALL,
     @JoinTable(name = "DESCRIPTION_SKILLS", joinColumns = { @JoinColumn(name = "JOB_ID") }, inverseJoinColumns = { @JoinColumn(name = "SKILLS_ID") })
+    @JsonIgnore
     public Set<Skills> getSkillsSet() {
 	return skillsSet;
     }

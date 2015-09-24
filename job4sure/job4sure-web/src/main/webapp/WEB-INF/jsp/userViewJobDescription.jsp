@@ -10,6 +10,37 @@
 <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/viewAllJobDesc.css" />
 <script type="text/javascript" src="resources/js/paging.js"></script>
+<script>
+
+function jobsBasedOnTechnology(data){
+	alert("success");
+	var techId=data.value;
+	 $.ajax({
+		   url : "getAllJobsBySkillId.do?skillId="+techId,
+		   type : "GET",
+		   contentType : "application/json; charset=utf-8",
+	 	   success : function(response) {
+                           	//alert(response);
+                            var selectedJobList= response;
+                           // alert(selectedJobList);
+                            alert("output"+selectedJobList);
+                            $('#jobId').html('');
+                            for (i = 0; i < selectedJobList.length; i++) {
+                            	
+                            alert(selectedJobList[i].jobTitle);
+                            $('#jobId').append(
+                            $(
+        							"<h2></h2>")
+        							.text(
+        									selectedJobList[i].jobTitle));
+                            } 
+ },
+		   error : function() {
+		   }
+		  });
+	 
+}
+</script>
 </head>
 <body>
 <div id="cols" class="box">
@@ -48,16 +79,21 @@
 			<h2 id="show">${message}</h2>
 		</center>
 	</div>
-	<div class="box" id="content">
-	
+	<div class="box" id="content" >
 		
+		<select onchange="jobsBasedOnTechnology(this)">
+	<option value="0" label="select" >select</option>
+	<option value="1" label="java" >java</option>
+	<option value="2" label="php" >php</option>
+	<option value="3" label=".Net" >.Net</option>
+							</select>
 		<table id="results" style="border-collapse: separate; border-spacing: 12px;" class="nostyle">
 			<c:forEach items="${jobList}" var="joblist">
 			
 				<tr>
 					<td width="10%"></td>
 					<td><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td>
-					<td><div style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
+					<td><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
 							
 							<h2>${joblist.jobTitle}</h2>
 							<p>${joblist.jobDesc}</p>

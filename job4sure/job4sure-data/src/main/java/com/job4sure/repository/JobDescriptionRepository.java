@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.job4sure.model.JobDescription;
+import com.job4sure.model.Skills;
 
 public interface JobDescriptionRepository extends JpaRepository<JobDescription, Integer> {
 
@@ -15,5 +16,10 @@ public interface JobDescriptionRepository extends JpaRepository<JobDescription, 
 
 	@Query("select jb from JobDescription jb where jb.approvalStatus.statusId =:jdStatus")
 	List<JobDescription> getJobDescriptionListByStatus(@Param("jdStatus") int jdStatus);
+	
+	
+	
+	@Query("select s from Skills s where s.skillsId =:skillId")
+	List<Skills> getAllJobsBySkillId(@Param("skillId") Integer skillId);
 
 }

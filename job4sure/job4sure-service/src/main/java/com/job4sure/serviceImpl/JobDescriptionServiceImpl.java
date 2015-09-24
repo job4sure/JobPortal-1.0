@@ -76,4 +76,8 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 	return experienceRepository.findAll();
     }
 
+    public List<Skills> getAllJobsBySkillId(Integer skillId) {
+	return jobDescriptionRepository.getAllJobsBySkillId(skillId);
+    }
+
 }
