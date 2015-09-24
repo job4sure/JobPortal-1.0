@@ -40,9 +40,9 @@ public class CompanyProfileController {
 	private RegistrationValidator registrationValidator;
 	@Autowired
 	private CompanyProfileService companyProfileService;
-	
+
 	@Autowired
-    private UserProfileService userProfileService;
+	private UserProfileService userProfileService;
 
 	/*
 	 * This method is show the form of complete company profile here
@@ -51,8 +51,8 @@ public class CompanyProfileController {
 
 	@RequestMapping(value = "/showCompleteCompanyProfilePage", method = RequestMethod.GET)
 	public String showCompleteCompanyProfilePage(@ModelAttribute("companyProfile") CompanyProfileModel companyProfile,
-	                Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
-	                throws IOException {
+					Map<String, Object> map, String message, ModelMap model, HttpServletRequest request)
+					throws IOException {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		Attachment attachment = companyProfileService.getCompanyAttachment(registration.getRegistrationId());
@@ -62,11 +62,18 @@ public class CompanyProfileController {
 		}
 		companyProfile = companyProfileService.getCompanyCompleteInfo(registration.getRegistrationId());
 		model.addAttribute("stateList", userProfileService.getAllState());
+		// List<City> listCity=
+		// userProfileService.getCity(companyProfile.getCurrentCityId().getState().getStateId());
+		// System.out.println(listCity.size());
 		if (companyProfile != null) {
 			map.put("companyProfile", companyProfile);
-			model.addAttribute("currentCityList", userProfileService.getCity(companyProfile.getCurrentCityId().getState().getStateId()));
+
+			if (companyProfile.getCurrentCityId() != null) {
+				model.addAttribute("currentCityList",
+								userProfileService.getCity(companyProfile.getCurrentCityId().getState().getStateId()));
+			}
 			model.addAttribute("message", message);
-			
+
 		} else {
 			map.put("companyProfile", new CompanyProfileModel());
 			model.addAttribute("message", message);
@@ -78,8 +85,8 @@ public class CompanyProfileController {
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/saveCompanyCompleteProfile", method = RequestMethod.POST)
 	public String saveCompanyCompleteProfile(@ModelAttribute("companyprofile") CompanyProfileModel companyProfile,
-	                @RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
-	                String attchmentName, ModelMap model, HttpServletRequest request) {
+					@RequestParam CommonsMultipartFile[] upload, @RequestParam("upload") MultipartFile file,
+					String attchmentName, ModelMap model, HttpServletRequest request) {
 		final MultipartFile filePart = file;
 		boolean status = false;
 		file.getOriginalFilename();
@@ -102,7 +109,7 @@ public class CompanyProfileController {
 		HttpSession session = request.getSession();
 		Registration registration = (Registration) session.getAttribute("registration");
 		CompanyProfileModel companyProfile = companyProfileService.getCompanyCompleteInfo(registration
-		                .getRegistrationId());
+						.getRegistrationId());
 		model.addAttribute("companyProfile", companyProfile);
 		return "companyDetailsViewPage";
 	}
@@ -110,7 +117,7 @@ public class CompanyProfileController {
 	/* This method for show the page of company basic info */
 	@RequestMapping(value = "/updateCompanyBasicProfile", method = RequestMethod.GET)
 	public String updateBasicProfile(@ModelAttribute("Registration") Registration registration,
-	                Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
+					Map<String, Object> map, String message, ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		registration = (Registration) session.getAttribute("registration");
 		map.put("Registration", registration);
@@ -125,7 +132,7 @@ public class CompanyProfileController {
 	 */
 	@RequestMapping(value = "/saveUpdatedCompanyBasicInformation", method = { RequestMethod.GET, RequestMethod.POST })
 	private String updateUserInformation(@ModelAttribute("Registration") Registration registration, ModelMap model,
-	                BindingResult result, HttpServletRequest request) throws Exception {
+					BindingResult result, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		boolean status = false;
 		registrationValidator.validate(registration, result);
@@ -151,14 +158,14 @@ public class CompanyProfileController {
 		map.put("registration", registration);
 		return "newUserPasswordForComp";
 	}
-	
-    @RequestMapping(value = "/1getCityListByStateId", method = { RequestMethod.GET })
-    @ResponseBody
-    public Map<String, List<City>> getAllCityByStateId(@RequestParam Integer stateId) {
-	Map<String, List<City>> cityListMap = new HashMap<String, List<City>>();
-	List<City> cityList = userProfileService.getCity(stateId);
-	cityListMap.put("cityList", cityList);
-	return cityListMap;
 
-    }
+	@RequestMapping(value = "/1getCityListByStateId", method = { RequestMethod.GET })
+	@ResponseBody
+	public Map<String, List<City>> getAllCityByStateId(@RequestParam Integer stateId) {
+		Map<String, List<City>> cityListMap = new HashMap<String, List<City>>();
+		List<City> cityList = userProfileService.getCity(stateId);
+		cityListMap.put("cityList", cityList);
+		return cityListMap;
+
+	}
 }
