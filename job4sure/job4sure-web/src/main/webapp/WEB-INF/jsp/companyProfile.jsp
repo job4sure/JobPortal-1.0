@@ -36,7 +36,7 @@
 		var stateId = document.getElementById(data.id).value;
 		alert(stateId);
 		$.ajax({
-			url : "1getCityListByStateId.do?stateId=" + stateId,
+			url : "getCompanyCityListByStateId.do?stateId=" + stateId,
 			type : "GET",
 			contentType : "application/json; charset=utf-8",
 			success : function(response) {
@@ -183,7 +183,6 @@
 											path="currentCityId.state.stateId" id="currentState"
 											onchange="getCityList(this)"
 											style="height:20px; width:150px;">
-
 											<!-- <option value="null">select</option> -->
 											<c:forEach items="${stateList}" var="state">
 												<form:option value="${state.stateId}">${state.stateName}</form:option>

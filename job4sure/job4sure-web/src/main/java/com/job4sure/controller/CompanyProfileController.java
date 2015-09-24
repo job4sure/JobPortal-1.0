@@ -159,7 +159,7 @@ public class CompanyProfileController {
 		return "newUserPasswordForComp";
 	}
 
-	@RequestMapping(value = "/1getCityListByStateId", method = { RequestMethod.GET })
+	@RequestMapping(value = "/getCompanyCityListByStateId", method = { RequestMethod.GET })
 	@ResponseBody
 	public Map<String, List<City>> getAllCityByStateId(@RequestParam Integer stateId) {
 		Map<String, List<City>> cityListMap = new HashMap<String, List<City>>();
