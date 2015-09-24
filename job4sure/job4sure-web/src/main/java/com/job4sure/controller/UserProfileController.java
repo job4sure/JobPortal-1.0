@@ -86,8 +86,6 @@ public class UserProfileController {
 	Registration registration = (Registration) session.getAttribute("registration");
 	userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
 	Attachment attachment = userProfileService.getProfilePic(registration.getRegistrationId());
-	String attachmentName = attachment.getAttachmentName();
-	model.addAttribute("attachmentName", attachmentName);
 	if (attachment != null && attachment.getAttachmentType().equals("profilePic")) {
 	    String path = ImageFormat.readImage(attachment.getPath());
 	    model.addAttribute("attachment", path);
