@@ -74,7 +74,7 @@ th, td {
 					<div class="wrapper">
 						<div class="column">
 							<b>Address:&nbsp;&nbsp;</b> ${companyProfile.address1}<br /> <br /> <b>City:&nbsp;&nbsp;</b>
-							${companyProfile.city}<br /> <br /> <b>State:&nbsp;&nbsp;</b> ${companyProfile.state}<br /> <br /> <b>About
+							${companyProfile.currentCityId.cityname}<br /> <br /> <b>State:&nbsp;&nbsp;</b> ${companyProfile.currentCityId.state.stateName}<br /> <br /> <b>About
 								Us:&nbsp;&nbsp;</b> ${companyProfile.aboutUs}<br /> <br />
 						</div>
 						<div class="column">
