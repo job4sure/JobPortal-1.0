@@ -23,5 +23,7 @@ public interface JobDescriptionService {
     public List<Experience> getAllExperience();
     
     public List<Skills> getAllJobsBySkillId(Integer skillId);
+
+	public List<JobDescription> getAllJobsByExp(Integer experience);
     
 }

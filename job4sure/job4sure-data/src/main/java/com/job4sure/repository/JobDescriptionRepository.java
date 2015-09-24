@@ -22,4 +22,8 @@ public interface JobDescriptionRepository extends JpaRepository<JobDescription, 
 	@Query("select s from Skills s where s.skillsId =:skillId")
 	List<Skills> getAllJobsBySkillId(@Param("skillId") Integer skillId);
 
+	
+	@Query("select jb from JobDescription jb where jb.minExperience.experienceId <=:experience AND jb.maxExperience.experienceId >=:experience ")
+	public List<JobDescription> getAllJobsByExp(@Param("experience") Integer experience);
+
 }

@@ -138,5 +138,13 @@ public class JobDescriptionController {
 	return jobListMap;
 
     }
+    
+    @RequestMapping(value = "/getAllJobsByExp", method = { RequestMethod.GET })
+    @ResponseBody
+    public List<JobDescription> getAllJobsByExp(@RequestParam Integer experience) {
+	
+	List<JobDescription> jobDescriptions = jobDescriptionService.getAllJobsByExp(experience);
+	return jobDescriptions;
+    }
 
 }

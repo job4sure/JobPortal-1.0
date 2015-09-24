@@ -80,4 +80,7 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 	return jobDescriptionRepository.getAllJobsBySkillId(skillId);
     }
 
+	public List<JobDescription> getAllJobsByExp(Integer experience){
+		return jobDescriptionRepository.getAllJobsByExp(experience);
+	}
 }
