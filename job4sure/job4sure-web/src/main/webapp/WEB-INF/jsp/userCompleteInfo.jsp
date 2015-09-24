@@ -22,50 +22,11 @@
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
 <script src="resources/js/jquery.validationEngine.js"
 	type="text/javascript" charset="utf-8"></script>
-<!-- <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
+<script type="text/javascript"
+	src="resources/js/jsp/userCompleteInfo.js"></script>
+<link rel="stylesheet" href="resources/css/jsp/userCompleteInfo.css"
+	type="text/css" />
 <title>Insert title here</title>
-<style>
-.hidden-div {
-	display: none;
-}
-</style>
-<script type="text/javascript">
-
-		function getCityList(data){
-			
-	   		var stateId=document.getElementById(data.id).value;
-	   alert(stateId);
-	   $.ajax({
-		   url : "getCityListByStateId.do?stateId="+stateId,
-		   type : "GET",
-		   contentType : "application/json; charset=utf-8",
-	 	   success : function(response) {
-		 
-		 var cityValues = response.cityList;
-		 $('#'+data.id+'City').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
-		 $('#'+data.id+'City')//Due to above line all data is clear so i add this line for "select city" label.
-			.append(
-					$(
-							"<option value='"+0+"'></option>")
-							.text(
-									"Select City"));
-			for (i = 0; i < cityValues.length; i++) {
-				$('#'+data.id+'City')
-						.append(
-								$(
-										"<option value='"+cityValues[i].id+"'></option>")
-										.text(
-												cityValues[i].cityname));
-			}
-   },
-		   error : function() {
-			 	   $('#'+data.id+'City').append($("<option value='0'></option>").text('Select City'))
-		   }
-		  });
-}
-
-
-</script>
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		// binds form submission and fields to the validation engine
@@ -75,122 +36,14 @@
 		});
 	});
 </script>
-<script type="text/javascript">
-	document.getElementById('show_button').addEventListener('click', hideshow, false);
-	function hideshow() {
-		document.getElementById('hidden-div').style.display = 'block';
-		this.style.display = 'none'
-	}
-	</script>
-<script type="text/javascript">
-
-function showRow(rowname) {
-	if (document.getElementById(rowname)) {
-		document.getElementById(rowname).style.display = '';
-	}
-}
-function hideRow(rowname) {
-	if (document.getElementById(rowname)) {
-		document.getElementById(rowname).style.display = 'none';
-	}
-}
-function toggleRow(rowname) {
-	if (document.getElementById(rowname)) {
-		if (document.getElementById(rowname).style.display == 'none') {
-			showRow(rowname)
-		} else {
-			hideRow(rowname)
-		}
-	}
-}
-	function previewImagepic(input) {
-		var preview = document.getElementById('preview');
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				preview.setAttribute('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		} else {
-			preview.setAttribute('src');
-		}
-	}
-</script>
-<script src="resources/js/addJobDescp.js"></script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 		$("#datepicker").datepicker();
 	});
-</script>
-<script type="text/javascript">
-#wgtmsr option{
-	  width:1000px; 
-	}
-</script>
-<style>
-#preview {
-	float: right;
-	border: 1px dotted black;
-	margin-right: 3%;
-	margin-top: 4%;
-}
-</style>
-<script type="text/javascript">
-function previewImage(){
-  var imgpath=document.getElementById("imageUpload");
-  if (!imgpath.value==""){
-    var img=imgpath.files[0].size;
-    var imgsize=img/1024; 
-    if(imgsize== 512 || imgsize<=512){
-    return true;
-    }else{
-    	document.getElementById("demo").innerHTML = "Please select image of 512 kb";
-    }
-  }
-}
-</script>
-<script type="text/javascript">
- function previewfile(){
-	  var filepath=document.getElementById("resumeUpload");
-	  if (!filepath.value==""){
-	    var file=filepath.files[0].size;
-	    var filesize=file/1024; 
-	    if(filesize== 512 || filesize<=512){
-	    return true;
-	    }else{
-	    	document.getElementById("demo1").innerHTML = "Please select file of 512 kb";
-	    }
-	  }
-	}
-</script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
-	type="text/javascript"></script>
-<script>
-$(window).load(function(){
-var maxprice = $('#maxExperience').html();
-$('#minExperience').change(function() {
-$('#maxExperience').html(maxprice);
-$('#maxExperience option').each(function() {
-    if ($(this).val() <= $('#minExperience').val()) $(this).remove();
-});
-});
-});
-</script>
-<script type="text/javascript">
-$(window).load(function(){
-var maxprice = $('#maxSalary').html();
-$('#minSalary').change(function() {
-$('#maxSalary').html(maxprice);
-$('#maxSalary option').each(function() {
-    if ($(this).val() <= $('#minSalary').val()) $(this).remove();
-});
-});
-});
 </script>
 </head>
 <div id="main">
@@ -372,12 +225,13 @@ $('#maxSalary option').each(function() {
 											<td style="padding: 15;"><label>Select Resume: </label></td>
 											<td><input type="file" name="upload" id="resumeUpload"
 												onchange="previewfile(this)" multiple="multiple" />
-												<div style="color: red" id="demo1"></div></td>	
+												<div style="color: red" id="demo1"></div></td>
 											<td><a
-												href="downloadResume?registrationId=${registration.registrationId}">Download resume</a></td>
+												href="downloadResume?registrationId=${registration.registrationId}">Download
+													resume</a></td>
 										</tr>
 									</table>
-									<h4 style="color: red;" >${msg}</h4>
+									<h4 style="color: red;">${msg}</h4>
 							</fieldset>
 						</div>
 					</div>
@@ -454,7 +308,7 @@ $('#maxSalary option').each(function() {
 											<td><form:input type="text" size="40" path="zip"
 													class="validate[required] input-text" /><br></td>
 										</tr>
-									<tr>
+										<tr>
 											<td style="padding: 15;"></td>
 											<td><input type="submit" value="submit"
 												class="input-submit-02"

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.Education;
 import com.job4sure.model.Registration;
+import com.job4sure.service.EducationService;
 import com.job4sure.serviceImpl.EducationServiceImpl;
 import com.job4sure.util.IConstant;
 
@@ -22,7 +23,7 @@ import com.job4sure.util.IConstant;
 public class EducationController {
 
 	@Autowired
-	private EducationServiceImpl educationServiceImpl;
+	private EducationService educationService;
 
 	@RequestMapping(value = "/educationUpdate", method = RequestMethod.GET)
 	public String showEducationSettings(HttpServletRequest request, @RequestParam(required = false) String message,
@@ -30,7 +31,7 @@ public class EducationController {
 		HttpSession session = request.getSession(false);
 		Registration registration = (Registration) session.getAttribute("registration");
 		Integer registrationId = registration.getRegistrationId();
-		Education education = educationServiceImpl.viewEducation(registrationId);
+		Education education = educationService.viewEducation(registrationId);
 		if (education != null) {
 			model.addAttribute("message", message);
 			map.put("ED", education);
@@ -44,7 +45,7 @@ public class EducationController {
 		HttpSession session = request.getSession(false);
 		Registration registration = (Registration) session.getAttribute("registration");
 		education.setRegistrationId(registration.getRegistrationId());
-		educationServiceImpl.save(education);
+		educationService.save(education);
 		model.addAttribute("message", IConstant.EDUCATION_SAVE);
 		return "redirect:/educationUpdate";
 	}
