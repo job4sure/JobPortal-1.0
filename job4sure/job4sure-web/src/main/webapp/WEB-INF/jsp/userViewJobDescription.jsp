@@ -30,12 +30,14 @@
 						for (i = 0; i < list.length; i++) {
 							var j = i + 1;
 							table
-									.append('<tr><td width="10%"></td><td><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td><td><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right"><h2>'
+									.append('<tr><td width="20%"><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td><td width="70%"><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right"><h2>'
 											+ list[i].jobTitle
 											+ '</h2><p>'
 											+ list[i].jobDesc
-											+ '</p></div></td></tr>');
+											+ '</p><a href="viewSingleJobDescription.do?jobId='
+											+list[i].jobDescriptionId+'">View</a></div></td></tr>');
 						}
+						showPagination();
 					},
 					error : function() {
 					}
@@ -58,12 +60,14 @@
 						for (i = 0; i < list.length; i++) {
 							var j = i + 1;
 							table
-									.append('<tr><td width="10%"></td><td><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td><td><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right"><h2>'
+									.append('<tr><td width="20%"><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td><td width="70%"><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right"><h2>'
 											+ list[i].jobTitle
 											+ '</h2><p>'
 											+ list[i].jobDesc
-											+ '</p></div></td></tr>');
+											+ '</p><a href="viewSingleJobDescription.do?jobId='
+												+list[i].jobDescriptionId+'">View</a></div></td></tr>');
 						}
+						showPagination();
 					},
 					error : function() {
 						alert("error");
@@ -127,11 +131,11 @@
 				<table id="results" style="border-collapse: separate; border-spacing: 12px;" class="nostyle">
 					<c:forEach items="${jobList}" var="joblist">
 						<tr>
-							<td width="10%"></td>
-							<td><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td>
-							<td><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
+							<td width="20%"><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td>
+							<td width="70%"><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
 									<h2>${joblist.jobTitle}</h2>
 									<p>${joblist.jobDesc}</p>
+									<a href="viewSingleJobDescription.do?jobId=${joblist.jobDescriptionId}">View</a>
 								</div></td>
 						</tr>
 					</c:forEach>
@@ -140,11 +144,19 @@
 			<c:if test="${jobList!=null}">
 				<div id="pageNavPosition"></div>
 			</c:if>
+			
 			<script type="text/javascript">
 				var pager = new Pager('results', 2);
 				pager.init();
 				pager.showPageNav('pager', 'pageNavPosition');
-				pager.showPage(2);
+				pager.showPage(1);
+				
+				function showPagination(){
+					var pager = new Pager('results', 2);
+					pager.init();
+					pager.showPageNav('pager', 'pageNavPosition');
+					pager.showPage(1);
+				}
 			</script>
 		</div>
 	</div>

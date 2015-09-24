@@ -146,5 +146,12 @@ public class JobDescriptionController {
 	List<JobDescription> jobDescriptions = jobDescriptionService.getAllJobsByExp(experience);
 	return jobDescriptions;
     }
+    
+    @RequestMapping(value = "/viewSingleJobDescription", method = { RequestMethod.GET, RequestMethod.POST })
+    public String viewJobDescription(ModelMap model, @RequestParam Integer jobId) {
+	JobDescription jobDescription = adminJobDescriptionService.viewJobDescription(jobId);
+	model.addAttribute("jobDescription", jobDescription);
+	return "viewSingleJobDescription";
+    }
 
 }
