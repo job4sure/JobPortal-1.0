@@ -24,7 +24,6 @@ import com.job4sure.util.IConstant;
 import com.job4sure.util.SendMail;
 
 @SuppressWarnings("unused")
-
 @Transactional
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -47,7 +46,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			SimpleDateFormat date1 = new SimpleDateFormat(IConstant.VALID_UP_TO_DATE_FORMAT);
 			String strDate = date1.format(date);
 			registration.setValidUpTo(strDate);
-			String password =EncryptDecrypt.springSecurityEncription(registration.getPassword());
+			String password = EncryptDecrypt.springSecurityEncription(registration.getPassword());
 			registration.setEnabled(0);
 			registration.setEncrypted(password);
 			Registration userregistration = registrationRepository.save(registration);
@@ -56,7 +55,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 			String encryptedId = EncryptDecrypt.encrypt(id);
 			if (userregistration != null) {
 				SendMail.mailSend(userregistration.getEmail(), userregistration.getFullName(),
-						userregistration.getRegistrationId(), encryptedId);
+				                userregistration.getRegistrationId(), encryptedId);
 			}
 		} else {
 			return false;
@@ -132,6 +131,19 @@ public class RegistrationServiceImpl implements RegistrationService {
 		registration.setEncrypted(password);
 		registration.setEnabled(1);
 		registrationRepository.save(registration);
+		String subject = "New Sub-Admin Added Successfully";
+		String body = "Dear Admin,\n\n A new sub admin has submited his profile sucessfully.\n Details are as follows: \n"
+						+ "Full Name: "
+		                + registration.getFullName()
+		                + "\n"
+		                + "Email Id: "
+		                + registration.getEmail()
+		                + "\n"
+		                + "Contact No: "
+		                + registration.getMobileNo() + "\n\n" + "Regards,\n" + "Job4Sure";
+
+		String to=registrationRepository.getUserListByRole(IConstant.ADMIN_ROLE_ID).get(0).getEmail();
+		SendMail.commomMailSend(to, subject, body);
 		return true;
 	}
 
@@ -139,11 +151,12 @@ public class RegistrationServiceImpl implements RegistrationService {
 		Attachment attachment = null;
 		if (registrationId != null) {
 			String attchmentType = "profilePic";
-			Attachment profilepicattachment = attachmentRepository.getProfilePicAttachment(registrationId, attchmentType);
-			if(profilepicattachment!=null){
+			Attachment profilepicattachment = attachmentRepository.getProfilePicAttachment(registrationId,
+			                attchmentType);
+			if (profilepicattachment != null) {
 				return profilepicattachment;
 			}
-			
+
 		}
 		return attachment;
 	}
