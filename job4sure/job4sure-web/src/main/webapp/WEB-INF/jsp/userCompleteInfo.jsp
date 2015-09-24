@@ -103,7 +103,7 @@ function toggleRow(rowname) {
 		}
 	}
 }
-	function previewImage(input) {
+	function previewImagepic(input) {
 		var preview = document.getElementById('preview');
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
@@ -145,9 +145,8 @@ function previewImage(){
   if (!imgpath.value==""){
     var img=imgpath.files[0].size;
     var imgsize=img/1024; 
-    alert(imgsize);
     if(imgsize== 512 || imgsize<=512){
-    	alert("sdf1");
+    return true;
     }else{
     	document.getElementById("demo").innerHTML = "Please select image of 512 kb";
     }
@@ -156,16 +155,13 @@ function previewImage(){
 </script>
 <script type="text/javascript">
  function previewfile(){
-	 alert("jj");
 	  var filepath=document.getElementById("resumeUpload");
 	  if (!filepath.value==""){
 	    var file=filepath.files[0].size;
 	    var filesize=file/1024; 
-	    alert(filesize);
 	    if(filesize== 512 || filesize<=512){
-	    	alert("sdf2");
+	    return true;
 	    }else{
-	    	alert("else");
 	    	document.getElementById("demo1").innerHTML = "Please select file of 512 kb";
 	    }
 	  }
@@ -339,6 +335,13 @@ $('#maxSalary option').each(function() {
 														<form:option value="${city.id}">${city.cityname} </form:option>
 													</c:forEach>
 												</form:select> <br></td>
+											<td style="padding: 15;"><label>Select Profile:
+											</label></td>
+											<td><input type="file" name="upload" id="imageUpload"
+												onchange="previewImagepic(this)" accept="image/*"
+												multiple="multiple" />
+												<div style="color: red" id="demo"></div></td>
+
 										</tr>
 										<tr>
 
@@ -365,7 +368,16 @@ $('#maxSalary option').each(function() {
 													</c:forEach>
 												</form:select> <br></td>
 										</tr>
+										<tr>
+											<td style="padding: 15;"><label>Select Resume: </label></td>
+											<td><input type="file" name="upload" id="resumeUpload"
+												onchange="previewfile(this)" multiple="multiple" />
+												<div style="color: red" id="demo1"></div></td>	
+											<td><a
+												href="downloadResume?registrationId=${registration.registrationId}">Download resume</a></td>
+										</tr>
 									</table>
+									<h4 style="color: red;" >${msg}</h4>
 							</fieldset>
 						</div>
 					</div>
@@ -442,41 +454,7 @@ $('#maxSalary option').each(function() {
 											<td><form:input type="text" size="40" path="zip"
 													class="validate[required] input-text" /><br></td>
 										</tr>
-								</table>
-							</fieldset>
-						</div>
-					</center>
-					<br>
-					<center>
-						<a href="javascript:toggleRow('row3')"><h3 align="center">
-								<font color="red">Attachments</font>
-							</h3></a>
-						<div id="row3">
-							<fieldset>
-								<table width="100%" class="nostyle"
-									style="border-collapse: separate; border-spacing: 5px">
-									<div width="41%" valign="right">
-										<tr>
-											<td style="padding: 15;"><label>Select Profile:
-											</label></td>
-											<td><input type="file" name="upload" id="imageUpload"
-												onchange="previewImage(this)" accept="image/*"
-												multiple="multiple" />
-												<div style="color: red" id="demo"></div></td>
-
-										</tr>
-										<tr>
-											<td style="padding: 15;"><label>Select Resume: </label></td>
-											<td><input type="file" name="upload" id="resumeUpload"
-												onchange="previewfile(this)" multiple="multiple" />
-												<div style="color: red" id="demo1"></div></td>
-										</tr>
-										<tr>
-											<td align="left"><a
-												href="downloadResume?registrationId=${registration.registrationId}">Download
-													resume</a></td>
-										</tr>
-										<tr>
+									<tr>
 											<td style="padding: 15;"></td>
 											<td><input type="submit" value="submit"
 												class="input-submit-02"
@@ -485,7 +463,6 @@ $('#maxSalary option').each(function() {
 								</table>
 							</fieldset>
 						</div>
-					</center>
 				</div>
 			</form:form>
 		</body>

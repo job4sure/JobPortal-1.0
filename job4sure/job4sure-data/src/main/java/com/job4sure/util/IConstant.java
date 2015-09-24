@@ -72,5 +72,8 @@ public class IConstant {
 	public static final int JD_REJECTED_STATUS = 3;
 	public static final String JD_APPROVED_MSG = "Successfully approved job description";
 	public static final String JD_REJECTED_MSG = "Successfully rejected job description";
+	
+	// Message for usercompleteinfo
+	public static final String RESUME_FAILURE_MESSAGE = "your resume not upload please first upload the resume   !!";
 
 }

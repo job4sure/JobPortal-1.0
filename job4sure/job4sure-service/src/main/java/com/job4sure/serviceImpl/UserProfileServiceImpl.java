@@ -54,8 +54,8 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Autowired
     private StateRepository stateRepository;
 
-    @SuppressWarnings({ "resource", "unused" })
-    @Transactional
+    @SuppressWarnings("resource")
+	@Transactional
     public boolean saveCompleteUserProfile(UserProfile userProfile,CommonsMultipartFile[] upload) {
     String attchmentName = null;
 	OutputStream outputStream = null;
@@ -166,38 +166,30 @@ public class UserProfileServiceImpl implements UserProfileService {
 	return roletype;
     }
 
-    public Attachment getAllAttachment(Integer registrationId) {
+    public Attachment getProfilePic(Integer registrationId) {
 	Attachment attachment = null;
 	if (registrationId != null) {
-	    List<Attachment> list = attachmentRepository.getAllAttachment(registrationId);
-	    if (list != null) {
-		attachment = null;
-		for (Object object : list) {
-		    attachment = (Attachment) object;
-		    if (attachment.getAttachmentType().equals("profilePic")) {
-			return attachment;
-		    }
-
+		String attchmentType = "profilePic";
+		Attachment profilepicattachment = attachmentRepository.getProfilePicAttachment(registrationId, attchmentType);
+		if(profilepicattachment!=null){
+			return profilepicattachment;
 		}
-	    }
+		
 	}
 	return attachment;
     }
 
-    public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException {
-	List<Attachment> attachmentlist = null;
-	attachmentlist = (List<Attachment>) attachmentRepository.getAllAttachment(registrationId);
-	if (attachmentlist != null) {
-	    for (Object object : attachmentlist) {
-		Attachment attachment = (Attachment) object;
-		if (attachment.getAttachmentType().equals("resume")) {
-		    DownloadResume.downloadResume(attachment.getAttachmentName(), attachment.getPath(), response,
-				    attachment.getAttachmentType());
-		}
-	    }
+    public boolean getUserResume(Integer registrationId, HttpServletResponse response) throws IOException {
+	String attchmentType = "resume";
+	boolean status = false;
+	Attachment attachment = attachmentRepository.getProfilePicAttachment(registrationId, attchmentType);
+	if(attachment!=null){
+		DownloadResume.downloadResume(attachment.getAttachmentName(), attachment.getPath(), response,
+					    attachment.getAttachmentType());
+		status = true;
+		return status;
 	}
-	return "attachmentlist";
-
+		return status;
     }
 
     public List<City> getCity(Integer stateId) {

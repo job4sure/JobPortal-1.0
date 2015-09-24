@@ -17,7 +17,7 @@ public interface UserProfileService {
 
     public UserProfile getLoggedInUserCompleteInfo(Integer registrationId);
 
-    public Attachment getAllAttachment(Integer registrationId);
+    public Attachment getProfilePic(Integer registrationId);
 
     public int getprofileCompletedInPercent(Integer registrationId);
 
@@ -27,7 +27,7 @@ public interface UserProfileService {
 
     public boolean saveCompleteUserProfile(UserProfile userProfile, CommonsMultipartFile[] upload);
 
-    public String getUserResume(Integer registrationId, HttpServletResponse response) throws IOException;
+    public boolean getUserResume(Integer registrationId, HttpServletResponse response) throws IOException;
 
     public List<City> getCity(Integer stateId);
 

@@ -52,7 +52,7 @@ public class UserProfileController {
 	String loggedInEmail = registration.getEmail();
 	int profilecompleted = userProfileService.getprofileCompletedInPercent(registration.getRegistrationId());
 	model.addAttribute("profilecompleted", profilecompleted);
-	Attachment attachment = userProfileService.getAllAttachment(registration.getRegistrationId());
+	Attachment attachment = userProfileService.getProfilePic(registration.getRegistrationId());
 	if (attachment != null && attachment.getAttachmentType().equals("profilePic")) {
 	    String path = ImageFormat.readImage(attachment.getPath());
 	    model.addAttribute("attachment", path);
@@ -79,12 +79,15 @@ public class UserProfileController {
 
     @RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
     public String updateCompleteProfile(@ModelAttribute("userProfile") UserProfile userProfile,
-		    Map<String, Object> map, String message, ModelMap model, HttpServletRequest request,
+		    Map<String, Object> map, String message,String msg, ModelMap model, HttpServletRequest request,
 		    @RequestParam(required = false) Integer stateId1) throws IOException {
+    	   model.addAttribute("msg", msg);
 	HttpSession session = request.getSession();
 	Registration registration = (Registration) session.getAttribute("registration");
 	userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
-	Attachment attachment = userProfileService.getAllAttachment(registration.getRegistrationId());
+	Attachment attachment = userProfileService.getProfilePic(registration.getRegistrationId());
+	String attachmentName = attachment.getAttachmentName();
+	model.addAttribute("attachmentName", attachmentName);
 	if (attachment != null && attachment.getAttachmentType().equals("profilePic")) {
 	    String path = ImageFormat.readImage(attachment.getPath());
 	    model.addAttribute("attachment", path);
@@ -148,9 +151,13 @@ public class UserProfileController {
     }
 
     @RequestMapping(value = "/downloadResume", method = { RequestMethod.GET, RequestMethod.POST })
-    public String downloadResume(@RequestParam(required = false) Integer registrationId, HttpServletResponse response)
+    public String downloadResume(@RequestParam(required = false) Integer registrationId, HttpServletResponse response,ModelMap model)
 		    throws IOException {
-	userProfileService.getUserResume(registrationId, response);
+    	boolean status = false;
+	status = userProfileService.getUserResume(registrationId, response);
+	if(status==false){
+		 model.addAttribute("msg",IConstant.RESUME_FAILURE_MESSAGE);
+	}
 	return "redirect:/updateCompleteInfo";
     }
 

@@ -138,17 +138,12 @@ public class RegistrationServiceImpl implements RegistrationService {
 	public Attachment getAllAttachment(Integer registrationId) {
 		Attachment attachment = null;
 		if (registrationId != null) {
-			List<Attachment> list = attachmentRepository.getAllAttachment(registrationId);
-			if (list != null) {
-				attachment = null;
-				for (Object object : list) {
-					attachment = (Attachment) object;
-					if (attachment.getAttachmentType().equals("profilePic")) {
-						return attachment;
-					}
-
-				}
+			String attchmentType = "profilePic";
+			Attachment profilepicattachment = attachmentRepository.getProfilePicAttachment(registrationId, attchmentType);
+			if(profilepicattachment!=null){
+				return profilepicattachment;
 			}
+			
 		}
 		return attachment;
 	}

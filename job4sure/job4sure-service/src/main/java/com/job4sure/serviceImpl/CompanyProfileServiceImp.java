@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.List;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,21 +93,16 @@ public class CompanyProfileServiceImp implements CompanyProfileService {
     }
 
     public Attachment getCompanyAttachment(Integer registrationId) {
-	Attachment attachment = null;
-	if (registrationId != null) {
-	    List<Attachment> list = attachmentRepository.getAllAttachment(registrationId);
-	    if (list != null) {
-		attachment = null;
-		for (Object object : list) {
-		    attachment = (Attachment) object;
-		    if (attachment.getAttachmentType().equals("companyLogo")) {
-			return attachment;
-		    }
-
-		}
-	    }
-	}
-	return attachment;
+    	Attachment attachment = null;
+    	if (registrationId != null) {
+    		String attchmentType = "profilePic";
+    		Attachment profilepicattachment = attachmentRepository.getProfilePicAttachment(registrationId, attchmentType);
+    		if(profilepicattachment!=null){
+    			return profilepicattachment;
+    		}
+    		
+    	}
+    	return attachment;
     }
 
 }
