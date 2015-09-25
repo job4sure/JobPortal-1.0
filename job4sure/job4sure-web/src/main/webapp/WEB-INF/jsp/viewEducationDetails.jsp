@@ -1,37 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<script type="text/javascript">
-
-var isVisible = $( "#myDiv" ).is( ":visible" );
-
-var isHidden = $( "#myDiv" ).is( ":hidden" );
-
-	function showRow(rowname) {
-		if (document.getElementById(rowname)) {
-			document.getElementById(rowname).style.display = '';
-		}
-	}
-	function hideRow(rowname) {
-		if (document.getElementById(rowname)) {
-			document.getElementById(rowname).style.display = 'none';
-		}
-	}
-	function toggleRow(rowname) {
-		if (document.getElementById(rowname)) {
-			if (document.getElementById(rowname).style.display == 'none') {
-				showRow(rowname)
-			} else {
-				hideRow(rowname)
-			}
-		}
-	}
-</script>
+<script type="text/javascript" src="resources/js/jsp/viewEdjucationDetails.js"></script>
 </head>
 <body>
 	<div id="main">
@@ -40,27 +14,21 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 			<div id="aside" class="box">
 				<div class="padding box">
 					<p id="logo">
-						<a href="javascript:void(0)"><img
-							src="resources/tmp/logo.gif" alt="" /></a>
+						<a href="javascript:void(0)"><img src="resources/tmp/logo.gif" alt="" /></a>
 					</p>
-					<form action="javascript:void(0)"
-						method="get" id="search">
+					<form action="javascript:void(0)" method="get" id="search">
 						<fieldset>
 							<legend>Search</legend>
 							<p>
-								<input type="text" size="17" name="" class="input-text" />
-								&nbsp; <input type="submit" value="OK" class="input-submit-02" />
-								<br /> <a href="javascript:toggle('search-options');"
-									class="ico-drop">Advanced search</a>
+								<input type="text" size="17" name="" class="input-text" /> &nbsp; <input type="submit" value="OK"
+									class="input-submit-02" /> <br /> <a href="javascript:toggle('search-options');" class="ico-drop">Advanced
+									search</a>
 							</p>
 							<div id="search-options" style="display: none;">
 								<p>
-									<label> <input type="checkbox" name=""
-										checked="checked" /> By Location
-									</label> <br /> <label> <input type="checkbox" name="" /> By
-										keywords
-									</label> <br /> <label> <input type="checkbox" name="" /> By
-										name
+									<label> <input type="checkbox" name="" checked="checked" /> By Location
+									</label> <br /> <label> <input type="checkbox" name="" /> By keywords
+									</label> <br /> <label> <input type="checkbox" name="" /> By name
 									</label>
 								</p>
 							</div>
@@ -79,16 +47,14 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 			<div id="content" class="box">
 				<h3>${message}</h3>
 				<div class="reform">
-					<form:form action="educationSave" method="POST" id="formID"
-						modelAttribute="ED">
+					<form:form action="educationSave" method="POST" id="formID" modelAttribute="ED">
 						<form:hidden path="education_id" />
 						<a href="javascript:toggleRow('row1')"><h3 align="center">
 								<font color="red">Graduation</font>
 							</h3></a>
 						<div id="row1" style="display: none">
 							<fieldset>
-								<table width="100%" class="nostyle"
-									style="border-collapse: separate; border-spacing: 5px">
+								<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
 									<tr>
 										<td><font color="red">*</font>Basic/Graduation</td>
 										<td><form:select path="graduation">
@@ -99,12 +65,9 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 											</form:select></td>
 									</tr>
 									<tr>
-										<td><form:radiobutton path="education" value="Full Time" />Full
-											Time</td>
-										<td colspan="2"><form:radiobutton path="education"
-												value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
-												path="education" value="Correspondance/Distance learning" />Correspondance/Distance
-											learning</td>
+										<td><form:radiobutton path="education" value="Full Time" />Full Time</td>
+										<td colspan="2"><form:radiobutton path="education" value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
+												path="education" value="Correspondance/Distance learning" />Correspondance/Distance learning</td>
 									</tr>
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
@@ -135,6 +98,10 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 											</form:select></td>
 									</tr>
 								</table>
+								<br>
+								<h3 align="left">
+									&nbsp;&nbsp;&nbsp;<input type="submit" value="Save Details" style="width: 6em; height: 2em; font-size: large;">
+								</h3>
 							</fieldset>
 						</div>
 						<br>
@@ -143,8 +110,7 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 							</h3></a>
 						<div id="row2" style="display: none">
 							<fieldset>
-								<table width="100%" class="nostyle"
-									style="border-collapse: separate; border-spacing: 5px">
+								<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
 									<tr>
 										<td><font color="red">*</font>Post Graduation</td>
 										<td><form:select path="postgraduation">
@@ -155,13 +121,9 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 											</form:select></td>
 									</tr>
 									<tr>
-										<td><form:radiobutton path="posteducation"
-												value="Full Time" />Full Time<br></td>
-										<td colspan="2"><form:radiobutton path="posteducation"
-												value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
-												path="posteducation"
-												value="Correspondance/Distance learning" />Correspondance/Distance
-											learning</td>
+										<td><form:radiobutton path="posteducation" value="Full Time" />Full Time<br></td>
+										<td colspan="2"><form:radiobutton path="posteducation" value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
+												path="posteducation" value="Correspondance/Distance learning" />Correspondance/Distance learning</td>
 									</tr>
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
@@ -192,6 +154,10 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 											</form:select></td>
 									</tr>
 								</table>
+								<br>
+								<h3 align="left">
+									&nbsp;&nbsp;&nbsp;<input type="submit" value="Save Details" style="width: 6em; height: 2em; font-size: large;">
+								</h3>
 							</fieldset>
 						</div>
 						<br>
@@ -201,8 +167,7 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 						<div id="row3" style="display: none">
 
 							<fieldset>
-								<table width="100%" class="nostyle"
-									style="border-collapse: separate; border-spacing: 5px">
+								<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
 									<tr>
 										<td><font color="red">*</font>PhD/Doctorate</td>
 										<td><form:select path="doctorate">
@@ -212,13 +177,9 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 											</form:select></td>
 									</tr>
 									<tr>
-										<td><form:radiobutton path="doc_education"
-												value="Full Time" />Full Time<br></td>
-										<td colspan="2"><form:radiobutton path="doc_education"
-												value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
-												path="doc_education"
-												value="Correspondance/Distance learning" />Correspondance/Distance
-											learning</td>
+										<td><form:radiobutton path="doc_education" value="Full Time" />Full Time<br></td>
+										<td colspan="2"><form:radiobutton path="doc_education" value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
+												path="doc_education" value="Correspondance/Distance learning" />Correspondance/Distance learning</td>
 									</tr>
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
@@ -249,13 +210,14 @@ var isHidden = $( "#myDiv" ).is( ":hidden" );
 											</form:select></td>
 									</tr>
 								</table>
+								<br>
+								<h3 align="left">
+									&nbsp;&nbsp;&nbsp;<input type="submit" value="Save Details" style="width: 6em; height: 2em; font-size: large;">
+								</h3>
 							</fieldset>
+
 						</div>
-						<br>
-						<h3 align="center">
-							<input type="submit" value="Save Details"
-								style="width: 6em; height: 2em; font-size: large;">
-						</h3>
+
 					</form:form>
 				</div>
 			</div>
