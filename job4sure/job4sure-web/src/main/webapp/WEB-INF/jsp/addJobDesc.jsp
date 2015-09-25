@@ -13,45 +13,6 @@
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-
-<!--  <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
- <script type="text/javascript">
-	function getCityList(data) {
-
-	var stateId = document.getElementById(data.id).value;
-	alert(stateId);
-	$.ajax({
-		url : "getCompanyJDCityListByStateId.do?stateId=" + stateId,
-		type : "GET",
-		contentType : "application/json; charset=utf-8",
-		success : function(response) {
-
-			var cityValues = response.cityList;
-			$('#' + data.id + 'City').html('');// Empty select box before fill
-												// data.without this line when i
-												// fill, i got old data also.
-			$('#' + data.id + 'City')// Due to above line all data is clear
-										// so i add this line for "select city"
-										// label.
-			.append(
-					$("<option value='" + 0 + "'></option>")
-							.text("Select City"));
-			for (i = 0; i < cityValues.length; i++) {
-				$('#' + data.id + 'City').append(
-						$("<option value='" + cityValues[i].id + "'></option>")
-								.text(cityValues[i].cityname));
-			}
-		},
-		error : function() {
-			$('#' + data.id + 'City').append(
-					$("<option value='0'></option>").text('Select City'))
-		}
-	});
-}
-	</script>
-
-
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#formID").validationEngine();
@@ -148,7 +109,7 @@ function checkedSkill(){
 
 </script>
 </head>
-<body onload="disableMaxExpDropDown();checkedSkill()">
+<body onload="checkedSkill()">
 	<div id="cols" class="box">
 		<div id="aside" class="box">
 			<div class="padding box">
@@ -252,12 +213,12 @@ function checkedSkill(){
 					</tr> --%>
 					<tr>
 						<td>Salary</td>
-						<td><form:select path="minSalary.salaryId" onChange="checkMinSal(this);" id="salary1">
+						<td><form:select path="minSalary.salaryId"  id="minSalary">
 								<%-- <form:option value="0" label="Min Annual Salary" /> --%>
 								<c:forEach items="${salaryList}" var="salary">
 									<form:option value="${salary.salaryId}" label="${salary.salary}" />
 								</c:forEach>
-							</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId" id="salary2">
+							</form:select>&nbsp;to&nbsp; <form:select path="maxSalary.salaryId" id="maxSalary">
 								<%-- <form:option value="0" label="Max Annual Salary" /> --%>
 								<c:forEach items="${salaryList}" var="salary">
 									<form:option value="${salary.salaryId}" label="${salary.salary}" />
@@ -267,12 +228,12 @@ function checkedSkill(){
 					<tr>
 						<td>Experience<font color="red">*</font></td>
 
-						<td><form:select path="minExperience.experienceId" onChange="checkMinExp(this);" id="sel1">
+						<td><form:select path="minExperience.experienceId"  id="minExperience">
 								<%-- <form:option value="0" label="Min Annual Salary" /> --%>
 								<c:forEach items="${experienceList}" var="experience">
 									<form:option value="${experience.experienceId}" label="${experience.experience}" />
 								</c:forEach>
-							</form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId" disable="disable" id="sel2">
+							</form:select>&nbsp;to&nbsp; <form:select path="maxExperience.experienceId" id="maxExperience">
 								<%-- <form:option value="0" label="Max Annual Salary" /> --%>
 								<c:forEach items="${experienceList}" var="experience">
 									<form:option value="${experience.experienceId}" label="${experience.experience}" />
