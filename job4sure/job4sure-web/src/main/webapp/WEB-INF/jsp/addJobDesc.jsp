@@ -13,16 +13,7 @@
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#formID").validationEngine();
-
-	});
-
-	function clearAllErrors() {
-		$('#formID').validationEngine('hideAll');
-	}
-</script>
+<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
 
 
 <style type="text/css">
@@ -107,6 +98,20 @@ function checkedSkill(){
 	</c:forEach>
 }
 
+
+function ifStateNotSelected(field, rules, i, options){
+	var a=document.getElementById('currentState').value;
+	  if (a == 0) {
+	     return "*Please select an option, this field is required";
+	  }
+	}
+	
+function ifCityNotSelected(field, rules, i, options){
+	var b=document.getElementById('currentStateCity').value;
+	  if (b == 0) {
+	     return "*Please select an option, this field is required";
+	  }
+	}
 </script>
 </head>
 <body onload="checkedSkill()">
@@ -183,11 +188,12 @@ function checkedSkill(){
 									<td>Job Location<font color="red">*</font>:
 									</td>
 									<td>State<font color="red"
-										colspan="2">*</font> <form:select
-											path="currentCityId.state.stateId" id="currentState"
+										colspan="2">*</font> <form:select class="validate[funcCall[ifStateNotSelected]]"
+										path="currentCityId.state.stateId" id="currentState"
 											onchange="getCityList(this)"
 											style="height:20px; width:150px;">
 											<!-- <option value="null">select</option> -->
+											<form:option value="0">Select State</form:option>
 											<c:forEach items="${stateList}" var="state">
 												<form:option value="${state.stateId}">${state.stateName}</form:option>
 											</c:forEach>
@@ -196,8 +202,9 @@ function checkedSkill(){
 								<tr>
 									<td>City<font color="red">*</font></td>
 									<td><form:select path="currentCityId.id"
-											id="currentStateCity" style="height:25px; width:158px;">
+											id="currentStateCity" style="height:25px; width:158px;" class="validate[funcCall[ifCityNotSelected]]">
 											<%-- <form:option value="0" label="Select City" /> --%>
+											<form:option value="0">Select City </form:option>
 											<c:forEach items="${currentCityList}" var="city">
 												<form:option value="${city.id}">${city.cityname} </form:option>
 											</c:forEach>
@@ -290,7 +297,7 @@ function checkedSkill(){
 							</div></td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><input type="submit" value="Submit" onclick="jQuery('#formID').submit();" />
+						<td colspan="2" align="center"><input type="submit" value="Submit" />
 							<input type="button" value="Clear" onclick="clearAllErrors();" /></td>
 
 					</tr>

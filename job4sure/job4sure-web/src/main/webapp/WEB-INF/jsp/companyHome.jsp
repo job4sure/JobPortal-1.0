@@ -28,14 +28,8 @@
 </head>
 <body>
 	<div id="main">
-
-
 		<hr class="noscreen" />
-
-
 		<!-- Columns -->
-
-
 		<div id="cols" class="box">
 			<div id="aside" class="box">
 				<div class="padding box">
@@ -65,58 +59,40 @@
 						</fieldset>
 					</form>
 					<!-- Create a new project -->
-
 				</div>
 				<!-- /padding -->
 				<ul class="box">
-
-
 				</ul>
-
-
 			</div>
 			<div id="content" class="box">
 				<center>
 					<h2>Company Profile</h2>
 				</center>
 			</div>
-
 			<div id="content" class="box">
-
-
-				<div width="41%" valign="middle">
-					<img src="${attachment}" id="preview" height="32px" width="38px" />
-
-
-				</div>
+				<c:if test="${attachment!=null}">
+					<div width="41%" valign="middle">
+						<img src="${attachment}" id="preview" height="32px" width="38px" />
+					</div>
+				</c:if>
 				<c:if test="${companyProfile.registrationId !=null}">
-
-
 					<div class="wrapper">
 						<div class="column">
-
 							<b>Address:&nbsp;&nbsp;</b> ${companyProfile.address1}<br /> <br /> <b>City:&nbsp;&nbsp;</b>
-							${companyProfile.currentCityId.cityname}<br /> <br /> <b>State:&nbsp;&nbsp;</b> ${companyProfile.currentCityId.state.stateName}<br /> <br /> <b>About
-								Us:&nbsp;&nbsp;</b> ${companyProfile.aboutUs}<br /> <br />
+							${companyProfile.currentCityId.cityname}<br /> <br /> <b>State:&nbsp;&nbsp;</b>
+							${companyProfile.currentCityId.state.stateName}<br /> <br /> <b>About Us:&nbsp;&nbsp;</b>
+							${companyProfile.aboutUs}<br /> <br />
 						</div>
 						<div class="column">
 							<b>No of Employee:&nbsp;&nbsp;</b> ${companyProfile.companySize}<br /> <br /> <b>Company URL:&nbsp;&nbsp;</b>
 							${companyProfile.companyUrl}<br /> <br /> <b>Zip:&nbsp;&nbsp;</b> ${companyProfile.zipcode}<br /> <br /> <b>Domain:&nbsp;&nbsp;</b>
 							${companyProfile.domain}<br /> <br />
 						</div>
-
-
-
 					</div>
 				</c:if>
-
-
 				<c:if test="${companyProfile.registrationId ==null}">
 					<h3 style="color: red;">Sorry Nothing to display complete your details !!</h3>
-
 				</c:if>
-
-
 			</div>
 			<marquee>
 				<h2>Your account will be expired in ${daysLeft} days.</h2>
