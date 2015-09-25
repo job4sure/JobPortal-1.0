@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,19 +8,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript"
-	charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<script src="resources/js/jquery.validationEngine.js" type="text/javascript"
-	charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$("#formID").validationEngine();
-
-});
-
-</script>
+<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
 </head>
 <body>
 	<div id="main">
@@ -37,9 +28,9 @@ $(document).ready(function() {
 						<fieldset>
 							<legend>Search</legend>
 							<p>
-								<input type="text" size="17" name="" class="input-text" /> &nbsp; <input
-									type="submit" value="OK" class="input-submit-02" /> <br /> <a
-									href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a>
+								<input type="text" size="17" name="" class="input-text" /> &nbsp; <input type="submit" value="OK"
+									class="input-submit-02" /> <br /> <a href="javascript:toggle('search-options');" class="ico-drop">Advanced
+									search</a>
 							</p>
 							<!-- Advanced search -->
 							<div id="search-options" style="display: none;">
@@ -54,33 +45,20 @@ $(document).ready(function() {
 						</fieldset>
 					</form>
 					<!-- Create a new project -->
-
 				</div>
 				<!-- /padding -->
 				<ul class="box">
 				</ul>
-
-
 				<!-- Active -->
-
-
 			</div>
-
 			<div id="content" class="box">
-			
-					
-			<center><h2>User Basic Information</h2></center>
+				<center>
+					<h2>User Basic Information</h2>
+				</center>
 			</div>
-				
-			
-
-
-
 			<hr class="noscreen" />
-
-
-			<form:form method="POST" action="updateUserInformation" modelAttribute="Registration"
-				id="formID" onsubmit="return jQuery(this).validationEngine('validate');">
+			<form:form method="POST" action="updateUserInformation" modelAttribute="Registration" id="formID"
+				onsubmit="return jQuery(this).validationEngine('validate');">
 				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 				<form:hidden path="registrationId" />
 				<form:hidden path="password" />
@@ -89,21 +67,15 @@ $(document).ready(function() {
 				<input hidden="radio" name="roleType" value="1" checked /> 
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<div id="content" class="box">
-
 					<fieldset>
-
 						<center>
-							<table width="100%" class="nostyle"
-								style="border-collapse: separate; border-spacing: 5px">
-
+							<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
 								<tr>
-									<td style="width: 150px;"><label id="username">Full Name<font
-											color="red">*</font>:
+									<td style="width: 150px;"><label id="username">Full Name<font color="red">*</font>:
 									</label><label id="companyname" style="display: none;">CompanyName*:</label></td>
 									<td><form:input type="text" size="30" path="fullName"
 											class="validate[required,custom[fullname]] input-text" maxlength="80" id="fullName" /></td>
 								</tr>
-
 								<tr>
 									<td></td>
 									<td></td>
@@ -111,7 +83,6 @@ $(document).ready(function() {
 									<td></td>
 									<td></td>
 								</tr>
-
 								<tr>
 									<td>Contact Number<font color="red">*</font>:
 									</td>
@@ -119,7 +90,6 @@ $(document).ready(function() {
 											class="validate[required,custom[integer,maxSize[10],minSize[10]]] input-text" id="mobileNo" />&nbsp&nbsp&nbsp&nbsp<span
 										style="color: red"><form:errors path="mobileNo"></form:errors></span><br></td>
 								</tr>
-
 								<tr>
 									<td></td>
 									<td></td>
@@ -132,12 +102,10 @@ $(document).ready(function() {
 									<td><div id="urllabel" style="display: none;">Company Url*:</div></td>
 
 									<td><div id="Companyurl" style="display: none;">
-											<form:input type="text" size="40" path="Companyurl"
-												class="validate[required] input-text" maxlength="80" />
+											<form:input type="text" size="40" path="Companyurl" class="validate[required] input-text" maxlength="80" />
 										</div></td>
 
 								</tr>
-
 								<tr>
 									<td></td>
 									<td></td>
@@ -148,17 +116,15 @@ $(document).ready(function() {
 								</tr>
 								<tr>
 									<td><input type="submit" value="submit" class="input-submit-02"
-										onclick="return confirm('Are you sure you want to update this item?'); jQuery('#formID').submit();" /></td>
+										onclick="return confirm('Are you sure you want to update this item?');" /></td>
 								</tr>
-
 							</table>
 						</center>
 				</div>
-
 				</fieldset>
 		</div>
 		</form:form>
-		</div>
+	</div>
 	</div>
 	</div>
 </body>
