@@ -13,11 +13,8 @@
 <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
 <script type="text/javascript" src="resources/js/jsp/registration.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$("#formID").validationEngine();
-});
-</script>
+<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
+
 </head>
 <body>
 	<div id="main">
@@ -141,8 +138,7 @@ $(document).ready(function() {
 
 								<td><div id="Companyurl" style="display: none;">
 										<form:input type="text" size="40" path="Companyurl"
-											class="validate[required,minSize[8],maxSize[50]] input-text" maxlength="80"
-											onclick="jQuery('#formID').submit();" />
+											class="validate[required,minSize[8],maxSize[50]] input-text" maxlength="80"/>
 									</div></td>
 							</tr>
 							<tr>
@@ -150,8 +146,7 @@ $(document).ready(function() {
 								<td></td>
 							</tr>
 							<tr>
-								<td align="left"><input type="submit" value="submit" class="input-submit-02"
-									onclick="jQuery('#formID').submit();" /></td>
+								<td align="left"><input type="submit" value="submit" class="input-submit-02" /></td>
 							</tr>
 						</table>
 					</div>
