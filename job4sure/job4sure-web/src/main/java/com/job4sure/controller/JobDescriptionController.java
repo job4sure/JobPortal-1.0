@@ -30,6 +30,7 @@ import com.job4sure.model.Registration;
 import com.job4sure.model.Skills;
 import com.job4sure.service.AdminJobDescriptionService;
 import com.job4sure.service.JobDescriptionService;
+import com.job4sure.service.UserProfileService;
 import com.job4sure.util.IConstant;
 import com.job4sure.util.JobDescriptionDropDownList;
 
@@ -41,6 +42,9 @@ public class JobDescriptionController {
     
     @Autowired
     AdminJobDescriptionService adminJobDescriptionService;
+    
+    @Autowired
+    private UserProfileService userProfileService;
     
     @Autowired
     @Qualifier("jobDescriptionValidator")
@@ -70,6 +74,7 @@ public class JobDescriptionController {
 	    return "redirect:/createJobDescription.do";
 	} else {
 	    model.addAttribute("jobDescription", new JobDescription());
+	    model.addAttribute("stateList", userProfileService.getAllState());
 	    return "addJobDesc";
 	}
     }
@@ -153,5 +158,14 @@ public class JobDescriptionController {
 	model.addAttribute("jobDescription", jobDescription);
 	return "viewSingleJobDescription";
     }
+    
+    @RequestMapping(value = "/getCompanyJDCityListByStateId", method = { RequestMethod.GET })
+	@ResponseBody
+	public Map<String, List<City>> getAllCityByStateId(@RequestParam Integer stateId) {
+		Map<String, List<City>> cityListMap = new HashMap<String, List<City>>();
+		List<City> cityList = userProfileService.getCity(stateId);
+		cityListMap.put("cityList", cityList);
+		return cityListMap;
 
+	}
 }

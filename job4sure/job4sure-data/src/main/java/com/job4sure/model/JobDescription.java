@@ -27,8 +27,12 @@ public class JobDescription implements Serializable {
     private Integer jobDescriptionId;
     private String jobTitle;
     private String jobDesc;
-    private String jobLocation;
+   // private String jobLocation;
     // private String salary;
+	
+    private State currentStateId;
+
+   
     private Integer noOfCandidates;
     private String postedDate;
     private String jobValidDate;
@@ -43,7 +47,7 @@ public class JobDescription implements Serializable {
     private Salary maxSalary;
     private Experience minExperience;
     private Experience maxExperience;
-
+    private City currentCityId;
     
     @ManyToMany(fetch=FetchType.EAGER)//cascade = CascadeType.ALL,
     @JoinTable(name = "DESCRIPTION_SKILLS", joinColumns = { @JoinColumn(name = "JOB_ID") }, inverseJoinColumns = { @JoinColumn(name = "SKILLS_ID") })
@@ -107,7 +111,15 @@ public class JobDescription implements Serializable {
 	this.approvalStatus = approvalStatus;
     }
 
-    
+    @OneToOne(targetEntity = City.class)
+    @JoinColumn(name = "CURRENT_CITY_ID", referencedColumnName = "CITY_ID")
+    public City getCurrentCityId() {
+		return currentCityId;
+	}
+
+	public void setCurrentCityId(City currentCityId) {
+		this.currentCityId = currentCityId;
+	}
 
     @Transient
     public String getSkill() {
@@ -148,14 +160,7 @@ public class JobDescription implements Serializable {
 	this.jobDesc = jobDesc;
     }
 
-    @Column(name = "JOB_LOCATION", length = 30)
-    public String getJobLocation() {
-	return jobLocation;
-    }
 
-    public void setJobLocation(String jobLocation) {
-	this.jobLocation = jobLocation;
-    }
 
     /*
      * @Column(name = "SALARY", length = 10) public String getSalary() { return
@@ -163,8 +168,17 @@ public class JobDescription implements Serializable {
      * 
      * public void setSalary(String salary) { this.salary = salary; }
      */
+    @Transient
+    public State getCurrentStateId() {
+		return currentStateId;
+	}
 
-    @Column(name = "NO_OF_CANDIDATES")
+	public void setCurrentStateId(State currentStateId) {
+		this.currentStateId = currentStateId;
+	}
+
+	
+	@Column(name = "NO_OF_CANDIDATES")
     public Integer getNoOfCandidates() {
 	return noOfCandidates;
     }

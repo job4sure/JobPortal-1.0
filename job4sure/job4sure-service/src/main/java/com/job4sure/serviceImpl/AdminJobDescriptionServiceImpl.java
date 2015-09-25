@@ -49,7 +49,7 @@ public class AdminJobDescriptionServiceImpl implements AdminJobDescriptionServic
 		String body = "Dear Sub Admin,\n \n A new Job Description has been posted on our Portal. \n Please have a look on following JD. \n\n Job Title"
 		                + jobDescription.getJobTitle()
 		                + "\n Job Location: "
-		                + jobDescription.getJobLocation()
+		                
 		                + "\n Edjucation: "
 		                + jobDescription.getEducation()
 		                + "\n Minimum Salary: "

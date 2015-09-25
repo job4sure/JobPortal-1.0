@@ -17,7 +17,7 @@ public class JobDescriptionValidator implements Validator {
 	public void validate(Object object, Errors errors) {
 		ValidationUtils.rejectIfEmpty(errors, "jobTitle", "error.jobTitle.empty");
 		ValidationUtils.rejectIfEmpty(errors, "jobDesc", "error.jobDesc.empty");
-		ValidationUtils.rejectIfEmpty(errors, "jobLocation", "error.jobLocation.empty");
+		ValidationUtils.rejectIfEmpty(errors, "currentCityId", "error.jobLocation.empty");
 		ValidationUtils.rejectIfEmpty(errors, "noOfCandidates", "error.noOfCandidates.empty");
 		ValidationUtils.rejectIfEmpty(errors, "jobValidDate", "error.jobValidDate.empty");
 		ValidationUtils.rejectIfEmpty(errors, "role", "error.role.empty");
