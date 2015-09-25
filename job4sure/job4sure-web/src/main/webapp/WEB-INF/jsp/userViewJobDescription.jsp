@@ -10,71 +10,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
 <link rel="stylesheet" type="text/css" href="resources/css/viewAllJobDesc.css" />
 <script type="text/javascript" src="resources/js/paging.js"></script>
-<script>
-	function jobsBasedOnTechnology(data) {
-		var techId = data.value;
-		$
-				.ajax({
-					url : "getAllJobsBySkillId.do?skillId=" + techId,
-					type : "GET",
-					contentType : "application/json; charset=utf-8",
-					success : function(response) {
-						var responce = JSON.parse(response);
-						var list = responce["jobDescriptionList"];
-						$('#showDataTable').empty();
-						$('#showDataTable')
-								.append(
-										'<table id="results" style="border-collapse: separate; border-spacing: 12px;" class="nostyle"></table>');
-						var table = $('#showDataTable').children();
-
-						for (i = 0; i < list.length; i++) {
-							var j = i + 1;
-							table
-									.append('<tr><td width="20%"><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td><td width="70%"><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right"><h2>'
-											+ list[i].jobTitle
-											+ '</h2><p>'
-											+ list[i].jobDesc
-											+ '</p><a href="viewSingleJobDescription.do?jobId='
-											+list[i].jobDescriptionId+'">View</a></div></td></tr>');
-						}
-						showPagination();
-					},
-					error : function() {
-					}
-				});
-	}
-	function jobsBasedOnExp(data) {
-		var experience = data.value;
-		$
-				.ajax({
-					url : "getAllJobsByExp.do?experience=" + experience,
-					type : "GET",
-					contentType : "application/json; charset=utf-8",
-					success : function(response) {
-						var list = JSON.parse(response);
-						$('#showDataTable').empty();
-						$('#showDataTable')
-								.append(
-										'<table id="results" style="border-collapse: separate; border-spacing: 12px;" class="nostyle"></table>');
-						var table = $('#showDataTable').children();
-						for (i = 0; i < list.length; i++) {
-							var j = i + 1;
-							table
-									.append('<tr><td width="20%"><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td><td width="70%"><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right"><h2>'
-											+ list[i].jobTitle
-											+ '</h2><p>'
-											+ list[i].jobDesc
-											+ '</p><a href="viewSingleJobDescription.do?jobId='
-												+list[i].jobDescriptionId+'">View</a></div></td></tr>');
-						}
-						showPagination();
-					},
-					error : function() {
-						alert("error");
-					}
-				});
-	}
-</script>
+<script type="text/javascript" src="resources/js/jsp/userViewJobDescription.js"></script>
 </head>
 <body>
 	<div id="cols" class="box">
@@ -130,35 +66,28 @@
 			<div id="showDataTable">
 				<table id="results" style="border-collapse: separate; border-spacing: 12px;" class="nostyle">
 					<c:forEach items="${jobList}" var="joblist">
+						<%--  <c:if test="${jobList.approvalStatus.statusId==2}"> --%>
 						<tr>
 							<td width="20%"><img src="resources/images/logo.png" width="100%" height="80" alt="My Pic"></td>
-							<td width="70%"><div id="jobDiv" style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
+							<td width="70%"><div id="jobDiv"
+									style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
 									<h2>${joblist.jobTitle}</h2>
 									<p>${joblist.jobDesc}</p>
 									<a href="viewSingleJobDescription.do?jobId=${joblist.jobDescriptionId}">View</a>
 								</div></td>
 						</tr>
+						<%-- </c:if> --%>
 					</c:forEach>
 				</table>
 			</div>
 			<c:if test="${jobList!=null}">
 				<div id="pageNavPosition"></div>
 			</c:if>
-			
-			<script type="text/javascript">
-				var pager = new Pager('results', 2);
-				pager.init();
-				pager.showPageNav('pager', 'pageNavPosition');
-				pager.showPage(1);
-				
-				function showPagination(){
-					var pager = new Pager('results', 2);
-					pager.init();
-					pager.showPageNav('pager', 'pageNavPosition');
-					pager.showPage(1);
-				}
-			</script>
 		</div>
 	</div>
 </body>
+<script>var pager = new Pager('results', 2);
+pager.init();
+pager.showPageNav('pager', 'pageNavPosition');
+pager.showPage(1);</script>
 </html>

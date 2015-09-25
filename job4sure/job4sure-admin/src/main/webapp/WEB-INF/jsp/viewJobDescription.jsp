@@ -162,10 +162,10 @@ function clearAllErrors() {
 						<td>Job Description</td>
 						<td>${jobDescription.jobDesc}
 					</tr>
-					<tr>
+					<%-- <tr>
 						<td>Job Location</td>
 						<td>${jobDescription.jobLocation}</td>
-					</tr>
+					</tr> --%>
 					<tr>
 						<td>Salary</td>
 						<td>${jobDescription.minSalary.salary} To ${jobDescription.maxSalary.salary} lacs/year</td>

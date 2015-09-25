@@ -102,7 +102,7 @@
 								align="center">
 								<font color="red">Professional Details</font>
 							</h3></a>
-						<div id="row1">
+						<div id="row1" style="display: none;">
 
 							<fieldset>
 								<center>
@@ -230,6 +230,12 @@
 												href="downloadResume?registrationId=${registration.registrationId}">Download
 													resume</a></td>
 										</tr>
+										<tr>
+											<td style="padding: 15;"></td>
+											<td><input type="submit" value="submit"
+												class="input-submit-02"
+												onclick="return confirm('Are you sure you want to update this item?');jQuery('#formID').submit();" /></td>
+										</tr>
 									</table>
 									<h4 style="color: red;">${msg}</h4>
 							</fieldset>
@@ -241,7 +247,7 @@
 						<a href="javascript:toggleRow('row2')"><h3 align="center">
 								<font color="red">Personal Details</font>
 							</h3></a>
-						<div id="row2">
+						<div id="row2" style="display: none;">
 							<fieldset>
 								<table width="100%" class="nostyle"
 									style="border-collapse: separate; border-spacing: 5px">
