@@ -53,7 +53,7 @@ $(window).load(function() {
 function getCityList(data) {
 
 	var stateId = document.getElementById(data.id).value;
-	alert(stateId);
+	//alert(stateId);
 	$.ajax({
 		url : "getCompanyJDCityListByStateId.do?stateId=" + stateId,
 		type : "GET",

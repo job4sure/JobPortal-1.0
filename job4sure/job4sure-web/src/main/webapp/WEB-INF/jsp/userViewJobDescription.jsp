@@ -44,11 +44,6 @@
 			</div>
 		</div>
 		<div class="box" id="content">
-			<center>
-				<h2 id="show">${message}</h2>
-			</center>
-		</div>
-		<div class="box" id="content">
 			<label>Sort By Technology</label> <select onchange="jobsBasedOnTechnology(this)">
 				<option value="0" label="select">select</option>
 				<option value="1" label="java">java</option>
