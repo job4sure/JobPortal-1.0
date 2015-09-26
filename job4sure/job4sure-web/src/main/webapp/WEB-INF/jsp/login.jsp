@@ -18,16 +18,7 @@
  });
  </script>
   -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#formID").validationEngine();
-
-	});
-
-	function clearAllErrors() {
-		$('#formID').validationEngine('hideAll');
-	}
-</script>
+<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 

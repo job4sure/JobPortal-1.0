@@ -40,9 +40,8 @@
     }
 </script> -->
 <style>
-
 #content table {
-    border: 0px solid #cfcfcf;
+	border: 0px solid #cfcfcf;
 }
 
 .multiselect {
@@ -80,37 +79,13 @@
 }
 </style>
 <script src="resources/js/addJobDescp.js"></script>
-
 <link href="resources/css/jquery-ui.css" rel="stylesheet" type="text/css" />
-
 <script src="resources/js/jquery-ui.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$("#datepicker").datepicker();
-	});
-</script>
-
 <script type="text/javascript">
-
-function checkedSkill(){
-	<c:forEach items="${checkedSkillsList}" var="checkedSkills">
-	 $('#${checkedSkills.skillsId}').attr('checked', true);
-	</c:forEach>
-}
-
-
-function ifStateNotSelected(field, rules, i, options){
-	var a=document.getElementById('currentState').value;
-	  if (a == 0) {
-	     return "*Please select an option, this field is required";
-	  }
-	}
-	
-function ifCityNotSelected(field, rules, i, options){
-	var b=document.getElementById('currentStateCity').value;
-	  if (b == 0) {
-	     return "*Please select an option, this field is required";
-	  }
+	function checkedSkill() {
+		<c:forEach items="${checkedSkillsList}" var="checkedSkills">
+		$('#${checkedSkills.skillsId}').attr('checked', true);
+		</c:forEach>
 	}
 </script>
 </head>
@@ -147,25 +122,19 @@ function ifCityNotSelected(field, rules, i, options){
 
 			</div>
 			<!-- /padding -->
-
-
-
 		</div>
 		<hr class="noscreen" />
 		<!-- Content (Right Column) -->
-		
 		<div id="content" class="box">
-		<center>
-		<h2>Job Description</h2>
-		</center>
+			<center>
+				<h2>Job Description</h2>
+			</center>
 		</div>
 		<div id="content" class="box">
-
 			<h5 style="color: red;">${status}</h5>
 			<form:form action="createJobDescription" method="POST" id="formID"
 				onsubmit="return jQuery(this).validationEngine('validate');" modelAttribute="jobDescription">
 				<form:hidden path="jobDescriptionId" />
-
 				<table width="100%">
 					<!-- <tr>
 						<td colspan="2" align="center"><h5>Job Description</h5></td>
@@ -185,31 +154,29 @@ function ifCityNotSelected(field, rules, i, options){
 							</div></td>
 					</tr>
 					<tr>
-									<td>Job Location<font color="red">*</font>:
-									</td>
-									<td>State<font color="red"
-										colspan="2">*</font> <form:select class="validate[funcCall[ifStateNotSelected]]"
-										path="currentCityId.state.stateId" id="currentState"
-											onchange="getCityList(this)"
-											style="height:20px; width:150px;">
-											<!-- <option value="null">select</option> -->
-											<form:option value="0">Select State</form:option>
-											<c:forEach items="${stateList}" var="state">
-												<form:option value="${state.stateId}">${state.stateName}</form:option>
-											</c:forEach>
-										</form:select> <br></td>
-								</tr>
-								<tr>
-									<td>City<font color="red">*</font></td>
-									<td><form:select path="currentCityId.id"
-											id="currentStateCity" style="height:25px; width:158px;" class="validate[funcCall[ifCityNotSelected]]">
-											<%-- <form:option value="0" label="Select City" /> --%>
-											<form:option value="0">Select City </form:option>
-											<c:forEach items="${currentCityList}" var="city">
-												<form:option value="${city.id}">${city.cityname} </form:option>
-											</c:forEach>
-										</form:select> <br></td>
-								</tr>
+						<td>Job Location<font color="red">*</font>:
+						</td>
+						<td>State<font color="red" colspan="2">*</font> <form:select class="validate[funcCall[ifStateNotSelected]]"
+								path="currentCityId.state.stateId" id="currentState" onchange="getCityList(this)"
+								style="height:20px; width:150px;">
+								<!-- <option value="null">select</option> -->
+								<form:option value="0">Select State</form:option>
+								<c:forEach items="${stateList}" var="state">
+									<form:option value="${state.stateId}">${state.stateName}</form:option>
+								</c:forEach>
+							</form:select> <br></td>
+					</tr>
+					<tr>
+						<td>City<font color="red">*</font></td>
+						<td><form:select path="currentCityId.id" id="currentStateCity" style="height:25px; width:158px;"
+								class="validate[funcCall[ifCityNotSelected]]">
+								<%-- <form:option value="0" label="Select City" /> --%>
+								<form:option value="0">Select City </form:option>
+								<c:forEach items="${currentCityList}" var="city">
+									<form:option value="${city.id}">${city.cityname} </form:option>
+								</c:forEach>
+							</form:select> <br></td>
+					</tr>
 					<%-- <tr>
 						<td>Job Location<font color="red">*</font></td>
 						<td><form:input path="jobLocation" class="validate[required,custom[onlyLetterSp]] input-text allmydiv"
@@ -220,7 +187,7 @@ function ifCityNotSelected(field, rules, i, options){
 					</tr> --%>
 					<tr>
 						<td>Salary</td>
-						<td><form:select path="minSalary.salaryId"  id="minSalary">
+						<td><form:select path="minSalary.salaryId" id="minSalary">
 								<%-- <form:option value="0" label="Min Annual Salary" /> --%>
 								<c:forEach items="${salaryList}" var="salary">
 									<form:option value="${salary.salaryId}" label="${salary.salary}" />
@@ -235,7 +202,7 @@ function ifCityNotSelected(field, rules, i, options){
 					<tr>
 						<td>Experience<font color="red">*</font></td>
 
-						<td><form:select path="minExperience.experienceId"  id="minExperience">
+						<td><form:select path="minExperience.experienceId" id="minExperience">
 								<%-- <form:option value="0" label="Min Annual Salary" /> --%>
 								<c:forEach items="${experienceList}" var="experience">
 									<form:option value="${experience.experienceId}" label="${experience.experience}" />
@@ -246,27 +213,24 @@ function ifCityNotSelected(field, rules, i, options){
 									<form:option value="${experience.experienceId}" label="${experience.experience}" />
 								</c:forEach>
 							</form:select> in Year</td>
-
 					</tr>
 					<tr>
 						<td>Education</td>
 						<td><form:input path="education" maxlength="20" class="validate[required] input-text" /></td>
 					</tr>
-
 					<tr>
 						<td>Skills</td>
 						<td>
 							<div class="multiselect">
 								<div class="selectBox" onclick="showCheckboxes();">
-									<select>
+									<select class="validate[funcCall[ifSkillNotSelected]]">
 										<option>Select an option</option>
 									</select>
 									<div class="overSelect"></div>
 								</div>
 								<div id="checkboxes">
 									<c:forEach items="${skillsList}" var="refskills">
-										<label><form:checkbox path="skill" class="validate[required]" id="${refskills.skillsId}"
-												value="${refskills.skillsId}" />${refskills.skillsName}</label>
+										<label><form:checkbox path="skill" id="${refskills.skillsId}" value="${refskills.skillsId}" />${refskills.skillsName}</label>
 									</c:forEach>
 								</div>
 							</div>
@@ -297,9 +261,8 @@ function ifCityNotSelected(field, rules, i, options){
 							</div></td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><input type="submit" value="Submit" />
-							<input type="button" value="Clear" onclick="clearAllErrors();" /></td>
-
+						<td colspan="2" align="center"><input type="submit" value="Submit" /> <input type="button" value="Clear"
+							onclick="clearAllErrors();" /></td>
 					</tr>
 				</table>
 			</form:form>

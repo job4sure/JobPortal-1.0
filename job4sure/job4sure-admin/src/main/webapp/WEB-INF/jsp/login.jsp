@@ -9,28 +9,13 @@
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 	<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
 <!-- <script type="text/javascript">
 	$(document).ready(function(){
 		$(".tabs > ul").tabs();
 	});
 	</script>
 	 -->
-	<script type="text/javascript">
-jQuery(document).ready(function(){
-			// binds form submission and fields to the validation engine
-			jQuery("#formID").validationEngine({
-				onFormSuccess:formSuccess,
-				onFormFailure:formFailure
-			});
-		});
-		
-		
-function clearAllErrors() {
-	$('#formID').validationEngine('hideAll');
-}
-
-
-		</script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
@@ -54,9 +39,9 @@ function clearAllErrors() {
     <div id="aside" class="box">
       <div class="padding box">
         <!-- Logo (Max. width = 200px) -->
-        <p id="logo"><a href="http://all-free-download.com/free-website-templates/"><img src="resources/tmp/logo.gif" alt="" /></a></p>
+        <p id="logo"><a href="#"><img src="resources/tmp/logo.gif" alt="" /></a></p>
         <!-- Search -->
-        <form action="http://all-free-download.com/free-website-templates/" method="get" id="search">
+        <form action="#" method="get" id="search">
           <fieldset>
           <legend>Search</legend>
           <p>
@@ -85,10 +70,10 @@ function clearAllErrors() {
           </fieldset>
         </form>
       <ul class="box">
-        <li><a href="http://all-free-download.com/free-website-templates/">Privacy</a></li>
-        <li><a href="http://all-free-download.com/free-website-templates/">Terms And Conditions</a></li>
-		 <li><a href="http://all-free-download.com/free-website-templates/">Contact Us</a></li>
-		  <li><a href="http://all-free-download.com/free-website-templates/">Leave Us Feedback</a></li> 
+        <li><a href="javascript:void(0);">Privacy</a></li>
+        <li><a href="javascript:void(0);">Terms And Conditions</a></li>
+		 <li><a href="javascript:void(0);">Contact Us</a></li>
+		  <li><a href="javascript:void(0);">Leave Us Feedback</a></li> 
 		  </ul>
       </div>
       <!-- /padding -->
