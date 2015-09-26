@@ -64,7 +64,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/success", method = RequestMethod.GET)
-    public String showSuccessPage(HttpServletRequest request, Principal principal) {
+    public String showSuccessPage(HttpServletRequest request, Principal principal,ModelMap model) {
 	HttpSession session = request.getSession();
 	boolean isUser = request.isUserInRole("USER");
 	boolean isComp = request.isUserInRole("COMP");
@@ -77,8 +77,10 @@ public class HomeController {
 	    return "redirect:/userProfileHomePage";
 	else if (isComp)
 	    return "redirect:/companyHome";
-	else
-	    return "loginPage";
+	else{
+		model.addAttribute("message", IConstant.WRONG_CREDENTIAL);
+	    return "redirect:/OpenloginPage";
+	}
     }
 
     @RequestMapping(value = "/companyHome", method = RequestMethod.GET)
