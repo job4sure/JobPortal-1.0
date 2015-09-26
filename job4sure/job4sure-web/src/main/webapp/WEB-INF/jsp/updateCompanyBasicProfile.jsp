@@ -18,14 +18,8 @@
 	type="text/javascript" charset="utf-8"></script>
 <!-- End validation -->
 <script type="text/javascript" src="resources/js/verfyEmailId.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#formID").validationEngine();
-
-	});
-</script>
+<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
 <style type="text/css">
-
 #content table {
     border: 0px solid #cfcfcf;
 }
@@ -128,7 +122,7 @@
 						<tr>
 							<td></td>
 							<td><input type="submit" value="submit"
-								class="input-submit-02" onclick="jQuery('#formID').submit();" /></td>
+								class="input-submit-02" /></td>
 						</tr>
 
 					</table>

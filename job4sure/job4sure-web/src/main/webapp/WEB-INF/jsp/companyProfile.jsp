@@ -20,46 +20,7 @@
 	type="text/javascript" charset="utf-8"></script>
 <script src="resources/js/jsp/companyProfile.js" type="text/javascript"
 	charset="utf-8"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#formID").validationEngine();
-
-	});
-
-	function clearAllErrors() {
-		$('#formID').validationEngine('hideAll');
-	}
-</script>
-<script type="text/javascript">
-	function getCityList(data) {
-
-		var stateId = document.getElementById(data.id).value;
-		alert(stateId);
-		$.ajax({
-			url : "getCompanyCityListByStateId.do?stateId=" + stateId,
-			type : "GET",
-			contentType : "application/json; charset=utf-8",
-			success : function(response) {
-
-				var cityValues = response.cityList;
-				$('#' + data.id + 'City').html('');//Empty select box before fill data.without this line when i fill, i got old data also.
-				$('#' + data.id + 'City')//Due to above line all data is clear so i add this line for "select city" label.
-				.append(
-						$("<option value='"+0+"'></option>")
-								.text("Select City"));
-				for (i = 0; i < cityValues.length; i++) {
-					$('#' + data.id + 'City').append(
-							$("<option value='"+cityValues[i].id+"'></option>")
-									.text(cityValues[i].cityname));
-				}
-			},
-			error : function() {
-				$('#' + data.id + 'City').append(
-						$("<option value='0'></option>").text('Select City'))
-			}
-		});
-	}
-</script>
+	<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
 </head>
 <body>
 	<form:form method="POST" action="saveCompanyCompleteProfile"
@@ -151,8 +112,8 @@
 
 								<tr>
 									<td>Domain</td>
-									<td><form:select path="Domain" class="validate[required]">
-											<form:option value="Select" label="Select" />
+									<td><form:select path="Domain" id="domain" class="validate[funcCall[ifDomainNotSelected]]">
+											<form:option value="0" label="Select" />
 											<form:option value="IT" label="IT" />
 											<form:option value="MANAGER" label="MANAGER" />
 										</form:select></td>
@@ -182,8 +143,9 @@
 										colspan="2">*</font> <form:select
 											path="currentCityId.state.stateId" id="currentState"
 											onchange="getCityList(this)"
-											style="height:20px; width:150px;">
+											style="height:20px; width:150px;" class="validate[funcCall[ifStateNotSelected]]">
 											<!-- <option value="null">select</option> -->
+											<form:option value="0">Select State</form:option>
 											<c:forEach items="${stateList}" var="state">
 												<form:option value="${state.stateId}">${state.stateName}</form:option>
 											</c:forEach>
@@ -192,8 +154,9 @@
 								<tr>
 									<td>City<font color="red">*</font></td>
 									<td><form:select path="currentCityId.id"
-											id="currentStateCity" style="height:25px; width:158px;">
+											id="currentStateCity" style="height:25px; width:158px;" class="validate[funcCall[ifCityNotSelected]]">
 											<%-- <form:option value="0" label="Select City" /> --%>
+											<form:option value="0">Select City</form:option>
 											<c:forEach items="${currentCityList}" var="city">
 												<form:option value="${city.id}">${city.cityname} </form:option>
 											</c:forEach>
