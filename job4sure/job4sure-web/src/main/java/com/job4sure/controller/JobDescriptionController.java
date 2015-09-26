@@ -110,6 +110,9 @@ public class JobDescriptionController {
 	JobDescriptionDropDownList.getAllJobDescriptionDropDownList(model, jobDescriptionService);
 	model.addAttribute("checkedSkillsList", checkedSkillsList);
 	model.addAttribute("jobDescription", jobDescription);
+	model.addAttribute("stateList", userProfileService.getAllState());
+	if(jobDescription.getCurrentCityId()!=null)
+	model.addAttribute("currentCityList", userProfileService.getCity(jobDescription.getCurrentCityId().getState().getStateId()));
 	return "addJobDesc";
     }
     @RequestMapping(value = "/getApprovedJobDescriptionInUser", method = RequestMethod.GET)
