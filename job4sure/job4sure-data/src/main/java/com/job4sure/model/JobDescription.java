@@ -21,7 +21,7 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "job_description", catalog = "jobportal")
+@Table(name = "job_description")
 public class JobDescription implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer jobDescriptionId;

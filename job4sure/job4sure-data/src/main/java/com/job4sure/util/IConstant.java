@@ -5,13 +5,15 @@ public class IConstant {
 	// Mail:
 	public static final String FROM_EMAIL_ID = "hrd@prestigepoint.in";
 	public static final String FROM_PASSWORD = "prestigepoint@123";
+//	 public static final String PASSWORD_RECOVERY_URL =
+//	 "http://itjobbers-webmodule.rhcloud.com/reCreatePass";
 	public static final String PASSWORD_RECOVERY_URL = "http://localhost:8080/job4sure-web/reCreatePass";
+//	 public static final String REGISTRATION_URL =
+//	 "http://itjobbers-webmodule.rhcloud.com/verify";
 	public static final String REGISTRATION_URL = "http://localhost:8080/job4sure-web/verify";
+//	 public static final String REGISTRATION_verfy_URL =
+//	 "http://itjobbers-webmodule.rhcloud.com/adminRegistration";
 	public static final String REGISTRATION_verfy_URL = "http://localhost:8080/job4sure-admin/adminRegistration";
-	// public static final String
-	// REGISTRATION_URL="http://job4sure-fasttofind.rhcloud.com/verify";
-	// public static final String
-	// PASSWORD_RECOVERY_URL="http://job4sure-fasttofind.rhcloud.com/reCreatePass";
 
 	// Messages:
 	public static final String REGISTRATION_SUCCESS_MESSAGE = "<p class='msg done'>Your registration has been completed successfully , please check your email and verify your account</p>";
@@ -72,7 +74,7 @@ public class IConstant {
 	public static final int JD_REJECTED_STATUS = 3;
 	public static final String JD_APPROVED_MSG = "Successfully approved job description";
 	public static final String JD_REJECTED_MSG = "Successfully rejected job description";
-	
+
 	// Message for usercompleteinfo
 	public static final String RESUME_FAILURE_MESSAGE = "your resume not upload please first upload the resume   !!";
 
