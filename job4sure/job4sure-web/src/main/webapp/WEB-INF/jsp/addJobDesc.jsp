@@ -6,78 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Job Description</title>
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<!-- <link rel="stylesheet" href="resources/css/dropdown.css" type="text/css" /> -->
-
-<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
-<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
-
-
-<style type="text/css">
-#error {
-	color: red;
-}
-
-#content ul li {
-	padding-left: 15px;
-	background: url("../design/gg.gif") 0 4px no-repeat;
-}
-</style>
-<!-- <script>
-    var expanded = false;
-    function showCheckboxes() {
-        var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-        } else {
-            checkboxes.style.display = "none";
-            expanded = false;
-        }
-    }
-</script> -->
-<style>
-#content table {
-	border: 0px solid #cfcfcf;
-}
-
-.multiselect {
-	width: 200px;
-}
-
-.selectBox {
-	position: relative;
-}
-
-.selectBox select {
-	width: 100%;
-	font-weight: bold;
-}
-
-.overSelect {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-}
-
-#checkboxes {
-	display: none;
-	border: 1px #dadada solid;
-}
-
-#checkboxes label {
-	display: block;
-}
-
-#checkboxes label:hover {
-	background-color: #1e90ff;
-}
-</style>
+<link rel="stylesheet" href="resources/css/jsp/addJobDesc.css" type="text/css" />
 <script src="resources/js/addJobDescp.js"></script>
 <link href="resources/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script src="resources/js/jquery-ui.min.js"></script>

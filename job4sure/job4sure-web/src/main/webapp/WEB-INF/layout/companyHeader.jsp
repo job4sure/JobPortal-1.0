@@ -13,11 +13,17 @@
 <!--[if lte IE 6]><link rel="stylesheet" media="screen,projection" type="text/css" href="css/main-ie6.css" /><![endif]-->
 <link rel="stylesheet" media="screen,projection" type="text/css" href="resources/css/style.css" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="resources/css/mystyle.css" />
+<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
+
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/switcher.js"></script>
 <script type="text/javascript" src="resources/js/toggle.js"></script>
 <script type="text/javascript" src="resources/js/ui.core.js"></script>
 <script type="text/javascript" src="resources/js/ui.tabs.js"></script>
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".tabs > ul").tabs();
