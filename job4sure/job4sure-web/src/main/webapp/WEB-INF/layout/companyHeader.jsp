@@ -24,17 +24,9 @@
 <script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="resources/js/jsp/commonForFormValidation.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".tabs > ul").tabs();
-	});
-</script>
 </head>
 <body>
-
 	<div id="main">
-
-
 		<div id="tray" class="box">
 			<p class="f-left box">
 				<span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1"
@@ -64,7 +56,7 @@
 						<li id="menu-active"><a href="showCompleteCompanyProfilePage">Update Company Profile</a></li>
 						<li id="menu-active"><a href="setNewPasswordForComp">Reset Password</a></li>
 					</ul></li>
-		<!-- 		<li style="padding-left: 350px;"><img width="17px" src="resources/images/mail.png" /></li>
+				<!-- 		<li style="padding-left: 350px;"><img width="17px" src="resources/images/mail.png" /></li>
 				<li style="padding-right: 110px;"><b>support@job4sure.com</b></li>
 				<li><img width="32px" src="resources/images/facebook.png" /></li>
 				<li><img width="32px" src="resources/images/twitter.png" /></li>

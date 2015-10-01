@@ -5,26 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".tabs > ul").tabs();
-	});
-</script>
-<script type="text/javascript">
-	function previewImage(input) {
-		var preview = document.getElementById('preview');
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				preview.setAttribute('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		} else {
-			preview.setAttribute('src');
-		}
-	}
-</script>
 </head>
 <body>
 	<div id="main">
