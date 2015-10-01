@@ -78,4 +78,9 @@ public class IConstant {
 	// Message for usercompleteinfo
 	public static final String RESUME_FAILURE_MESSAGE = "your resume not upload please first upload the resume   !!";
 
+	//For Tiles configuration
+	public static final String COMPANY_HEADER="/WEB-INF/layout/companyHeader.jsp";
+	public static final String USER_HEADER="/WEB-INF/layout/userHeader.jsp";
+	public static final String COMMON_HEADER="/WEB-INF/layout/header.jsp";
+	public static final String ADMIN_HEADER="/WEB-INF/layout/adminHeader.jsp";
 }

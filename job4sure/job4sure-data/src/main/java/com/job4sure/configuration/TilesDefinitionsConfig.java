@@ -7,6 +7,8 @@ import org.apache.tiles.Attribute;
 import org.apache.tiles.Definition;
 import org.apache.tiles.definition.DefinitionsFactory;
 
+import com.job4sure.util.IConstant;
+
 public final class TilesDefinitionsConfig implements DefinitionsFactory {
 	private static final Map<String, Definition> tilesDefinitions = new HashMap<String, Definition>();
 	private static final Attribute BASE_TEMPLATE = new Attribute(
@@ -42,37 +44,43 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 	}
 
 	public static void addDefinitions() {
-		addDefaultLayoutDef("welcome", "welcme", "/WEB-INF/jsp/welcome.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("registration", "register", "/WEB-INF/jsp/registration.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("loginPage", "login", "/WEB-INF/jsp/login.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("successpage", "success", "/WEB-INF/jsp/success.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("userPage", "UserPage", "/WEB-INF/jsp/user.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("companyHomePage", "CompanyPage", "/WEB-INF/jsp/companyHome.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("userProfilePage", "userProfile", "/WEB-INF/jsp/userProfile.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("addJobDesc", "Add Job Description", "/WEB-INF/jsp/addJobDesc.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("viewAllJobDesc", "View All Job", "/WEB-INF/jsp/viewAllJobDesc.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("userCompleteInfo", "User Complete info", "/WEB-INF/jsp/userCompleteInfo.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("companyProfilePage", "companyProfile", "/WEB-INF/jsp/companyProfile.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("companyviewProfile12", "companyviewProfile", "/WEB-INF/jsp/companyviewProfile.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("forgotPassPage", "Forgot Password", "/WEB-INF/jsp/forgotPass.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("newPassword", "New Password", "/WEB-INF/jsp/createNewPassword.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("newUserPassword", "New Password", "/WEB-INF/jsp/createNewPassword.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("newUserPasswordForComp", "New Password", "/WEB-INF/jsp/createNewPassword.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("userBasicInfoPage", "userBasicInfo", "/WEB-INF/jsp/userBasicInfo.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("companyDetailsViewPage", "CompanyDetailsView", "/WEB-INF/jsp/companyDetailsView.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("updateCompanyBasicProfilePage", "updateCompanyBasicProfile", "/WEB-INF/jsp/updateCompanyBasicProfile.jsp","/WEB-INF/layout/companyHeader.jsp");
-		addDefaultLayoutDef("userHomePage", "userHome", "/WEB-INF/jsp/userHome.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("adminRegistration", "Admin Registration", "/WEB-INF/jsp/adminRegistration.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("educationUpdate", "education", "/WEB-INF/jsp/viewEducationDetails.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("adminHomePage", "adminHome", "/WEB-INF/jsp/adminHome.jsp","/WEB-INF/layout/adminHeader.jsp");
-		addDefaultLayoutDef("jobDescriptionList", "showJobDescription", "/WEB-INF/jsp/jobDescriptionList.jsp","/WEB-INF/layout/adminHeader.jsp");
-		addDefaultLayoutDef("viewJobDescription", "show Job Description", "/WEB-INF/jsp/viewJobDescription.jsp","/WEB-INF/layout/adminHeader.jsp");
-		addDefaultLayoutDef("userProfileView", "userProfileViewPage", "/WEB-INF/jsp/userProfileView.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("contactUs", "contactus", "/WEB-INF/jsp/contactUS.jsp","/WEB-INF/layout/header.jsp");
-		addDefaultLayoutDef("viewJobDesc", "showJobDescription", "/WEB-INF/jsp/userViewJobDescription.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("viewApprovedJobDescriptionInUser", "ViewApprovedJobDescriptionInUser", "/WEB-INF/jsp/userViewJobDescription.jsp","/WEB-INF/layout/userHeader.jsp");
-		addDefaultLayoutDef("addSubAdmin", "addadmin", "/WEB-INF/jsp/addSubAdmin.jsp","/WEB-INF/layout/adminHeader.jsp");
-		addDefaultLayoutDef("viewSingleJobDescription", "show Job Description", "/WEB-INF/jsp/viewJobDescription.jsp","/WEB-INF/layout/userHeader.jsp");
+	    
+	    // Common Jsp related configurations
+		addDefaultLayoutDef("welcome", "welcme", "/WEB-INF/jsp/welcome.jsp",IConstant.COMMON_HEADER);
+		addDefaultLayoutDef("registration", "register", "/WEB-INF/jsp/registration.jsp",IConstant.COMMON_HEADER);
+		addDefaultLayoutDef("loginPage", "login", "/WEB-INF/jsp/login.jsp",IConstant.COMMON_HEADER);
+		addDefaultLayoutDef("successpage", "success", "/WEB-INF/jsp/success.jsp",IConstant.COMMON_HEADER);
+		addDefaultLayoutDef("userPage", "UserPage", "/WEB-INF/jsp/user.jsp",IConstant.COMMON_HEADER);
+		addDefaultLayoutDef("userProfilePage", "userProfile", "/WEB-INF/jsp/userProfile.jsp",IConstant.COMMON_HEADER);
+		addDefaultLayoutDef("forgotPassPage", "Forgot Password", "/WEB-INF/jsp/forgotPass.jsp",IConstant.COMMON_HEADER);
+		addDefaultLayoutDef("adminRegistration", "Admin Registration", "/WEB-INF/jsp/adminRegistration.jsp",IConstant.COMMON_HEADER);
+		addDefaultLayoutDef("contactUs", "contactus", "/WEB-INF/jsp/contactUS.jsp",IConstant.COMMON_HEADER);
+	   //	Company related Jsp's configuration
+		addDefaultLayoutDef("companyHomePage", "CompanyPage", "/WEB-INF/jsp/companyHome.jsp",IConstant.COMPANY_HEADER);
+		addDefaultLayoutDef("addJobDesc", "Add Job Description", "/WEB-INF/jsp/addJobDesc.jsp",IConstant.COMPANY_HEADER);
+		addDefaultLayoutDef("viewAllJobDesc", "View All Job", "/WEB-INF/jsp/viewAllJobDesc.jsp",IConstant.COMPANY_HEADER);
+		addDefaultLayoutDef("companyProfilePage", "companyProfile", "/WEB-INF/jsp/companyProfile.jsp",IConstant.COMPANY_HEADER);
+		addDefaultLayoutDef("companyviewProfile12", "companyviewProfile", "/WEB-INF/jsp/companyviewProfile.jsp",IConstant.COMPANY_HEADER);
+		addDefaultLayoutDef("newPassword", "New Password", "/WEB-INF/jsp/createNewPassword.jsp",IConstant.COMPANY_HEADER);
+		addDefaultLayoutDef("newUserPasswordForComp", "New Password", "/WEB-INF/jsp/createNewPassword.jsp",IConstant.COMPANY_HEADER);
+		addDefaultLayoutDef("companyDetailsViewPage", "CompanyDetailsView", "/WEB-INF/jsp/companyDetailsView.jsp",IConstant.COMPANY_HEADER);
+		addDefaultLayoutDef("updateCompanyBasicProfilePage", "updateCompanyBasicProfile", "/WEB-INF/jsp/updateCompanyBasicProfile.jsp",IConstant.COMPANY_HEADER);
+	   //   User related Jsp's configuration
+		addDefaultLayoutDef("userCompleteInfo", "User Complete info", "/WEB-INF/jsp/userCompleteInfo.jsp",IConstant.USER_HEADER);
+		addDefaultLayoutDef("newUserPassword", "New Password", "/WEB-INF/jsp/createNewPassword.jsp",IConstant.USER_HEADER);
+		addDefaultLayoutDef("userBasicInfoPage", "userBasicInfo", "/WEB-INF/jsp/userBasicInfo.jsp",IConstant.USER_HEADER);
+		addDefaultLayoutDef("userHomePage", "userHome", "/WEB-INF/jsp/userHome.jsp",IConstant.USER_HEADER);
+		addDefaultLayoutDef("educationUpdate", "education", "/WEB-INF/jsp/viewEducationDetails.jsp",IConstant.USER_HEADER);
+		addDefaultLayoutDef("userProfileView", "userProfileViewPage", "/WEB-INF/jsp/userProfileView.jsp",IConstant.USER_HEADER);
+		addDefaultLayoutDef("viewJobDesc", "showJobDescription", "/WEB-INF/jsp/userViewJobDescription.jsp",IConstant.USER_HEADER);
+		addDefaultLayoutDef("viewApprovedJobDescriptionInUser", "ViewApprovedJobDescriptionInUser", "/WEB-INF/jsp/userViewJobDescription.jsp",IConstant.USER_HEADER);
+		addDefaultLayoutDef("viewSingleJobDescription", "show Job Description", "/WEB-INF/jsp/viewJobDescription.jsp",IConstant.USER_HEADER);
+	  //    Admin related Jsp's configuration	
+		addDefaultLayoutDef("adminHomePage", "adminHome", "/WEB-INF/jsp/adminHome.jsp",IConstant.ADMIN_HEADER);
+		addDefaultLayoutDef("jobDescriptionList", "showJobDescription", "/WEB-INF/jsp/jobDescriptionList.jsp",IConstant.ADMIN_HEADER);
+		addDefaultLayoutDef("viewJobDescription", "show Job Description", "/WEB-INF/jsp/viewJobDescription.jsp",IConstant.ADMIN_HEADER);
+		addDefaultLayoutDef("addSubAdmin", "addadmin", "/WEB-INF/jsp/addSubAdmin.jsp",IConstant.ADMIN_HEADER);
+		
 	}
 	
 }
