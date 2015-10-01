@@ -5,28 +5,11 @@
 <head>
 <title>Job4Sure</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(".tabs > ul").tabs();
-	});
-	</script>
-<style>
-table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-th, td {
-	padding: 15px;
-}
-</style>
+<link rel="stylesheet" href="resources/css/jsp/companyDetailsView.css" type="text/css" />
 </head>
 <body>
-
 	<div id="main">
 		<hr class="noscreen" />
-
-
 		<hr class="noscreen" />
 		<!-- Columns -->
 		<div id="cols" class="box">
@@ -40,7 +23,6 @@ th, td {
 					<!-- Search -->
 					<form action="javascript:void(0)" method="get" id="search">
 						<fieldset>
-
 							<legend>Search</legend>
 							<p>
 								<input type="text" size="17" name="" class="input-text" /> &nbsp; <input type="submit" value="OK"
@@ -62,7 +44,6 @@ th, td {
 					<!-- Create a new project -->
 				</div>
 				<!-- /padding -->
-
 			</div>
 			<div id="content" class="">
 				<center>
@@ -74,8 +55,9 @@ th, td {
 					<div class="wrapper">
 						<div class="column">
 							<b>Address:&nbsp;&nbsp;</b> ${companyProfile.address1}<br /> <br /> <b>City:&nbsp;&nbsp;</b>
-							${companyProfile.currentCityId.cityname}<br /> <br /> <b>State:&nbsp;&nbsp;</b> ${companyProfile.currentCityId.state.stateName}<br /> <br /> <b>About
-								Us:&nbsp;&nbsp;</b> ${companyProfile.aboutUs}<br /> <br />
+							${companyProfile.currentCityId.cityname}<br /> <br /> <b>State:&nbsp;&nbsp;</b>
+							${companyProfile.currentCityId.state.stateName}<br /> <br /> <b>About Us:&nbsp;&nbsp;</b>
+							${companyProfile.aboutUs}<br /> <br />
 						</div>
 						<div class="column">
 							<b>No of Employee:&nbsp;&nbsp;</b> ${companyProfile.companySize}<br /> <br /> <b>Company URL:&nbsp;&nbsp;</b>
