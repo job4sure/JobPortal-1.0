@@ -63,7 +63,7 @@ html, body {
 		<!-- Menu -->
 		<div id="menu" class="box">
 			<center>
-				<h1>JOB4SURE</h1>
+				<h1>ITJOBBERS</h1>
 			</center>
 		</div>
 		<div id="aside" class="box">

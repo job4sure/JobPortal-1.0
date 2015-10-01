@@ -32,7 +32,7 @@
 
   <div id="tray" class="box">
   <p class="f-left box">
-    <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="resources/design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="resources/design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>Job4Sure</strong> </p>
+    <span class="f-left" id="switcher"> <a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="resources/design/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="resources/design/switcher-2col.gif" alt="" /></a> </span> Project: <strong>ITJOBBERS</strong> </p>
 <p class="f-right">User: <strong><a href="#">${registration.fullName}</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><a href="OpenloginPage" id="logout">Log out</a></strong></p>    
 	
 	<h1 class="center"> Company Home</h1>

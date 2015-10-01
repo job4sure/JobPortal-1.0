@@ -3,7 +3,7 @@
 <%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Job4Sure</title>
+<title>ITJOBBERS</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="resources/css/jsp/companyDetailsView.css" type="text/css" />
 </head>
