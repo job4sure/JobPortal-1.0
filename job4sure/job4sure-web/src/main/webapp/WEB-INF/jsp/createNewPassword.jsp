@@ -6,17 +6,7 @@
 <%@page session="true"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<link rel="stylesheet" href="resources/css/validationEngine.jquery.css" type="text/css" />
-<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
-<script src="resources/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#formID").validationEngine();
-
-	});
-</script>
 </head>
 <body onload='document.loginForm.username.focus();'>
 	<div id="cols" class="box">
@@ -101,5 +91,4 @@
 	<!-- /cols -->
 	<hr class="noscreen" />
 </body>
-
 </html>

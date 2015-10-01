@@ -81,8 +81,10 @@
 		</div>
 	</div>
 </body>
-<script>var pager = new Pager('results', 2);
-pager.init();
-pager.showPageNav('pager', 'pageNavPosition');
-pager.showPage(1);</script>
+<script>
+	var pager = new Pager('results', 2);
+	pager.init();
+	pager.showPageNav('pager', 'pageNavPosition');
+	pager.showPage(1);
+</script>
 </html>
