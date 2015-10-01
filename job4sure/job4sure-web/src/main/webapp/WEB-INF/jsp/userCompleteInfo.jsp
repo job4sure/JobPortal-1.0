@@ -57,15 +57,19 @@
 			<ul class="box">
 			</ul>
 		</div>
+		
+		<div id="content" class="box">
+			<center>
+				<h2>User Complete Information</h2>
+			</center>
+		</div>
+		
 		<body align="center">
 			<h3 style="color: red;">${message}</h3>
 			<form:form method="POST" action="saveCompleteUserProfile" modelAttribute="userProfile" id="formID"
 				enctype="multipart/form-data">
 				<div id="content" class="box">
 					<div class="verticalLine">
-						<center>
-							<h2>User Complete Information</h2>
-						</center>
 						<br> <a href="javascript:toggleRow('row1')"><h3 align="center">
 								<font color="red">Professional Details</font>
 							</h3></a>

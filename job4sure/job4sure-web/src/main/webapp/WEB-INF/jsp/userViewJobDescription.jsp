@@ -43,13 +43,19 @@
 				</form>
 			</div>
 		</div>
+		
+		<div id="content" class="box">
+			<center>
+				<h2>List of Job Descriptions</h2>
+			</center>
+		</div>
 		<div class="box" id="content">
-			<label>Sort By Technology</label> <select onchange="jobsBasedOnTechnology(this)">
+			<label><b>Sort By Technology</b></label> <select onchange="jobsBasedOnTechnology(this)">
 				<option value="0" label="select">select</option>
 				<option value="1" label="java">java</option>
 				<option value="2" label="php">php</option>
 				<option value="3" label=".Net">.Net</option>
-			</select> &nbsp;&nbsp; <label>Sort By Experiance</label> <select onchange="jobsBasedOnExp(this)">
+			</select> &nbsp;&nbsp; <label><b>Sort By Experiance</b></label> <select onchange="jobsBasedOnExp(this)">
 				<option value="0" label="select">select</option>
 				<option value="1" label="1">1</option>
 				<option value="2" label="2">2</option>

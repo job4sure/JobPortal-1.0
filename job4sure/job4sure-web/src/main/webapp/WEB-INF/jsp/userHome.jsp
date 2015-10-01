@@ -45,6 +45,12 @@
 				</div>
 			</div>
 			<div id="content" class="box">
+			<center>
+				<h2>User Home</h2>
+			</center>
+		</div>
+		
+			<div id="content" class="box">
 				Profile Complete
 				<div id="progress" class="graph">
 					<div id="bar" style="width:${profilecompleted}%">

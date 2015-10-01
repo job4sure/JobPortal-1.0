@@ -56,6 +56,7 @@
 					<h2>User Basic Information</h2>
 				</center>
 			</div>
+			<div id="content" class="box">
 			<hr class="noscreen" />
 			<form:form method="POST" action="updateUserInformation" modelAttribute="Registration" id="formID"
 				onsubmit="return jQuery(this).validationEngine('validate');">
@@ -66,7 +67,7 @@
 				<h3 style="color: red;">${message}</h3>
 				<input hidden="radio" name="roleType" value="1" checked /> 
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div id="content" class="box">
+				<!-- <div id="content" class="box"> -->
 					<fieldset>
 						<center>
 							<table width="100%" class="nostyle" style="border-collapse: separate; border-spacing: 5px">
