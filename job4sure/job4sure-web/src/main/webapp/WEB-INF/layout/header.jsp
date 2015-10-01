@@ -7,6 +7,7 @@
 <head>
 <title>Adminizio Lite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="resources/images/aartek.ico" type="image/ico" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="resources/css/reset.css" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="resources/css/main.css" />
 <link rel="stylesheet" media="screen,projection" type="text/css" href="resources/css/2col.css" title="2col" />
