@@ -8,7 +8,7 @@
 <title>Add Job Description</title>
 <link rel="stylesheet" href="resources/css/template.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/jsp/addJobDesc.css" type="text/css" />
-<script src="resources/js/addJobDescp.js"></script>
+<script src="resources/js/jsp/addJobDescp.js"></script>
 <link href="resources/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script src="resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript">
