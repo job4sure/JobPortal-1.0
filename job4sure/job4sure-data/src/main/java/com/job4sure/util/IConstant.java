@@ -7,14 +7,24 @@ public class IConstant {
 	public static final String FROM_PASSWORD = "prestigepoint@123";
 //	 public static final String PASSWORD_RECOVERY_URL =
 //	 "http://itjobbers-webmodule.rhcloud.com/reCreatePass";
+	
 	public static final String PASSWORD_RECOVERY_URL = "http://localhost:8080/job4sure-web/reCreatePass";
+	//public static final String PASSWORD_RECOVERY_URL = "http://job4sure-fasttofind.rhcloud.com/reCreatePass";//for testing
+//	public static final String PASSWORD_RECOVERY_URL = "http://itjobbers-webmodule.rhcloud.com/reCreatePass";//for production
+	
 //	 public static final String REGISTRATION_URL =
 //	 "http://itjobbers-webmodule.rhcloud.com/verify";
+	
 	public static final String REGISTRATION_URL = "http://localhost:8080/job4sure-web/verify";
+	//public static final String REGISTRATION_URL = "http://job4sure-fasttofind.rhcloud.com/verify";//For testing
+//	public static final String REGISTRATION_URL = "http://itjobbers-webmodule.rhcloud.com/verify";// For production
+	
 //	 public static final String REGISTRATION_verfy_URL =
 //	 "http://itjobbers-webmodule.rhcloud.com/adminRegistration";
 	public static final String REGISTRATION_verfy_URL = "http://localhost:8080/job4sure-admin/adminRegistration";
-
+	//public static final String REGISTRATION_verfy_URL = "http://job4sure-fasttofind.rhcloud.com/job4sure-admin/adminRegistration";//for testing
+//	public static final String REGISTRATION_verfy_URL = "http://itjobbers-webmodule.rhcloud.com/job4sure-admin/adminRegistration";//for production
+	
 	// Messages:
 	public static final String REGISTRATION_SUCCESS_MESSAGE = "<p class='msg done'>Your registration has been completed successfully , please check your email and verify your account</p>";
 	public static final String REGISTRATION_FAILURE_MESSAGE = "<h4 class = 'msg error'>Your registration is not successfull , Please try again!</h4>";
@@ -42,7 +52,9 @@ public class IConstant {
 
 	// path
 	public static final String FILE_PATH = "D:/mm/";
-
+	//public static final String FILE_PATH = "/var/lib/openshift/55eab5327628e17099000031/app-root/data/";//for testing
+//	public static final String FILE_PATH = "/var/lib/openshift/5608eb6b7628e199c8000056/app-root/data/images/";//for production
+	
 	// Security roles:
 	public static final String USER_ROLE = "USER";
 	public static final String COMPANY_ROLE = "COMP";
