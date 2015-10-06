@@ -91,7 +91,7 @@ public class HomeController {
 					.getRegistrationId());
 	model.addAttribute("companyProfile", companyProfile);
 	model.addAttribute("registration", registration);
-	Attachment attachment = registrationService.getAllAttachment(registration.getRegistrationId());
+	Attachment attachment = companyProfileService.getCompanyAttachment(registration.getRegistrationId());
 	if (attachment != null) {
 		String path = ImageFormat.readImage(attachment.getPath());
 		model.addAttribute("attachment", path);

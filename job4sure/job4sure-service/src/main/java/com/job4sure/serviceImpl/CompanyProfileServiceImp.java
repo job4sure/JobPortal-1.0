@@ -95,7 +95,7 @@ public class CompanyProfileServiceImp implements CompanyProfileService {
     public Attachment getCompanyAttachment(Integer registrationId) {
     	Attachment attachment = null;
     	if (registrationId != null) {
-    		String attchmentType = "profilePic";
+    		String attchmentType = "companyLogo";
     		Attachment profilepicattachment = attachmentRepository.getProfilePicAttachment(registrationId, attchmentType);
     		if(profilepicattachment!=null){
     			return profilepicattachment;
