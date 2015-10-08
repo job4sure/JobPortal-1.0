@@ -99,7 +99,10 @@ public class UserProfileController {
 	    map.put("userProfile", userProfile);
 	    model.addAttribute("message", message);
 	   // model.addAttribute("industrydata", industry);
-	    model.addAttribute("homeCityList", userProfileService.getCity(userProfile.getHomeCity().getState().getStateId()));
+	    if(userProfile.getHomeCity()!=null)
+	    {
+	    	model.addAttribute("homeCityList", userProfileService.getCity(userProfile.getHomeCity().getState().getStateId()));
+	    }
 	    model.addAttribute("currentCityList", userProfileService.getCity(userProfile.getCurrentCityId().getState().getStateId()));
 	    model.addAttribute("cityList", userProfileService.getCity(userProfile.getCityId().getState().getStateId()));//getStateId().getStateId())
 	    return "userCompleteInfo";
