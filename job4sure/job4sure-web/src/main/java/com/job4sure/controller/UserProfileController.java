@@ -79,9 +79,9 @@ public class UserProfileController {
 
     @RequestMapping(value = "/updateCompleteInfo", method = RequestMethod.GET)
     public String updateCompleteProfile(@ModelAttribute("userProfile") UserProfile userProfile,
-		    Map<String, Object> map, String message,String msg, ModelMap model, HttpServletRequest request,
+		    Map<String, Object> map, String message, String msg, ModelMap model, HttpServletRequest request,
 		    @RequestParam(required = false) Integer stateId1) throws IOException {
-    	   model.addAttribute("msg", msg);
+	model.addAttribute("msg", msg);
 	HttpSession session = request.getSession();
 	Registration registration = (Registration) session.getAttribute("registration");
 	userProfile = userProfileService.getLoggedInUserCompleteInfo(registration.getRegistrationId());
@@ -90,21 +90,25 @@ public class UserProfileController {
 	    String path = ImageFormat.readImage(attachment.getPath());
 	    model.addAttribute("attachment", path);
 	}
-	 model.addAttribute("roletype12", userProfileService.roleData());
-	    model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
-	    model.addAttribute("stateList", userProfileService.getAllState());
-	    model.addAttribute("salary", jobDescriptionService.getAllSalary());
+	model.addAttribute("roletype12", userProfileService.roleData());
+	model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
+	model.addAttribute("stateList", userProfileService.getAllState());
+	model.addAttribute("salary", jobDescriptionService.getAllSalary());
 	if (userProfile != null) {
-	    //List industry = userProfileService.industryData();
+	    // List industry = userProfileService.industryData();
 	    map.put("userProfile", userProfile);
 	    model.addAttribute("message", message);
-	   // model.addAttribute("industrydata", industry);
-	    if(userProfile.getHomeCity()!=null)
-	    {
-	    	model.addAttribute("homeCityList", userProfileService.getCity(userProfile.getHomeCity().getState().getStateId()));
+	    // model.addAttribute("industrydata", industry);
+	    if (userProfile.getHomeCity() != null) {
+		model.addAttribute("homeCityList",
+				userProfileService.getCity(userProfile.getHomeCity().getState().getStateId()));
 	    }
-	    model.addAttribute("currentCityList", userProfileService.getCity(userProfile.getCurrentCityId().getState().getStateId()));
-	    model.addAttribute("cityList", userProfileService.getCity(userProfile.getCityId().getState().getStateId()));//getStateId().getStateId())
+	    if (userProfile.getCurrentCityId() != null)
+		model.addAttribute("currentCityList",
+				userProfileService.getCity(userProfile.getCurrentCityId().getState().getStateId()));
+	    if (userProfile.getCityId() != null)
+		model.addAttribute("cityList",
+				userProfileService.getCity(userProfile.getCityId().getState().getStateId()));// getStateId().getStateId())
 	    return "userCompleteInfo";
 	} else {
 	    model.addAttribute("message", IConstant.FIRST_COMPLETE_INFO_MESSAGE);
@@ -152,12 +156,12 @@ public class UserProfileController {
     }
 
     @RequestMapping(value = "/downloadResume", method = { RequestMethod.GET, RequestMethod.POST })
-    public String downloadResume(@RequestParam(required = false) Integer registrationId, HttpServletResponse response,ModelMap model)
-		    throws IOException {
-    	boolean status = false;
+    public String downloadResume(@RequestParam(required = false) Integer registrationId, HttpServletResponse response,
+		    ModelMap model) throws IOException {
+	boolean status = false;
 	status = userProfileService.getUserResume(registrationId, response);
-	if(status==false){
-		 model.addAttribute("msg",IConstant.RESUME_FAILURE_MESSAGE);
+	if (status == false) {
+	    model.addAttribute("msg", IConstant.RESUME_FAILURE_MESSAGE);
 	}
 	return "redirect:/updateCompleteInfo";
     }
