@@ -23,7 +23,7 @@ public class IConstant {
 //	 "http://itjobbers-webmodule.rhcloud.com/adminRegistration";
 	public static final String REGISTRATION_verfy_URL = "http://localhost:8080/job4sure-admin/adminRegistration";
 	//public static final String REGISTRATION_verfy_URL = "http://job4sure-fasttofind.rhcloud.com/job4sure-admin/adminRegistration";//for testing
-//	public static final String REGISTRATION_verfy_URL = "http://itjobbers-webmodule.rhcloud.com/job4sure-admin/adminRegistration";//for production
+	//public static final String REGISTRATION_verfy_URL = "http://itjobbers-webmodule.rhcloud.com/ADMIN/adminRegistration";//for testing
 	
 	// Messages:
 	public static final String REGISTRATION_SUCCESS_MESSAGE = "<p class='msg done'>Your registration has been completed successfully , please check your email and verify your account</p>";
