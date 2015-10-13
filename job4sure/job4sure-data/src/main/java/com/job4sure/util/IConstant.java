@@ -9,6 +9,7 @@ public class IConstant {
 //	 "http://itjobbers-webmodule.rhcloud.com/reCreatePass";
 	
 	public static final String PASSWORD_RECOVERY_URL = "http://localhost:8080/job4sure-web/reCreatePass";
+	public static final String ADMIN_PASSWORD_RECOVERY_URL = "http://localhost:8080/job4sure-admin/reCreatePass";
 	//public static final String PASSWORD_RECOVERY_URL = "http://job4sure-fasttofind.rhcloud.com/reCreatePass";//for testing
 //	public static final String PASSWORD_RECOVERY_URL = "http://itjobbers-webmodule.rhcloud.com/reCreatePass";//for production
 	
@@ -23,7 +24,7 @@ public class IConstant {
 //	 "http://itjobbers-webmodule.rhcloud.com/adminRegistration";
 	public static final String REGISTRATION_verfy_URL = "http://localhost:8080/job4sure-admin/adminRegistration";
 	//public static final String REGISTRATION_verfy_URL = "http://job4sure-fasttofind.rhcloud.com/job4sure-admin/adminRegistration";//for testing
-//	public static final String REGISTRATION_verfy_URL = "http://itjobbers-webmodule.rhcloud.com/job4sure-admin/adminRegistration";//for testing
+//	public static final String REGISTRATION_verfy_URL = "http://itjobbers-webmodule.rhcloud.com/job4sure-admin/adminRegistration";//for production
 	
 	// Messages:
 	public static final String REGISTRATION_SUCCESS_MESSAGE = "<p class='msg done'>Your registration has been completed successfully , please check your email and verify your account</p>";
@@ -86,7 +87,8 @@ public class IConstant {
 	public static final int JD_REJECTED_STATUS = 3;
 	public static final String JD_APPROVED_MSG = "Successfully approved job description";
 	public static final String JD_REJECTED_MSG = "Successfully rejected job description";
-
+    //Message for email boolean
+	public static  boolean IS_ADMIN =false;
 	// Message for usercompleteinfo
 	public static final String RESUME_FAILURE_MESSAGE = "your resume not upload please first upload the resume   !!";
 
