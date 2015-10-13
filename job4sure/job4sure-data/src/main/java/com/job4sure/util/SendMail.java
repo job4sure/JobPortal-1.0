@@ -45,7 +45,13 @@ public class SendMail {
 			msg += " <br>";
 			msg += "<b>User Name:</b>" + email;
 			msg += " <br>";
-			msg += "" + IConstant.PASSWORD_RECOVERY_URL + "?registrationId=" + registrationId + "";// used
+			if(IConstant.IS_ADMIN)
+			{	msg +=""+IConstant.ADMIN_PASSWORD_RECOVERY_URL+"?registrationId=" + registrationId + "";
+			IConstant.IS_ADMIN=false;
+			}
+			else
+			{msg += "" + IConstant.PASSWORD_RECOVERY_URL + "?registrationId=" + registrationId + "";// used
+			}
 			msg += " <br>";
 			msg += "Regards,<br>";
 			msg += "Job Portal";

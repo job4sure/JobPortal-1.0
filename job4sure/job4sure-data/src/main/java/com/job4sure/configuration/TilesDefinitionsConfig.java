@@ -80,7 +80,9 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 		addDefaultLayoutDef("jobDescriptionList", "showJobDescription", "/WEB-INF/jsp/jobDescriptionList.jsp",IConstant.ADMIN_HEADER);
 		addDefaultLayoutDef("viewJobDescription", "show Job Description", "/WEB-INF/jsp/viewJobDescription.jsp",IConstant.ADMIN_HEADER);
 		addDefaultLayoutDef("addSubAdmin", "addadmin", "/WEB-INF/jsp/addSubAdmin.jsp",IConstant.ADMIN_HEADER);
-		
+		addDefaultLayoutDef("adforgotPassPage", "forget password", "/WEB-INF/jsp/adforgot.jsp", IConstant.ADMIN_HEADER);
+		addDefaultLayoutDef("adNewPassword", "New Password", "/WEB-INF/jsp/createNewPass.jsp",IConstant.ADMIN_HEADER);
+	
 	}
 	
 }
