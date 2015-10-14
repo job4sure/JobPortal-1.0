@@ -3,8 +3,8 @@ package com.job4sure.util;
 public class IConstant {
 
 	// Mail:
-	public static final String FROM_EMAIL_ID = "hrd@prestigepoint.in";
-	public static final String FROM_PASSWORD = "prestigepoint@123";
+	public static final String FROM_EMAIL_ID = "itjobbers@gmail.com";
+	public static final String FROM_PASSWORD = "Aartek2013";
 //	 public static final String PASSWORD_RECOVERY_URL =
 //	 "http://itjobbers-webmodule.rhcloud.com/reCreatePass";
 	
