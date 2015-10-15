@@ -57,13 +57,18 @@
 			<sec:authorize access="hasRole('ADMIN')">
 			<li id="menu-active"><a href="addSubAdmin"><span>Add Sub Admin</span></a>
 			</sec:authorize>
-				<li id="menu-active"><a href="#"><span>Show Job
-							Description</span></a>
+				<li id="menu-active"><a href="#"><span>Show Job Description</span></a>
 					<ul class="sub-menu">
 						<li><a href="showApprovedJobDescriptions">Approved</a></li>
 						<li><a href="showPendingJobDescriptions">Pending Approval</a></li>
 						<li><a href="showRejectedJobDescriptions">Rejected</a></li>
 					</ul></li>
+				<li id="menu-active"><a href="#"><span>Report</span></a>
+				<ul class="sub-menu">
+				<li><a href="companyList">company list</a></li>
+				<li><a href="userList">user list</a></li>
+				</ul>
+				</li>
 					
 				
 			</ul>

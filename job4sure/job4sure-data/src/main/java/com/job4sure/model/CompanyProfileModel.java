@@ -25,7 +25,7 @@ public class CompanyProfileModel {
 	@Column(name = "ABOUTUS")
 	private String aboutUs;
 	@Column(name = "DOMAIN")
-	private String Domain;
+	private String domainName;
 	@Column(name = "COMPANYURL")
 	private String companyUrl;
 	@Column(name = "COMPANYADDRESS")
@@ -101,12 +101,14 @@ public class CompanyProfileModel {
 		this.aboutUs = aboutUs;
 	}
 
-	public String getDomain() {
-		return Domain;
+	
+
+	public String getDomainName() {
+		return domainName;
 	}
 
-	public void setDomain(String domain) {
-		Domain = domain;
+	public void setDomainName(String domainName) {
+		this.domainName = domainName;
 	}
 
 	public String getCompanyUrl() {
