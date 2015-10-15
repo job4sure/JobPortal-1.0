@@ -84,7 +84,8 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 		addDefaultLayoutDef("adNewPassword", "New Password", "/WEB-INF/jsp/createNewPass.jsp",IConstant.ADMIN_HEADER);
 		addDefaultLayoutDef("CompanyList","companyList","/WEB-INF/jsp/CompanyReportList.jsp",IConstant.ADMIN_HEADER);
 		addDefaultLayoutDef("UserList","userlist","/WEB-INF/jsp/userReportList.jsp",IConstant.ADMIN_HEADER);
-	
+		addDefaultLayoutDef("groupMailToSubAdminsPage","Sub Admins List","/WEB-INF/jsp/groupMailToSubAdmins.jsp",IConstant.ADMIN_HEADER);
+		
 	}
 	
 }
