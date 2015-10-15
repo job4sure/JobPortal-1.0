@@ -26,7 +26,7 @@ public List getCompanyList() {
 	}
 
 public List getUserList() {
-	List userList=registrationRepository.findAll();
+	List userList=registrationRepository.getUserListByRole(1);
 	return userList;
 }
 	
