@@ -57,6 +57,7 @@ public class UserProfileController {
 	    String path = ImageFormat.readImage(attachment.getPath());
 	    model.addAttribute("attachment", path);
 	}
+	
 	map.put("Registration", new Registration());
 	model.addAttribute("registration", registration);
 	model.addAttribute("userProfile", userProfile);
