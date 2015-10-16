@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.job4sure.model.City;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.JobDescriptionApprovalStatus;
 import com.job4sure.model.Registration;
@@ -39,13 +38,13 @@ public class JobDescriptionController {
 
     @Autowired
     private JobDescriptionService jobDescriptionService;
-    
+
     @Autowired
     AdminJobDescriptionService adminJobDescriptionService;
-    
+
     @Autowired
     private UserProfileService userProfileService;
-    
+
     @Autowired
     @Qualifier("jobDescriptionValidator")
     private Validator validator;
@@ -58,7 +57,7 @@ public class JobDescriptionController {
 	JobDescriptionDropDownList.getAllJobDescriptionDropDownList(model, jobDescriptionService);
 	if (request.getMethod().equals("POST")) {
 	    validator.validate(jobDescription, bindingResult);
-	    if (bindingResult.hasErrors()) 
+	    if (bindingResult.hasErrors())
 		return "addJobDesc";
 	    HttpSession session = request.getSession(false);
 	    Registration registration = (Registration) session.getAttribute("registration");
@@ -85,11 +84,11 @@ public class JobDescriptionController {
 	HttpSession session = request.getSession(false);
 	Registration registration = (Registration) session.getAttribute("registration");
 	List<JobDescription> jobList = jobDescriptionService.getAllJobDescription(registration.getRegistrationId());
-	if(jobList.isEmpty())
+	if (jobList.isEmpty())
 	    model.addAttribute("message", IConstant.EMPTY_LIST);
-	else{
-	model.addAttribute("jobList", jobList);
-	model.addAttribute("message", IConstant.NOT_EMPTY_LIST);
+	else {
+	    model.addAttribute("jobList", jobList);
+	    model.addAttribute("message", IConstant.NOT_EMPTY_LIST);
 	}
 	return "viewAllJobDesc";
     }
@@ -104,62 +103,64 @@ public class JobDescriptionController {
     @RequestMapping(value = "/editJob", method = { RequestMethod.GET, RequestMethod.POST })
     public String editJob(Model model, @RequestParam Integer jobId) {
 	JobDescription jobDescription = jobDescriptionService.editJob(jobId);
-	Set<Skills> checkedSkillsSet=jobDescription.getSkillsSet();
-	List<Skills> checkedSkillsList=new ArrayList<Skills>();
+	Set<Skills> checkedSkillsSet = jobDescription.getSkillsSet();
+	List<Skills> checkedSkillsList = new ArrayList<Skills>();
 	checkedSkillsList.addAll(checkedSkillsSet);
 	JobDescriptionDropDownList.getAllJobDescriptionDropDownList(model, jobDescriptionService);
 	model.addAttribute("checkedSkillsList", checkedSkillsList);
 	model.addAttribute("jobDescription", jobDescription);
 	model.addAttribute("stateList", userProfileService.getAllState());
-	if(jobDescription.getCurrentCityId()!=null)
-	model.addAttribute("currentCityList", userProfileService.getCity(jobDescription.getCurrentCityId().getState().getStateId()));
+	if (jobDescription.getCurrentCityId() != null)
+	    model.addAttribute("currentCityList",
+			    userProfileService.getCity(jobDescription.getCurrentCityId().getState().getStateId()));
 	return "addJobDesc";
     }
+
     @RequestMapping(value = "/getApprovedJobDescriptionInUser", method = RequestMethod.GET)
-	public String viewApprovedJobDescription(Model model, HttpServletRequest request,
-			@RequestParam(required = false) String message) {
-		List<JobDescription> joblist = adminJobDescriptionService.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
-		if (joblist.isEmpty())
-			model.addAttribute("message", IConstant.EMPTY_LIST);
-		else {
-			model.addAttribute("jobList", joblist);
-			model.addAttribute("message", IConstant.NOT_EMPTY_LIST);
-		}
-		return "viewApprovedJobDescriptionInUser";
+    public String viewApprovedJobDescription(Model model, HttpServletRequest request,
+		    @RequestParam(required = false) String message) {
+	List<JobDescription> joblist = adminJobDescriptionService.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
+	if (joblist.isEmpty())
+	    model.addAttribute("message", IConstant.EMPTY_LIST);
+	else {
+	    model.addAttribute("jobList", joblist);
+	    model.addAttribute("message", IConstant.NOT_EMPTY_LIST);
 	}
+	return "viewApprovedJobDescriptionInUser";
+    }
 
     @RequestMapping(value = "/getAllJobsBySkillId", method = { RequestMethod.GET })
     @ResponseBody
     public Map<String, List<Object>> getAllJobsBySkillId(@RequestParam Integer skillId) {
 	Map<String, List<Object>> jobListMap = new HashMap<String, List<Object>>();
 	List<Skills> skillList = jobDescriptionService.getAllJobsBySkillId(skillId);
-	Skills s=skillList.get(0);
-	Set<JobDescription> aa=s.getJobDescription();
-	Iterator<JobDescription> ff=aa.iterator();
-	List<Object> jobDescriptionList=new ArrayList<Object>();
-	
-	while(ff.hasNext()){
-	    jobDescriptionList.add(ff.next());
+	Skills skill = skillList.get(0);
+	Set<JobDescription> jobDescriptions = skill.getJobDescription();
+	Iterator<JobDescription> jobDescriptionIterator = jobDescriptions.iterator();
+	List<Object> jobDescriptionList = new ArrayList<Object>();
+
+	while (jobDescriptionIterator.hasNext()) {
+	    jobDescriptionList.add(jobDescriptionIterator.next());
 	}
-	
+
 	jobListMap.put("jobDescriptionList", jobDescriptionList);
 	return jobListMap;
 
     }
-    
+
     @RequestMapping(value = "/getAllJobsByExp", method = { RequestMethod.GET })
     @ResponseBody
     public List<JobDescription> getAllJobsByExp(@RequestParam Integer experience) {
-	
+
 	List<JobDescription> jobDescriptions = jobDescriptionService.getAllJobsByExp(experience);
 	return jobDescriptions;
     }
-    
+
     @RequestMapping(value = "/viewSingleJobDescription", method = { RequestMethod.GET, RequestMethod.POST })
     public String viewJobDescription(ModelMap model, @RequestParam Integer jobId) {
 	JobDescription jobDescription = adminJobDescriptionService.viewJobDescription(jobId);
 	model.addAttribute("jobDescription", jobDescription);
 	return "viewSingleJobDescription";
     }
-    
+
 }
