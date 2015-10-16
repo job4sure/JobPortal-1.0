@@ -144,7 +144,7 @@ function ifDocYearrNotSelected(field, rules, i, options) {
 }
 function ifDocRadioNotSelected(field, rules, i, options) {
 	if (document.getElementById('row3').style.display != 'none') {
-		var fields = $("input[name='doc_education']").serializeArray();
+		var fields = $("input[name='docEducation']").serializeArray();
 		if (fields.length == 0) {
 			return "*Please select an option, this field is required";
 		}

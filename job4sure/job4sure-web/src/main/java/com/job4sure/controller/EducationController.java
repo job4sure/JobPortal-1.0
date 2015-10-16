@@ -16,38 +16,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.job4sure.model.Education;
 import com.job4sure.model.Registration;
 import com.job4sure.service.EducationService;
-import com.job4sure.serviceImpl.EducationServiceImpl;
 import com.job4sure.util.IConstant;
 
 @Controller
 public class EducationController {
 
-	@Autowired
-	private EducationService educationService;
+    @Autowired
+    private EducationService educationService;
 
-	@RequestMapping(value = "/educationUpdate", method = RequestMethod.GET)
-	public String showEducationSettings(HttpServletRequest request, @RequestParam(required = false) String message,
-			Model model, Map<String, Object> map) {
-		HttpSession session = request.getSession(false);
-		Registration registration = (Registration) session.getAttribute("registration");
-		Integer registrationId = registration.getRegistrationId();
-		Education education = educationService.viewEducation(registrationId);
-		if (education != null) {
-			model.addAttribute("message", message);
-			map.put("ED", education);
-		} else
-			map.put("ED", new Education());
-		return "educationUpdate";
-	}
+    @RequestMapping(value = "/viewUserEducation", method = RequestMethod.GET)
+    public String showUserEducationPage(HttpServletRequest request, @RequestParam(required = false) String message,
+		    Model model, Map<String, Object> map) {
+	HttpSession session = request.getSession(false);
+	Registration registration = (Registration) session.getAttribute("registration");
+	Integer registrationId = registration.getRegistrationId();
+	Education education = educationService.viewEducation(registrationId);
+	if (education != null) {
+	    model.addAttribute("message", message);
+	    map.put("ED", education);
+	} else
+	    map.put("ED", new Education());
+	return "educationUpdate";
+    }
 
-	@RequestMapping(value = "/educationSave", method = RequestMethod.POST)
-	public String saveEducation(@ModelAttribute Education education, HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession(false);
-		Registration registration = (Registration) session.getAttribute("registration");
-		education.setRegistrationId(registration.getRegistrationId());
-		educationService.save(education);
-		model.addAttribute("message", IConstant.EDUCATION_SAVE);
-		return "redirect:/educationUpdate";
-	}
+    @RequestMapping(value = "/educationSave", method = RequestMethod.POST)
+    public String saveEducation(@ModelAttribute Education education, HttpServletRequest request, Model model) {
+	HttpSession session = request.getSession(false);
+	Registration registration = (Registration) session.getAttribute("registration");
+	education.setRegistrationId(registration.getRegistrationId());
+	educationService.save(education);
+	model.addAttribute("message", IConstant.EDUCATION_SAVE);
+	return "redirect:/viewUserEducation";
+    }
 
-	}
+}

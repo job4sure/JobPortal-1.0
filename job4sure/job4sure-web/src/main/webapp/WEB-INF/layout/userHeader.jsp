@@ -55,7 +55,7 @@
 			<ul class="box">
 
 				<li id="menu-active"><a href="userProfileHomePage"><span>Home</span></a></li>
-				<li id="menu-active"><a href="educationUpdate"><span>User Education</span></a></li>
+				<li id="menu-active"><a href="viewUserEducation"><span>User Education</span></a></li>
 				<!-- <li id="menu-active"><a href="getApprovedJobDescriptionInUser"><span>View Job Description List</span></a></li> -->
 				<li id="menu-active"><a href="#"><span>User Profile</span></a>
 

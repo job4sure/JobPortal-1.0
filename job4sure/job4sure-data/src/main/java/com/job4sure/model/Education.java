@@ -12,206 +12,204 @@ import javax.persistence.Table;
 @Table(name = "education")
 public class Education {
 
-	
-	@Column(name="GRADUATION")
-	private String graduation;
-	@Column(name="SPECIALIZATION")
-	private String specialization;
-	@Column(name="INSTITUTE")
-	private String institute;
-	
-	
-	
-	@Column(name="POSTGRADUATION")
-	private String postgraduation;
-	@Column(name="POSTSPECIALIZATION")
-	private String post_specialization;
-	@Column(name="POSTINSTITUTE")
-	private String post_institute;
-	
-	@Column(name="POSTYEAR")
-	private String post_yearr;
-	
-	@Column(name="POSTEDUCATION")
-	private String posteducation;
-	
-	
-	public String getPostgraduation() {
-		return postgraduation;
-	}
+    @Column(name = "GRADUATION")
+    private String graduation;
 
-	public void setPostgraduation(String postgraduation) {
-		this.postgraduation = postgraduation;
-	}
+    @Column(name = "SPECIALIZATION")
+    private String specialization;
 
-	public String getPost_specialization() {
-		return post_specialization;
-	}
+    @Column(name = "INSTITUTE")
+    private String institute;
 
-	public void setPost_specialization(String post_specialization) {
-		this.post_specialization = post_specialization;
-	}
+    @Column(name = "POSTGRADUATION")
+    private String postgraduation;
 
-	public String getPost_institute() {
-		return post_institute;
-	}
+    @Column(name = "POSTSPECIALIZATION")
+    private String postSpecialization;
 
-	public void setPost_institute(String post_institute) {
-		this.post_institute = post_institute;
-	}
+    @Column(name = "POSTINSTITUTE")
+    private String postInstitute;
 
-	public String getPost_yearr() {
-		return post_yearr;
-	}
+    @Column(name = "POSTYEAR")
+    private String postYear;
 
-	public void setPost_yearr(String post_yearr) {
-		this.post_yearr = post_yearr;
-	}
+    @Column(name = "POSTEDUCATION")
+    private String posteducation;
 
-	public String getPosteducation() {
-		return posteducation;
-	}
+    @Column(name = "DOCTORATE")
+    private String doctorate;
 
-	public void setPosteducation(String posteducation) {
-		this.posteducation = posteducation;
-	}
+    @Column(name = "DOC_SPECIALIZATION")
+    private String docSpecialization;
 
-	public String getDoctorate() {
-		return doctorate;
-	}
+    @Column(name = "DOC_INSTITUTE")
+    private String docInstitute;
 
-	public void setDoctorate(String doctorate) {
-		this.doctorate = doctorate;
-	}
+    @Column(name = "DOC_YEAR")
+    private String docYear;
 
-	public String getDoc_specialization() {
-		return doc_specialization;
-	}
+    @Column(name = "DOC_EDUCATION")
+    private String docEducation;
 
-	public void setDoc_specialization(String doc_specialization) {
-		this.doc_specialization = doc_specialization;
-	}
+    @Column(name = "YEAR")
+    private String year;
 
-	public String getDoc_institute() {
-		return doc_institute;
-	}
+    @Column(name = "EDUCATION")
+    private String education;
 
-	public void setDoc_institute(String doc_institute) {
-		this.doc_institute = doc_institute;
-	}
+    public String getPostgraduation() {
+	return postgraduation;
+    }
 
-	public String getDoc_yearr() {
-		return doc_yearr;
-	}
+    public void setPostgraduation(String postgraduation) {
+	this.postgraduation = postgraduation;
+    }
 
-	public void setDoc_yearr(String doc_yearr) {
-		this.doc_yearr = doc_yearr;
-	}
+    public String getPosteducation() {
+	return posteducation;
+    }
 
-	public String getDoc_education() {
-		return doc_education;
-	}
+    public void setPosteducation(String posteducation) {
+	this.posteducation = posteducation;
+    }
 
-	public void setDoc_education(String doc_education) {
-		this.doc_education = doc_education;
-	}
+    public String getDoctorate() {
+	return doctorate;
+    }
 
-	@Column(name="DOCTORATE")
-	private String doctorate;
-	@Column(name="DOC_SPECIALIZATION")
-	private String doc_specialization;
-	@Column(name="DOC_INSTITUTE")
-	private String doc_institute;
-	
-	@Column(name="DOC_YEAR")
-	private String doc_yearr;
-	
-	@Column(name="DOC_EDUCATION")
-	private String doc_education;
-	
-	
+    public void setDoctorate(String doctorate) {
+	this.doctorate = doctorate;
+    }
 
-	public String getGraduation() {
-		return graduation;
-	}
+    public String getGraduation() {
+	return graduation;
+    }
 
-	public void setGraduation(String graduation) {
-		this.graduation = graduation;
-	}
+    public void setGraduation(String graduation) {
+	this.graduation = graduation;
+    }
 
-	public String getSpecialization() {
-		return specialization;
-	}
+    public String getSpecialization() {
+	return specialization;
+    }
 
-	public void setSpecialization(String specialization) {
-		this.specialization = specialization;
-	}
+    public void setSpecialization(String specialization) {
+	this.specialization = specialization;
+    }
 
-	public String getInstitute() {
-		return institute;
-	}
+    public String getInstitute() {
+	return institute;
+    }
 
-	public void setInstitute(String institute) {
-		this.institute = institute;
-	}
+    public void setInstitute(String institute) {
+	this.institute = institute;
+    }
 
-	public String getYearr() {
-		return yearr;
-	}
+    public String getEducation() {
+	return education;
+    }
 
-	public void setYearr(String yearr) {
-		this.yearr = yearr;
-	}
+    public void setEducation(String education) {
+	this.education = education;
+    }
 
-	public String getEducation() {
-		return education;
-	}
+    @Id
+    @GeneratedValue
+    @Column(name = "EDUCATION_ID", unique = true, nullable = false)
+    private Integer educationId;
 
-	public void setEducation(String education) {
-		this.education = education;
-	}
+    @ManyToOne(targetEntity = Registration.class)
+    @JoinColumn(name = "REGISTRATION_ID", referencedColumnName = "registration_Id", insertable = false, updatable = false)
+    private Registration registration;
 
-	public Integer getEducation_id() {
-		return education_id;
-	}
+    @Column(name = "REGISTRATION_ID")
+    private Integer registrationId;
 
-	public void setEducation_id(Integer education_id) {
-		this.education_id = education_id;
-	}
+    public Registration getRegistration() {
+	return registration;
+    }
 
-	
-	@Column(name="YEAR")
-	private String yearr;
-	
-	@Column(name="EDUCATION")
-	private String education;
+    public void setRegistration(Registration registration) {
+	this.registration = registration;
+    }
 
-	@Id
-	@GeneratedValue
-	@Column(name = "EDUCATION_ID", unique = true, nullable = false)
-	private Integer education_id;
+    public Integer getRegistrationId() {
+	return registrationId;
+    }
 
-	@ManyToOne(targetEntity = Registration.class)
-	@JoinColumn(name = "REGISTRATION_ID", referencedColumnName = "registration_Id",insertable=false, updatable=false)
-	private Registration registration;
+    public void setRegistrationId(Integer registrationId) {
+	this.registrationId = registrationId;
+    }
 
-	@Column(name="REGISTRATION_ID")
-	private Integer registrationId;
+    public String getPostSpecialization() {
+	return postSpecialization;
+    }
 
+    public void setPostSpecialization(String postSpecialization) {
+	this.postSpecialization = postSpecialization;
+    }
 
-	public Registration getRegistration() {
-		return registration;
-	}
+    public String getPostInstitute() {
+	return postInstitute;
+    }
 
-	public void setRegistration(Registration registration) {
-		this.registration = registration;
-	}
+    public void setPostInstitute(String postInstitute) {
+	this.postInstitute = postInstitute;
+    }
 
-	public Integer getRegistrationId() {
-		return registrationId;
-	}
+    public String getPostYear() {
+	return postYear;
+    }
 
-	public void setRegistrationId(Integer registrationId) {
-		this.registrationId = registrationId;
-	}
+    public void setPostYear(String postYear) {
+	this.postYear = postYear;
+    }
+
+    public String getDocSpecialization() {
+	return docSpecialization;
+    }
+
+    public void setDocSpecialization(String docSpecialization) {
+	this.docSpecialization = docSpecialization;
+    }
+
+    public String getDocInstitute() {
+	return docInstitute;
+    }
+
+    public void setDocInstitute(String docInstitute) {
+	this.docInstitute = docInstitute;
+    }
+
+    public String getDocYear() {
+	return docYear;
+    }
+
+    public void setDocYear(String docYear) {
+	this.docYear = docYear;
+    }
+
+    public String getDocEducation() {
+	return docEducation;
+    }
+
+    public void setDocEducation(String docEducation) {
+	this.docEducation = docEducation;
+    }
+
+    public Integer getEducationId() {
+	return educationId;
+    }
+
+    public void setEducationId(Integer educationId) {
+	this.educationId = educationId;
+    }
+
+    public String getYear() {
+	return year;
+    }
+
+    public void setYear(String year) {
+	this.year = year;
+    }
 }

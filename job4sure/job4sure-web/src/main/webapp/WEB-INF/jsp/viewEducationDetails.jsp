@@ -53,7 +53,7 @@
 				<h3>${message}</h3>
 				<div class="reform">
 					<form:form action="educationSave" method="POST" id="formID" modelAttribute="ED">
-						<form:hidden path="education_id" />
+						<form:hidden path="educationId" />
 						<a href="javascript:toggleRow('row1')"><h3 align="center">
 								<font color="red">Graduation</font>
 							</h3></a>
@@ -96,7 +96,7 @@
 									</tr>
 									<tr>
 										<td><font color="red">*</font>Year</td>
-										<td><form:select path="yearr" id="yearr" class="validate[funcCall[ifYearNotSelected]]">
+										<td><form:select path="year" id="yearr" class="validate[funcCall[ifYearNotSelected]]">
 												<form:option value="0">Select</form:option>
 												<form:option value="2012">2012</form:option>
 												<form:option value="2013">2013</form:option>
@@ -136,7 +136,7 @@
 									</tr>
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
-										<td><form:select path="post_specialization" id="post_specialization"
+										<td><form:select path="postSpecialization" id="post_specialization"
 												class="validate[funcCall[ifPostSpecializationNotSelected]]">
 												<form:option value="0">Select</form:option>
 												<form:option value="Automobile">Automobile</form:option>
@@ -146,7 +146,7 @@
 									</tr>
 									<tr>
 										<td><font color="red">*</font>University/Institute</td>
-										<td><form:select path="post_institute" id="post_institute"
+										<td><form:select path="postInstitute" id="post_institute"
 												class="validate[funcCall[ifPostInstituteNotSelected]]">
 												<form:option value="0">Select</form:option>
 												<form:option value="LPU">LPU</form:option>
@@ -156,7 +156,7 @@
 									</tr>
 									<tr>
 										<td><font color="red">*</font>Year</td>
-										<td><form:select path="post_yearr" id="post_yearr" class="validate[funcCall[ifPostYearrNotSelected]]">
+										<td><form:select path="postYear" id="post_yearr" class="validate[funcCall[ifPostYearrNotSelected]]">
 												<form:option value="0">Select</form:option>
 												<form:option value="2012">2012</form:option>
 												<form:option value="2013">2013</form:option>
@@ -188,14 +188,14 @@
 											</form:select></td>
 									</tr>
 									<tr>
-										<td><form:radiobutton class="validate[funcCall[ifDocRadioNotSelected]]" path="doc_education"
+										<td><form:radiobutton class="validate[funcCall[ifDocRadioNotSelected]]" path="docEducation"
 												value="Full Time" />Full Time<br></td>
-										<td colspan="2"><form:radiobutton path="doc_education" value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
-												path="doc_education" value="Correspondance/Distance learning" />Correspondance/Distance learning</td>
+										<td colspan="2"><form:radiobutton path="docEducation" value="Part Time" />Part Time &nbsp;&nbsp;<form:radiobutton
+												path="docEducation" value="Correspondance/Distance learning" />Correspondance/Distance learning</td>
 									</tr>
 									<tr>
 										<td><font color="red">*</font>Specialization</td>
-										<td><form:select path="doc_specialization" id="doc_specialization"
+										<td><form:select path="docSpecialization" id="doc_specialization"
 												class="validate[funcCall[ifDocSpecializationNotSelected]]">
 												<form:option value="0">Select</form:option>
 												<form:option value="Automobile">Automobile</form:option>
@@ -205,7 +205,7 @@
 									</tr>
 									<tr>
 										<td><font color="red">*</font>University/Institute</td>
-										<td><form:select path="doc_institute" id="doc_institute"
+										<td><form:select path="docInstitute" id="doc_institute"
 												class="validate[funcCall[ifDocInstituteNotSelected]]">
 												<form:option value="0">Select</form:option>
 												<form:option value="IIT">LPU</form:option>
@@ -215,7 +215,7 @@
 									</tr>
 									<tr>
 										<td><font color="red">*</font>Year</td>
-										<td><form:select path="doc_yearr" id="doc_yearr" class="validate[funcCall[ifDocYearrNotSelected]]">
+										<td><form:select path="docYear" id="doc_yearr" class="validate[funcCall[ifDocYearrNotSelected]]">
 												<form:option value="0">Select</form:option>
 												<form:option value="2012">2012</form:option>
 												<form:option value="2013">2013</form:option>
