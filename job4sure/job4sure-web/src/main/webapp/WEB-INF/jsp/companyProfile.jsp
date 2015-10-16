@@ -84,7 +84,7 @@
 								</tr>
 								<tr>
 									<td>Domain</td>
-									<td><form:select path="Domain" id="domain" class="validate[funcCall[ifDomainNotSelected]]">
+									<td><form:select path="domainName" id="domain" class="validate[funcCall[ifDomainNotSelected]]">
 											<form:option value="0" label="Select" />
 											<form:option value="IT" label="IT" />
 											<form:option value="MANAGER" label="MANAGER" />

@@ -1,8 +1,6 @@
 package com.job4sure.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.job4sure.model.Attachment;
-import com.job4sure.model.City;
 import com.job4sure.model.Registration;
 import com.job4sure.model.UserProfile;
 import com.job4sure.service.JobDescriptionService;
@@ -165,15 +161,5 @@ public class UserProfileController {
 	    model.addAttribute("msg", IConstant.RESUME_FAILURE_MESSAGE);
 	}
 	return "redirect:/updateCompleteInfo";
-    }
-
-    @RequestMapping(value = "/getCityListByStateId", method = { RequestMethod.GET })
-    @ResponseBody
-    public Map<String, List<City>> getAllCityByStateId(@RequestParam Integer stateId) {
-	Map<String, List<City>> cityListMap = new HashMap<String, List<City>>();
-	List<City> cityList = userProfileService.getCity(stateId);
-	cityListMap.put("cityList", cityList);
-	return cityListMap;
-
     }
 }

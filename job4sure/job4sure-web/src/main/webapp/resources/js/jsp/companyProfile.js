@@ -15,7 +15,7 @@ function getCityList(data) {
 	var stateId = document.getElementById(data.id).value;
 	//alert(stateId);
 	$.ajax({
-		url : "getCompanyCityListByStateId.do?stateId=" + stateId,
+		url : "getCityListByStateId.do?stateId=" + stateId,
 		type : "GET",
 		contentType : "application/json; charset=utf-8",
 		success : function(response) {

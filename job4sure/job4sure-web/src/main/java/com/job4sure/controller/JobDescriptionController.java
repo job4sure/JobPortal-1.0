@@ -162,13 +162,4 @@ public class JobDescriptionController {
 	return "viewSingleJobDescription";
     }
     
-    @RequestMapping(value = "/getCompanyJDCityListByStateId", method = { RequestMethod.GET })
-	@ResponseBody
-	public Map<String, List<City>> getAllCityByStateId(@RequestParam Integer stateId) {
-		Map<String, List<City>> cityListMap = new HashMap<String, List<City>>();
-		List<City> cityList = userProfileService.getCity(stateId);
-		cityListMap.put("cityList", cityList);
-		return cityListMap;
-
-	}
 }
