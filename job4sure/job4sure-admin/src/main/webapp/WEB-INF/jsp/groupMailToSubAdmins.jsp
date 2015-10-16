@@ -9,10 +9,13 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
-<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="resources/js/jsp/groupMailToSubAdmins.js" type="text/javascript"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
+
 function searchByName(){
 	
 	 <c:forEach items="${subadmins}" var="subadmin">
@@ -40,6 +43,7 @@ function searchByName(){
  }
     </c:forEach>  
 }
+
 </script>
 </head>
 <body>
@@ -89,10 +93,13 @@ function searchByName(){
 				<div id="content" class="box">
 					<h5>To:</h5>
 					<div id="content" class="box">
-						<input type="text" id="textValue" placeholder="Search Sub-Admin" onkeyup="searchByName()"><br>
+						<input type="text" id="textValue" placeholder="Search by Name" onkeyup="searchByName()"><br>
 						<div style="width: 100%; height: 200px; overflow: scroll;">
 
 							<br>
+							<div>
+								<input type="checkbox" id="all" onclick="selectall()" /> <label><b>To All</b></label> <br>
+							</div>
 							<c:forEach items="${subadmins}" var="subadmin">
 								<div id="toMailId${subadmin.registrationId}">
 									<form:checkbox path="toMailId" value="${subadmin.email}" />
@@ -107,10 +114,9 @@ function searchByName(){
 
 					<h5>Body:</h5>
 					<form:textarea placeholder="Body" path="body" style="width: 100%; height: 60px" />
+					<br><br> <input type="submit" value="  Send  ">
 				</div>
-				<br>
-				<br>
-				<input type="submit" value="SEND">
+
 			</form:form>
 
 		</div>
