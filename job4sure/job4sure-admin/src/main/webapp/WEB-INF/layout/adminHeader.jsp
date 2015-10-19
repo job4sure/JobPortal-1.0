@@ -61,7 +61,7 @@
 				<li id="menu-active"><a href="javascript:void(0);"><span>Group Mailing</span></a>
 					<ul class="sub-menu">
 						<li><a href="groupMailToSubAdmins">To Sub Admins</a></li>
-						<li><a href="javascript:void(0);">To Employers</a></li>
+						<li><a href="groupMailToEmployers;">To Employers</a></li>
 						<li><a href="javascript:void(0);">To Job Seekers</a></li>
 					</ul></li>
 			</ul>

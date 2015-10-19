@@ -14,6 +14,7 @@ import com.job4sure.model.Registration;
 import com.job4sure.model.SendMail;
 import com.job4sure.service.AdminGroupMailingService;
 import com.job4sure.service.RegistrationService;
+import com.job4sure.util.IConstant;
 
 
 /**
@@ -29,7 +30,7 @@ public class AdminGroupMailingController {
 	
 	@RequestMapping(value = "/groupMailToSubAdmins", method = RequestMethod.GET)
 	public String groupMailToSubAdmins(ModelMap model) {
-		List<Registration> subadmins= adminGroupMailingService.getSubAdminsList();
+		List<Registration> subadmins= adminGroupMailingService.getRegistrationList(IConstant.SUBADMIN_ROLE_ID);
 		model.addAttribute("subadmins",subadmins);
 		model.addAttribute("sendMail",new SendMail());
 		return "groupMailToSubAdminsPage";
@@ -37,10 +38,19 @@ public class AdminGroupMailingController {
 	
 	
 	
+	@RequestMapping(value = "/groupMailToEmployers", method = RequestMethod.GET)
+	public String groupMailToEmployers(ModelMap model) {
+		List<Registration> employers= adminGroupMailingService.getRegistrationList(IConstant.COMPANY_ROLE_ID);
+		model.addAttribute("employers",employers);
+		model.addAttribute("sendMail",new SendMail());
+		return "groupMailToEmployersPage";
+	}
+	
+	
 	@RequestMapping(value = "/sendMailToGroup", method = RequestMethod.POST)
 	public String sendMailToGroup(ModelMap model,@ModelAttribute("sendMail") SendMail sendMail) {
 		adminGroupMailingService.sendMailToGroup(sendMail);
-		
-		return "groupMailToSubAdminsPage";
+		model.addAttribute("message", IConstant.SUCCESSFULLY_MESSAGE);
+		return "redirect:/showAdminHomePage";
 	}
 }

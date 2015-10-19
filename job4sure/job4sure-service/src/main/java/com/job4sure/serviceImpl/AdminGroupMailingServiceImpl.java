@@ -18,17 +18,16 @@ public class AdminGroupMailingServiceImpl implements AdminGroupMailingService {
 	@Autowired
 	private RegistrationRepository registrationRepository;
 
-	public List<Registration> getSubAdminsList() {
-		List<Registration> registrations = registrationRepository.getUserListByRole(IConstant.SUBADMIN_ROLE_ID);
-		return registrations;
-	}
-	
-	public void sendMailToGroup(SendMail sendMail){
-		
+	public void sendMailToGroup(SendMail sendMail) {
+
 		List<String> items = Arrays.asList(sendMail.getToMailId().split("\\s*,\\s*"));
-		for(String to:items){
+		for (String to : items) {
 			com.job4sure.util.SendMail.commomMailSend(to, sendMail.getSubject(), sendMail.getBody());
-			System.out.println("hi"+to);
 		}
+	}
+
+	public List<Registration> getRegistrationList(int roleId) {
+		List<Registration> registrations = registrationRepository.getUserListByRole(roleId);
+		return registrations;
 	}
 }

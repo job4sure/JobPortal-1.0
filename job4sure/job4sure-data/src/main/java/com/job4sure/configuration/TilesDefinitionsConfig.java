@@ -101,7 +101,9 @@ public final class TilesDefinitionsConfig implements DefinitionsFactory {
 		addDefaultLayoutDef("UserList", "userlist", "/WEB-INF/jsp/userReportList.jsp", IConstant.ADMIN_HEADER);
 		addDefaultLayoutDef("groupMailToSubAdminsPage", "Sub Admins List", "/WEB-INF/jsp/groupMailToSubAdmins.jsp",
 						IConstant.ADMIN_HEADER);
-
+		addDefaultLayoutDef("groupMailToEmployersPage", "Employer List", "/WEB-INF/jsp/groupMailToEmployers.jsp",
+						IConstant.ADMIN_HEADER);
+		;
 	}
 
 }
