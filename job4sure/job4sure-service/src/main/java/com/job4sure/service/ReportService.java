@@ -6,4 +6,6 @@ public interface ReportService
 {
   public List getCompanyList();
   public List getUserList();
+public List getUserListBySer(String name, String loc);
+public List getCityList();
 }
