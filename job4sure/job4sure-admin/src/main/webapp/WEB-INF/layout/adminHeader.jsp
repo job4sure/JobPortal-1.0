@@ -37,7 +37,12 @@
 				User: <strong><a href="#">${registration.fullName}</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><a
 					href="OpenloginPage" id="logout">Log out</a></strong>
 			</p>
+			<sec:authorize access="hasRole('ADMIN')">
 			<h1 class="center">Admin Home</h1>
+			</sec:authorize>
+			<sec:authorize access="hasRole('SUBADMIN')">
+			<h1 class="center">Sub Admin Home</h1>
+			</sec:authorize>
 		</div>
 		<hr class="noscreen" />
 
