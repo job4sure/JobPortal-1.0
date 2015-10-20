@@ -45,7 +45,7 @@ public class IConstant {
 	public static final String EDUCATION_SAVE = "<p class='msg done'>Your education details have been updated successfully!</p>";
 	public static final String MAIL_SUCCESS_MESSAGE = "<p class='msg done'>Your request for re-create password is Successful, please check your email and create your New-password.</p>";
 	public static final String MAIL_FAILURE_MESSAGE = "<h4 class = 'msg error'>Your request for re-create password is failed , Please try again with registered Email ID!</h4>";
-	public static final String SUCCESSFULLY_MESSAGE = "<p class='msg done'>SuccessfullY send</p>";
+	public static final String SUCCESSFULLY_MESSAGE = "<p class='msg done'>Successfully send</p>";
 	public static final String FAILURE_MESSAGE_ADMIN = "<p class='msg done'>Message error please try</p>";
 
 	// Date format
