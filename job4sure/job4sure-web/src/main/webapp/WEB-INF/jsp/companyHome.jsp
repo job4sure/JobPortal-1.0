@@ -66,7 +66,7 @@
 						<div class="column">
 							<b>No of Employee:&nbsp;&nbsp;</b> ${companyProfile.companySize}<br /> <br /> <b>Company URL:&nbsp;&nbsp;</b>
 							${companyProfile.companyUrl}<br /> <br /> <b>Zip:&nbsp;&nbsp;</b> ${companyProfile.zipcode}<br /> <br /> <b>Domain:&nbsp;&nbsp;</b>
-							${companyProfile.domain}<br /> <br />
+							${companyProfile.domainName}<br /> <br />
 						</div>
 					</div>
 				</c:if>
