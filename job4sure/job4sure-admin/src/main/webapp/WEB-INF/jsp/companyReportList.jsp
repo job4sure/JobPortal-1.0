@@ -68,6 +68,48 @@
 
 			<!-- Active -->
 		</div>
+		
+		<div>
+
+			<form action="companySearch" method="POST">
+				<table>
+					<tr>
+						<td><label align=left>search by name </label> 
+						<input     name="namSearch"
+								 type="text" id="namSearch"
+								placeholder="Enter Name"></input></td>
+						<!-- <td><label align=left>search by location</label> 
+						<input  name="txtLocSer"
+								 type="text" id="txtLocSer"
+								placeholder="Search By Location"></input></td> -->
+								
+								
+								<td><label align=left>search by location</label> 
+						<select name="locSearch">
+                          <option value="0">Select</option>
+                          <c:forEach items="${cityList}" var="city">
+                          <option value="${city.id}">${city.cityname}</option>
+                          </c:forEach>
+                           </select></td>
+								
+								
+								
+						<td><label align=left>search by experince</label> 
+						<input  name="ExpSearch"
+								 type="text" id="ExpSearch"
+								placeholder="Search By Exp"></input></td>
+					</tr>
+					<tr>
+						<td><input id="sub" type="submit"></input></td>
+					</tr>
+				</table>
+
+			</form>
+		</div>
+
+		
+		
+		
 		<h1 align="center">Company LIST</h1>
 		<c:if test="${!empty companyList}">
 			<div align="center">

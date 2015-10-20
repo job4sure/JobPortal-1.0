@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import com.job4sure.model.City;
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.Registration;
+import com.job4sure.model.State;
 import com.job4sure.model.UserProfile;
 import com.job4sure.repository.CityRepository;
 import com.job4sure.repository.CompanyProfileRepository;
 import com.job4sure.repository.ProfileCompleteRepository;
 import com.job4sure.repository.RegistrationRepository;
+import com.job4sure.repository.StateRepository;
 import com.job4sure.service.ReportService;
 
 @Service
@@ -29,7 +31,9 @@ public class ReportServiceImpl implements ReportService {
 
 	@Autowired
 	private CityRepository cityRepository;
-	
+    
+	@Autowired
+	private  StateRepository stateRepository;
 	@SuppressWarnings("rawtypes")
 	public List getCompanyList() {
 
@@ -49,6 +53,20 @@ public class ReportServiceImpl implements ReportService {
 		List<City> cityList=cityRepository.findAll();
 		return cityList;
 	}
+    
+	public List getStateList() {
+		List stateList=stateRepository.findAll();
+		return null;
+	}
+
+	public List getCompanyBySearch(String name,String cityId)
+	{  
+		Integer city=Integer.parseInt(cityId);
+	return	companyProfileRepository.CompanyBySearch(name,city);
+
+						
+	}
+	
 	
 	public List getUserListBySer(String name,String cityId) {
 		List<Registration> regList = null ;
@@ -97,6 +115,8 @@ e.printStackTrace();
 //		
 		return regList;
 	}
+
+
 
 
 

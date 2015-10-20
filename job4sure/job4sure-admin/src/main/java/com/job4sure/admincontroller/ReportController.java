@@ -4,6 +4,9 @@ package com.job4sure.admincontroller;
 import java.util.List;
 
 
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,6 +30,7 @@ public class ReportController {
 		@SuppressWarnings("unchecked")
 		List<CompanyProfileModel> companyList = reportService.getCompanyList();
 		model.addAttribute("companyList", companyList);
+		model.addAttribute("cityList",reportService.getCityList());
 		return "CompanyList";
 	}
 	
@@ -40,6 +44,17 @@ public class ReportController {
 		return "UserList";
 	}
 	
+	@RequestMapping(value="/companySearch",method=RequestMethod.POST)
+	public String companySearchresult(ModelMap map,HttpServletRequest request)
+	{
+		String companyName=request.getParameter("namSearch");
+		String companyLocation=request.getParameter("locSearch").trim();
+		//@SuppressWarnings("unchecked")
+		map.addAttribute("cityList",reportService.getCityList());
+	      map.addAttribute("companyList",reportService.getCompanyBySearch(companyName,companyLocation));
+	      
+		return "CompanyList";
+	}
 	
 	@RequestMapping(value = "/forSearch" , method = RequestMethod.POST)
 public String ShowSearchResult(ModelMap model,@ModelAttribute("UserProfile")UserProfile userProfile,@RequestParam(required=false)String txtNamSer){
