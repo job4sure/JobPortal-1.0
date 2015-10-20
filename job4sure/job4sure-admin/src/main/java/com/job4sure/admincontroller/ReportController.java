@@ -3,17 +3,18 @@ package com.job4sure.admincontroller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.Registration;
+import com.job4sure.model.UserProfile;
 import com.job4sure.service.ReportService;
 
 @Controller
@@ -41,15 +42,15 @@ public class ReportController {
 	
 	
 	@RequestMapping(value = "/forSearch" , method = RequestMethod.POST)
-public String ShowSearchResult(ModelMap model, HttpServletRequest request){
+public String ShowSearchResult(ModelMap model,@ModelAttribute("UserProfile")UserProfile userProfile,@RequestParam(required=false)String txtNamSer){
 		
-		String name=request.getParameter( "txtNamSer");
-		String loc=request.getParameter("txtLocSer").trim();
+		System.out.println();
+	String loc=	userProfile.getCityId()+"";
 	
 		model.addAttribute("cityList", reportService.getCityList());
-		System.out.println(name+"name aa gya");
+		System.out.println(txtNamSer+"name aa gya");
 @SuppressWarnings("unchecked")
-List<Registration>	userList= reportService.getUserListBySer(name, loc);
+List<Registration>	userList= reportService.getUserListBySer(txtNamSer, loc);
 model.addAttribute("userList", userList);
 
 return "UserList";

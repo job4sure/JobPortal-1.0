@@ -100,40 +100,40 @@ function searchByName(){
 		</div>
 		<div>
 
-			<form action="forSearch" method="POST">
+			<form:form modelAttribute="UserProfile"   action="forSearch" method="POST">
 				<table>
 					<tr>
 						<td><label align=left>search by name </label> 
-						<input     name="txtNamSer"
-								 type="text" id="txtNamSer"
-								placeholder="Enter Name"></input></td>
+						<input
+							name="txtNamSer" type="text" id="txtNamSer"
+							placeholder="Enter Name"></input></td>
 						<!-- <td><label align=left>search by location</label> 
 						<input  name="txtLocSer"
 								 type="text" id="txtLocSer"
 								placeholder="Search By Location"></input></td> -->
-								
-								
-								<td><label align=left>search by location</label> 
-						<select name="txtLocSer">
-                          <option value="0">Select</option>
-                          <c:forEach items="${cityList}" var="city">
-                          <option value="${city.id}">${city.cityname}</option>
-                          </c:forEach>
-                           </select></td>
-								
-								
-								
-						<td><label align=left>search by experince</label> 
-						<input  name="txtNamExp"
-								 type="text" id="txtExpSer"
-								placeholder="Search By Exp"></input></td>
+
+
+						<td><label align=left>search by location</label> 
+						<form:select
+							name="txtLocSer">
+								<option value="0">Select</option>
+								<c:forEach items="${cityList}" var="city">
+									<option value="${city.id}">${city.cityname}</option>
+								</c:forEach>
+						</form:select></td>
+
+
+
+						<td><label align=left>search by experince</label> <input
+							name="txtNamExp" type="text" id="txtExpSer"
+							placeholder="Search By Exp"></input></td>
 					</tr>
 					<tr>
 						<td><input id="sub" type="submit"></input></td>
 					</tr>
 				</table>
 
-			</form>
+			</form:form>
 		</div>
 
 
