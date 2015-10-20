@@ -52,11 +52,14 @@
 						<li><a href="showPendingJobDescriptions">Pending Approval</a></li>
 						<li><a href="showRejectedJobDescriptions">Rejected</a></li>
 					</ul></li>
+					<sec:authorize access="hasRole('ADMIN')">
 				<li id="menu-active"><a href="javascript:void(0);"><span>Report</span></a>
 					<ul class="sub-menu">
 						<li><a href="companyList">company list</a></li>
 						<li><a href="userList">user list</a></li>
 					</ul></li>
+					
+					
 					
 				<li id="menu-active"><a href="javascript:void(0);"><span>Group Mailing</span></a>
 					<ul class="sub-menu">
@@ -64,6 +67,7 @@
 						<li><a href="groupMailToEmployers;">To Employers</a></li>
 						<li><a href="javascript:void(0);">To Job Seekers</a></li>
 					</ul></li>
+					</sec:authorize>
 			</ul>
 		</div>
 
