@@ -40,10 +40,22 @@ public class AdminGroupMailingController {
 	
 	@RequestMapping(value = "/groupMailToEmployers", method = RequestMethod.GET)
 	public String groupMailToEmployers(ModelMap model) {
+		
 		List<Registration> employers= adminGroupMailingService.getRegistrationList(IConstant.COMPANY_ROLE_ID);
 		model.addAttribute("employers",employers);
 		model.addAttribute("sendMail",new SendMail());
 		return "groupMailToEmployersPage";
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/groupMailToUsers", method = RequestMethod.GET)
+	public String groupMailToJobSeekers(ModelMap model) {
+		List<Registration> users= adminGroupMailingService.getRegistrationList(IConstant.USER_ROLE_ID);
+		model.addAttribute("users",users);
+		model.addAttribute("sendMail",new SendMail());
+		return "groupMailToUsersPage";
 	}
 	
 	
