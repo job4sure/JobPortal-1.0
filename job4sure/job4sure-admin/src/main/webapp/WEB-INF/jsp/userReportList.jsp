@@ -114,7 +114,7 @@ function searchByName(){
 
 
 						<td><label align=left>search by location</label> 
-						<form:select
+						<form:select path="cityId.id"
 							name="txtLocSer">
 								<form:option value="0">Select</form:option>
 								<c:forEach items="${cityList}" var="city">

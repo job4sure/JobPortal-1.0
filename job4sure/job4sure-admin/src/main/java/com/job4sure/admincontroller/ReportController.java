@@ -5,6 +5,8 @@ import java.util.List;
 
 
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +38,10 @@ public class ReportController {
 	
 
 	@RequestMapping(value = "/userList", method = RequestMethod.GET)
-	public String ShowUserList(ModelMap model) {
+	public String ShowUserList(Map<String, Object> map,ModelMap model) {
 		@SuppressWarnings("unchecked")
 		List<Registration> userList = reportService.getUserList();
+		map.put("UserProfile", new UserProfile());
 		model.addAttribute("userList", userList);
 		model.addAttribute("cityList", reportService.getCityList());
 		return "UserList";
