@@ -83,9 +83,18 @@
 								 type="text" id="txtLocSer"
 								placeholder="Search By Location"></input></td> -->
 								
+							<td><label align=left>search by State</label> 
+						<select name="stateSearch">
+                          <option value="0">Select</option>
+                          <c:forEach items="${stateList}" var="state">
+                          <option value="${state.stateId}">${state.stateName}</option>
+                          </c:forEach>
+                           </select></td>
+									
+									
 								
-								<td><label align=left>search by location</label> 
-						<select name="locSearch">
+								<td><label align=left>search by City</label> 
+						<select name="citySearch">
                           <option value="0">Select</option>
                           <c:forEach items="${cityList}" var="city">
                           <option value="${city.id}">${city.cityname}</option>

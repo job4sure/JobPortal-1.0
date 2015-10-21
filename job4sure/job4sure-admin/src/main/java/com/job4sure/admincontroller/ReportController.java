@@ -33,6 +33,7 @@ public class ReportController {
 		List<CompanyProfileModel> companyList = reportService.getCompanyList();
 		model.addAttribute("companyList", companyList);
 		model.addAttribute("cityList",reportService.getCityList());
+		model.addAttribute("stateList",reportService.getStateList());
 		return "CompanyList";
 	}
 	
@@ -51,7 +52,7 @@ public class ReportController {
 	public String companySearchresult(ModelMap map,HttpServletRequest request)
 	{
 		String companyName=request.getParameter("namSearch");
-		String companyLocation=request.getParameter("locSearch").trim();
+		String companyLocation=request.getParameter("citySearch").trim();
 		//@SuppressWarnings("unchecked")
 		map.addAttribute("cityList",reportService.getCityList());
 	      map.addAttribute("companyList",reportService.getCompanyBySearch(companyName,companyLocation));

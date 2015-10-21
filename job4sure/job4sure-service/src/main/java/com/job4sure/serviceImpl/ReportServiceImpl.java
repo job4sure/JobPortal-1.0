@@ -55,8 +55,8 @@ public class ReportServiceImpl implements ReportService {
 	}
     
 	public List getStateList() {
-		List stateList=stateRepository.findAll();
-		return null;
+		return stateRepository.findAll();
+		
 	}
 
 	public List getCompanyBySearch(String name,String cityId)
