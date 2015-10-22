@@ -14,14 +14,14 @@
 <script type="text/javascript">
 function searchByName(){
 	
-	 <c:forEach items="${userList}" var="view">
+	 <c:forEach items="${list}" var="view">
 	 $("#toMailId"+${view.registrationId}).hide();
    </c:forEach>  
    
  var textValue=document.getElementById('txtValue').value;
  
  textValue=textValue.toLowerCase();
-    <c:forEach items="${userList}" var="view">
+    <c:forEach items="${list}" var="view">
     var res="${view.fullName}";
     res=res.toLowerCase();
      var status=0;
@@ -112,7 +112,15 @@ function searchByName(){
 								 type="text" id="txtLocSer"
 								placeholder="Search By Location"></input></td> -->
 
-
+					<c:if  test="${list[0].roleType!=4}">
+						<td><label align=left>search by State</label> 
+						<select name="stateSearch">
+                          <option value="0">Select</option>
+                          <c:forEach items="${stateList}" var="state">
+                          <option value="${state.stateId}">${state.stateName}</option>
+                          </c:forEach>
+                           </select></td>
+                           
 						<td><label align=left>search by location</label> 
 						<form:select path="cityId.id"
 							name="txtLocSer">
@@ -121,12 +129,14 @@ function searchByName(){
 									<form:option value="${city.id}">${city.cityname}</form:option>
 								</c:forEach>
 						</form:select></td>
+						</c:if>
 
-
-
+					<c:if  test="${list[0].roleType!=2&&list[0].roleType!=4}">
 						<td><label align=left>search by experince</label> <input
 							name="txtNamExp" type="text" id="txtExpSer"
 							placeholder="Search By Exp"></input></td>
+							
+							</c:if>
 					</tr>
 					<tr>
 						<td><input id="sub" type="submit"></input></td>
@@ -137,20 +147,26 @@ function searchByName(){
 		</div>
 
 
-
-		<h1 align="center">USER LIST</h1>
-
-		<c:if test="${!empty userList}">
+      <c:if  test="${list[0].roleType==1}">
+		<h1 align="center">User Report</h1>
+	</c:if>
+	<c:if  test="${list[0].roleType==2}">
+	<h1 align="center">Company Report</h1>
+	</c:if>
+	<c:if  test="${list[0].roleType==4}">
+	<h1 align="center">Sub Admin Report</h1>
+	</c:if>
+		<c:if test="${!empty list}">
 			<div align="center" id="toMailId${view.registrationId}">
 
 				<table id=results width="1009" align="center"
 					padding: 10px; style="background-color: 00CCFF; color: black; float: center-right">
 					<tr>
 						<th width="148" height="40"><div align="left">
-								REGISTRATION_ID</div></th>
-						<th width="189"><div align="left">FULL_NAME</div></th>
+								S.NO.</div></th>
+						<th width="189"><div align="left">NAME</div></th>
 						<th width="123"><div align="left">EMAIL</div></th>
-						<th width="140"><div align="left">MOBILE_NO</div></th>
+						<th width="140"><div align="left">CONTACT NO.</div></th>
 
 					</tr>
 				</table>
@@ -159,11 +175,14 @@ function searchByName(){
 
 				<table id=results width="1009" align="center"
 					style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
-
-					<c:forEach items="${userList}" var="view">
+			
+			<c:set var="count" value="0" scope="page" />
+					<c:forEach items="${list}" var="view">
+				
+					<c:set var="count" value="${count + 1}" scope="page"/>
 						<tr>
 							<td width="148" height="40"><c:out
-									value="${view.registrationId}">
+									value="${count}">
 									<div align="center"></div>
 								</c:out></td>
 							<td width="189"><c:out value="${view.fullName}">
@@ -190,7 +209,7 @@ function searchByName(){
 
 
 		<div align="center">
-			<c:if test="${userList!=null}">
+			<c:if test="${list!=null}">
 				<div id="pageNavPosition" align="center"></div>
 			</c:if>
 		</div>

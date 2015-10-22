@@ -21,103 +21,98 @@ import com.job4sure.service.ReportService;
 
 @Service
 public class ReportServiceImpl implements ReportService {
-	@Autowired
-	private CompanyProfileRepository companyProfileRepository;
-	@Autowired
-	private RegistrationRepository registrationRepository;
-	
-	@Autowired
-	private ProfileCompleteRepository profileCompleteRepository;
+    @Autowired
+    private CompanyProfileRepository companyProfileRepository;
+    @Autowired
+    private RegistrationRepository registrationRepository;
 
-	@Autowired
-	private CityRepository cityRepository;
-    
-	@Autowired
-	private  StateRepository stateRepository;
-	@SuppressWarnings("rawtypes")
-	public List getCompanyList() {
+    @Autowired
+    private ProfileCompleteRepository profileCompleteRepository;
 
-		List<CompanyProfileModel> companyProfile = companyProfileRepository.findAll();
-		return companyProfile;
-	}
+    @Autowired
+    private CityRepository cityRepository;
 
-	@SuppressWarnings("rawtypes")
-	public List getUserList() {
-		List<Registration> userList = registrationRepository.getUserListByRole(1);
-		return userList;
-	}
+    @Autowired
+    private StateRepository stateRepository;
 
-	
-	public List getCityList()
-	{
-		List<City> cityList=cityRepository.findAll();
-		return cityList;
-	}
-    
-	public List getStateList() {
-		return stateRepository.findAll();
-		
-	}
+    /*
+     * @SuppressWarnings("rawtypes") public List getCompanyList() {
+     * 
+     * List<CompanyProfileModel> companyProfile =
+     * companyProfileRepository.findAll(); return companyProfile; }
+     */
+    /*
+     * @SuppressWarnings("rawtypes") public List getUserList() {
+     * List<Registration> userList =
+     * registrationRepository.getUserListByRole(1); return userList; }
+     */
 
-	public List getCompanyBySearch(String name,String cityId)
-	{  
-		Integer city=Integer.parseInt(cityId);
-	return	companyProfileRepository.CompanyBySearch(name,city);
+    public List getCityList() {
+	List<City> cityList = cityRepository.findAll();
+	return cityList;
+    }
 
-						
-	}
-	
-	
-	public List getUserListBySer(String name,String cityId) {
-		List<Registration> regList = null ;
-		List<UserProfile> profList = null;
-		
-	Integer intg=	Integer.parseInt(cityId);
-		profList= profileCompleteRepository.getLoggedInUserInfoList(intg, name);
+    public List getStateList() {
+	return stateRepository.findAll();
 
-Registration rrr=null;
+    }
 
-try{
+    public List getCompanyBySearch(String name, String cityId) {
+	Integer city = Integer.parseInt(cityId);
+	return companyProfileRepository.CompanyBySearch(name, city);
 
-		if(profList!=null)		
-		{regList=new ArrayList<Registration>();
-			for (UserProfile userProfile : profList) {
-                      		rrr=(userProfile.getRegistration());
-			regList.add(rrr);
-			}
-}
-}
-		catch (Exception e) {
+    }
 
-e.printStackTrace();
+    public List getUserListBySer(String name, String cityId) {
+	List<Registration> regList = null;
+	List<UserProfile> profList = null;
+
+	Integer intg = Integer.parseInt(cityId);
+	profList = profileCompleteRepository.getLoggedInUserInfoList(intg, name);
+
+	Registration rrr = null;
+
+	try {
+
+	    if (profList != null) {
+		regList = new ArrayList<Registration>();
+		for (UserProfile userProfile : profList) {
+		    rrr = (userProfile.getRegistration());
+		    regList.add(rrr);
 		}
-		
-		
-//		if(cityName!=null)
-//		{
-//		City c=cityRepository.getCitySer(cityName);
-//		 profList= profileCompleteRepository.getLoggedInUserInfoList(c.getId(), name)
-//		}
-//	
-//		ArrayList<Registration> userList = null;
-//		
-//	for(int i=0;i<=regList.size();i++){
-//		
-//		if(profList!=null)
-//	  for (int j=0;j<=profList.size();j++)
-//		{if(profList.get(i).getRegistrationId()==regList.get(i).getRegistrationId())
-//		{
-//		userList.add(regList.get(j))	;
-//		}
-//	}
-//		
-//	}		
-//		
-		return regList;
+	    }
+	} catch (Exception e) {
+
+	    e.printStackTrace();
 	}
 
+	// if(cityName!=null)
+	// {
+	// City c=cityRepository.getCitySer(cityName);
+	// profList=
+	// profileCompleteRepository.getLoggedInUserInfoList(c.getId(), name)
+	// }
+	//
+	// ArrayList<Registration> userList = null;
+	//
+	// for(int i=0;i<=regList.size();i++){
+	//
+	// if(profList!=null)
+	// for (int j=0;j<=profList.size();j++)
+	// {if(profList.get(i).getRegistrationId()==regList.get(i).getRegistrationId())
+	// {
+	// userList.add(regList.get(j)) ;
+	// }
+	// }
+	//
+	// }
+	//
+	return regList;
+    }
 
-
-
+    public List<Registration> getListByRoleId(int id) {
+	List<Registration> list = registrationRepository.getUserListByRole(id);
+	return list;
+    }
 
 }

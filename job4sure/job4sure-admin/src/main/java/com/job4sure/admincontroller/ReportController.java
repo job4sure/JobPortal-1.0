@@ -1,9 +1,6 @@
 package com.job4sure.admincontroller;
 
-
 import java.util.List;
-
-
 
 import java.util.Map;
 
@@ -24,58 +21,73 @@ import com.job4sure.service.ReportService;
 
 @Controller
 public class ReportController {
-	@Autowired
-	private ReportService reportService;
+    @Autowired
+    private ReportService reportService;
 
-	@RequestMapping(value = "/companyList", method = RequestMethod.GET)
-	public String ShowCompanyList(ModelMap model) {
-		@SuppressWarnings("unchecked")
-		List<CompanyProfileModel> companyList = reportService.getCompanyList();
-		model.addAttribute("companyList", companyList);
-		model.addAttribute("cityList",reportService.getCityList());
-		model.addAttribute("stateList",reportService.getStateList());
-		return "CompanyList";
-	}
-	
+    /*
+     * @RequestMapping(value = "/companyList", method = RequestMethod.GET)
+     * public String ShowCompanyList(ModelMap model) {
+     * 
+     * @SuppressWarnings("unchecked") List<CompanyProfileModel> companyList =
+     * reportService.getCompanyList(); model.addAttribute("companyList",
+     * companyList); model.addAttribute("cityList",
+     * reportService.getCityList()); model.addAttribute("stateList",
+     * reportService.getStateList()); return "CompanyList"; }
+     */
 
-	@RequestMapping(value = "/userList", method = RequestMethod.GET)
-	public String ShowUserList(Map<String, Object> map,ModelMap model) {
-		@SuppressWarnings("unchecked")
-		List<Registration> userList = reportService.getUserList();
-		map.put("UserProfile", new UserProfile());
-		model.addAttribute("userList", userList);
-		model.addAttribute("cityList", reportService.getCityList());
-		return "UserList";
-	}
-	
-	@RequestMapping(value="/companySearch",method=RequestMethod.POST)
-	public String companySearchresult(ModelMap map,HttpServletRequest request)
-	{
-		String companyName=request.getParameter("namSearch");
-		String companyLocation=request.getParameter("citySearch").trim();
-		//@SuppressWarnings("unchecked")
-		map.addAttribute("cityList",reportService.getCityList());
-	      map.addAttribute("companyList",reportService.getCompanyBySearch(companyName,companyLocation));
-	      
-		return "CompanyList";
-	}
-	
-	@RequestMapping(value = "/forSearch" , method = RequestMethod.POST)
-public String ShowSearchResult(ModelMap model,@ModelAttribute("UserProfile")UserProfile userProfile,@RequestParam(required=false)String txtNamSer){
-		
-		System.out.println();
-	String loc=	userProfile.getCityId()+"";
-	
-		model.addAttribute("cityList", reportService.getCityList());
-		System.out.println(txtNamSer+"name aa gya");
-@SuppressWarnings("unchecked")
-List<Registration>	userList= reportService.getUserListBySer(txtNamSer, loc);
-model.addAttribute("userList", userList);
+    /*
+     * @RequestMapping(value = "/userList", method = RequestMethod.GET) public
+     * String ShowUserList(Map<String, Object> map, ModelMap model) {
+     * 
+     * @SuppressWarnings("unchecked") List<Registration> userList =
+     * reportService.getUserList(); map.put("UserProfile", new UserProfile());
+     * model.addAttribute("userList", userList); model.addAttribute("cityList",
+     * reportService.getCityList()); return "UserList"; }
+     */
 
-return "UserList";
-	}
-	
-	
-	
-	
+    @RequestMapping(value = "/companySearch", method = RequestMethod.POST)
+    public String companySearchresult(ModelMap map, HttpServletRequest request) {
+	String companyName = request.getParameter("namSearch");
+	String companyLocation = request.getParameter("citySearch").trim();
+	// @SuppressWarnings("unchecked")
+	map.addAttribute("cityList", reportService.getCityList());
+	map.addAttribute("companyList", reportService.getCompanyBySearch(companyName, companyLocation));
+
+	return "CompanyList";
+    }
+
+    @RequestMapping(value = "/forSearch", method = RequestMethod.POST)
+    public String ShowSearchResult(ModelMap model, @ModelAttribute("UserProfile") UserProfile userProfile,
+		    @RequestParam(required = false) String txtNamSer) {
+
+	System.out.println();
+	String loc = userProfile.getCityId() + "";
+
+	model.addAttribute("cityList", reportService.getCityList());
+	System.out.println(txtNamSer + "name aa gya");
+	@SuppressWarnings("unchecked")
+	List<Registration> userList = reportService.getUserListBySer(txtNamSer, loc);
+	model.addAttribute("userList", userList);
+
+	return "UserList";
+    }
+
+    @RequestMapping(value = "/listByRole", method = RequestMethod.GET)
+    public String showSubAdminList(Map<String, Object> map, ModelMap model, @RequestParam(required = false) String id) {
+	int roleId = Integer.parseInt(id);
+	List<Registration> list = reportService.getListByRoleId(roleId);
+	System.out.println("hhii");
+	map.put("UserProfile", new UserProfile());
+	model.addAttribute("list", list);
+	model.addAttribute("cityList", reportService.getCityList());
+	 model.addAttribute("stateList",reportService.getStateList());
+	 
+	/*
+	 * map.put("UserProfile", new UserProfile());
+	 * model.addAttribute("userList", userList);
+	 * model.addAttribute("cityList", reportService.getCityList());
+	 */
+	return "UserList";
+    }
+
 }
