@@ -12,7 +12,7 @@
 <script type="text/javascript" src="resources/js/pager.js"></script>
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-function searchByName(){
+ function searchByName(){
 	
 	 <c:forEach items="${list}" var="view">
 	 $("#toMailId"+${view.registrationId}).hide();
@@ -38,7 +38,7 @@ function searchByName(){
 	 $("#toMailId"+${view.registrationId}).show();
  }
     </c:forEach>  
-}
+} 
 </script>
 </head>
 <body>
@@ -156,7 +156,9 @@ function searchByName(){
 	<c:if  test="${list[0].roleType==4}">
 	<h1 align="center">Sub Admin Report</h1>
 	</c:if>
-		<c:if test="${!empty list}">
+	
+	
+		 <c:if test="${!empty list}">
 			<div align="center" id="toMailId${view.registrationId}">
 
 				<table id=results width="1009" align="center"
@@ -206,7 +208,6 @@ function searchByName(){
 			</div>
 
 		</c:if>
-
 
 		<div align="center">
 			<c:if test="${list!=null}">

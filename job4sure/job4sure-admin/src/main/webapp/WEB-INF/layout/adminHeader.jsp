@@ -63,6 +63,7 @@
 							<li><a href="listByRole?id=2">company</a></li>
 							<li><a href="listByRole?id=1">user</a></li>
 							<li><a href="listByRole?id=4">Sub admin</a></li>
+							<li><a href="listOfJd">Approved JD's</a></li>
 						</ul></li>
 
 

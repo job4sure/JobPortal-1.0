@@ -1,7 +1,6 @@
 package com.job4sure.admincontroller;
 
 import java.util.List;
-
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,15 +14,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.job4sure.model.CompanyProfileModel;
+import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
 import com.job4sure.model.UserProfile;
+import com.job4sure.service.AdminJobDescriptionService;
 import com.job4sure.service.ReportService;
+import com.job4sure.util.IConstant;
 
 @Controller
 public class ReportController {
     @Autowired
     private ReportService reportService;
 
+    @Autowired
+    AdminJobDescriptionService adminJobDescriptionService;
+    
     /*
      * @RequestMapping(value = "/companyList", method = RequestMethod.GET)
      * public String ShowCompanyList(ModelMap model) {
@@ -74,20 +79,55 @@ public class ReportController {
 
     @RequestMapping(value = "/listByRole", method = RequestMethod.GET)
     public String showSubAdminList(Map<String, Object> map, ModelMap model, @RequestParam(required = false) String id) {
+	map.put("UserProfile", new UserProfile());
+	if(!id.equals("JD")){
 	int roleId = Integer.parseInt(id);
 	List<Registration> list = reportService.getListByRoleId(roleId);
 	System.out.println("hhii");
-	map.put("UserProfile", new UserProfile());
 	model.addAttribute("list", list);
 	model.addAttribute("cityList", reportService.getCityList());
-	 model.addAttribute("stateList",reportService.getStateList());
-	 
+	model.addAttribute("stateList",reportService.getStateList());
+	model.addAttribute("checkList", "role");
+	}
+	else{
+	    List<JobDescription> joblist = adminJobDescriptionService.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
+		if (joblist.isEmpty())
+		    model.addAttribute("message", IConstant.EMPTY_LIST);
+		else {
+		    
+		    model.addAttribute("list", joblist);
+		    model.addAttribute("message", IConstant.NOT_EMPTY_LIST);
+		    model.addAttribute("checkList", "JD");
+		}
+	}
 	/*
 	 * map.put("UserProfile", new UserProfile());
 	 * model.addAttribute("userList", userList);
 	 * model.addAttribute("cityList", reportService.getCityList());
 	 */
 	return "UserList";
+    }
+
+    @RequestMapping(value = "/listOfJd", method = RequestMethod.GET)
+    public String showApprovedJdList(Map<String, Object> map, ModelMap model) {
+	
+	    List<JobDescription> joblist = adminJobDescriptionService.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
+		if (joblist.isEmpty())
+		    model.addAttribute("message", IConstant.EMPTY_LIST);
+		else {
+		    
+		    model.addAttribute("list", joblist);
+		    model.addAttribute("message", IConstant.NOT_EMPTY_LIST);
+		    model.addAttribute("checkList", "JD");
+		}
+		map.put("JobDescription", new JobDescription());
+	
+	/*
+	 * map.put("UserProfile", new UserProfile());
+	 * model.addAttribute("userList", userList);
+	 * model.addAttribute("cityList", reportService.getCityList());
+	 */
+	return "approvedJdList";
     }
 
 }
