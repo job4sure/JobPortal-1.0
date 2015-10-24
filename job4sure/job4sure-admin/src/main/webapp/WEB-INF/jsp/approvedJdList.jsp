@@ -109,8 +109,16 @@ alert("gg");
 									<option value="${city.cityname}">${city.cityname}</option>
 								</c:forEach>
 							</select></td>
-						<td><label align=left>Search by Experince</label> <input name="searchByExp" type="text" id="txtExpSer"
-							placeholder="Search By Exp"></input></td>
+						<td><label align=left>Search by Experince</label> <!-- <input name="searchByExp" type="text" id="txtExpSer"
+							placeholder="Search By Exp"></input> -->
+							
+							<select  name="searchByExp" id="minExperience">
+							<option value="-1">Select exp</option>
+													<c:forEach items="${experienceList}" var="experience">
+														<option value="${experience.experience}"  >${experience.experience}</option>
+													</c:forEach>
+													</select> 
+							</td>
 							
 					</tr>
 					<tr></tr><tr></tr>

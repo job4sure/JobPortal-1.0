@@ -25,4 +25,8 @@ public interface ReportService {
     public List<JobDescription> searchJdListByLocation(int searchByLocation);
     public List<JobDescription> searchJdListByJobtitleAndLocation(String jobTitle,int location);
     
+    public List<JobDescription> searchJdListByExperience(String exp);
+    
+    public List<JobDescription> searchJdListByJobtitleAndExperience(String searchByJobTitle,String searchByExp);
+    
 }

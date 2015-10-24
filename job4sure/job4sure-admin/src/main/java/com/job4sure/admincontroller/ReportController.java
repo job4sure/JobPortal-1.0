@@ -21,6 +21,7 @@ import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
 import com.job4sure.model.UserProfile;
 import com.job4sure.service.AdminJobDescriptionService;
+import com.job4sure.service.JobDescriptionService;
 import com.job4sure.service.ReportService;
 import com.job4sure.service.UserProfileService;
 import com.job4sure.util.IConstant;
@@ -32,6 +33,10 @@ public class ReportController {
 
     @Autowired
     private UserProfileService userProfileService;
+    
+    @Autowired
+    private JobDescriptionService jobDescriptionService;
+    
 
     @Autowired
     AdminJobDescriptionService adminJobDescriptionService;
@@ -127,6 +132,7 @@ public class ReportController {
 	    model.addAttribute("title", IConstant.NOT_EMPTY_JD_LIST_IN_REPORT);
 	    model.addAttribute("checkList", "JD");
 	}
+	model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
 	map.put("JobDescription", new JobDescription());
 	model.addAttribute("stateList", reportService.getStateList());
 
@@ -143,6 +149,13 @@ public class ReportController {
 		    @RequestParam(required = false) String searchByTitle,
 		    @RequestParam(required = false) String searchByLocation,
 		    @RequestParam(required = false) String searchByExp) {
+	System.out.println("jj");
+	if(searchByTitle == "" && searchByTitle == "" && searchByExp.equals("-1")){
+	    model.addAttribute("message", "Please fill any one box.");
+	    List<JobDescription> joblist = adminJobDescriptionService
+				.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
+		model.addAttribute("list", joblist);
+	}
 	if (searchByTitle != null && searchByTitle != "") {
 	    List<JobDescription> jobDescriptionList = reportService.searchJdListByJobtitle(searchByTitle);
 	    if (jobDescriptionList.isEmpty()) {
@@ -150,9 +163,11 @@ public class ReportController {
 		List<JobDescription> joblist = adminJobDescriptionService
 				.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
 		model.addAttribute("list", joblist);
-	    } else
+	    } else{
+		 model.addAttribute("message", jobDescriptionList.size()+" results founds");
 		model.addAttribute("list", jobDescriptionList);
 	    	model.addAttribute("title", IConstant.NOT_EMPTY_JD_LIST_IN_REPORT);
+	    }
 
 	}
 	if (!searchByLocation.equals("0")) {
@@ -163,9 +178,11 @@ public class ReportController {
 		List<JobDescription> joblist = adminJobDescriptionService
 				.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
 		model.addAttribute("list", joblist);
-	    } else
+	    } else{
 		model.addAttribute("list", jobDescriptionList);
+		 model.addAttribute("message", jobDescriptionList.size()+" results founds");
 	    	model.addAttribute("title", IConstant.NOT_EMPTY_JD_LIST_IN_REPORT);
+	    }
 
 	}
 
@@ -178,12 +195,42 @@ public class ReportController {
 				.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
 		model.addAttribute("list", joblist);
 	    }
-	    else
+	    else{
+	    model.addAttribute("message", jobDescriptionList.size()+" results founds");
 	    model.addAttribute("list", jobDescriptionList);
 	    model.addAttribute("title", IConstant.NOT_EMPTY_JD_LIST_IN_REPORT);
-
+	    }
 	}
-
+	if(!searchByExp.equals("-1")){
+	    List<JobDescription> jobDescriptionList = reportService.searchJdListByExperience(searchByExp);
+	    if(jobDescriptionList.isEmpty()){
+		model.addAttribute("message", "No result found.please try with different experience");
+		List<JobDescription> joblist = adminJobDescriptionService
+				.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
+		model.addAttribute("list", joblist);
+	    }
+	    else{
+	    model.addAttribute("list", jobDescriptionList);
+	    model.addAttribute("message", jobDescriptionList.size()+" results founds");
+	    model.addAttribute("title", IConstant.NOT_EMPTY_JD_LIST_IN_REPORT);
+	    }
+	    }
+	
+	if(searchByTitle!=null&&!searchByExp.equals("-1")){
+	    List<JobDescription> jobDescriptionList = reportService.searchJdListByJobtitleAndExperience(searchByTitle,searchByExp);
+	    if(jobDescriptionList.isEmpty()){
+		model.addAttribute("message", "No result found.please try with different keywords");
+		List<JobDescription> joblist = adminJobDescriptionService
+				.getJobDescriptionList(IConstant.JD_APPROVED_STATUS);
+		model.addAttribute("list", joblist);
+	    }
+	    else{
+		    model.addAttribute("list", jobDescriptionList);
+		    model.addAttribute("message", jobDescriptionList.size()+" results founds");
+		    model.addAttribute("title", IConstant.NOT_EMPTY_JD_LIST_IN_REPORT);
+		    }
+	}
+	model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
 	model.addAttribute("stateList", reportService.getStateList());
 
 	return "approvedJdList";
