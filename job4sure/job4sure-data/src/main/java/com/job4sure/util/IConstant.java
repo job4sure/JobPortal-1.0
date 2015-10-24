@@ -70,6 +70,8 @@ public class IConstant {
 	// Messages for viewAllJobDesc.jsp
 	public static final String EMPTY_LIST = "<h2 id=" + "show" + ">You have not created any job.</h2>";
 	public static final String NOT_EMPTY_LIST = "<h2 id=" + "show" + ">List of Job Descriptions : </h2>";
+	public static final String NOT_EMPTY_JD_LIST_IN_REPORT = "<h2 id=" + "show" + ">Job Description Report : </h2>";
+	
 
 	// Messages for AdminHomeController
 	public static final String WRONG_CREDENTIAL = "<h3 class='msg error'>Incorrect Username or Password</h3>";

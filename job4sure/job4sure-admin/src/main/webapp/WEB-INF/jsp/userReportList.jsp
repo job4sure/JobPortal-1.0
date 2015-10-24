@@ -185,16 +185,16 @@
 						<tr>
 							<td width="148" height="40"><c:out
 									value="${count}">
-									<div align="center"></div>
+									
 								</c:out></td>
 							<td width="189"><c:out value="${view.fullName}">
-									<div align="center"></div>
+									
 								</c:out></td>
 							<td width="123"><c:out value="${view.email}">
-									<div align="center"></div>
+									
 								</c:out></td>
 							<td width="140"><c:out value="${view.mobileNo}">
-									<div align="center"></div>
+									
 								</c:out></td>
 
 						</tr>

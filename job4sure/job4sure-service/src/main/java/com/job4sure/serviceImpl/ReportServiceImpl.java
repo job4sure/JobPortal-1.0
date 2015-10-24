@@ -1,19 +1,18 @@
 package com.job4sure.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.job4sure.model.City;
-import com.job4sure.model.CompanyProfileModel;
+import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
-import com.job4sure.model.State;
 import com.job4sure.model.UserProfile;
 import com.job4sure.repository.CityRepository;
 import com.job4sure.repository.CompanyProfileRepository;
+import com.job4sure.repository.JobDescriptionRepository;
 import com.job4sure.repository.ProfileCompleteRepository;
 import com.job4sure.repository.RegistrationRepository;
 import com.job4sure.repository.StateRepository;
@@ -35,6 +34,8 @@ public class ReportServiceImpl implements ReportService {
     @Autowired
     private StateRepository stateRepository;
 
+    @Autowired
+    private JobDescriptionRepository jobDescriptionRepository;
     /*
      * @SuppressWarnings("rawtypes") public List getCompanyList() {
      * 
@@ -113,6 +114,22 @@ public class ReportServiceImpl implements ReportService {
     public List<Registration> getListByRoleId(int id) {
 	List<Registration> list = registrationRepository.getUserListByRole(id);
 	return list;
+    }
+
+    public List<JobDescription> searchJdListByJobtitle(String jobTitle) {
+	List<JobDescription> jobDescriptions=jobDescriptionRepository.searchByJobTitle(jobTitle);
+	return jobDescriptions;
+    }
+
+    public List<JobDescription> searchJdListByLocation(int searchByLocation) {
+	List<JobDescription> jobDescriptions=jobDescriptionRepository.searchByLocation(searchByLocation);
+	return jobDescriptions;
+    }
+
+    public List<JobDescription> searchJdListByJobtitleAndLocation(String jobTitle, int location) {
+	
+	List<JobDescription> jobDescriptions=jobDescriptionRepository.searchJdListByJobtitleAndLocation(jobTitle,location);
+	return jobDescriptions;
     }
 
 }

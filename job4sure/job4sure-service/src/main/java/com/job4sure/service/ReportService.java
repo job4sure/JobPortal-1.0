@@ -2,6 +2,7 @@ package com.job4sure.service;
 
 import java.util.List;
 
+import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
 
 public interface ReportService {
@@ -18,4 +19,10 @@ public interface ReportService {
     public List getCompanyBySearch(String name, String cityId);
 
     public List<Registration> getListByRoleId(int roleId);
+    
+    public List<JobDescription> searchJdListByJobtitle(String jobTitle);
+    
+    public List<JobDescription> searchJdListByLocation(int searchByLocation);
+    public List<JobDescription> searchJdListByJobtitleAndLocation(String jobTitle,int location);
+    
 }

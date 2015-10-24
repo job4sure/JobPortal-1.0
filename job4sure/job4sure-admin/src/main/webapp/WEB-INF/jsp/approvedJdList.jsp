@@ -11,7 +11,38 @@
 <script type="text/javascript" src="resources/js/pager.js"></script>
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-	
+function getCityList(data) {
+alert("gg");
+	var stateId = document.getElementById(data.id).value;
+	// alert(stateId);
+	$.ajax({
+		url : "getCityListByStateId.do?stateId=" + stateId,
+		type : "GET",
+		contentType : "application/json; charset=utf-8",
+		success : function(response) {
+
+			var cityValues = response.cityList;
+			$('#' + data.id + 'City').html('');// Empty select box before fill
+			// data.without this line when i
+			// fill, i got old data also.
+			$('#' + data.id + 'City')// Due to above line all data is clear
+			// so i add this line for "select city"
+			// label.
+			.append(
+					$("<option value='" + 0 + "'></option>")
+							.text("Select City"));
+			for (i = 0; i < cityValues.length; i++) {
+				$('#' + data.id + 'City').append(
+						$("<option value='" + cityValues[i].id + "'></option>")
+								.text(cityValues[i].cityname));
+			}
+		},
+		error : function() {
+			$('#' + data.id + 'City').append(
+					$("<option value='0'></option>").text('Select City'))
+		}
+	});
+}
 </script>
 </head>
 <body>
@@ -60,35 +91,43 @@
 		</div>
 		<div>
 
-			<form:form modelAttribute="JobDescription" action="forSearch" method="POST">
+			<form:form modelAttribute="JobDescription" action="searchForJd" method="POST">
 				<table>
 					<tr>
-						<td><label align=left>search by name </label> <input name="txtNamSer" type="text" id="txtNamSer"
+						<td><label align=left>Search by Job Title </label> <input name="searchByTitle" type="text" id="txtNamSer"
 							placeholder="Enter Name"></input></td>
-						<td><label align=left>search by State</label> <select name="stateSearch">
-								<option value="0">Select</option>
+						<td><label align=left>Search by State</label> <select name="stateSearch" id="currentState" onchange="getCityList(this)">
+								<option value="0">Select state</option>
 								<c:forEach items="${stateList}" var="state">
 									<option value="${state.stateId}">${state.stateName}</option>
 								</c:forEach>
 						</select></td>
 
-						<td><label align=left>search by location</label> <form:select path="currentCityId.id" name="txtLocSer">
-								<form:option value="0">Select</form:option>
+						<td><label align=left></label> Search by City<select  name="searchByLocation" id="currentStateCity">
+								<option value="0">Select city</option>
 								<c:forEach items="${cityList}" var="city">
-									<form:option value="${city.id}">${city.cityname}</form:option>
+									<option value="${city.cityname}">${city.cityname}</option>
 								</c:forEach>
-							</form:select></td>
-						<td><label align=left>search by experince</label> <input name="txtNamExp" type="text" id="txtExpSer"
+							</select></td>
+						<td><label align=left>Search by Experince</label> <input name="searchByExp" type="text" id="txtExpSer"
 							placeholder="Search By Exp"></input></td>
+							
 					</tr>
+					<tr></tr><tr></tr>
 					<tr>
-						<td><input id="sub" type="submit"></input></td>
+					<td><input id="sub" type="submit"></input></td><td></td><td></td><td></td>
+						<h3 style="color: red;">${message}</h3>
+					</tr>
+					
+					<tr>
+					<td><a href="listOfJd.do"><input id="sub" value="Show All JD's" type="button"></input></a></td><td></td><td></td><td></td>
+						
 					</tr>
 				</table>
 
 			</form:form>
 		</div>
-		<h1 align="center">Job Description Report</h1>
+		<h1 align="center">${title}</h1>
 		<c:if test="${!empty list}">
 			<div align="center" id="toMailId${view.jobDescriptionId}">
 
@@ -99,6 +138,7 @@
 						<th width="189"><div align="left">Job title</div></th>
 						<th width="140"><div align="left">company</div></th>
 						<th width="140"><div align="left">experience</div></th>
+						<th width="140"><div align="left">location</div></th>
 					</tr>
 				</table>
 				<table id=results width="1009" align="center"
@@ -109,18 +149,14 @@
 						<c:set var="count" value="${count + 1}" scope="page" />
 						<tr>
 							<td width="148" height="40"><c:out value="${count}">
-									<div align="center"></div>
 								</c:out></td>
 							<td width="189"><c:out value="${view.jobTitle}">
-									<div align="center"></div>
 								</c:out></td>
-
 							<td width="140"><c:out value="${view.registration.fullName}">
-									<div align="center"></div>
 								</c:out></td>
-
 							<td width="140"><c:out value="${view.minExperience.experience}-${view.maxExperience.experience }">
-									<div align="center"></div>
+								</c:out></td>
+								<td width="140"><c:out value="${view.currentCityId.cityname}">
 								</c:out></td>
 						</tr>
 					</c:forEach>
