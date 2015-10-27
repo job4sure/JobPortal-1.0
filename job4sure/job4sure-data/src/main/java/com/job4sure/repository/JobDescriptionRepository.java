@@ -41,6 +41,13 @@ public interface JobDescriptionRepository extends JpaRepository<JobDescription, 
 	
 	@Query("select jb from JobDescription jb where jb.jobTitle LIKE %:jobTitle% AND jb.minExperience.experience=:exp")
 	public List<JobDescription> searchJdListByJobtitleAndExperience(@Param("jobTitle") String jobTitle,@Param("exp") String exp);
+
+	@Query("select jb from JobDescription jb where jb.jobTitle LIKE %:searchByTitle%   AND jb.minExperience.experience=:searchByExp AND jb.currentCityId.id =:searchByLocation")
+	public List<JobDescription> searchJdCommon(@Param("searchByTitle") String searchByTitle, @Param("searchByLocation") int searchByLocation, @Param("searchByExp") String searchByExp);
+
+	@Query("select jb from JobDescription jb where jb.jobTitle LIKE %:searchByTitle%   AND jb.minExperience.experience=:searchByExp")
+	public List<JobDescription> searchJdCommon(@Param("searchByTitle") String searchByTitle, @Param("searchByExp") String searchByExp);
+
 	
 	
 	

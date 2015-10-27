@@ -149,7 +149,31 @@ public class ReportController {
 		    @RequestParam(required = false) String searchByTitle,
 		    @RequestParam(required = false) String searchByLocation,
 		    @RequestParam(required = false) String searchByExp) {
-	System.out.println("jj");
+	List<JobDescription> list=null;
+	if(searchByTitle==""){
+	    searchByTitle="";
+	    
+	}
+	
+	if(searchByExp.equals("-1")){
+	    searchByExp="";
+	    
+	}
+	if(searchByTitle=="" && Integer.parseInt(searchByLocation)==0 && searchByExp==""){
+	    //error
+	}
+	else if(Integer.parseInt(searchByLocation)==0){
+	    list= reportService.searchJDCommon(searchByTitle,searchByExp );
+	}
+	else {
+	    list= reportService.searchJDCommon(searchByTitle,
+			    Integer.parseInt(searchByLocation),searchByExp );
+	   
+	}
+	 model.addAttribute("list", list);
+	
+	
+	/*System.out.println("jj");
 	if(searchByTitle == "" && searchByTitle == "" && searchByExp.equals("-1")){
 	    model.addAttribute("message", "Please fill any one box.");
 	    List<JobDescription> joblist = adminJobDescriptionService
@@ -229,7 +253,7 @@ public class ReportController {
 		    model.addAttribute("message", jobDescriptionList.size()+" results founds");
 		    model.addAttribute("title", IConstant.NOT_EMPTY_JD_LIST_IN_REPORT);
 		    }
-	}
+	}*/
 	model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
 	model.addAttribute("stateList", reportService.getStateList());
 

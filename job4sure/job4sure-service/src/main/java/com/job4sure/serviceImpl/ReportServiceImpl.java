@@ -142,4 +142,13 @@ public class ReportServiceImpl implements ReportService {
 	return jobDescriptions;
     }
 
+    public List<JobDescription> searchJDCommon(String searchByTitle, int searchByLocation, String searchByExp) {
+	List<JobDescription> jobDescriptions=jobDescriptionRepository.searchJdCommon( searchByTitle,searchByLocation,searchByExp);
+	return jobDescriptions;
+    }
+    public List<JobDescription> searchJDCommon(String searchByTitle, String searchByExp){
+	List<JobDescription> jobDescriptions=jobDescriptionRepository.searchJdCommon( searchByTitle,searchByExp);
+	return jobDescriptions;
+    }
+
 }
