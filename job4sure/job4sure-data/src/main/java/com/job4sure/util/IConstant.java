@@ -8,6 +8,7 @@ public class IConstant {
 //	 public static final String PASSWORD_RECOVERY_URL =
 //	 "http://itjobbers-webmodule.rhcloud.com/reCreatePass";
 	
+	public static final String ADMIN_EMAIL_ID = "mayank.shukla@aartek.in";
 	public static final String PASSWORD_RECOVERY_URL = "http://localhost:8080/job4sure-web/reCreatePass";
 	public static final String ADMIN_PASSWORD_RECOVERY_URL = "http://localhost:8080/job4sure-admin/reCreatePass";
 	//public static final String PASSWORD_RECOVERY_URL = "http://job4sure-fasttofind.rhcloud.com/reCreatePass";//for testing
