@@ -9,20 +9,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.job4sure.model.Experience;
 import com.job4sure.model.JobDescription;
+import com.job4sure.model.Registration;
 import com.job4sure.model.Salary;
 import com.job4sure.model.Skills;
 import com.job4sure.repository.ExperienceRepository;
 import com.job4sure.repository.JobDescriptionRepository;
+import com.job4sure.repository.RegistrationRepository;
 import com.job4sure.repository.SalaryRepository;
 import com.job4sure.repository.SkillsRepository;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.util.DateFormatUtil;
+import com.job4sure.util.IConstant;
+import com.job4sure.util.SendMail;
 
 @Service
 public class JobDescriptionServiceImpl implements JobDescriptionService {
 
     @Autowired
     private JobDescriptionRepository jobDescriptionRepository;
+    
+    @Autowired
+    private RegistrationRepository registrationRepository;
 
     @Autowired
     private SkillsRepository skillsRepository;
@@ -43,13 +50,50 @@ public class JobDescriptionServiceImpl implements JobDescriptionService {
 		Skills oneSkills = skillsRepository.findOne(Integer.parseInt(id));
 		jobDescription.getSkillsSet().add(oneSkills);
 	    }
-	    jobDescriptionRepository.save(jobDescription);
+	   JobDescription jobDesc= jobDescriptionRepository.save(jobDescription);
+	   updateAdmin(jobDesc);
 	    return true;
 	}
 	return false;
     }
+    
+    
+    
 
-    public List<JobDescription> getAllJobDescription(int companyId) {
+    private void updateAdmin(JobDescription jobDescription) {
+    	String subject = "New Job Description";
+		String toMailId = "";
+		String body = "Dear Admin,\n \n A new Job Description has been posted on our Portal. \n Please have a look on following JD. \n\n Job Title"
+		                + jobDescription.getJobTitle()
+		                + "\n Job Location: "
+		                
+		                + "\n Edjucation: "
+		                + jobDescription.getEducation()
+		                + "\n Minimum Salary: "
+		                + jobDescription.getMinSalary().getSalary()
+		                + "\n Maximum Salary: "
+		                + jobDescription.getMaxSalary().getSalary()
+		                + "\n Minimum Exp: "
+		                + jobDescription.getMinExperience().getExperience()
+		                + "\n No. of Candidates"
+		                + jobDescription.getNoOfCandidates()
+		                + "\n Description: "
+		                + jobDescription.getJobDesc()
+		                + "\n\n Regards, \n ItJobers";
+
+		List<Registration> registrations = registrationRepository.getUserListByRole(IConstant.ADMIN_ROLE_ID);
+		for (Registration registration : registrations) {
+			System.out.println(registration.getEmail());
+			System.out.println(body);
+			SendMail.commomMailSend(registration.getEmail(), subject, body);
+		}
+	}
+  
+
+
+
+
+	public List<JobDescription> getAllJobDescription(int companyId) {
     	 List<JobDescription> list=	 jobDescriptionRepository.findByCompanyId(companyId);
     	 System.out.println(list.size());
     	 return list;
