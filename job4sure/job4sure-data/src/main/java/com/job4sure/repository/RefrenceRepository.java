@@ -12,5 +12,7 @@ public interface RefrenceRepository extends JpaRepository<Reference, Integer> {
 	
 	@Query("from Reference r where r.jobDescription.jobDescriptionId=:jobId and r.registration.registrationId =:registrationId")
 	public  List<Reference> getRefrenceByJobIdAndUser(@Param("jobId") Integer jobId ,@Param("registrationId") Integer registrationId);
-
+	
+	@Query("from Reference r where r.jobDescription.jobDescriptionId=:jobId")
+	public List<Reference> findByJobId(@Param("jobId") Integer jobId);
 }

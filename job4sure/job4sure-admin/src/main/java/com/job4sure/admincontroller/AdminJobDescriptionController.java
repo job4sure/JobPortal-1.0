@@ -54,14 +54,17 @@ public class AdminJobDescriptionController {
 	registration = (Registration) session.getAttribute("registration");
 
 	JobDescription jobDescription = adminJobDescriptionService.viewJobDescription(jobId);
-	references = refrenceService.getRefrenceByJobIdAndUser(jobId, registration.getRegistrationId());
+	if (registration.getRoleType() == 3) {
+	    references = refrenceService.findByJobId(jobId);
+	} else {
+	    references = refrenceService.getRefrenceByJobIdAndUser(jobId, registration.getRegistrationId());
+	}
 
 	model.addAttribute("references", references);
 	model.addAttribute("reference", new Reference());
 	model.addAttribute("jobDescription", jobDescription);
 	return "viewJobDescription";
     }
-    // referToAdmin
 
     @RequestMapping(value = "/referToAdmin", method = { RequestMethod.GET, RequestMethod.POST })
     public String referToAdmin(@ModelAttribute("refrence") Reference reference, @RequestParam CommonsMultipartFile[] upload,
@@ -69,12 +72,12 @@ public class AdminJobDescriptionController {
 	HttpSession session = request.getSession();
 	Integer jId = Integer.valueOf(jobId);
 	Registration registration;
-	
+
 	JobDescription jobDescriptionTemp = adminJobDescriptionService.viewJobDescription(jId);
 	registration = (Registration) session.getAttribute("registration");
 	reference.setRegistration(registration);
 	reference.setJobDescription(jobDescriptionTemp);
-	refrenceService.save(reference,upload);
+	refrenceService.save(reference, upload);
 
 	model.addAttribute("jobId", jId);
 	model.addAttribute("jobDescription", jobDescriptionTemp);

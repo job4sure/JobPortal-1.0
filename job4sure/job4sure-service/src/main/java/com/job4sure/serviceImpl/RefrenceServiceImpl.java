@@ -94,4 +94,10 @@ public class RefrenceServiceImpl implements RefrenceService {
 	reference = refrenceRepository.getRefrenceByJobIdAndUser(jobId, registrationId);
 	return reference;
     }
+
+    public List<Reference> findByJobId(Integer jobId) {
+	List<Reference> references ;
+	references = refrenceRepository.findByJobId(jobId);
+	return references;
+    }
 }

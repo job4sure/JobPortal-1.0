@@ -7,6 +7,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.job4sure.model.Reference;
 
 public interface RefrenceService {
+    
+    	public List<Reference> findByJobId(Integer jobId);
 	
 	public Boolean save(Reference reference, CommonsMultipartFile[] upload);
 	
