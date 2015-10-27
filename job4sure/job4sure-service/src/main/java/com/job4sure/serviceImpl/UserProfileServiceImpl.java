@@ -83,8 +83,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 			}
 			UserProfile currentUserProfile = profileCompleteRepository.save(userProfile);
 			File newFile = new File(IConstant.FILE_PATH);
-			File filePath = new File(newFile + File.separator + currentUserProfile.getRegistrationId()
-					+ "_" + attchmentName);
+			File filePath = new File(newFile + File.separator + currentUserProfile.getRegistrationId() + "_" + attchmentName);
 			if (!newFile.exists()) {
 			    newFile.mkdir();
 			    filePath.createNewFile();
@@ -97,20 +96,18 @@ public class UserProfileServiceImpl implements UserProfileService {
 			    outputStream.write(bytes, 0, read);
 			}
 			String profilePic = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
-			if (profilePic.equals("jpg") || profilePic.equals("png") || profilePic.equals("bpg")
-					|| profilePic.equals("jpeg")) {
+			if (profilePic.equals("jpg") || profilePic.equals("png") || profilePic.equals("bpg") || profilePic.equals("jpeg")) {
 			    String attchmentType = "profilePic";
 			    Attachment attchment = new Attachment();
 			    Attachment oldAttchment = new Attachment();
-			    oldAttchment = attachmentRepository.getProfilePicAttachment(
-					    currentUserProfile.getRegistrationId(), attchmentType);
+			    oldAttchment = attachmentRepository.getProfilePicAttachment(currentUserProfile.getRegistrationId(),
+					    attchmentType);
 			    if (oldAttchment != null) {
 				attchment = oldAttchment;
 			    }
 			    attchment.setAttachmentType(attchmentType);
 			    attchment.setAttachmentName(attchmentName);
-			    attchment.setPath(newFile + File.separator + currentUserProfile.getRegistrationId() + "_"
-					    + attchmentName);
+			    attchment.setPath(newFile + File.separator + currentUserProfile.getRegistrationId() + "_" + attchmentName);
 			    attchment.setRegistrationId(currentUserProfile.getRegistrationId());
 			    attachmentRepository.save(attchment);
 			} else {
@@ -118,15 +115,14 @@ public class UserProfileServiceImpl implements UserProfileService {
 				String attchmentType = "resume";
 				Attachment attchment = new Attachment();
 				Attachment oldAttchment = new Attachment();
-				oldAttchment = attachmentRepository.getProfilePicAttachment(
-						currentUserProfile.getRegistrationId(), attchmentType);
+				oldAttchment = attachmentRepository.getProfilePicAttachment(currentUserProfile.getRegistrationId(),
+						attchmentType);
 				if (oldAttchment != null) {
 				    attchment = oldAttchment;
 				}
 				attchment.setAttachmentType(attchmentType);
 				attchment.setAttachmentName(attchmentName);
-				attchment.setPath(newFile + File.separator + currentUserProfile.getRegistrationId()
-						+ "_" + attchmentName);
+				attchment.setPath(newFile + File.separator + currentUserProfile.getRegistrationId() + "_" + attchmentName);
 				attchment.setRegistrationId(currentUserProfile.getRegistrationId());
 				attachmentRepository.save(attchment);
 			    }
@@ -185,8 +181,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	Attachment attachment = null;
 	if (registrationId != null) {
 	    String attchmentType = "profilePic";
-	    Attachment profilepicattachment = attachmentRepository.getProfilePicAttachment(registrationId,
-			    attchmentType);
+	    Attachment profilepicattachment = attachmentRepository.getProfilePicAttachment(registrationId, attchmentType);
 	    if (profilepicattachment != null) {
 		return profilepicattachment;
 	    }
@@ -200,8 +195,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	boolean status = false;
 	Attachment attachment = attachmentRepository.getProfilePicAttachment(registrationId, attchmentType);
 	if (attachment != null) {
-	    DownloadResume.downloadResume(attachment.getAttachmentName(), attachment.getPath(), response,
-			    attachment.getAttachmentType());
+	    DownloadResume.downloadResume(attachment.getAttachmentName(), attachment.getPath(), response, attachment.getAttachmentType());
 	    status = true;
 	    return status;
 	}

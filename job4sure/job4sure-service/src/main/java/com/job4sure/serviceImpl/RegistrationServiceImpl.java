@@ -67,6 +67,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 		Registration registration = registrationRepository.verifyUser(registrationId);
 		registration.setEnabled(1);
 		registrationRepository.save(registration);
+		SendMail.userRegistrationMail(registration);
 		return registration;
 	}
 

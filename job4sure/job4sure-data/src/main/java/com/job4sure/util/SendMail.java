@@ -6,6 +6,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.job4sure.model.Registration;
+
 public class SendMail {
 
 	public static String mailSend(String email, String fullName, Integer registrationId, String encryptedId) {
@@ -21,6 +23,31 @@ public class SendMail {
 			msg += "<b>User Name:</b>" + email;
 			msg += " <br>";
 			msg += "" + IConstant.REGISTRATION_URL + "?registrationId=" + encryptedId + "";// used
+			msg += " <br>";
+			msg += "Regards,<br>";
+			msg += "Job Portal";
+			message.setContent(msg, "text/html");
+			Transport.send(message);
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+		return null;
+
+	}
+	
+	public static String userRegistrationMail(Registration registration ) {
+		try {
+			Message message = new MimeMessage(SendMailProperty.mailProperty());
+
+			message.setFrom(new InternetAddress(IConstant.FROM_EMAIL_ID));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(IConstant.ADMIN_EMAIL_ID));
+			message.setSubject("Regards: new registration");
+			String msg = "Dear Admin ,<br>";
+			msg += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A new user is joined at jobpartal account details below:<br>";
+			msg += " <br>";
+			msg += "<b>User Name:</b>" + registration.getEmail();
+			msg += " <br>";
+		//	msg += "" + IConstant.REGISTRATION_URL + "?registrationId=" + encryptedId + "";// used
 			msg += " <br>";
 			msg += "Regards,<br>";
 			msg += "Job Portal";

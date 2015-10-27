@@ -20,42 +20,30 @@ import com.job4sure.model.UserRole;
 import com.job4sure.repository.LoginRepository;
 import com.job4sure.util.DateFormatUtil;
 
-
-
 @Service("userDetailsService")
-public class LoginServiceImpl implements UserDetailsService{
+public class LoginServiceImpl implements UserDetailsService {
 
-	
 	@Autowired
 	private LoginRepository loginRepository;
-	
-	
+
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(final String userName) throws UsernameNotFoundException {
-		List<Login> logins =loginRepository.findByUserNameAndPass(userName);
-		Login login=logins.get(0);
+		List<Login> logins = loginRepository.findByUserNameAndPass(userName);
+		Login login = logins.get(0);
 		List<GrantedAuthority> authorities = buildUserAuthority(login.getUserRole());
 		return buildUserForAuthentication(login, authorities);
 	}
 
-	
 	private User buildUserForAuthentication(Login login, List<GrantedAuthority> authorities) {
-		boolean isValid=DateFormatUtil.isValid(login.getValidUpTo());
+		boolean isValid = DateFormatUtil.isValid(login.getValidUpTo());
 		return new User(login.getEmail(), login.getPassword(), login.isEnabled(), isValid, true, true, authorities);
 	}
 
 	private List<GrantedAuthority> buildUserAuthority(UserRole userRole) {
 		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
-			setAuths.add(new SimpleGrantedAuthority(userRole.getRole()));
-	List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
-	return Result;
+		setAuths.add(new SimpleGrantedAuthority(userRole.getRole()));
+		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
+		return Result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

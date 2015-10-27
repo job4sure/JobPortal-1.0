@@ -23,97 +23,96 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "job_description")
 public class JobDescription implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private Integer jobDescriptionId;
-    private String jobTitle;
-    private String jobDesc;
-   // private String jobLocation;
-    // private String salary;
-	
-    private State currentStateId;
+	private static final long serialVersionUID = 1L;
+	private Integer jobDescriptionId;
+	private String jobTitle;
+	private String jobDesc;
+	// private String jobLocation;
+	// private String salary;
 
-   
-    private Integer noOfCandidates;
-    private String postedDate;
-    private String jobValidDate;
-    private String education;
-    private String role;
-    // private Integer jdApprovalStatus;
-    private Registration registration;
-    private Set<Skills> skillsSet=new HashSet<Skills>();
-    private String skill;
-    private JobDescriptionApprovalStatus approvalStatus;
-    private Salary minSalary;
-    private Salary maxSalary;
-    private Experience minExperience;
-    private Experience maxExperience;
-    private City currentCityId;
-    
-    @ManyToMany(fetch=FetchType.EAGER)//cascade = CascadeType.ALL,
-    @JoinTable(name = "DESCRIPTION_SKILLS", joinColumns = { @JoinColumn(name = "JOB_ID") }, inverseJoinColumns = { @JoinColumn(name = "SKILLS_ID") })
-    @JsonIgnore
-    public Set<Skills> getSkillsSet() {
-	return skillsSet;
-    }
+	private State currentStateId;
 
-    public void setSkillsSet(Set<Skills> skillsSet) {
-	this.skillsSet = skillsSet;
-    }
-    
-    
-    @OneToOne(targetEntity = Experience.class)
-    @JoinColumn(name = "MIN_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
-    public Experience getMinExperience() {
-	return minExperience;
-    }
+	private Integer noOfCandidates;
+	private String postedDate;
+	private String jobValidDate;
+	private String education;
+	private String role;
+	// private Integer jdApprovalStatus;
+	private Registration registration;
+	private Set<Skills> skillsSet = new HashSet<Skills>();
+	private String skill;
+	private JobDescriptionApprovalStatus approvalStatus;
+	private Salary minSalary;
+	private Salary maxSalary;
+	private Experience minExperience;
+	private Experience maxExperience;
+	private City currentCityId;
 
-    public void setMinExperience(Experience minExperience) {
-	this.minExperience = minExperience;
-    }
+	@ManyToMany(fetch = FetchType.EAGER) // cascade = CascadeType.ALL,
+	@JoinTable(name = "DESCRIPTION_SKILLS", joinColumns = { @JoinColumn(name = "JOB_ID") }, inverseJoinColumns = {
+			@JoinColumn(name = "SKILLS_ID") })
+	@JsonIgnore
+	public Set<Skills> getSkillsSet() {
+		return skillsSet;
+	}
 
-    @OneToOne(targetEntity = Experience.class)
-    @JoinColumn(name = "MAX_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
-    public Experience getMaxExperience() {
-	return maxExperience;
-    }
+	public void setSkillsSet(Set<Skills> skillsSet) {
+		this.skillsSet = skillsSet;
+	}
 
-    public void setMaxExperience(Experience maxExperience) {
-	this.maxExperience = maxExperience;
-    }
-    
-    @OneToOne(targetEntity = Salary.class)
-    @JoinColumn(name = "MIN_SALARY_ID", referencedColumnName = "SALARY_ID")
-    public Salary getMinSalary() {
-	return minSalary;
-    }
+	@OneToOne(targetEntity = Experience.class)
+	@JoinColumn(name = "MIN_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
+	public Experience getMinExperience() {
+		return minExperience;
+	}
 
-    public void setMinSalary(Salary minSalary) {
-	this.minSalary = minSalary;
-    }
+	public void setMinExperience(Experience minExperience) {
+		this.minExperience = minExperience;
+	}
 
-    @OneToOne(targetEntity = Salary.class)
-    @JoinColumn(name = "MAX_SALARY_ID", referencedColumnName = "SALARY_ID")
-    public Salary getMaxSalary() {
-	return maxSalary;
-    }
+	@OneToOne(targetEntity = Experience.class)
+	@JoinColumn(name = "MAX_EXPERIENCE_ID", referencedColumnName = "EXPERIENCE_ID")
+	public Experience getMaxExperience() {
+		return maxExperience;
+	}
 
-    public void setMaxSalary(Salary maxSalary) {
-	this.maxSalary = maxSalary;
-    }
+	public void setMaxExperience(Experience maxExperience) {
+		this.maxExperience = maxExperience;
+	}
 
-    @OneToOne(targetEntity = JobDescriptionApprovalStatus.class)
-    @JoinColumn(name = "JD_APPROVAL_STATUS_ID")
-    public JobDescriptionApprovalStatus getApprovalStatus() {
-	return approvalStatus;
-    }
+	@OneToOne(targetEntity = Salary.class)
+	@JoinColumn(name = "MIN_SALARY_ID", referencedColumnName = "SALARY_ID")
+	public Salary getMinSalary() {
+		return minSalary;
+	}
 
-    public void setApprovalStatus(JobDescriptionApprovalStatus approvalStatus) {
-	this.approvalStatus = approvalStatus;
-    }
+	public void setMinSalary(Salary minSalary) {
+		this.minSalary = minSalary;
+	}
 
-    @OneToOne(targetEntity = City.class)
-    @JoinColumn(name = "CURRENT_CITY_ID", referencedColumnName = "CITY_ID")
-    public City getCurrentCityId() {
+	@OneToOne(targetEntity = Salary.class)
+	@JoinColumn(name = "MAX_SALARY_ID", referencedColumnName = "SALARY_ID")
+	public Salary getMaxSalary() {
+		return maxSalary;
+	}
+
+	public void setMaxSalary(Salary maxSalary) {
+		this.maxSalary = maxSalary;
+	}
+
+	@OneToOne(targetEntity = JobDescriptionApprovalStatus.class)
+	@JoinColumn(name = "JD_APPROVAL_STATUS_ID")
+	public JobDescriptionApprovalStatus getApprovalStatus() {
+		return approvalStatus;
+	}
+
+	public void setApprovalStatus(JobDescriptionApprovalStatus approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
+
+	@OneToOne(targetEntity = City.class)
+	@JoinColumn(name = "CURRENT_CITY_ID", referencedColumnName = "CITY_ID")
+	public City getCurrentCityId() {
 		return currentCityId;
 	}
 
@@ -121,55 +120,53 @@ public class JobDescription implements Serializable {
 		this.currentCityId = currentCityId;
 	}
 
-    @Transient
-    public String getSkill() {
-	return skill;
-    }
+	@Transient
+	public String getSkill() {
+		return skill;
+	}
 
-    @Transient
-    public void setSkill(String skill) {
-	this.skill = skill;
-    }
+	@Transient
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "JOB_ID", unique = true, nullable = false)
-    public Integer getJobDescriptionId() {
-	return jobDescriptionId;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "JOB_ID", unique = true, nullable = false)
+	public Integer getJobDescriptionId() {
+		return jobDescriptionId;
+	}
 
-    public void setJobDescriptionId(Integer jobDescriptionId) {
-	this.jobDescriptionId = jobDescriptionId;
-    }
+	public void setJobDescriptionId(Integer jobDescriptionId) {
+		this.jobDescriptionId = jobDescriptionId;
+	}
 
-    @Column(name = "JOB_TITLE", length = 25)
-    public String getJobTitle() {
-	return jobTitle;
-    }
+	@Column(name = "JOB_TITLE", length = 25)
+	public String getJobTitle() {
+		return jobTitle;
+	}
 
-    public void setJobTitle(String jobTitle) {
-	this.jobTitle = jobTitle;
-    }
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
 
-    @Column(name = "JOB_DESC", length = 200)
-    public String getJobDesc() {
-	return jobDesc;
-    }
+	@Column(name = "JOB_DESC", length = 200)
+	public String getJobDesc() {
+		return jobDesc;
+	}
 
-    public void setJobDesc(String jobDesc) {
-	this.jobDesc = jobDesc;
-    }
+	public void setJobDesc(String jobDesc) {
+		this.jobDesc = jobDesc;
+	}
 
-
-
-    /*
-     * @Column(name = "SALARY", length = 10) public String getSalary() { return
-     * salary; }
-     * 
-     * public void setSalary(String salary) { this.salary = salary; }
-     */
-    @Transient
-    public State getCurrentStateId() {
+	/*
+	 * @Column(name = "SALARY", length = 10) public String getSalary() { return
+	 * salary; }
+	 * 
+	 * public void setSalary(String salary) { this.salary = salary; }
+	 */
+	@Transient
+	public State getCurrentStateId() {
 		return currentStateId;
 	}
 
@@ -177,70 +174,67 @@ public class JobDescription implements Serializable {
 		this.currentStateId = currentStateId;
 	}
 
-	
 	@Column(name = "NO_OF_CANDIDATES")
-    public Integer getNoOfCandidates() {
-	return noOfCandidates;
-    }
+	public Integer getNoOfCandidates() {
+		return noOfCandidates;
+	}
 
-    public void setNoOfCandidates(Integer noOfCandidates) {
-	this.noOfCandidates = noOfCandidates;
-    }
+	public void setNoOfCandidates(Integer noOfCandidates) {
+		this.noOfCandidates = noOfCandidates;
+	}
 
-    // ===sandeep
-    /*
-     * @Column(name = "JD_APPROVAL_STATUS_ID") public Integer
-     * getJdApprovalStatus() { return jdApprovalStatus; } public void
-     * setJdApprovalStatus(Integer jdApprovalStatus) { this.jdApprovalStatus =
-     * jdApprovalStatus; }
-     */
-    // end sandeep
-    @Column(name = "POSTED_DATE", length = 10)
-    public String getPostedDate() {
-	return postedDate;
-    }
+	// ===sandeep
+	/*
+	 * @Column(name = "JD_APPROVAL_STATUS_ID") public Integer
+	 * getJdApprovalStatus() { return jdApprovalStatus; } public void
+	 * setJdApprovalStatus(Integer jdApprovalStatus) { this.jdApprovalStatus =
+	 * jdApprovalStatus; }
+	 */
+	// end sandeep
+	@Column(name = "POSTED_DATE", length = 10)
+	public String getPostedDate() {
+		return postedDate;
+	}
 
-    public void setPostedDate(String postedDate) {
-	this.postedDate = postedDate;
-    }
+	public void setPostedDate(String postedDate) {
+		this.postedDate = postedDate;
+	}
 
-    @Column(name = "JOB_VALID_DATE", length = 10)
-    public String getJobValidDate() {
-	return jobValidDate;
-    }
+	@Column(name = "JOB_VALID_DATE", length = 10)
+	public String getJobValidDate() {
+		return jobValidDate;
+	}
 
-    public void setJobValidDate(String jobValidDate) {
-	this.jobValidDate = jobValidDate;
-    }
+	public void setJobValidDate(String jobValidDate) {
+		this.jobValidDate = jobValidDate;
+	}
 
-    @Column(name = "EDUCATION", length = 50)
-    public String getEducation() {
-	return education;
-    }
+	@Column(name = "EDUCATION", length = 50)
+	public String getEducation() {
+		return education;
+	}
 
-    public void setEducation(String education) {
-	this.education = education;
-    }
+	public void setEducation(String education) {
+		this.education = education;
+	}
 
-    @Column(name = "ROLE", length = 30)
-    public String getRole() {
-	return role;
-    }
+	@Column(name = "ROLE", length = 30)
+	public String getRole() {
+		return role;
+	}
 
-    public void setRole(String role) {
-	this.role = role;
-    }
+	public void setRole(String role) {
+		this.role = role;
+	}
 
-    @ManyToOne(targetEntity = Registration.class)
-    @JoinColumn(name = "COMPANY_ID", referencedColumnName = "registration_Id")
-    public Registration getRegistration() {
-	return registration;
-    }
+	@ManyToOne(targetEntity = Registration.class)
+	@JoinColumn(name = "COMPANY_ID", referencedColumnName = "registration_Id")
+	public Registration getRegistration() {
+		return registration;
+	}
 
-    public void setRegistration(Registration registration) {
-	this.registration = registration;
-    }
-
-    
+	public void setRegistration(Registration registration) {
+		this.registration = registration;
+	}
 
 }
