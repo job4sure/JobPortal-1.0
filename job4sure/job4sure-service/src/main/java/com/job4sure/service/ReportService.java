@@ -2,11 +2,12 @@ package com.job4sure.service;
 
 import java.util.List;
 
+import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
 
 public interface ReportService {
-    /* public List getCompanyList(); */
+    public List getCompanyList();
 
     /* public List getUserList(); */
 
@@ -16,7 +17,8 @@ public interface ReportService {
 
     public List getStateList();
 
-    public List getCompanyBySearch(String name, String cityId);
+    public List<CompanyProfileModel> getCompanyBySearch(String name, Integer cityId);
+    public List<CompanyProfileModel> getCompanyBySearch(String name);
 
     public List<Registration> getListByRoleId(int roleId);
     
@@ -31,8 +33,6 @@ public interface ReportService {
 
     public List<JobDescription> searchJDCommon(String searchByTitle, int searchByLocation, String searchByExp);
 
-    public List<JobDescription> searchJDCommon(String searchByTitle, String searchByExp);
-    
-    
-    
+	public List<JobDescription> searchJDCommon(String searchByTitle, String searchByExp);
+
 }

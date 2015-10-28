@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +11,49 @@
 <link rel="stylesheet" type="text/css"
 	href="resources/css/viewAllJobDesc.css" />
 <script type="text/javascript" src="resources/js/paging.js"></script>
+<script src="resources/js/jsp/companyProfile.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	function getCityList(data) {
+		alert("gg");
+		var stateId = document.getElementById(data.id).value;
+		// alert(stateId);
+		$
+				.ajax({
+					url : "getCityListByStateId.do?stateId=" + stateId,
+					type : "GET",
+					contentType : "application/json; charset=utf-8",
+					success : function(response) {
+
+						var cityValues = response.cityList;
+						$('#' + data.id + 'City').html('');// Empty select box before fill
+						// data.without this line when i
+						// fill, i got old data also.
+						$('#' + data.id + 'City')// Due to above line all data is clear
+						// so i add this line for "select city"
+						// label.
+						.append(
+								$("<option value='" + 0 + "'></option>").text(
+										"Select City"));
+						for (i = 0; i < cityValues.length; i++) {
+							$('#' + data.id + 'City')
+									.append(
+											$(
+													"<option value='" + cityValues[i].id + "'></option>")
+													.text(
+															cityValues[i].cityname));
+						}
+					},
+					error : function() {
+						$('#' + data.id + 'City').append(
+								$("<option value='0'></option>").text(
+										'Select City'))
+					}
+				});
+	}
+</script>
+
 </head>
 <body>
 	<div id="cols" class="box">
@@ -68,70 +112,73 @@
 
 			<!-- Active -->
 		</div>
-		
+
 		<div>
 
-			<form action="companySearch" method="POST">
+			<form:form action="companySearch" modelAttribute="companySearch"
+				method="POST">
 				<table>
 					<tr>
-						<td><label align=left>search by name </label> 
-						<input     name="namSearch"
-								 type="text" id="namSearch"
-								placeholder="Enter Name"></input></td>
+						<td>Username :</td>
+						<td><form:input path="txtSearch" /></td>
 						<!-- <td><label align=left>search by location</label> 
 						<input  name="txtLocSer"
 								 type="text" id="txtLocSer"
 								placeholder="Search By Location"></input></td> -->
-								
-							<td><label align=left>search by State</label> 
-						<select name="stateSearch">
-                          <option value="0">Select</option>
-                          <c:forEach items="${stateList}" var="state">
-                          <option value="${state.stateId}">${state.stateName}</option>
-                          </c:forEach>
-                           </select></td>
-									
-									
-								
-								<td><label align=left>search by City</label> 
-						<select name="citySearch">
-                          <option value="0">Select</option>
-                          <c:forEach items="${cityList}" var="city">
-                          <option value="${city.id}">${city.cityname}</option>
-                          </c:forEach>
-                           </select></td>
-								
-								
-								
+
+						<td><label align=left>search by State</label> <form:select
+								path="stateId" id="currentState" onchange="getCityList(this)">
+								<form:option value="0">Select</form:option>
+								<c:forEach items="${stateList}" var="state">
+									<form:option value="${state.stateId}">${state.stateName}</form:option>
+								</c:forEach>
+							</form:select></td>
+
+
+
+						<td><label align=left>search by City</label> <form:select
+								path="cityId" id="currentStateCity">
+								<form:option value="0">Select</form:option>
+								<c:forEach items="${cityList}" var="city">
+									<form:option value="${city.id}">${city.cityname}</form:option>
+								</c:forEach>
+							</form:select></td>
+
+
+						<!-- 			
 						<td><label align=left>search by experince</label> 
 						<input  name="ExpSearch"
 								 type="text" id="ExpSearch"
-								placeholder="Search By Exp"></input></td>
+								placeholder="Search By Exp"></input></td> -->
 					</tr>
 					<tr>
 						<td><input id="sub" type="submit"></input></td>
 					</tr>
 				</table>
 
-			</form>
+			</form:form>
 		</div>
 
-		
-		
-		
+		<tr>
+			<c:if test="${!empty msg }">
+				<td"><h3 align="left" style="color: red">
+						<c:out value="${msg}"></c:out>
+					</h3></td>
+			</c:if>
+		</tr>
+
 		<h1 align="center">Company LIST</h1>
 		<c:if test="${!empty companyList}">
 			<div align="center">
 				<table width="894" height="73"
 					style="background-color: 00CCFF; color: black; padding: 10px; float: center-right">
 					<tr>
-						<th width="146">
-							<div align="left">
-								COMPANY ID
+						<th width="146"><div align="left">
+								S.No.
 								</td>
 							</div>
 						<th width="141"><div align="left">DOMAIN</div></th>
-						<th width="145"><div align="left">ABOUT US</div></th>
+						<th width="145"><div align="left">NAME</div></th>
 						<th width="142"><div align="left">ADDRESS</div></th>
 						<th width="145"><div align="left">COMPANY SIZE</div></th>
 						<th width="147"><div align="left">COMPANY URL</div></th>
@@ -145,17 +192,18 @@
 
 
 					<c:forEach items="${companyList}" var="view">
+						<c:set var="count" value="${count + 1}" scope="page" />
 
 						<tr>
 
 
-							<td width="146"><c:out value="${view.compId}">
+							<td width="146"><c:out value="${count}">
 									<div align="center"></div>
 								</c:out></td>
 							<td width="138"><c:out value="${view.domainName}">
 									<div align="center"></div>
 								</c:out></td>
-							<td width="142"><c:out value="${view.aboutUs}">
+							<td width="142"><c:out value="${view.registration.fullName}">
 									<div align="center"></div>
 								</c:out></td>
 							<td width="142"><c:out value="${view.address1}">
