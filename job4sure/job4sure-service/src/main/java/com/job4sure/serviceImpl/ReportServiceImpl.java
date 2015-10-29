@@ -45,11 +45,12 @@ public class ReportServiceImpl implements ReportService {
 		return companyProfile;
 	}
 
-	/*
-	 * @SuppressWarnings("rawtypes") public List getUserList() {
-	 * List<Registration> userList =
-	 * registrationRepository.getUserListByRole(1); return userList; }
-	 */
+	
+	  @SuppressWarnings("rawtypes")
+	  public List getUserList() {
+	  List<UserProfile> userList=profileCompleteRepository.getUserByRole(1);
+	  return userList; }
+	 
 
 	public List getCityList() {
 		List<City> cityList = cityRepository.findAll();

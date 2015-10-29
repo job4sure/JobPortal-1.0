@@ -61,7 +61,7 @@
 					<li id="menu-active"><a href="javascript:void(0);"><span>Report</span></a>
 						<ul class="sub-menu">
 							<li><a href="companyList">company</a></li>
-							<li><a href="listByRole?id=1">user</a></li>
+							<li><a href="userList">user</a></li>
 							<li><a href="listByRole?id=4">Sub admin</a></li>
 							<li><a href="listOfJd">Approved JD's</a></li>
 						</ul></li>

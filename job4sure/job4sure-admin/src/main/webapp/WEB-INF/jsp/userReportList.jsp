@@ -1,45 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript" src="resources/js/pager.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+<link rel="stylesheet" type="text/css"
+	href="resources/css/viewAllJobDesc.css" />
+<script type="text/javascript" src="resources/js/paging.js"></script>
+<script src="resources/js/jsp/companyProfile.js" type="text/javascript"
+	charset="utf-8"></script>
 <script src="resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
- function searchByName(){
-	
-	 <c:forEach items="${list}" var="view">
-	 $("#toMailId"+${view.registrationId}).hide();
-   </c:forEach>  
-   
- var textValue=document.getElementById('txtValue').value;
- 
- textValue=textValue.toLowerCase();
-    <c:forEach items="${list}" var="view">
-    var res="${view.fullName}";
-    res=res.toLowerCase();
-     var status=0;
-     var i=0;
-  while(i<textValue.length){
-  if(textValue.charAt(i)!=res.charAt(i)){ 
-   status=1;
-   break;
-  }
-  i++;
- }
-  i=0;
- if(status==0){
-	 $("#toMailId"+${view.registrationId}).show();
- }
-    </c:forEach>  
-} 
+	function getCityList(data) {
+		alert("gg");
+		var stateId = document.getElementById(data.id).value;
+		// alert(stateId);
+		$
+				.ajax({
+					url : "getCityListByStateId.do?stateId=" + stateId,
+					type : "GET",
+					contentType : "application/json; charset=utf-8",
+					success : function(response) {
+
+						var cityValues = response.cityList;
+						$('#' + data.id + 'City').html('');// Empty select box before fill
+						// data.without this line when i
+						// fill, i got old data also.
+						$('#' + data.id + 'City')// Due to above line all data is clear
+						// so i add this line for "select city"
+						// label.
+						.append(
+								$("<option value='" + 0 + "'></option>").text(
+										"Select City"));
+						for (i = 0; i < cityValues.length; i++) {
+							$('#' + data.id + 'City')
+									.append(
+											$(
+													"<option value='" + cityValues[i].id + "'></option>")
+													.text(
+															cityValues[i].cityname));
+						}
+					},
+					error : function() {
+						$('#' + data.id + 'City').append(
+								$("<option value='0'></option>").text(
+										'Select City'))
+					}
+				});
+	}
 </script>
+
 </head>
 <body>
 	<div id="cols" class="box">
@@ -98,45 +112,41 @@
 
 			<!-- Active -->
 		</div>
+
 		<div>
 
-			<form:form modelAttribute="UserProfile"   action="forSearch" method="POST">
+			<form:form action="userSearch" modelAttribute="userProfile"
+				method="POST">
 				<table>
 					<tr>
-						<td><label align=left>search by name </label> 
-						<input
-							name="txtNamSer" type="text" id="txtNamSer"
+					<td><label align=left>Search by Job Title </label> <input name="searchByTitle" type="text" id="txtNamSer"
 							placeholder="Enter Name"></input></td>
-						<!-- <td><label align=left>search by location</label> 
-						<input  name="txtLocSer"
-								 type="text" id="txtLocSer"
-								placeholder="Search By Location"></input></td> -->
+		
 
-					<c:if  test="${list[0].roleType!=4}">
-						<td><label align=left>search by State</label> 
-						<select name="stateSearch">
-                          <option value="0">Select</option>
-                          <c:forEach items="${stateList}" var="state">
-                          <option value="${state.stateId}">${state.stateName}</option>
-                          </c:forEach>
-                           </select></td>
-                           
-						<td><label align=left>search by location</label> 
-						<form:select path="cityId.id"
-							name="txtLocSer">
+						<td><label align=left>search by State</label> <form:select
+								path="stateId" id="currentState" onchange="getCityList(this)">
+								<form:option value="0">Select</form:option>
+								<c:forEach items="${stateList}" var="state">
+									<form:option value="${state.stateId}">${state.stateName}</form:option>
+								</c:forEach>
+							</form:select></td>
+
+
+
+						<td><label align=left>search by City</label> <form:select
+								path="cityId" id="currentStateCity">
 								<form:option value="0">Select</form:option>
 								<c:forEach items="${cityList}" var="city">
 									<form:option value="${city.id}">${city.cityname}</form:option>
 								</c:forEach>
-						</form:select></td>
-						</c:if>
+							</form:select></td>
 
-					<c:if  test="${list[0].roleType!=2&&list[0].roleType!=4}">
-						<td><label align=left>search by experince</label> <input
-							name="txtNamExp" type="text" id="txtExpSer"
-							placeholder="Search By Exp"></input></td>
-							
-							</c:if>
+
+						 			
+						<!-- <td><label align=left>search by experince</label> 
+						<input  name="ExpSearch"
+								 type="text" id="ExpSearch"
+								placeholder="Search By Exp"></input></td> -->
 					</tr>
 					<tr>
 						<td><input id="sub" type="submit"></input></td>
@@ -146,75 +156,74 @@
 			</form:form>
 		</div>
 
+		<tr>
+			<c:if test="${!empty msg }">
+				<td"><h3 align="left" style="color: red">
+						<c:out value="${msg}"></c:out>
+					</h3></td>
+			</c:if>
+		</tr>
 
-      <c:if  test="${list[0].roleType==1}">
-		<h1 align="center">User Report</h1>
-	</c:if>
-	<c:if  test="${list[0].roleType==2}">
-	<h1 align="center">Company Report</h1>
-	</c:if>
-	<c:if  test="${list[0].roleType==4}">
-	<h1 align="center">Sub Admin Report</h1>
-	</c:if>
-	
-	
-		 <c:if test="${!empty list}">
-			<div align="center" id="toMailId${view.registrationId}">
-
-				<table id=results width="1009" align="center"
-					padding: 10px; style="background-color: 00CCFF; color: black; float: center-right">
+		<h1 align="center">User LIST</h1>
+		<c:if test="${!empty userList}">
+			<div align="center">
+				<table width="894" height="73"
+					style="background-color: 00CCFF; color: black; padding: 10px; float: center-right">
 					<tr>
-						<th width="148" height="40"><div align="left">
-								S.NO.</div></th>
-						<th width="189"><div align="left">NAME</div></th>
-						<th width="123"><div align="left">EMAIL</div></th>
-						<th width="140"><div align="left">CONTACT NO.</div></th>
-
+						<th width="146"><div align="left">
+								S.No.
+								</td>
+							</div>
+					
+						<th width="145"><div align="left">NAME</div></th>
+						<th width="142"><div align="left">Email</div></th>
+						<th width="142"><div align="left">Exprrince</div></th>	
+						<th width="145"><div align="left">Location</div></th>
+					<!-- 	<th width="147"><div align="left">Skills</div></th> -->
 					</tr>
+
 				</table>
 
-
-
-				<table id=results width="1009" align="center"
+				<table id="results" width="894" height="73" align="center"
+					border="1"
 					style="background-color: #CCFFFF; color: black; padding: 10px; float: center-right">
-			
-			<c:set var="count" value="0" scope="page" />
-					<c:forEach items="${list}" var="view">
-				
-					<c:set var="count" value="${count + 1}" scope="page"/>
+
+
+					<c:forEach items="${userList}" var="view">
+						<c:set var="count" value="${count + 1}" scope="page" />
+
 						<tr>
-							<td width="148" height="40"><c:out
-									value="${count}">
-									
-								</c:out></td>
-							<td width="189"><c:out value="${view.fullName}">
-									
-								</c:out></td>
-							<td width="123"><c:out value="${view.email}">
-									
-								</c:out></td>
-							<td width="140"><c:out value="${view.mobileNo}">
-									
-								</c:out></td>
 
+
+							<td width="146"><c:out value="${count}">
+									<div align="center"></div>
+								</c:out></td>
+							<td width="138"><c:out value="${view.registration.fullName}">
+									<div align="center"></div>
+								</c:out></td>
+							<td width="142"><c:out value="${view.registration.email}">
+									<div align="center"></div>
+								</c:out></td>
+									<td width="142"><c:out value="${view.minExperience.experience}-${view.maxExperience.experience }">
+									<div align="center"></div>
+								</c:out></td>
+							<td width="142"><c:out value="${view.cityId.id}">
+									<div align="center"></div>
+								</c:out></td>
+						
+					
 						</tr>
+
 					</c:forEach>
-
-
-
 				</table>
-
+				<tr>
+					<td><c:if test="${userList!=null}">
+							<div id="pageNavPosition" align="center"></div>
+						</c:if></td>
+				</tr>
 
 			</div>
-
 		</c:if>
-
-		<div align="center">
-			<c:if test="${list!=null}">
-				<div id="pageNavPosition" align="center"></div>
-			</c:if>
-		</div>
-	</div>
 </body>
 <script>
 	var pager = new Pager('results', 5);
@@ -222,4 +231,5 @@
 	pager.showPageNav('pager', 'pageNavPosition');
 	pager.showPage(1);
 </script>
+
 </html>

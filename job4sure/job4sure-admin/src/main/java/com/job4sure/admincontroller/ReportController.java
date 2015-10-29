@@ -108,24 +108,33 @@ public class ReportController {
 		return "CompanyList";
 	}
 
-	/*
-	 * @RequestMapping(value = "/forSearch", method = RequestMethod.POST) public
-	 * String ShowSearchResult(ModelMap model, @ModelAttribute("UserProfile")
-	 * UserProfile userProfile,
-	 * 
-	 * @RequestParam(required = false) String txtNamSer) {
-	 * 
-	 * System.out.println(); String loc = userProfile.getCityId() + "";
-	 * 
-	 * model.addAttribute("cityList", reportService.getCityList());
-	 * System.out.println(txtNamSer + "name aa gya");
-	 * 
-	 * @SuppressWarnings("unchecked") List<Registration> userList =
-	 * reportService.getUserListBySer(txtNamSer, loc);
-	 * model.addAttribute("userList", userList);
-	 * 
-	 * return "UserList"; }
-	 */
+
+    
+      @RequestMapping(value = "/userList", method = RequestMethod.GET) 
+      public String ShowUserList(ModelMap map) 
+      {
+      
+      
+      List<UserProfile> userList=reportService.getUserList();
+      map.put("userProfile", new UserProfile());
+      map.addAttribute("userList", userList); 
+      map.addAttribute("cityList",reportService.getCityList());
+      map.addAttribute("stateList", reportService.getStateList());
+      return "UserList"; 
+      }
+     
+	 
+	  /* @RequestMapping(value = "/userSearch", method = RequestMethod.POST) 
+	   public String ShowSearchResult(ModelMap model, @ModelAttribute("UserProfile") UserProfile userProfile,@RequestParam(required = false) String txtNamSer) 
+	   {
+	   model.addAttribute("cityList", reportService.getCityList());
+	   System.out.println(txtNamSer + "name aa gya");
+	   
+	   @SuppressWarnings("unchecked") List<Registration> userList =
+	   reportService.getUserListBySer(txtNamSer, loc);
+	   model.addAttribute("userList", userList);
+	  return "UserList"; }*/
+	 
 
 	
 	/*  @RequestMapping(value = "/listByRole", method = RequestMethod.GET) public

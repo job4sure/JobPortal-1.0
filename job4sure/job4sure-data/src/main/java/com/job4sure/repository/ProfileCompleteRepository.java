@@ -16,6 +16,6 @@ public interface ProfileCompleteRepository extends JpaRepository<UserProfile, In
 	@Query("select userProfileObj from UserProfile userProfileObj where userProfileObj.currentCityId.id=:currentCityId and userProfileObj.registration.fullName=:fullName")
 	List<UserProfile> getLoggedInUserInfoList(@Param("currentCityId") Integer currentCityId, @Param("fullName") String fullName);
 
-	
-
+	@Query("select userProfileObj from UserProfile userProfileObj where userProfileObj.registration.roleType=:role")
+    List<UserProfile> getUserByRole(@Param("role")Integer role);
 }

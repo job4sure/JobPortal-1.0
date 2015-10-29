@@ -9,7 +9,7 @@ import com.job4sure.model.Registration;
 public interface ReportService {
     public List getCompanyList();
 
-    /* public List getUserList(); */
+    public List getUserList();
 
     public List getUserListBySer(String name, String loc);
 
