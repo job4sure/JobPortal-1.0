@@ -74,51 +74,10 @@ public class ReportServiceImpl implements ReportService {
 
 	}
 
-	public List getUserListBySer(String name, String cityId) {
-		List<Registration> regList = null;
-		List<UserProfile> profList = null;
-
-		Integer intg = Integer.parseInt(cityId);
-		profList = profileCompleteRepository.getLoggedInUserInfoList(intg, name);
-
-		Registration rrr = null;
-
-		try {
-
-			if (profList != null) {
-				regList = new ArrayList<Registration>();
-				for (UserProfile userProfile : profList) {
-					rrr = (userProfile.getRegistration());
-					regList.add(rrr);
-				}
-			}
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-
-		// if(cityName!=null)
-		// {
-		// City c=cityRepository.getCitySer(cityName);
-		// profList=
-		// profileCompleteRepository.getLoggedInUserInfoList(c.getId(), name)
-		// }
-		//
-		// ArrayList<Registration> userList = null;
-		//
-		// for(int i=0;i<=regList.size();i++){
-		//
-		// if(profList!=null)
-		// for (int j=0;j<=profList.size();j++)
-		// {if(profList.get(i).getRegistrationId()==regList.get(i).getRegistrationId())
-		// {
-		// userList.add(regList.get(j)) ;
-		// }
-		// }
-		//
-		// }
-		//
-		return regList;
+	public List getUserListBySer(String name, Integer loc,Integer exp) 
+	{
+        List<UserProfile> companySearchList=  profileCompleteRepository.getUserSearchCommon(name,loc,exp);
+        return companySearchList;
 	}
 
 	public List<Registration> getListByRoleId(int id) {

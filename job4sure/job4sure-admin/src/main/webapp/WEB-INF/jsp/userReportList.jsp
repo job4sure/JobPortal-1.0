@@ -119,12 +119,14 @@
 				method="POST">
 				<table>
 					<tr>
-					<td><label align=left>Search by Job Title </label> <input name="searchByTitle" type="text" id="txtNamSer"
+						<td><label align=left>Search by Name </label> <input
+							name="searchByTitle" type="text" id="txtNamSer"
 							placeholder="Enter Name"></input></td>
-		
+
 
 						<td><label align=left>search by State</label> <form:select
-								path="stateId" id="currentState" onchange="getCityList(this)">
+								path="currentStateId.stateId" id="currentState"
+								onchange="getCityList(this)">
 								<form:option value="0">Select</form:option>
 								<c:forEach items="${stateList}" var="state">
 									<form:option value="${state.stateId}">${state.stateName}</form:option>
@@ -134,7 +136,7 @@
 
 
 						<td><label align=left>search by City</label> <form:select
-								path="cityId" id="currentStateCity">
+								path="cityId.id" id="currentStateCity">
 								<form:option value="0">Select</form:option>
 								<c:forEach items="${cityList}" var="city">
 									<form:option value="${city.id}">${city.cityname}</form:option>
@@ -142,11 +144,14 @@
 							</form:select></td>
 
 
-						 			
-						<!-- <td><label align=left>search by experince</label> 
-						<input  name="ExpSearch"
-								 type="text" id="ExpSearch"
-								placeholder="Search By Exp"></input></td> -->
+
+						<td><label align=left>search by experince</label> <form:select
+								path="minExperience.experienceId" id="currentStateCity">
+								<form:option value="0">Select</form:option>
+								<c:forEach items="${experienceList}" var="exp">
+									<form:option value="${exp.experienceId}">${exp.experience}</form:option>
+								</c:forEach>
+							</form:select></td>
 					</tr>
 					<tr>
 						<td><input id="sub" type="submit"></input></td>
@@ -156,13 +161,13 @@
 			</form:form>
 		</div>
 
-		<tr>
+		
 			<c:if test="${!empty msg }">
 				<td"><h3 align="left" style="color: red">
 						<c:out value="${msg}"></c:out>
 					</h3></td>
 			</c:if>
-		</tr>
+		
 
 		<h1 align="center">User LIST</h1>
 		<c:if test="${!empty userList}">
@@ -174,12 +179,11 @@
 								S.No.
 								</td>
 							</div>
-					
 						<th width="145"><div align="left">NAME</div></th>
 						<th width="142"><div align="left">Email</div></th>
-						<th width="142"><div align="left">Exprrince</div></th>	
+						<th width="142"><div align="left">Exprrince</div></th>
 						<th width="145"><div align="left">Location</div></th>
-					<!-- 	<th width="147"><div align="left">Skills</div></th> -->
+						<!-- 	<th width="147"><div align="left">Skills</div></th> -->
 					</tr>
 
 				</table>
@@ -204,14 +208,15 @@
 							<td width="142"><c:out value="${view.registration.email}">
 									<div align="center"></div>
 								</c:out></td>
-									<td width="142"><c:out value="${view.minExperience.experience}-${view.maxExperience.experience }">
+							<td width="142"><c:out
+									value="${view.minExperience.experience}-${view.maxExperience.experience }">
 									<div align="center"></div>
 								</c:out></td>
 							<td width="142"><c:out value="${view.cityId.id}">
 									<div align="center"></div>
 								</c:out></td>
-						
-					
+
+
 						</tr>
 
 					</c:forEach>

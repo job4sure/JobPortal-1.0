@@ -11,7 +11,7 @@ public interface ReportService {
 
     public List getUserList();
 
-    public List getUserListBySer(String name, String loc);
+    public List getUserListBySer(String name, Integer loc,Integer exp );
 
     public List getCityList();
 

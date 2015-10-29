@@ -63,7 +63,7 @@ public class ReportController {
 		String companyName = companySearch.getTxtSearch();
 
 		if (companyName == "" && Integer.parseInt(cityLoc) == 0) {
-			map.addAttribute("msg","please select one feild");
+			map.addAttribute("msg", "please select one feild");
 			List<Registration> joblist = reportService.getCompanyList();
 			map.addAttribute("cityList", reportService.getCityList());
 			map.addAttribute("stateList", reportService.getStateList());
@@ -71,7 +71,8 @@ public class ReportController {
 		}
 
 		if (companyName != "" && Integer.parseInt(cityLoc) != 0) {
-			List<CompanyProfileModel> companyBySearch = reportService.getCompanyBySearch(companyName, Integer.parseInt(cityLoc));
+			List<CompanyProfileModel> companyBySearch = reportService.getCompanyBySearch(companyName,
+							Integer.parseInt(cityLoc));
 
 			if (companyBySearch.isEmpty()) {
 				map.addAttribute("msg", "NO MACHING FOUND");
@@ -108,73 +109,94 @@ public class ReportController {
 		return "CompanyList";
 	}
 
+	@RequestMapping(value = "/userList", method = RequestMethod.GET)
+	public String ShowUserList(ModelMap map) {
 
-    
-      @RequestMapping(value = "/userList", method = RequestMethod.GET) 
-      public String ShowUserList(ModelMap map) 
-      {
-      
-      
-      List<UserProfile> userList=reportService.getUserList();
-      map.put("userProfile", new UserProfile());
-      map.addAttribute("userList", userList); 
-      map.addAttribute("cityList",reportService.getCityList());
-      map.addAttribute("stateList", reportService.getStateList());
-      return "UserList"; 
-      }
-     
-	 
-	  /* @RequestMapping(value = "/userSearch", method = RequestMethod.POST) 
-	   public String ShowSearchResult(ModelMap model, @ModelAttribute("UserProfile") UserProfile userProfile,@RequestParam(required = false) String txtNamSer) 
-	   {
-	   model.addAttribute("cityList", reportService.getCityList());
-	   System.out.println(txtNamSer + "name aa gya");
-	   
-	   @SuppressWarnings("unchecked") List<Registration> userList =
-	   reportService.getUserListBySer(txtNamSer, loc);
-	   model.addAttribute("userList", userList);
-	  return "UserList"; }*/
-	 
+		List<UserProfile> userList = reportService.getUserList();
+		map.addAttribute("userProfile", new UserProfile());
+		map.addAttribute("userList", userList);
+		map.addAttribute("experienceList", jobDescriptionService.getAllExperience());
+		map.addAttribute("cityList", reportService.getCityList());
+		map.addAttribute("stateList", reportService.getStateList());
+		return "UserList";
+	}
 
 	
-	/*  @RequestMapping(value = "/listByRole", method = RequestMethod.GET) public
-	  String showSubAdminList(Map<String, Object> map, ModelMap model,
+	  @RequestMapping(value = "/userSearch", method = RequestMethod.POST)
+	  public String ShowSearchResult(ModelMap model, @ModelAttribute("userProfile") UserProfile userProfile,@RequestParam(required = false) String searchByTitle) 
+	  {   
+		 Integer loc= userProfile.getCityId().getId();
+		 Integer exp=userProfile.getMinExperience().getExperienceId();
+	
+		  
+		if (searchByTitle != "" && loc!=0 && exp!=0) 
+		{
+			List<UserProfile> userSearchList= reportService.getUserListBySer(searchByTitle,loc,exp);			
+
+			if (userSearchList.isEmpty()) {
+				model.addAttribute("msg", "NO MACHING FOUND");
+				List<UserProfile> userList = reportService.getUserList();
+				model.addAttribute("cityList", reportService.getCityList());
+				model.addAttribute("stateList", reportService.getStateList());
+				model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
+				model.addAttribute("companyList",userList);
+
+			} else {
+				model.addAttribute("msg",userSearchList.size() + " Result Found");
+				model.addAttribute("cityList", reportService.getCityList());
+				model.addAttribute("stateList", reportService.getStateList());
+				model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
+				model.addAttribute("userList",userSearchList);
+			}
+
+		} 
+		  
+		  
+		  
+		  return"UserList";
+	  }
 	  
-	  @RequestParam(required = false) String id) { map.put("UserProfile", new
-	  UserProfile()); if (!id.equals("JD")) { int roleId =
-	  Integer.parseInt(id); List list=null; if(roleId==2) {
-	  List<CompanyProfileModel>
-	  companyProfileList=reportService.getCompanyList();
-	  list=companyProfileList; model.addAttribute("companySearch",new
-	  CompanySearch()); model.addAttribute("ComapnyProfile", new
-	  CompanyProfileModel()); } if(roleId==1) { List<Registration> list1 =
-	  reportService.getListByRoleId(roleId); list=list1;
-	  model.addAttribute("UserProfile", new UserProfile()); } if(roleId==4)
-	  {List<Registration> list2 = reportService.getListByRoleId(roleId);
-	  list=list2; }
-	  
-	  List<Registration> list = reportService.getListByRoleId(roleId);
-	  System.out.println("hhii"); model.addAttribute("list", list);
-	  
-	  
-	  model.addAttribute("cityList", reportService.getCityList());
-	  model.addAttribute("stateList", reportService.getStateList());
-	  model.addAttribute("checkList", "role");
-	  
-	 
-	  } else { List<JobDescription> joblist = adminJobDescriptionService
-	  .getJobDescriptionList(IConstant.JD_APPROVED_STATUS); if
-	  (joblist.isEmpty()) model.addAttribute("message", IConstant.EMPTY_LIST);
-	  else {
-	  
-	  model.addAttribute("list", joblist); model.addAttribute("message",
-	  IConstant.NOT_EMPTY_LIST); model.addAttribute("checkList", "JD"); } }
-	  
-	  map.put("UserProfile", new UserProfile()); model.addAttribute("userList",
-	  userList); model.addAttribute("cityList", reportService.getCityList());
-	  
-	  return "UserList"; }
-*/
+	
+
+	/*
+	 * @RequestMapping(value = "/listByRole", method = RequestMethod.GET) public
+	 * String showSubAdminList(Map<String, Object> map, ModelMap model,
+	 * 
+	 * @RequestParam(required = false) String id) { map.put("UserProfile", new
+	 * UserProfile()); if (!id.equals("JD")) { int roleId =
+	 * Integer.parseInt(id); List list=null; if(roleId==2) {
+	 * List<CompanyProfileModel>
+	 * companyProfileList=reportService.getCompanyList();
+	 * list=companyProfileList; model.addAttribute("companySearch",new
+	 * CompanySearch()); model.addAttribute("ComapnyProfile", new
+	 * CompanyProfileModel()); } if(roleId==1) { List<Registration> list1 =
+	 * reportService.getListByRoleId(roleId); list=list1;
+	 * model.addAttribute("UserProfile", new UserProfile()); } if(roleId==4)
+	 * {List<Registration> list2 = reportService.getListByRoleId(roleId);
+	 * list=list2; }
+	 * 
+	 * List<Registration> list = reportService.getListByRoleId(roleId);
+	 * System.out.println("hhii"); model.addAttribute("list", list);
+	 * 
+	 * 
+	 * model.addAttribute("cityList", reportService.getCityList());
+	 * model.addAttribute("stateList", reportService.getStateList());
+	 * model.addAttribute("checkList", "role");
+	 * 
+	 * 
+	 * } else { List<JobDescription> joblist = adminJobDescriptionService
+	 * .getJobDescriptionList(IConstant.JD_APPROVED_STATUS); if
+	 * (joblist.isEmpty()) model.addAttribute("message", IConstant.EMPTY_LIST);
+	 * else {
+	 * 
+	 * model.addAttribute("list", joblist); model.addAttribute("message",
+	 * IConstant.NOT_EMPTY_LIST); model.addAttribute("checkList", "JD"); } }
+	 * 
+	 * map.put("UserProfile", new UserProfile()); model.addAttribute("userList",
+	 * userList); model.addAttribute("cityList", reportService.getCityList());
+	 * 
+	 * return "UserList"; }
+	 */
 	@RequestMapping(value = "/listOfJd", method = RequestMethod.GET)
 	public String showApprovedJdList(Map<String, Object> map, ModelMap model) {
 
