@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,7 +23,9 @@
 	type="text/javascript" charset="utf-8"></script>
 
 
-
+<script src="resources/js/jsp/viewJobDescription.js" type="text/javascript" charset="utf-8">
+	
+</script>
 <!--  <script type="text/javascript" src="resources/js/verfyEmailId.js"></script> -->
 <!--  <script type="text/javascript">
 	$(document).ready(function(){
@@ -44,12 +48,13 @@ function clearAllErrors() {
 
 </script> -->
 
-
 <style type="text/css">
 #error {
 	color: red;
 }
 </style>
+
+
 <script type="text/javascript">
 	$(function() {
 		$(".dropdown1 dt a").on('click', function() {
@@ -102,6 +107,7 @@ function clearAllErrors() {
 		}
 	}
 </script>
+
 </head>
 <body>
 
@@ -180,10 +186,6 @@ function clearAllErrors() {
 						<td>Job Description</td>
 						<td>${jobDescription.jobDesc}
 					</tr>
-					<%-- <tr>
-						<td>Job Location</td>
-						<td>${jobDescription.jobLocation}</td>
-					</tr> --%>
 					<tr>
 						<td>Salary</td>
 						<td>${jobDescription.minSalary.salary}To
@@ -227,7 +229,7 @@ function clearAllErrors() {
 						type="file" name="upload" id="resumeUpload"
 						accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 						multiple="multiple" /> <input type="submit"
-						value="Refer to admin" />
+						value="Refer to company" />
 				</div>
 			</form:form>
 		</div>
@@ -237,13 +239,16 @@ function clearAllErrors() {
 				onsubmit="return jQuery(this).validationEngine('validate');"
 				modelAttribute="references">
 				<c:set var="count" value="0" scope="page" />
-				<table class="basic-table">
+				<table class="basic-table" style="width: 100%">
 					<thead>
 						<tr>
-							<th colspan="2" width="10%">Resume no.</th>
-							<th colspan="2" width="10%" >Resume attached</th>
-							<th colspan="2" width="10%">Note</th>
-							<th colspan="2" width="10%">Refer by</th>
+							<th width="10%">Resume no.</th>
+							<th>Resume attached</th>
+							<th>Note</th>
+							<th>Refer by</th>
+							<sec:authorize access="hasRole('ADMIN')">
+								<th>Select to refer</th>
+							</sec:authorize>
 						</tr>
 					</thead>
 					<c:forEach items="${references}" var="reference">
@@ -251,13 +256,25 @@ function clearAllErrors() {
 						<tbody>
 							<tr>
 								<td width="10%">${count}</td>
-								<td width="10%">${reference.attachment.attachmentName}</td>
-								<td width="10%">${reference.note}</td>
-								<td width="10%">${reference.registration.fullName}</td>
+								<td>${reference.attachment.attachmentName}</td>
+								<td>${reference.note}</td>
+								<td>${reference.registration.fullName}</td>
+								<sec:authorize access="hasRole('ADMIN')">
+									<c:if test="${reference.status eq true}">
+										<td><input type="checkbox" name="status"
+											value="${reference.id}" onclick='handleClick(this);'
+											checked="checked" /></td>
+									</c:if>
+									<c:if test="${reference.status eq false}">
+										<td><input type="checkbox" name="status"
+											value="${reference.id}" onclick='handleClick(this);' /></td>
+									</c:if>
+								</sec:authorize>
 							</tr>
 						</tbody>
 					</c:forEach>
 				</table>
+
 			</form:form>
 		</div>
 	</div>

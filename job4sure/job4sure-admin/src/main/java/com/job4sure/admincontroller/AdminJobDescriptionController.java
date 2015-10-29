@@ -1,7 +1,10 @@
 package com.job4sure.admincontroller;
 
+import java.sql.Ref;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,9 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import com.job4sure.model.Attachment;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Reference;
 import com.job4sure.model.Registration;
@@ -77,6 +80,11 @@ public class AdminJobDescriptionController {
 	registration = (Registration) session.getAttribute("registration");
 	reference.setRegistration(registration);
 	reference.setJobDescription(jobDescriptionTemp);
+	if (registration.getRoleType() == 3)
+	    reference.setStatus(true);
+	else
+	    reference.setStatus(false);
+
 	refrenceService.save(reference, upload);
 
 	model.addAttribute("jobId", jId);
@@ -120,4 +128,12 @@ public class AdminJobDescriptionController {
 	}
     }
 
+    @RequestMapping(value = "/changeReferStatus", method = { RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Reference> getAllCityByStateId(@RequestParam Integer referenceId, @RequestParam String isRefer) {
+	Map<String, Reference> refrenceMap = new HashMap<String, Reference>();
+	Reference reference = refrenceService.changeStatus(referenceId, isRefer);
+	refrenceMap.put("refrence", reference);
+	return refrenceMap;
+    }
 }

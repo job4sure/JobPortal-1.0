@@ -31,11 +31,9 @@ function getCityList(data) {
 	});
 }
 
-
 $(document).ready(function() {
 	$("#datepicker").datepicker();
 });
-
 
 function showRow(rowname) {
 	if (document.getElementById(rowname)) {
@@ -173,4 +171,5 @@ function ifHomeStateCityNotSelected(field, rules, i, options) {
 	if (b == 0) {
 		return "*Please select an option, this field is required";
 	}
+	
 }

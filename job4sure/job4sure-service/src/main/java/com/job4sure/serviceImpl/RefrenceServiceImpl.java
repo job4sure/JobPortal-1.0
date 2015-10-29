@@ -96,8 +96,19 @@ public class RefrenceServiceImpl implements RefrenceService {
     }
 
     public List<Reference> findByJobId(Integer jobId) {
-	List<Reference> references ;
+	List<Reference> references;
 	references = refrenceRepository.findByJobId(jobId);
 	return references;
+    }
+
+    public Reference changeStatus(Integer referenceId, String isRefer) {
+	Reference reference = null;
+	reference = refrenceRepository.findOne(referenceId);
+	if (isRefer.equalsIgnoreCase("true"))
+	    reference.setStatus(true);
+	else
+	    reference.setStatus(false);
+
+	return refrenceRepository.save(reference);
     }
 }
