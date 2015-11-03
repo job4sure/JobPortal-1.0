@@ -15,4 +15,6 @@ public interface RefrenceService {
     public Boolean save(Reference reference, CommonsMultipartFile[] upload);
 
     public List<Reference> getRefrenceByJobIdAndUser(Integer jobId, Integer registrationId);
+
+	public List<Reference> getUserResume();
 }

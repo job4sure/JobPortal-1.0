@@ -111,4 +111,13 @@ public class RefrenceServiceImpl implements RefrenceService {
 
 	return refrenceRepository.save(reference);
     }
+
+	public List<Reference> getUserResume() {
+		List<Reference> resumeList= refrenceRepository.findBystatus();
+		if(resumeList!=null){
+		return resumeList;
+		}else{
+			return null;	
+		}
+	}
 }

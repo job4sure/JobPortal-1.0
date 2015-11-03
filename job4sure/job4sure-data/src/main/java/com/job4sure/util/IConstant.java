@@ -67,6 +67,7 @@ public class IConstant {
 	public static final int COMPANY_ROLE_ID = 2;
 	public static final int ADMIN_ROLE_ID = 3;
 	public static final int SUBADMIN_ROLE_ID = 4;
+	public static final int IS_STATUS = 1;
 
 	// Messages for viewAllJobDesc.jsp
 	public static final String EMPTY_LIST = "<h2 id=" + "show" + ">You have not created any job.</h2>";

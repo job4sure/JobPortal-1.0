@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.job4sure.model.Reference;
+import com.job4sure.util.IConstant;
 
 public interface RefrenceRepository extends JpaRepository<Reference, Integer> {
 	
@@ -15,4 +16,7 @@ public interface RefrenceRepository extends JpaRepository<Reference, Integer> {
 	
 	@Query("from Reference r where r.jobDescription.jobDescriptionId=:jobId")
 	public List<Reference> findByJobId(@Param("jobId") Integer jobId);
+
+	@Query("from Reference r where r.status="+IConstant.IS_STATUS)
+	public List<Reference> findBystatus();
 }

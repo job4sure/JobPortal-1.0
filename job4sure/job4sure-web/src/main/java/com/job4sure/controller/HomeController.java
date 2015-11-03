@@ -2,6 +2,7 @@ package com.job4sure.controller;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.job4sure.model.Attachment;
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.Login;
+import com.job4sure.model.Reference;
 import com.job4sure.model.Registration;
 import com.job4sure.service.CompanyProfileService;
+import com.job4sure.service.RefrenceService;
 import com.job4sure.service.RegistrationService;
 import com.job4sure.util.DateFormatUtil;
 import com.job4sure.util.EncryptDecrypt;
@@ -35,6 +38,9 @@ public class HomeController {
 
     @Autowired
     private CompanyProfileService companyProfileService;
+    
+    @Autowired
+    private RefrenceService refrenceService;
     
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String showWelcomePage() {
@@ -89,6 +95,10 @@ public class HomeController {
 	Registration registration = (Registration) session.getAttribute("registration");
 	CompanyProfileModel companyProfile = companyProfileService.getCompanyCompleteInfo(registration
 					.getRegistrationId());
+	List<Reference> resumeList = refrenceService.getUserResume();
+	if(resumeList!=null){
+	model.addAttribute("resumeList", resumeList);
+	}
 	model.addAttribute("companyProfile", companyProfile);
 	model.addAttribute("registration", registration);
 	Attachment attachment = companyProfileService.getCompanyAttachment(registration.getRegistrationId());

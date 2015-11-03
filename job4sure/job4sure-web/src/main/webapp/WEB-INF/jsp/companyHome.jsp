@@ -74,6 +74,33 @@
 					<h3 style="color: red;">Sorry Nothing to display complete your details !!</h3>
 				</c:if>
 			</div>
+				<div id="content" class="box">
+				<c:set var="count" value="0" scope="page" />
+				<table class="basic-table" style="width: 100%">
+					<thead>
+						<tr>
+							<th width="10%">Resume no.</th>
+							<th>Resume attached</th>
+							<th>Note</th>
+							<th>Refer by</th>
+							<sec:authorize access="hasRole('ADMIN')">
+								<th>Select to refer</th>
+							</sec:authorize>
+						</tr>
+					</thead>
+					<c:forEach items="${resumeList}" var="resumeList">
+						<c:set var="count" value="${count + 1}" scope="page" />
+						<tbody>
+							<tr>
+								<td width="10%">${count}</td>
+								<td>${resumeList.attachment.attachmentName}</td>
+								<td>${resumeList.note}</td>
+								<td>${resumeList.registration.fullName}</td>
+							</tr>
+						</tbody>
+					</c:forEach>
+				</table>
+		</div>
 			<marquee>
 				<h2>Your account will be expired in ${daysLeft} days.</h2>
 			</marquee>
