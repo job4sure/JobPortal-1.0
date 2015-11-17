@@ -5,6 +5,7 @@ import java.util.List;
 import com.job4sure.model.CompanyProfileModel;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
+import com.job4sure.model.UserProfile;
 
 public interface ReportService {
     public List getCompanyList();
@@ -34,5 +35,11 @@ public interface ReportService {
     public List<JobDescription> searchJDCommon(String searchByTitle, int searchByLocation, String searchByExp);
 
 	public List<JobDescription> searchJDCommon(String searchByTitle, String searchByExp);
+
+	public List<UserProfile> getUserSearchList(String searchByTitle, UserProfile userProfile);
+
+	/*public List<UserProfile> getAllUserList(String searchByTitle, UserProfile userProfile);
+
+	public List<UserProfile> getSearchList(String searchByTitle, UserProfile userProfile);*/
 
 }

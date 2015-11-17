@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,7 +19,7 @@ import com.job4sure.model.CompanySearch;
 import com.job4sure.model.JobDescription;
 import com.job4sure.model.Registration;
 import com.job4sure.model.UserProfile;
-import com.job4sure.repository.CompanyReportRepository;
+/*import com.job4sure.repository.CompanyReportRepository;*/
 import com.job4sure.service.AdminJobDescriptionService;
 import com.job4sure.service.JobDescriptionService;
 import com.job4sure.service.ReportService;
@@ -42,8 +40,9 @@ public class ReportController {
 	@Autowired
 	AdminJobDescriptionService adminJobDescriptionService;
 
-	@Autowired
-	CompanyReportRepository companyReportRepository;
+	/*
+	 * @Autowired CompanyReportRepository companyReportRepository;
+	 */
 
 	@RequestMapping(value = "/companyList", method = RequestMethod.GET)
 	public String ShowCompanyList(ModelMap model) {
@@ -111,27 +110,23 @@ public class ReportController {
 
 	@RequestMapping(value = "/userList", method = RequestMethod.GET)
 	public String ShowUserList(ModelMap map) {
-
 		List<UserProfile> userList = reportService.getUserList();
 		map.addAttribute("userProfile", new UserProfile());
-		map.addAttribute("userList", userList);
+		/* map.addAttribute("userList", userList); */
 		map.addAttribute("experienceList", jobDescriptionService.getAllExperience());
 		map.addAttribute("cityList", reportService.getCityList());
 		map.addAttribute("stateList", reportService.getStateList());
 		return "UserList";
 	}
 
-	
-	  @RequestMapping(value = "/userSearch", method = RequestMethod.POST)
-	  public String ShowSearchResult(ModelMap model, @ModelAttribute("userProfile") UserProfile userProfile,@RequestParam(required = false) String searchByTitle) 
-	  {   
-		 Integer loc= userProfile.getCityId().getId();
-		 Integer exp=userProfile.getMinExperience().getExperienceId();
-	
-		  
-		if (searchByTitle != "" && loc!=0 && exp!=0) 
-		{
-			List<UserProfile> userSearchList= reportService.getUserListBySer(searchByTitle,loc,exp);			
+	@RequestMapping(value = "/userSearch", method = RequestMethod.POST)
+	public String ShowSearchResult(ModelMap model, @ModelAttribute("userProfile") UserProfile userProfile,
+					@RequestParam(required = false) String searchByTitle) {
+		Integer loc = userProfile.getCityId().getId();
+		Integer exp = userProfile.getMinExperience().getExperienceId();
+
+		if (searchByTitle != "" && loc != 0 && exp != 0) {
+			List<UserProfile> userSearchList = reportService.getUserListBySer(searchByTitle, loc, exp);
 
 			if (userSearchList.isEmpty()) {
 				model.addAttribute("msg", "NO MACHING FOUND");
@@ -139,24 +134,20 @@ public class ReportController {
 				model.addAttribute("cityList", reportService.getCityList());
 				model.addAttribute("stateList", reportService.getStateList());
 				model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
-				model.addAttribute("companyList",userList);
+				model.addAttribute("companyList", userList);
 
 			} else {
-				model.addAttribute("msg",userSearchList.size() + " Result Found");
+				model.addAttribute("msg", userSearchList.size() + " Result Found");
 				model.addAttribute("cityList", reportService.getCityList());
 				model.addAttribute("stateList", reportService.getStateList());
 				model.addAttribute("experienceList", jobDescriptionService.getAllExperience());
-				model.addAttribute("userList",userSearchList);
+				model.addAttribute("userList", userSearchList);
 			}
 
-		} 
-		  
-		  
-		  
-		  return"UserList";
-	  }
-	  
-	
+		}
+
+		return "UserList";
+	}
 
 	/*
 	 * @RequestMapping(value = "/listByRole", method = RequestMethod.GET) public
@@ -337,6 +328,42 @@ public class ReportController {
 		cityListMap.put("cityList", cityList);
 		return cityListMap;
 
+	}
+
+	/*
+	 * @RequestMapping(value = "/userSearchList", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String
+	 * userSearchList(@ModelAttribute("userProfile") UserProfile userProfile,
+	 * ModelMap map,
+	 * 
+	 * @RequestParam(required = false) String searchByTitle) { if
+	 * (!searchByTitle.equals("") && userProfile.getCityId().getId() != 0 &&
+	 * userProfile.getMinExperience().getExperienceId() != 0) {
+	 * List<UserProfile> userSearchList =
+	 * reportService.getSearchList(searchByTitle, userProfile);
+	 * map.addAttribute("userList", userSearchList); } else { if
+	 * ((!searchByTitle.equals("") && userProfile.getCityId().getId() != 0) ||
+	 * (!searchByTitle.equals("") &&
+	 * userProfile.getMinExperience().getExperienceId() != 0) ||
+	 * userProfile.getCityId().getId() != 0 &&
+	 * userProfile.getMinExperience().getExperienceId() != 0) {
+	 * List<UserProfile> userSearchList =
+	 * reportService.getAllUserList(searchByTitle, userProfile);
+	 * map.addAttribute("userList", userSearchList); } else { if
+	 * (!searchByTitle.equals("") || userProfile.getCityId().getId() != 0 ||
+	 * userProfile.getMinExperience().getExperienceId() != 0) {
+	 * List<UserProfile> userSearchList =
+	 * reportService.getUserSearchList(searchByTitle, userProfile);
+	 * map.addAttribute("userList", userSearchList); } } } return "UserList"; }
+	 */
+
+	@RequestMapping(value = "/userSearchList", method = { RequestMethod.GET, RequestMethod.POST })
+	public String userSearchList(@ModelAttribute("userProfile") UserProfile userProfile, ModelMap map,
+					@RequestParam(required = false) String searchByTitle) {
+		List<UserProfile> userSearchList = reportService.getUserSearchList(searchByTitle, userProfile);
+		map.addAttribute("userList", userSearchList);
+
+		return "UserList";
 	}
 
 }

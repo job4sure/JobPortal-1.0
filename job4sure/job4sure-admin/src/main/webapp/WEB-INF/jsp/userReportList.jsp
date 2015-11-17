@@ -115,13 +115,13 @@
 
 		<div>
 
-			<form:form action="userSearch" modelAttribute="userProfile"
+			<form:form action="userSearchList" modelAttribute="userProfile"
 				method="POST">
 				<table>
 					<tr>
 						<td><label align=left>Search by Name </label> <input
 							name="searchByTitle" type="text" id="txtNamSer"
-							placeholder="Enter Name"></input></td>
+							placeholder="Enter Name"/></td>
 
 
 						<td><label align=left>search by State</label> <form:select
@@ -234,7 +234,7 @@
 	var pager = new Pager('results', 5);
 	pager.init();
 	pager.showPageNav('pager', 'pageNavPosition');
-	pager.showPage(1);
+	pager.showPage(0);
 </script>
 
 </html>
